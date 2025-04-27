@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-providers";
-import { Navbar } from "@/components/(landingpage)/landingnavbar";
 import { Toaster } from "@/components/ui/sonner";
+import { Providers } from "./providers/providers";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "M.P. Solutions",
-	description: "All medicine info at one place",
+	title: "Janchetana EDU",
+	description: "Education comes first",
 };
 
 export default function RootLayout({
@@ -30,16 +30,17 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
-					<Toaster />
-					<Navbar />
-					{children}
-				</ThemeProvider>
+				<Providers>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange
+					>
+						<Toaster />
+						{children}
+					</ThemeProvider>
+				</Providers>
 			</body>
 		</html>
 	);
