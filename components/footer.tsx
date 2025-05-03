@@ -1,12 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react"
+import { BookOpen, Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react"
 import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { SchoolLogo } from "./schoollogo"
 
 const footerVariants = {
     hidden: { opacity: 0 },
@@ -28,7 +27,7 @@ export function Footer() {
     return (
         <footer className="bg-secondary/20 border-t dark:bg-gray-900 dark:border-gray-800">
             <motion.div
-                className="max-w-7xl mx-auto py-12 md:py-16"
+                className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6"
                 variants={footerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -37,11 +36,16 @@ export function Footer() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                     <motion.div className="space-y-4" variants={itemVariants}>
                         <div className="flex items-center space-x-2">
-                            <SchoolLogo />
-                            <span className="font-bold">Horizon Academy</span>
+                            <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground">
+                                <BookOpen className="h-5 w-5" />
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="font-bold text-lg leading-tight">Janchetana</span>
+                                <span className="text-xs text-muted-foreground leading-tight">School of Excellence</span>
+                            </div>
                         </div>
                         <p className="text-sm text-muted-foreground max-w-xs">
-                            Empowering students with knowledge, skills, and values to excel in a rapidly changing world.
+                            Empowering students with knowledge, skills, and values to excel in a rapidly changing world since 1975.
                         </p>
                         <div className="flex space-x-3">
                             <Button variant="ghost" size="icon" aria-label="Facebook">
@@ -129,15 +133,15 @@ export function Footer() {
                         <h3 className="text-sm font-semibold">Contact Us</h3>
                         <div className="flex items-start space-x-3 text-sm">
                             <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground" />
-                            <span className="text-muted-foreground">123 Education Lane, Learning City, LC 12345</span>
+                            <span className="text-muted-foreground">Kathmandu, Nepal</span>
                         </div>
                         <div className="flex items-center space-x-3 text-sm">
                             <Phone className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground">(555) 123-4567</span>
+                            <span className="text-muted-foreground">+977 1 4123456</span>
                         </div>
                         <div className="flex items-center space-x-3 text-sm">
                             <Mail className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground">info@horizonacademy.edu</span>
+                            <span className="text-muted-foreground">info@janchetana.edu.np</span>
                         </div>
                         <div className="pt-2">
                             <h4 className="text-sm font-medium mb-2">Subscribe to our newsletter</h4>
@@ -150,9 +154,9 @@ export function Footer() {
                 </div>
             </motion.div>
             <div className="border-t py-6 dark:border-gray-800">
-                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left px-4 sm:px-6">
                     <p className="text-xs text-muted-foreground">
-                        &copy; {new Date().getFullYear()} Horizon Academy. All rights reserved.
+                        &copy; {new Date().getFullYear()} Janchetana School. All rights reserved.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
                         <Link href="/privacy" className="hover:underline">
