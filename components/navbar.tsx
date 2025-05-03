@@ -142,7 +142,7 @@ export function MainNav() {
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="left">
+                        <SheetContent side="right">
                             <Link href="/" className="flex items-center space-x-2 mb-6" onClick={() => setIsOpen(false)}>
                                 <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground">
                                     <BookOpen className="h-5 w-5" />
