@@ -29,6 +29,16 @@ export type Teacher = $Result.DefaultSelection<Prisma.$TeacherPayload>
  */
 export type Article = $Result.DefaultSelection<Prisma.$ArticlePayload>
 /**
+ * Model AdmissionInquiry
+ * 
+ */
+export type AdmissionInquiry = $Result.DefaultSelection<Prisma.$AdmissionInquiryPayload>
+/**
+ * Model ContactInquiry
+ * 
+ */
+export type ContactInquiry = $Result.DefaultSelection<Prisma.$ContactInquiryPayload>
+/**
  * Model Account
  * 
  */
@@ -205,6 +215,26 @@ export class PrismaClient<
     * ```
     */
   get article(): Prisma.ArticleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.admissionInquiry`: Exposes CRUD operations for the **AdmissionInquiry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AdmissionInquiries
+    * const admissionInquiries = await prisma.admissionInquiry.findMany()
+    * ```
+    */
+  get admissionInquiry(): Prisma.AdmissionInquiryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.contactInquiry`: Exposes CRUD operations for the **ContactInquiry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ContactInquiries
+    * const contactInquiries = await prisma.contactInquiry.findMany()
+    * ```
+    */
+  get contactInquiry(): Prisma.ContactInquiryDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.account`: Exposes CRUD operations for the **Account** model.
@@ -658,6 +688,8 @@ export namespace Prisma {
     User: 'User',
     Teacher: 'Teacher',
     Article: 'Article',
+    AdmissionInquiry: 'AdmissionInquiry',
+    ContactInquiry: 'ContactInquiry',
     Account: 'Account'
   };
 
@@ -677,7 +709,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "teacher" | "article" | "account"
+      modelProps: "user" | "teacher" | "article" | "admissionInquiry" | "contactInquiry" | "account"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -903,6 +935,154 @@ export namespace Prisma {
           }
         }
       }
+      AdmissionInquiry: {
+        payload: Prisma.$AdmissionInquiryPayload<ExtArgs>
+        fields: Prisma.AdmissionInquiryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AdmissionInquiryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AdmissionInquiryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>
+          }
+          findFirst: {
+            args: Prisma.AdmissionInquiryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AdmissionInquiryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>
+          }
+          findMany: {
+            args: Prisma.AdmissionInquiryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>[]
+          }
+          create: {
+            args: Prisma.AdmissionInquiryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>
+          }
+          createMany: {
+            args: Prisma.AdmissionInquiryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AdmissionInquiryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>[]
+          }
+          delete: {
+            args: Prisma.AdmissionInquiryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>
+          }
+          update: {
+            args: Prisma.AdmissionInquiryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>
+          }
+          deleteMany: {
+            args: Prisma.AdmissionInquiryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AdmissionInquiryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AdmissionInquiryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>[]
+          }
+          upsert: {
+            args: Prisma.AdmissionInquiryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdmissionInquiryPayload>
+          }
+          aggregate: {
+            args: Prisma.AdmissionInquiryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAdmissionInquiry>
+          }
+          groupBy: {
+            args: Prisma.AdmissionInquiryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AdmissionInquiryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AdmissionInquiryCountArgs<ExtArgs>
+            result: $Utils.Optional<AdmissionInquiryCountAggregateOutputType> | number
+          }
+        }
+      }
+      ContactInquiry: {
+        payload: Prisma.$ContactInquiryPayload<ExtArgs>
+        fields: Prisma.ContactInquiryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContactInquiryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContactInquiryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>
+          }
+          findFirst: {
+            args: Prisma.ContactInquiryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContactInquiryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>
+          }
+          findMany: {
+            args: Prisma.ContactInquiryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>[]
+          }
+          create: {
+            args: Prisma.ContactInquiryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>
+          }
+          createMany: {
+            args: Prisma.ContactInquiryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContactInquiryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>[]
+          }
+          delete: {
+            args: Prisma.ContactInquiryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>
+          }
+          update: {
+            args: Prisma.ContactInquiryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>
+          }
+          deleteMany: {
+            args: Prisma.ContactInquiryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContactInquiryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ContactInquiryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>[]
+          }
+          upsert: {
+            args: Prisma.ContactInquiryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContactInquiryPayload>
+          }
+          aggregate: {
+            args: Prisma.ContactInquiryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContactInquiry>
+          }
+          groupBy: {
+            args: Prisma.ContactInquiryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContactInquiryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContactInquiryCountArgs<ExtArgs>
+            result: $Utils.Optional<ContactInquiryCountAggregateOutputType> | number
+          }
+        }
+      }
       Account: {
         payload: Prisma.$AccountPayload<ExtArgs>
         fields: Prisma.AccountFieldRefs
@@ -1064,6 +1244,8 @@ export namespace Prisma {
     user?: UserOmit
     teacher?: TeacherOmit
     article?: ArticleOmit
+    admissionInquiry?: AdmissionInquiryOmit
+    contactInquiry?: ContactInquiryOmit
     account?: AccountOmit
   }
 
@@ -4706,6 +4888,2078 @@ export namespace Prisma {
 
 
   /**
+   * Model AdmissionInquiry
+   */
+
+  export type AggregateAdmissionInquiry = {
+    _count: AdmissionInquiryCountAggregateOutputType | null
+    _avg: AdmissionInquiryAvgAggregateOutputType | null
+    _sum: AdmissionInquirySumAggregateOutputType | null
+    _min: AdmissionInquiryMinAggregateOutputType | null
+    _max: AdmissionInquiryMaxAggregateOutputType | null
+  }
+
+  export type AdmissionInquiryAvgAggregateOutputType = {
+    numberOfChildren: number | null
+  }
+
+  export type AdmissionInquirySumAggregateOutputType = {
+    numberOfChildren: number | null
+  }
+
+  export type AdmissionInquiryMinAggregateOutputType = {
+    id: string | null
+    phoneNumber: string | null
+    parentName: string | null
+    numberOfChildren: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AdmissionInquiryMaxAggregateOutputType = {
+    id: string | null
+    phoneNumber: string | null
+    parentName: string | null
+    numberOfChildren: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AdmissionInquiryCountAggregateOutputType = {
+    id: number
+    phoneNumber: number
+    parentName: number
+    numberOfChildren: number
+    desiredClasses: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AdmissionInquiryAvgAggregateInputType = {
+    numberOfChildren?: true
+  }
+
+  export type AdmissionInquirySumAggregateInputType = {
+    numberOfChildren?: true
+  }
+
+  export type AdmissionInquiryMinAggregateInputType = {
+    id?: true
+    phoneNumber?: true
+    parentName?: true
+    numberOfChildren?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AdmissionInquiryMaxAggregateInputType = {
+    id?: true
+    phoneNumber?: true
+    parentName?: true
+    numberOfChildren?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AdmissionInquiryCountAggregateInputType = {
+    id?: true
+    phoneNumber?: true
+    parentName?: true
+    numberOfChildren?: true
+    desiredClasses?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AdmissionInquiryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdmissionInquiry to aggregate.
+     */
+    where?: AdmissionInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdmissionInquiries to fetch.
+     */
+    orderBy?: AdmissionInquiryOrderByWithRelationInput | AdmissionInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AdmissionInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdmissionInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdmissionInquiries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AdmissionInquiries
+    **/
+    _count?: true | AdmissionInquiryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AdmissionInquiryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AdmissionInquirySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AdmissionInquiryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AdmissionInquiryMaxAggregateInputType
+  }
+
+  export type GetAdmissionInquiryAggregateType<T extends AdmissionInquiryAggregateArgs> = {
+        [P in keyof T & keyof AggregateAdmissionInquiry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAdmissionInquiry[P]>
+      : GetScalarType<T[P], AggregateAdmissionInquiry[P]>
+  }
+
+
+
+
+  export type AdmissionInquiryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdmissionInquiryWhereInput
+    orderBy?: AdmissionInquiryOrderByWithAggregationInput | AdmissionInquiryOrderByWithAggregationInput[]
+    by: AdmissionInquiryScalarFieldEnum[] | AdmissionInquiryScalarFieldEnum
+    having?: AdmissionInquiryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AdmissionInquiryCountAggregateInputType | true
+    _avg?: AdmissionInquiryAvgAggregateInputType
+    _sum?: AdmissionInquirySumAggregateInputType
+    _min?: AdmissionInquiryMinAggregateInputType
+    _max?: AdmissionInquiryMaxAggregateInputType
+  }
+
+  export type AdmissionInquiryGroupByOutputType = {
+    id: string
+    phoneNumber: string
+    parentName: string
+    numberOfChildren: number
+    desiredClasses: string[]
+    createdAt: Date
+    updatedAt: Date
+    _count: AdmissionInquiryCountAggregateOutputType | null
+    _avg: AdmissionInquiryAvgAggregateOutputType | null
+    _sum: AdmissionInquirySumAggregateOutputType | null
+    _min: AdmissionInquiryMinAggregateOutputType | null
+    _max: AdmissionInquiryMaxAggregateOutputType | null
+  }
+
+  type GetAdmissionInquiryGroupByPayload<T extends AdmissionInquiryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AdmissionInquiryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AdmissionInquiryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AdmissionInquiryGroupByOutputType[P]>
+            : GetScalarType<T[P], AdmissionInquiryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AdmissionInquirySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phoneNumber?: boolean
+    parentName?: boolean
+    numberOfChildren?: boolean
+    desiredClasses?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["admissionInquiry"]>
+
+  export type AdmissionInquirySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phoneNumber?: boolean
+    parentName?: boolean
+    numberOfChildren?: boolean
+    desiredClasses?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["admissionInquiry"]>
+
+  export type AdmissionInquirySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phoneNumber?: boolean
+    parentName?: boolean
+    numberOfChildren?: boolean
+    desiredClasses?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["admissionInquiry"]>
+
+  export type AdmissionInquirySelectScalar = {
+    id?: boolean
+    phoneNumber?: boolean
+    parentName?: boolean
+    numberOfChildren?: boolean
+    desiredClasses?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AdmissionInquiryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phoneNumber" | "parentName" | "numberOfChildren" | "desiredClasses" | "createdAt" | "updatedAt", ExtArgs["result"]["admissionInquiry"]>
+
+  export type $AdmissionInquiryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AdmissionInquiry"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      phoneNumber: string
+      parentName: string
+      numberOfChildren: number
+      desiredClasses: string[]
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["admissionInquiry"]>
+    composites: {}
+  }
+
+  type AdmissionInquiryGetPayload<S extends boolean | null | undefined | AdmissionInquiryDefaultArgs> = $Result.GetResult<Prisma.$AdmissionInquiryPayload, S>
+
+  type AdmissionInquiryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AdmissionInquiryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AdmissionInquiryCountAggregateInputType | true
+    }
+
+  export interface AdmissionInquiryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdmissionInquiry'], meta: { name: 'AdmissionInquiry' } }
+    /**
+     * Find zero or one AdmissionInquiry that matches the filter.
+     * @param {AdmissionInquiryFindUniqueArgs} args - Arguments to find a AdmissionInquiry
+     * @example
+     * // Get one AdmissionInquiry
+     * const admissionInquiry = await prisma.admissionInquiry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AdmissionInquiryFindUniqueArgs>(args: SelectSubset<T, AdmissionInquiryFindUniqueArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AdmissionInquiry that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AdmissionInquiryFindUniqueOrThrowArgs} args - Arguments to find a AdmissionInquiry
+     * @example
+     * // Get one AdmissionInquiry
+     * const admissionInquiry = await prisma.admissionInquiry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AdmissionInquiryFindUniqueOrThrowArgs>(args: SelectSubset<T, AdmissionInquiryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdmissionInquiry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdmissionInquiryFindFirstArgs} args - Arguments to find a AdmissionInquiry
+     * @example
+     * // Get one AdmissionInquiry
+     * const admissionInquiry = await prisma.admissionInquiry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AdmissionInquiryFindFirstArgs>(args?: SelectSubset<T, AdmissionInquiryFindFirstArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdmissionInquiry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdmissionInquiryFindFirstOrThrowArgs} args - Arguments to find a AdmissionInquiry
+     * @example
+     * // Get one AdmissionInquiry
+     * const admissionInquiry = await prisma.admissionInquiry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AdmissionInquiryFindFirstOrThrowArgs>(args?: SelectSubset<T, AdmissionInquiryFindFirstOrThrowArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AdmissionInquiries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdmissionInquiryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AdmissionInquiries
+     * const admissionInquiries = await prisma.admissionInquiry.findMany()
+     * 
+     * // Get first 10 AdmissionInquiries
+     * const admissionInquiries = await prisma.admissionInquiry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const admissionInquiryWithIdOnly = await prisma.admissionInquiry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AdmissionInquiryFindManyArgs>(args?: SelectSubset<T, AdmissionInquiryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AdmissionInquiry.
+     * @param {AdmissionInquiryCreateArgs} args - Arguments to create a AdmissionInquiry.
+     * @example
+     * // Create one AdmissionInquiry
+     * const AdmissionInquiry = await prisma.admissionInquiry.create({
+     *   data: {
+     *     // ... data to create a AdmissionInquiry
+     *   }
+     * })
+     * 
+     */
+    create<T extends AdmissionInquiryCreateArgs>(args: SelectSubset<T, AdmissionInquiryCreateArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AdmissionInquiries.
+     * @param {AdmissionInquiryCreateManyArgs} args - Arguments to create many AdmissionInquiries.
+     * @example
+     * // Create many AdmissionInquiries
+     * const admissionInquiry = await prisma.admissionInquiry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AdmissionInquiryCreateManyArgs>(args?: SelectSubset<T, AdmissionInquiryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AdmissionInquiries and returns the data saved in the database.
+     * @param {AdmissionInquiryCreateManyAndReturnArgs} args - Arguments to create many AdmissionInquiries.
+     * @example
+     * // Create many AdmissionInquiries
+     * const admissionInquiry = await prisma.admissionInquiry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AdmissionInquiries and only return the `id`
+     * const admissionInquiryWithIdOnly = await prisma.admissionInquiry.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AdmissionInquiryCreateManyAndReturnArgs>(args?: SelectSubset<T, AdmissionInquiryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AdmissionInquiry.
+     * @param {AdmissionInquiryDeleteArgs} args - Arguments to delete one AdmissionInquiry.
+     * @example
+     * // Delete one AdmissionInquiry
+     * const AdmissionInquiry = await prisma.admissionInquiry.delete({
+     *   where: {
+     *     // ... filter to delete one AdmissionInquiry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AdmissionInquiryDeleteArgs>(args: SelectSubset<T, AdmissionInquiryDeleteArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AdmissionInquiry.
+     * @param {AdmissionInquiryUpdateArgs} args - Arguments to update one AdmissionInquiry.
+     * @example
+     * // Update one AdmissionInquiry
+     * const admissionInquiry = await prisma.admissionInquiry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AdmissionInquiryUpdateArgs>(args: SelectSubset<T, AdmissionInquiryUpdateArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AdmissionInquiries.
+     * @param {AdmissionInquiryDeleteManyArgs} args - Arguments to filter AdmissionInquiries to delete.
+     * @example
+     * // Delete a few AdmissionInquiries
+     * const { count } = await prisma.admissionInquiry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AdmissionInquiryDeleteManyArgs>(args?: SelectSubset<T, AdmissionInquiryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdmissionInquiries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdmissionInquiryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AdmissionInquiries
+     * const admissionInquiry = await prisma.admissionInquiry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AdmissionInquiryUpdateManyArgs>(args: SelectSubset<T, AdmissionInquiryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdmissionInquiries and returns the data updated in the database.
+     * @param {AdmissionInquiryUpdateManyAndReturnArgs} args - Arguments to update many AdmissionInquiries.
+     * @example
+     * // Update many AdmissionInquiries
+     * const admissionInquiry = await prisma.admissionInquiry.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdmissionInquiries and only return the `id`
+     * const admissionInquiryWithIdOnly = await prisma.admissionInquiry.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdmissionInquiryUpdateManyAndReturnArgs>(args: SelectSubset<T, AdmissionInquiryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AdmissionInquiry.
+     * @param {AdmissionInquiryUpsertArgs} args - Arguments to update or create a AdmissionInquiry.
+     * @example
+     * // Update or create a AdmissionInquiry
+     * const admissionInquiry = await prisma.admissionInquiry.upsert({
+     *   create: {
+     *     // ... data to create a AdmissionInquiry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AdmissionInquiry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AdmissionInquiryUpsertArgs>(args: SelectSubset<T, AdmissionInquiryUpsertArgs<ExtArgs>>): Prisma__AdmissionInquiryClient<$Result.GetResult<Prisma.$AdmissionInquiryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AdmissionInquiries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdmissionInquiryCountArgs} args - Arguments to filter AdmissionInquiries to count.
+     * @example
+     * // Count the number of AdmissionInquiries
+     * const count = await prisma.admissionInquiry.count({
+     *   where: {
+     *     // ... the filter for the AdmissionInquiries we want to count
+     *   }
+     * })
+    **/
+    count<T extends AdmissionInquiryCountArgs>(
+      args?: Subset<T, AdmissionInquiryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AdmissionInquiryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AdmissionInquiry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdmissionInquiryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AdmissionInquiryAggregateArgs>(args: Subset<T, AdmissionInquiryAggregateArgs>): Prisma.PrismaPromise<GetAdmissionInquiryAggregateType<T>>
+
+    /**
+     * Group by AdmissionInquiry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdmissionInquiryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AdmissionInquiryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AdmissionInquiryGroupByArgs['orderBy'] }
+        : { orderBy?: AdmissionInquiryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AdmissionInquiryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdmissionInquiryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AdmissionInquiry model
+   */
+  readonly fields: AdmissionInquiryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AdmissionInquiry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AdmissionInquiryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AdmissionInquiry model
+   */
+  interface AdmissionInquiryFieldRefs {
+    readonly id: FieldRef<"AdmissionInquiry", 'String'>
+    readonly phoneNumber: FieldRef<"AdmissionInquiry", 'String'>
+    readonly parentName: FieldRef<"AdmissionInquiry", 'String'>
+    readonly numberOfChildren: FieldRef<"AdmissionInquiry", 'Int'>
+    readonly desiredClasses: FieldRef<"AdmissionInquiry", 'String[]'>
+    readonly createdAt: FieldRef<"AdmissionInquiry", 'DateTime'>
+    readonly updatedAt: FieldRef<"AdmissionInquiry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AdmissionInquiry findUnique
+   */
+  export type AdmissionInquiryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which AdmissionInquiry to fetch.
+     */
+    where: AdmissionInquiryWhereUniqueInput
+  }
+
+  /**
+   * AdmissionInquiry findUniqueOrThrow
+   */
+  export type AdmissionInquiryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which AdmissionInquiry to fetch.
+     */
+    where: AdmissionInquiryWhereUniqueInput
+  }
+
+  /**
+   * AdmissionInquiry findFirst
+   */
+  export type AdmissionInquiryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which AdmissionInquiry to fetch.
+     */
+    where?: AdmissionInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdmissionInquiries to fetch.
+     */
+    orderBy?: AdmissionInquiryOrderByWithRelationInput | AdmissionInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdmissionInquiries.
+     */
+    cursor?: AdmissionInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdmissionInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdmissionInquiries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdmissionInquiries.
+     */
+    distinct?: AdmissionInquiryScalarFieldEnum | AdmissionInquiryScalarFieldEnum[]
+  }
+
+  /**
+   * AdmissionInquiry findFirstOrThrow
+   */
+  export type AdmissionInquiryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which AdmissionInquiry to fetch.
+     */
+    where?: AdmissionInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdmissionInquiries to fetch.
+     */
+    orderBy?: AdmissionInquiryOrderByWithRelationInput | AdmissionInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdmissionInquiries.
+     */
+    cursor?: AdmissionInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdmissionInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdmissionInquiries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdmissionInquiries.
+     */
+    distinct?: AdmissionInquiryScalarFieldEnum | AdmissionInquiryScalarFieldEnum[]
+  }
+
+  /**
+   * AdmissionInquiry findMany
+   */
+  export type AdmissionInquiryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which AdmissionInquiries to fetch.
+     */
+    where?: AdmissionInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdmissionInquiries to fetch.
+     */
+    orderBy?: AdmissionInquiryOrderByWithRelationInput | AdmissionInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AdmissionInquiries.
+     */
+    cursor?: AdmissionInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdmissionInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdmissionInquiries.
+     */
+    skip?: number
+    distinct?: AdmissionInquiryScalarFieldEnum | AdmissionInquiryScalarFieldEnum[]
+  }
+
+  /**
+   * AdmissionInquiry create
+   */
+  export type AdmissionInquiryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * The data needed to create a AdmissionInquiry.
+     */
+    data: XOR<AdmissionInquiryCreateInput, AdmissionInquiryUncheckedCreateInput>
+  }
+
+  /**
+   * AdmissionInquiry createMany
+   */
+  export type AdmissionInquiryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AdmissionInquiries.
+     */
+    data: AdmissionInquiryCreateManyInput | AdmissionInquiryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AdmissionInquiry createManyAndReturn
+   */
+  export type AdmissionInquiryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * The data used to create many AdmissionInquiries.
+     */
+    data: AdmissionInquiryCreateManyInput | AdmissionInquiryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AdmissionInquiry update
+   */
+  export type AdmissionInquiryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * The data needed to update a AdmissionInquiry.
+     */
+    data: XOR<AdmissionInquiryUpdateInput, AdmissionInquiryUncheckedUpdateInput>
+    /**
+     * Choose, which AdmissionInquiry to update.
+     */
+    where: AdmissionInquiryWhereUniqueInput
+  }
+
+  /**
+   * AdmissionInquiry updateMany
+   */
+  export type AdmissionInquiryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AdmissionInquiries.
+     */
+    data: XOR<AdmissionInquiryUpdateManyMutationInput, AdmissionInquiryUncheckedUpdateManyInput>
+    /**
+     * Filter which AdmissionInquiries to update
+     */
+    where?: AdmissionInquiryWhereInput
+    /**
+     * Limit how many AdmissionInquiries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdmissionInquiry updateManyAndReturn
+   */
+  export type AdmissionInquiryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * The data used to update AdmissionInquiries.
+     */
+    data: XOR<AdmissionInquiryUpdateManyMutationInput, AdmissionInquiryUncheckedUpdateManyInput>
+    /**
+     * Filter which AdmissionInquiries to update
+     */
+    where?: AdmissionInquiryWhereInput
+    /**
+     * Limit how many AdmissionInquiries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdmissionInquiry upsert
+   */
+  export type AdmissionInquiryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * The filter to search for the AdmissionInquiry to update in case it exists.
+     */
+    where: AdmissionInquiryWhereUniqueInput
+    /**
+     * In case the AdmissionInquiry found by the `where` argument doesn't exist, create a new AdmissionInquiry with this data.
+     */
+    create: XOR<AdmissionInquiryCreateInput, AdmissionInquiryUncheckedCreateInput>
+    /**
+     * In case the AdmissionInquiry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AdmissionInquiryUpdateInput, AdmissionInquiryUncheckedUpdateInput>
+  }
+
+  /**
+   * AdmissionInquiry delete
+   */
+  export type AdmissionInquiryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+    /**
+     * Filter which AdmissionInquiry to delete.
+     */
+    where: AdmissionInquiryWhereUniqueInput
+  }
+
+  /**
+   * AdmissionInquiry deleteMany
+   */
+  export type AdmissionInquiryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdmissionInquiries to delete
+     */
+    where?: AdmissionInquiryWhereInput
+    /**
+     * Limit how many AdmissionInquiries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdmissionInquiry without action
+   */
+  export type AdmissionInquiryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdmissionInquiry
+     */
+    select?: AdmissionInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdmissionInquiry
+     */
+    omit?: AdmissionInquiryOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ContactInquiry
+   */
+
+  export type AggregateContactInquiry = {
+    _count: ContactInquiryCountAggregateOutputType | null
+    _min: ContactInquiryMinAggregateOutputType | null
+    _max: ContactInquiryMaxAggregateOutputType | null
+  }
+
+  export type ContactInquiryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    phoneNumber: string | null
+    email: string | null
+    message: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContactInquiryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    phoneNumber: string | null
+    email: string | null
+    message: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContactInquiryCountAggregateOutputType = {
+    id: number
+    name: number
+    phoneNumber: number
+    email: number
+    message: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ContactInquiryMinAggregateInputType = {
+    id?: true
+    name?: true
+    phoneNumber?: true
+    email?: true
+    message?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContactInquiryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    phoneNumber?: true
+    email?: true
+    message?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContactInquiryCountAggregateInputType = {
+    id?: true
+    name?: true
+    phoneNumber?: true
+    email?: true
+    message?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ContactInquiryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContactInquiry to aggregate.
+     */
+    where?: ContactInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContactInquiries to fetch.
+     */
+    orderBy?: ContactInquiryOrderByWithRelationInput | ContactInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContactInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContactInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContactInquiries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ContactInquiries
+    **/
+    _count?: true | ContactInquiryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContactInquiryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContactInquiryMaxAggregateInputType
+  }
+
+  export type GetContactInquiryAggregateType<T extends ContactInquiryAggregateArgs> = {
+        [P in keyof T & keyof AggregateContactInquiry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContactInquiry[P]>
+      : GetScalarType<T[P], AggregateContactInquiry[P]>
+  }
+
+
+
+
+  export type ContactInquiryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContactInquiryWhereInput
+    orderBy?: ContactInquiryOrderByWithAggregationInput | ContactInquiryOrderByWithAggregationInput[]
+    by: ContactInquiryScalarFieldEnum[] | ContactInquiryScalarFieldEnum
+    having?: ContactInquiryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContactInquiryCountAggregateInputType | true
+    _min?: ContactInquiryMinAggregateInputType
+    _max?: ContactInquiryMaxAggregateInputType
+  }
+
+  export type ContactInquiryGroupByOutputType = {
+    id: string
+    name: string
+    phoneNumber: string
+    email: string | null
+    message: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ContactInquiryCountAggregateOutputType | null
+    _min: ContactInquiryMinAggregateOutputType | null
+    _max: ContactInquiryMaxAggregateOutputType | null
+  }
+
+  type GetContactInquiryGroupByPayload<T extends ContactInquiryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContactInquiryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContactInquiryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContactInquiryGroupByOutputType[P]>
+            : GetScalarType<T[P], ContactInquiryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContactInquirySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    message?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contactInquiry"]>
+
+  export type ContactInquirySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    message?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contactInquiry"]>
+
+  export type ContactInquirySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    message?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contactInquiry"]>
+
+  export type ContactInquirySelectScalar = {
+    id?: boolean
+    name?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    message?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ContactInquiryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phoneNumber" | "email" | "message" | "createdAt" | "updatedAt", ExtArgs["result"]["contactInquiry"]>
+
+  export type $ContactInquiryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ContactInquiry"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      phoneNumber: string
+      email: string | null
+      message: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["contactInquiry"]>
+    composites: {}
+  }
+
+  type ContactInquiryGetPayload<S extends boolean | null | undefined | ContactInquiryDefaultArgs> = $Result.GetResult<Prisma.$ContactInquiryPayload, S>
+
+  type ContactInquiryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ContactInquiryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContactInquiryCountAggregateInputType | true
+    }
+
+  export interface ContactInquiryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ContactInquiry'], meta: { name: 'ContactInquiry' } }
+    /**
+     * Find zero or one ContactInquiry that matches the filter.
+     * @param {ContactInquiryFindUniqueArgs} args - Arguments to find a ContactInquiry
+     * @example
+     * // Get one ContactInquiry
+     * const contactInquiry = await prisma.contactInquiry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContactInquiryFindUniqueArgs>(args: SelectSubset<T, ContactInquiryFindUniqueArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ContactInquiry that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContactInquiryFindUniqueOrThrowArgs} args - Arguments to find a ContactInquiry
+     * @example
+     * // Get one ContactInquiry
+     * const contactInquiry = await prisma.contactInquiry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContactInquiryFindUniqueOrThrowArgs>(args: SelectSubset<T, ContactInquiryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContactInquiry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactInquiryFindFirstArgs} args - Arguments to find a ContactInquiry
+     * @example
+     * // Get one ContactInquiry
+     * const contactInquiry = await prisma.contactInquiry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContactInquiryFindFirstArgs>(args?: SelectSubset<T, ContactInquiryFindFirstArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContactInquiry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactInquiryFindFirstOrThrowArgs} args - Arguments to find a ContactInquiry
+     * @example
+     * // Get one ContactInquiry
+     * const contactInquiry = await prisma.contactInquiry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContactInquiryFindFirstOrThrowArgs>(args?: SelectSubset<T, ContactInquiryFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ContactInquiries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactInquiryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ContactInquiries
+     * const contactInquiries = await prisma.contactInquiry.findMany()
+     * 
+     * // Get first 10 ContactInquiries
+     * const contactInquiries = await prisma.contactInquiry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const contactInquiryWithIdOnly = await prisma.contactInquiry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContactInquiryFindManyArgs>(args?: SelectSubset<T, ContactInquiryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ContactInquiry.
+     * @param {ContactInquiryCreateArgs} args - Arguments to create a ContactInquiry.
+     * @example
+     * // Create one ContactInquiry
+     * const ContactInquiry = await prisma.contactInquiry.create({
+     *   data: {
+     *     // ... data to create a ContactInquiry
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContactInquiryCreateArgs>(args: SelectSubset<T, ContactInquiryCreateArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ContactInquiries.
+     * @param {ContactInquiryCreateManyArgs} args - Arguments to create many ContactInquiries.
+     * @example
+     * // Create many ContactInquiries
+     * const contactInquiry = await prisma.contactInquiry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContactInquiryCreateManyArgs>(args?: SelectSubset<T, ContactInquiryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ContactInquiries and returns the data saved in the database.
+     * @param {ContactInquiryCreateManyAndReturnArgs} args - Arguments to create many ContactInquiries.
+     * @example
+     * // Create many ContactInquiries
+     * const contactInquiry = await prisma.contactInquiry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ContactInquiries and only return the `id`
+     * const contactInquiryWithIdOnly = await prisma.contactInquiry.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContactInquiryCreateManyAndReturnArgs>(args?: SelectSubset<T, ContactInquiryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ContactInquiry.
+     * @param {ContactInquiryDeleteArgs} args - Arguments to delete one ContactInquiry.
+     * @example
+     * // Delete one ContactInquiry
+     * const ContactInquiry = await prisma.contactInquiry.delete({
+     *   where: {
+     *     // ... filter to delete one ContactInquiry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContactInquiryDeleteArgs>(args: SelectSubset<T, ContactInquiryDeleteArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ContactInquiry.
+     * @param {ContactInquiryUpdateArgs} args - Arguments to update one ContactInquiry.
+     * @example
+     * // Update one ContactInquiry
+     * const contactInquiry = await prisma.contactInquiry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContactInquiryUpdateArgs>(args: SelectSubset<T, ContactInquiryUpdateArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ContactInquiries.
+     * @param {ContactInquiryDeleteManyArgs} args - Arguments to filter ContactInquiries to delete.
+     * @example
+     * // Delete a few ContactInquiries
+     * const { count } = await prisma.contactInquiry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContactInquiryDeleteManyArgs>(args?: SelectSubset<T, ContactInquiryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContactInquiries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactInquiryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ContactInquiries
+     * const contactInquiry = await prisma.contactInquiry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContactInquiryUpdateManyArgs>(args: SelectSubset<T, ContactInquiryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContactInquiries and returns the data updated in the database.
+     * @param {ContactInquiryUpdateManyAndReturnArgs} args - Arguments to update many ContactInquiries.
+     * @example
+     * // Update many ContactInquiries
+     * const contactInquiry = await prisma.contactInquiry.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ContactInquiries and only return the `id`
+     * const contactInquiryWithIdOnly = await prisma.contactInquiry.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ContactInquiryUpdateManyAndReturnArgs>(args: SelectSubset<T, ContactInquiryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ContactInquiry.
+     * @param {ContactInquiryUpsertArgs} args - Arguments to update or create a ContactInquiry.
+     * @example
+     * // Update or create a ContactInquiry
+     * const contactInquiry = await prisma.contactInquiry.upsert({
+     *   create: {
+     *     // ... data to create a ContactInquiry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ContactInquiry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContactInquiryUpsertArgs>(args: SelectSubset<T, ContactInquiryUpsertArgs<ExtArgs>>): Prisma__ContactInquiryClient<$Result.GetResult<Prisma.$ContactInquiryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ContactInquiries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactInquiryCountArgs} args - Arguments to filter ContactInquiries to count.
+     * @example
+     * // Count the number of ContactInquiries
+     * const count = await prisma.contactInquiry.count({
+     *   where: {
+     *     // ... the filter for the ContactInquiries we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContactInquiryCountArgs>(
+      args?: Subset<T, ContactInquiryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContactInquiryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ContactInquiry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactInquiryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContactInquiryAggregateArgs>(args: Subset<T, ContactInquiryAggregateArgs>): Prisma.PrismaPromise<GetContactInquiryAggregateType<T>>
+
+    /**
+     * Group by ContactInquiry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContactInquiryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContactInquiryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContactInquiryGroupByArgs['orderBy'] }
+        : { orderBy?: ContactInquiryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContactInquiryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContactInquiryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ContactInquiry model
+   */
+  readonly fields: ContactInquiryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ContactInquiry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContactInquiryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ContactInquiry model
+   */
+  interface ContactInquiryFieldRefs {
+    readonly id: FieldRef<"ContactInquiry", 'String'>
+    readonly name: FieldRef<"ContactInquiry", 'String'>
+    readonly phoneNumber: FieldRef<"ContactInquiry", 'String'>
+    readonly email: FieldRef<"ContactInquiry", 'String'>
+    readonly message: FieldRef<"ContactInquiry", 'String'>
+    readonly createdAt: FieldRef<"ContactInquiry", 'DateTime'>
+    readonly updatedAt: FieldRef<"ContactInquiry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ContactInquiry findUnique
+   */
+  export type ContactInquiryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which ContactInquiry to fetch.
+     */
+    where: ContactInquiryWhereUniqueInput
+  }
+
+  /**
+   * ContactInquiry findUniqueOrThrow
+   */
+  export type ContactInquiryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which ContactInquiry to fetch.
+     */
+    where: ContactInquiryWhereUniqueInput
+  }
+
+  /**
+   * ContactInquiry findFirst
+   */
+  export type ContactInquiryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which ContactInquiry to fetch.
+     */
+    where?: ContactInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContactInquiries to fetch.
+     */
+    orderBy?: ContactInquiryOrderByWithRelationInput | ContactInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContactInquiries.
+     */
+    cursor?: ContactInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContactInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContactInquiries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContactInquiries.
+     */
+    distinct?: ContactInquiryScalarFieldEnum | ContactInquiryScalarFieldEnum[]
+  }
+
+  /**
+   * ContactInquiry findFirstOrThrow
+   */
+  export type ContactInquiryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which ContactInquiry to fetch.
+     */
+    where?: ContactInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContactInquiries to fetch.
+     */
+    orderBy?: ContactInquiryOrderByWithRelationInput | ContactInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContactInquiries.
+     */
+    cursor?: ContactInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContactInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContactInquiries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContactInquiries.
+     */
+    distinct?: ContactInquiryScalarFieldEnum | ContactInquiryScalarFieldEnum[]
+  }
+
+  /**
+   * ContactInquiry findMany
+   */
+  export type ContactInquiryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * Filter, which ContactInquiries to fetch.
+     */
+    where?: ContactInquiryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContactInquiries to fetch.
+     */
+    orderBy?: ContactInquiryOrderByWithRelationInput | ContactInquiryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ContactInquiries.
+     */
+    cursor?: ContactInquiryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContactInquiries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContactInquiries.
+     */
+    skip?: number
+    distinct?: ContactInquiryScalarFieldEnum | ContactInquiryScalarFieldEnum[]
+  }
+
+  /**
+   * ContactInquiry create
+   */
+  export type ContactInquiryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * The data needed to create a ContactInquiry.
+     */
+    data: XOR<ContactInquiryCreateInput, ContactInquiryUncheckedCreateInput>
+  }
+
+  /**
+   * ContactInquiry createMany
+   */
+  export type ContactInquiryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ContactInquiries.
+     */
+    data: ContactInquiryCreateManyInput | ContactInquiryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContactInquiry createManyAndReturn
+   */
+  export type ContactInquiryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * The data used to create many ContactInquiries.
+     */
+    data: ContactInquiryCreateManyInput | ContactInquiryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContactInquiry update
+   */
+  export type ContactInquiryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * The data needed to update a ContactInquiry.
+     */
+    data: XOR<ContactInquiryUpdateInput, ContactInquiryUncheckedUpdateInput>
+    /**
+     * Choose, which ContactInquiry to update.
+     */
+    where: ContactInquiryWhereUniqueInput
+  }
+
+  /**
+   * ContactInquiry updateMany
+   */
+  export type ContactInquiryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ContactInquiries.
+     */
+    data: XOR<ContactInquiryUpdateManyMutationInput, ContactInquiryUncheckedUpdateManyInput>
+    /**
+     * Filter which ContactInquiries to update
+     */
+    where?: ContactInquiryWhereInput
+    /**
+     * Limit how many ContactInquiries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContactInquiry updateManyAndReturn
+   */
+  export type ContactInquiryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * The data used to update ContactInquiries.
+     */
+    data: XOR<ContactInquiryUpdateManyMutationInput, ContactInquiryUncheckedUpdateManyInput>
+    /**
+     * Filter which ContactInquiries to update
+     */
+    where?: ContactInquiryWhereInput
+    /**
+     * Limit how many ContactInquiries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContactInquiry upsert
+   */
+  export type ContactInquiryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * The filter to search for the ContactInquiry to update in case it exists.
+     */
+    where: ContactInquiryWhereUniqueInput
+    /**
+     * In case the ContactInquiry found by the `where` argument doesn't exist, create a new ContactInquiry with this data.
+     */
+    create: XOR<ContactInquiryCreateInput, ContactInquiryUncheckedCreateInput>
+    /**
+     * In case the ContactInquiry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContactInquiryUpdateInput, ContactInquiryUncheckedUpdateInput>
+  }
+
+  /**
+   * ContactInquiry delete
+   */
+  export type ContactInquiryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+    /**
+     * Filter which ContactInquiry to delete.
+     */
+    where: ContactInquiryWhereUniqueInput
+  }
+
+  /**
+   * ContactInquiry deleteMany
+   */
+  export type ContactInquiryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContactInquiries to delete
+     */
+    where?: ContactInquiryWhereInput
+    /**
+     * Limit how many ContactInquiries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContactInquiry without action
+   */
+  export type ContactInquiryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactInquiry
+     */
+    select?: ContactInquirySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContactInquiry
+     */
+    omit?: ContactInquiryOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model Account
    */
 
@@ -5971,6 +8225,32 @@ export namespace Prisma {
   export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
 
 
+  export const AdmissionInquiryScalarFieldEnum: {
+    id: 'id',
+    phoneNumber: 'phoneNumber',
+    parentName: 'parentName',
+    numberOfChildren: 'numberOfChildren',
+    desiredClasses: 'desiredClasses',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AdmissionInquiryScalarFieldEnum = (typeof AdmissionInquiryScalarFieldEnum)[keyof typeof AdmissionInquiryScalarFieldEnum]
+
+
+  export const ContactInquiryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    phoneNumber: 'phoneNumber',
+    email: 'email',
+    message: 'message',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ContactInquiryScalarFieldEnum = (typeof ContactInquiryScalarFieldEnum)[keyof typeof ContactInquiryScalarFieldEnum]
+
+
   export const AccountScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
@@ -6327,6 +8607,132 @@ export namespace Prisma {
     userId?: StringNullableWithAggregatesFilter<"Article"> | string | null
   }
 
+  export type AdmissionInquiryWhereInput = {
+    AND?: AdmissionInquiryWhereInput | AdmissionInquiryWhereInput[]
+    OR?: AdmissionInquiryWhereInput[]
+    NOT?: AdmissionInquiryWhereInput | AdmissionInquiryWhereInput[]
+    id?: StringFilter<"AdmissionInquiry"> | string
+    phoneNumber?: StringFilter<"AdmissionInquiry"> | string
+    parentName?: StringFilter<"AdmissionInquiry"> | string
+    numberOfChildren?: IntFilter<"AdmissionInquiry"> | number
+    desiredClasses?: StringNullableListFilter<"AdmissionInquiry">
+    createdAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
+    updatedAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
+  }
+
+  export type AdmissionInquiryOrderByWithRelationInput = {
+    id?: SortOrder
+    phoneNumber?: SortOrder
+    parentName?: SortOrder
+    numberOfChildren?: SortOrder
+    desiredClasses?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdmissionInquiryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AdmissionInquiryWhereInput | AdmissionInquiryWhereInput[]
+    OR?: AdmissionInquiryWhereInput[]
+    NOT?: AdmissionInquiryWhereInput | AdmissionInquiryWhereInput[]
+    phoneNumber?: StringFilter<"AdmissionInquiry"> | string
+    parentName?: StringFilter<"AdmissionInquiry"> | string
+    numberOfChildren?: IntFilter<"AdmissionInquiry"> | number
+    desiredClasses?: StringNullableListFilter<"AdmissionInquiry">
+    createdAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
+    updatedAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
+  }, "id">
+
+  export type AdmissionInquiryOrderByWithAggregationInput = {
+    id?: SortOrder
+    phoneNumber?: SortOrder
+    parentName?: SortOrder
+    numberOfChildren?: SortOrder
+    desiredClasses?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AdmissionInquiryCountOrderByAggregateInput
+    _avg?: AdmissionInquiryAvgOrderByAggregateInput
+    _max?: AdmissionInquiryMaxOrderByAggregateInput
+    _min?: AdmissionInquiryMinOrderByAggregateInput
+    _sum?: AdmissionInquirySumOrderByAggregateInput
+  }
+
+  export type AdmissionInquiryScalarWhereWithAggregatesInput = {
+    AND?: AdmissionInquiryScalarWhereWithAggregatesInput | AdmissionInquiryScalarWhereWithAggregatesInput[]
+    OR?: AdmissionInquiryScalarWhereWithAggregatesInput[]
+    NOT?: AdmissionInquiryScalarWhereWithAggregatesInput | AdmissionInquiryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AdmissionInquiry"> | string
+    phoneNumber?: StringWithAggregatesFilter<"AdmissionInquiry"> | string
+    parentName?: StringWithAggregatesFilter<"AdmissionInquiry"> | string
+    numberOfChildren?: IntWithAggregatesFilter<"AdmissionInquiry"> | number
+    desiredClasses?: StringNullableListFilter<"AdmissionInquiry">
+    createdAt?: DateTimeWithAggregatesFilter<"AdmissionInquiry"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AdmissionInquiry"> | Date | string
+  }
+
+  export type ContactInquiryWhereInput = {
+    AND?: ContactInquiryWhereInput | ContactInquiryWhereInput[]
+    OR?: ContactInquiryWhereInput[]
+    NOT?: ContactInquiryWhereInput | ContactInquiryWhereInput[]
+    id?: StringFilter<"ContactInquiry"> | string
+    name?: StringFilter<"ContactInquiry"> | string
+    phoneNumber?: StringFilter<"ContactInquiry"> | string
+    email?: StringNullableFilter<"ContactInquiry"> | string | null
+    message?: StringNullableFilter<"ContactInquiry"> | string | null
+    createdAt?: DateTimeFilter<"ContactInquiry"> | Date | string
+    updatedAt?: DateTimeFilter<"ContactInquiry"> | Date | string
+  }
+
+  export type ContactInquiryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContactInquiryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ContactInquiryWhereInput | ContactInquiryWhereInput[]
+    OR?: ContactInquiryWhereInput[]
+    NOT?: ContactInquiryWhereInput | ContactInquiryWhereInput[]
+    name?: StringFilter<"ContactInquiry"> | string
+    phoneNumber?: StringFilter<"ContactInquiry"> | string
+    email?: StringNullableFilter<"ContactInquiry"> | string | null
+    message?: StringNullableFilter<"ContactInquiry"> | string | null
+    createdAt?: DateTimeFilter<"ContactInquiry"> | Date | string
+    updatedAt?: DateTimeFilter<"ContactInquiry"> | Date | string
+  }, "id">
+
+  export type ContactInquiryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ContactInquiryCountOrderByAggregateInput
+    _max?: ContactInquiryMaxOrderByAggregateInput
+    _min?: ContactInquiryMinOrderByAggregateInput
+  }
+
+  export type ContactInquiryScalarWhereWithAggregatesInput = {
+    AND?: ContactInquiryScalarWhereWithAggregatesInput | ContactInquiryScalarWhereWithAggregatesInput[]
+    OR?: ContactInquiryScalarWhereWithAggregatesInput[]
+    NOT?: ContactInquiryScalarWhereWithAggregatesInput | ContactInquiryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ContactInquiry"> | string
+    name?: StringWithAggregatesFilter<"ContactInquiry"> | string
+    phoneNumber?: StringWithAggregatesFilter<"ContactInquiry"> | string
+    email?: StringNullableWithAggregatesFilter<"ContactInquiry"> | string | null
+    message?: StringNullableWithAggregatesFilter<"ContactInquiry"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ContactInquiry"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ContactInquiry"> | Date | string
+  }
+
   export type AccountWhereInput = {
     AND?: AccountWhereInput | AccountWhereInput[]
     OR?: AccountWhereInput[]
@@ -6679,6 +9085,146 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AdmissionInquiryCreateInput = {
+    id?: string
+    phoneNumber: string
+    parentName: string
+    numberOfChildren: number
+    desiredClasses?: AdmissionInquiryCreatedesiredClassesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdmissionInquiryUncheckedCreateInput = {
+    id?: string
+    phoneNumber: string
+    parentName: string
+    numberOfChildren: number
+    desiredClasses?: AdmissionInquiryCreatedesiredClassesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdmissionInquiryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    parentName?: StringFieldUpdateOperationsInput | string
+    numberOfChildren?: IntFieldUpdateOperationsInput | number
+    desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdmissionInquiryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    parentName?: StringFieldUpdateOperationsInput | string
+    numberOfChildren?: IntFieldUpdateOperationsInput | number
+    desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdmissionInquiryCreateManyInput = {
+    id?: string
+    phoneNumber: string
+    parentName: string
+    numberOfChildren: number
+    desiredClasses?: AdmissionInquiryCreatedesiredClassesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdmissionInquiryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    parentName?: StringFieldUpdateOperationsInput | string
+    numberOfChildren?: IntFieldUpdateOperationsInput | number
+    desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdmissionInquiryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    parentName?: StringFieldUpdateOperationsInput | string
+    numberOfChildren?: IntFieldUpdateOperationsInput | number
+    desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContactInquiryCreateInput = {
+    id?: string
+    name: string
+    phoneNumber: string
+    email?: string | null
+    message?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContactInquiryUncheckedCreateInput = {
+    id?: string
+    name: string
+    phoneNumber: string
+    email?: string | null
+    message?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContactInquiryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContactInquiryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContactInquiryCreateManyInput = {
+    id?: string
+    name: string
+    phoneNumber: string
+    email?: string | null
+    message?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContactInquiryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContactInquiryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AccountCreateInput = {
@@ -7092,6 +9638,107 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type AdmissionInquiryCountOrderByAggregateInput = {
+    id?: SortOrder
+    phoneNumber?: SortOrder
+    parentName?: SortOrder
+    numberOfChildren?: SortOrder
+    desiredClasses?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdmissionInquiryAvgOrderByAggregateInput = {
+    numberOfChildren?: SortOrder
+  }
+
+  export type AdmissionInquiryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    phoneNumber?: SortOrder
+    parentName?: SortOrder
+    numberOfChildren?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdmissionInquiryMinOrderByAggregateInput = {
+    id?: SortOrder
+    phoneNumber?: SortOrder
+    parentName?: SortOrder
+    numberOfChildren?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdmissionInquirySumOrderByAggregateInput = {
+    numberOfChildren?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type ContactInquiryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContactInquiryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContactInquiryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -7428,6 +10075,23 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutArticlesInput, UserUpdateWithoutArticlesInput>, UserUncheckedUpdateWithoutArticlesInput>
   }
 
+  export type AdmissionInquiryCreatedesiredClassesInput = {
+    set: string[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type AdmissionInquiryUpdatedesiredClassesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
   export type UserCreateNestedOneWithoutAccountsInput = {
     create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
@@ -7612,6 +10276,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

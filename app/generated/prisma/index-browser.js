@@ -154,6 +154,26 @@ exports.Prisma.ArticleScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.AdmissionInquiryScalarFieldEnum = {
+  id: 'id',
+  phoneNumber: 'phoneNumber',
+  parentName: 'parentName',
+  numberOfChildren: 'numberOfChildren',
+  desiredClasses: 'desiredClasses',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ContactInquiryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phoneNumber: 'phoneNumber',
+  email: 'email',
+  message: 'message',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.AccountScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -194,6 +214,8 @@ exports.Prisma.ModelName = {
   User: 'User',
   Teacher: 'Teacher',
   Article: 'Article',
+  AdmissionInquiry: 'AdmissionInquiry',
+  ContactInquiry: 'ContactInquiry',
   Account: 'Account'
 };
 

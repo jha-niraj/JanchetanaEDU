@@ -1,18 +1,19 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useTransition } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Mail, MapPin, Phone, Clock, Send } from "lucide-react"
+import { Mail, MapPin, Phone, Clock, MessageSquare, User, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import SmoothScroll from "@/components/smoothscroll"
+import { addContactInquiry } from "@/actions/contact.action"
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -156,27 +157,33 @@ const faqs = [
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
-        email: "",
-        subject: "",
+        phoneNumber: "",
         message: "",
-        department: "",
-    })
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target
-        setFormData((prev) => ({ ...prev, [name]: value }))
-    }
-
-    const handleSelectChange = (value: string) => {
-        setFormData((prev) => ({ ...prev, department: value }))
-    }
+    });
+    const [isPending, startTransition] = useTransition();
+    const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        // In a real application, you would handle form submission here
-        console.log("Form submitted:", formData)
-        // Reset form or show success message
-    }
+        e.preventDefault();
+        setError(null);
+
+        startTransition(async () => {
+            const form = new FormData();
+            form.append("name", formData.name);
+            form.append("phoneNumber", formData.phoneNumber);
+            if (formData.message) form.append("message", formData.message);
+
+            const result = await addContactInquiry(form);
+
+            if (result.success) {
+                setShowSuccessDialog(true);
+                setFormData({ name: "", phoneNumber: "", message: "" });
+            } else {
+                setError(result.error || "Failed to submit inquiry.");
+            }
+        });
+    };
 
     return (
         <SmoothScroll>
@@ -314,95 +321,97 @@ export default function ContactPage() {
                             </motion.div>
                             <div className="grid gap-8 md:grid-cols-2">
                                 <motion.div
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
+                                    className="w-full max-w-md mx-auto"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Card>
+                                    <Card className="shadow-xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
                                         <CardHeader>
-                                            <CardTitle>Send Us a Message</CardTitle>
-                                            <CardDescription>
-                                                Fill out the form below and we&apos;ll get back to you as soon as possible.
-                                            </CardDescription>
+                                            <CardTitle className="text-2xl text-gray-800 dark:text-gray-100">Get in Touch</CardTitle>
+                                            <p className="text-gray-500 dark:text-gray-400">Fill out the form below, and we’ll contact you soon.</p>
                                         </CardHeader>
                                         <CardContent>
                                             <form onSubmit={handleSubmit} className="space-y-4">
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <div className="space-y-2">
-                                                        <Label htmlFor="name">Your Name</Label>
+                                                <div className="space-y-2">
+                                                    <Label htmlFor="name" className="text-gray-700 dark:text-gray-300">
+                                                        Name
+                                                    </Label>
+                                                    <div className="relative">
+                                                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                                                         <Input
                                                             id="name"
-                                                            name="name"
-                                                            placeholder="John Doe"
+                                                            type="text"
+                                                            placeholder="Your name"
                                                             value={formData.name}
-                                                            onChange={handleChange}
-                                                            required
+                                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                            className="pl-10 bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500"
+                                                            disabled={isPending}
+                                                            aria-label="Name"
                                                         />
                                                     </div>
-                                                    <div className="space-y-2">
-                                                        <Label htmlFor="email">Email Address</Label>
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <Label htmlFor="phoneNumber" className="text-gray-700 dark:text-gray-300">
+                                                        Phone Number
+                                                    </Label>
+                                                    <div className="relative">
+                                                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                                                         <Input
-                                                            id="email"
-                                                            name="email"
-                                                            type="email"
-                                                            placeholder="john.doe@example.com"
-                                                            value={formData.email}
-                                                            onChange={handleChange}
-                                                            required
+                                                            id="phoneNumber"
+                                                            type="tel"
+                                                            placeholder="+1234567890"
+                                                            value={formData.phoneNumber}
+                                                            onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                                                            className="pl-10 bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500"
+                                                            disabled={isPending}
+                                                            aria-label="Phone Number"
                                                         />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <Label htmlFor="department">Department</Label>
-                                                    <Select value={formData.department} onValueChange={handleSelectChange}>
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder="Select a department" />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                            <SelectItem value="general">General Inquiry</SelectItem>
-                                                            <SelectItem value="admissions">Admissions</SelectItem>
-                                                            <SelectItem value="academics">Academics</SelectItem>
-                                                            <SelectItem value="athletics">Athletics</SelectItem>
-                                                            <SelectItem value="finance">Finance & Billing</SelectItem>
-                                                            <SelectItem value="technology">Technology Support</SelectItem>
-                                                        </SelectContent>
-                                                    </Select>
+                                                    <Label htmlFor="message" className="text-gray-700 dark:text-gray-300">
+                                                        Message (Optional)
+                                                    </Label>
+                                                    <div className="relative">
+                                                        <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                                                        <Textarea
+                                                            id="message"
+                                                            placeholder="Your message or questions"
+                                                            value={formData.message}
+                                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                                            className="pl-10 bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500 min-h-[100px]"
+                                                            disabled={isPending}
+                                                            aria-label="Message"
+                                                        />
+                                                    </div>
                                                 </div>
-                                                <div className="space-y-2">
-                                                    <Label htmlFor="subject">Subject</Label>
-                                                    <Input
-                                                        id="subject"
-                                                        name="subject"
-                                                        placeholder="How can we help you?"
-                                                        value={formData.subject}
-                                                        onChange={handleChange}
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <Label htmlFor="message">Message</Label>
-                                                    <Textarea
-                                                        id="message"
-                                                        name="message"
-                                                        placeholder="Please provide details about your inquiry..."
-                                                        rows={5}
-                                                        value={formData.message}
-                                                        onChange={handleChange}
-                                                        required
-                                                    />
-                                                </div>
+                                                {
+                                                    error && (
+                                                        <p className="text-red-600 dark:text-red-400 text-sm">{error}</p>
+                                                    )
+                                                }
+                                                <Button
+                                                    type="submit"
+                                                    className="w-full cursor-pointer bg-black text-white dark:bg-white dark:text-black transition-colors"
+                                                    disabled={isPending}
+                                                >
+                                                    {
+                                                        isPending ? (
+                                                            <span className="flex items-center">
+                                                                <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                                                </svg>
+                                                                Submitting...
+                                                            </span>
+                                                        ) : (
+                                                            "Submit Inquiry"
+                                                        )
+                                                    }
+                                                </Button>
                                             </form>
                                         </CardContent>
-                                        <CardFooter>
-                                            <Button
-                                                type="submit"
-                                                className="w-full gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
-                                            >
-                                                <Send className="h-4 w-4" />
-                                                Send Message
-                                            </Button>
-                                        </CardFooter>
                                     </Card>
                                 </motion.div>
                                 <motion.div
@@ -566,6 +575,27 @@ export default function ContactPage() {
                         </div>
                     </section>
                 </main>
+                <AlertDialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+                    <AlertDialogContent className="bg-white dark:bg-gray-800 border-0 shadow-xl">
+                        <AlertDialogHeader>
+                            <AlertDialogTitle className="flex items-center gap-2 text-green-600 dark:text-green-400">
+                                <CheckCircle className="h-5 w-5" />
+                                Inquiry Submitted
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className="text-gray-600 dark:text-gray-300">
+                                Thank you for reaching out to Janchetana. We will contact you soon to address your inquiry.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <Button
+                                className="bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                                onClick={() => setShowSuccessDialog(false)}
+                            >
+                                Close
+                            </Button>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         </SmoothScroll>
     )
