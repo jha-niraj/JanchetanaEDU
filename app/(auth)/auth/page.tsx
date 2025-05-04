@@ -8,17 +8,20 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 // import { Checkbox } from "@/components/ui/checkbox"
 // import { Separator } from "@/components/ui/separator"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import { AlertCircle } from "lucide-react"
 
 export default function AuthPage() {
     const [activeTab, setActiveTab] = useState("login");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [submitting, setSubmitting] = useState(false);
+    const [showErrorDialog, setShowErrorDialog] = useState(false);
     const router = useRouter()
 
     const handleLogin = (e: React.FormEvent) => {
@@ -210,6 +213,27 @@ export default function AuthPage() {
                     </TabsContent> */}
                 </Tabs>
             </motion.div>
+            <AlertDialog open={showErrorDialog} onOpenChange={setShowErrorDialog}>
+                <AlertDialogContent className="bg-white dark:bg-gray-800 border-0 shadow-xl">
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2 text-red-600 dark:text-red-400">
+                            <AlertCircle className="h-5 w-5" />
+                            Invalid Credentials
+                        </AlertDialogTitle>
+                        <AlertDialogDescription className="text-gray-600 dark:text-gray-300">
+                            The username or password you entered is incorrect. Please try again.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogAction
+                            className="bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                            onClick={() => setShowErrorDialog(false)}
+                        >
+                            Try Again
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     )
 }
