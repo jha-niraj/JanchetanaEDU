@@ -1,19 +1,15 @@
-import type React from "react"
 import { SidebarProvider } from "@/components/(dashboard)/sidebarprovider"
+import type React from "react"
 
 export const metadata = {
     title: "School Dashboard",
     description: "Dashboard for school principal",
 }
 
-export default function RootLayout({
+export default function DashboardLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-    return (
-        <>
-            <SidebarProvider>{children}</SidebarProvider>
-        </>
-    )
+    return <SidebarProvider>{children}</SidebarProvider>
 }

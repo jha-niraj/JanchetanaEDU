@@ -1,11 +1,11 @@
 "use client"
 
-import { Clock, MapPin, Calendar, ChevronRight } from "lucide-react"
+import { Clock, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+// import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
 interface EventCardProps {
@@ -66,7 +66,7 @@ export function EventCard({ date, title, description, location, time, isUrgent =
                         </div>
                     </div>
                 </CardContent>
-                <CardFooter className="px-4 pb-4 pt-0 flex justify-between items-center">
+                {/* <CardFooter className="px-4 pb-4 pt-0 flex justify-between items-center">
                     <Button variant="outline" size="sm" className="gap-1">
                         <Calendar className="h-3.5 w-3.5" />
                         <span>Add to Calendar</span>
@@ -75,7 +75,7 @@ export function EventCard({ date, title, description, location, time, isUrgent =
                         <ChevronRight className="h-4 w-4" />
                         <span className="sr-only">View details</span>
                     </Button>
-                </CardFooter>
+                </CardFooter> */}
             </Card>
         </motion.div>
     )

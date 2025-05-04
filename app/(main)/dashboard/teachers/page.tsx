@@ -52,7 +52,7 @@ export default function TeachersPage() {
     }
 
     const handleDeleteTeacher = () => {
-        setTeachers(teachers.filter((teacher) => teacher.id !== selectedTeacher.id))
+        setTeachers(teachers.filter((teacher) => teacher.id !== selectedTeacher?.id))
         setSelectedTeacher(null)
         setIsDeleteDialogOpen(false)
     }

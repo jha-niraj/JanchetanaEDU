@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import Image from "next/image"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
@@ -15,7 +15,7 @@ const articles = [
         author: "Sarah Johnson, Grade 11",
         description:
             "This year's science fair showcased incredible talent and innovation from students across all grades. The winning projects demonstrated exceptional creativity and scientific rigor...",
-        image: "/placeholder.svg?key=6u6b4",
+        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const articles = [
         author: "Michael Chen, Grade 10",
         description:
             "Our school's basketball team has made history by winning the regional championship for the third consecutive year. The final game against Lincoln High was a nail-biter...",
-        image: "/placeholder.svg?key=43ctm",
+        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
         id: 3,
@@ -31,7 +31,7 @@ const articles = [
         author: "Emma Rodriguez, Grade 12",
         description:
             "The annual student art exhibition opened its doors to the public last weekend, showcasing over 200 pieces from talented young artists across all grade levels...",
-        image: "/student-art-show.png",
+        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
         id: 4,
@@ -39,7 +39,7 @@ const articles = [
         author: "Jason Park, Grade 11",
         description:
             "Our robotics team has qualified for the national competition after an impressive performance at the regional level. Their innovative design and programming skills impressed the judges...",
-        image: "/placeholder.svg?key=robotics",
+        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
         id: 5,
@@ -47,7 +47,7 @@ const articles = [
         author: "Olivia Martinez, Grade 9",
         description:
             "The Environmental Club has launched a new campus-wide sustainability initiative aimed at reducing waste and promoting eco-friendly practices throughout the school community...",
-        image: "/placeholder.svg?key=environment",
+        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
         id: 6,
@@ -55,7 +55,7 @@ const articles = [
         author: "Ethan Williams, Grade 12",
         description:
             "The Drama Department's production of Shakespeare's 'A Midsummer Night's Dream' received standing ovations during its opening weekend. The innovative staging and performances...",
-        image: "/placeholder.svg?key=drama",
+        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
 ]
 
@@ -66,20 +66,20 @@ export function ArticleCarousel() {
     const itemsToShow = 3
     const maxIndex = Math.max(0, articles.length - itemsToShow)
 
-    const nextSlide = () => {
+    const nextSlide = useCallback(() => {
         setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1))
-    }
+    }, []);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1))
     }
 
-    const startAutoplay = () => {
+    const startAutoplay = useCallback(() => {
         if (autoplayRef.current) clearInterval(autoplayRef.current)
         autoplayRef.current = setInterval(() => {
             nextSlide()
         }, 5000)
-    }
+    }, [nextSlide]);
 
     const stopAutoplay = () => {
         if (autoplayRef.current) {

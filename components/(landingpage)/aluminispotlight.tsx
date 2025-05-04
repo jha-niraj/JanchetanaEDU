@@ -5,7 +5,7 @@ import { Quote } from "lucide-react"
 import { motion } from "framer-motion"
 
 import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 
 interface AlumniSpotlightProps {
     name: string
@@ -40,10 +40,10 @@ export function AlumniSpotlight({ name, graduationYear, achievement, quote, imag
                                 <p className="text-base italic text-muted-foreground">{quote}</p>
                             </div>
                         </div>
-                        <div className="mt-6 flex gap-4">
+                        {/* <div className="mt-6 flex gap-4">
                             <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Read Full Story</Button>
                             <Button variant="outline">Contact Alumni</Button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </Card>

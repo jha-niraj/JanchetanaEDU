@@ -5,7 +5,7 @@ import { BookOpen, Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } 
 import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+// import { Input } from "@/components/ui/input"
 
 const footerVariants = {
     hidden: { opacity: 0 },
@@ -143,13 +143,13 @@ export function Footer() {
                             <Mail className="h-4 w-4 text-muted-foreground" />
                             <span className="text-muted-foreground">info@janchetana.edu.np</span>
                         </div>
-                        <div className="pt-2">
+                        {/* <div className="pt-2">
                             <h4 className="text-sm font-medium mb-2">Subscribe to our newsletter</h4>
                             <div className="flex space-x-2">
                                 <Input placeholder="Your email" className="max-w-[180px]" />
                                 <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Subscribe</Button>
                             </div>
-                        </div>
+                        </div> */}
                     </motion.div>
                 </div>
             </motion.div>

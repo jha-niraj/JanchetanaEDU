@@ -68,9 +68,9 @@ export function MainNav() {
             active: pathname === "/alumni",
         },
         {
-            href: "/contact",
+            href: "/contactus",
             label: "Contact",
-            active: pathname === "/contact",
+            active: pathname === "/contactus",
         },
     ]
 
