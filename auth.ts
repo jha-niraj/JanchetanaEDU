@@ -1,9 +1,9 @@
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from "next-auth/providers/google";
-import { prisma } from "@/lib/prisma";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import NextAuth from "next-auth";
-import { Role } from '@prisma/client';
+import { prisma } from './lib/prisma';
+import { Role } from './app/generated/prisma';
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
     adapter: PrismaAdapter(prisma),
@@ -48,8 +48,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                         name: user.name,
                         image: user.image,
                         role: user.role,
-                        roleExplicitlyChosen: user.roleExplicitlyChosen,
-                        creatorStatus: "NOT_VERIFIED"
                     };
                 } catch (error) {
                     console.error("Authorization error:", error);
@@ -67,7 +65,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             if (user) {
                 token.id = user.id!;
                 token.role = user.role;
-                token.roleExplicitlyChosen = user.roleExplicitlyChosen;
             }
 
             if (token && !token.roleExplicitlyChosen) {
@@ -75,9 +72,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                     where: { id: token.id as string },
                     select: { roleExplicitlyChosen: true }
                 });
-                if (dbUser) {
-                    token.roleExplicitlyChosen = dbUser.roleExplicitlyChosen;
-                }
             }
 
             return token;
@@ -86,7 +80,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             if (session.user) {
                 session.user.id = token.id as string;
                 session.user.role = token.role as Role
-                session.user.roleExplicitlyChosen = token.roleExplicitlyChosen;
             }
             return session;
         },

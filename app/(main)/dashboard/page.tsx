@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Briefcase, GraduationCap, Quote, Users, BookOpen, CalendarDays, ArrowUpRight } from "lucide-react";
+import { GraduationCap, Quote, BookOpen, CalendarDays, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -19,7 +19,7 @@ export default function Dashboard() {
     });
     const router = useRouter();
 
-    const [thought, setThought] = useState({
+    const [thought] = useState({
         quote: "Education is not the filling of a pail, but the lighting of a fire.",
         author: "William Butler Yeats",
     });
@@ -123,7 +123,7 @@ export default function Dashboard() {
                                 </div>
                             ) : (
                                 <>
-                                    <blockquote className="border-l-4 pl-4 italic">"{thought.quote}"</blockquote>
+                                    <blockquote className="border-l-4 pl-4 italic">&quot;{thought.quote}&quot;</blockquote>
                                     <p className="mt-2 text-right text-sm text-muted-foreground">— {thought.author}</p>
                                 </>
                             )}
