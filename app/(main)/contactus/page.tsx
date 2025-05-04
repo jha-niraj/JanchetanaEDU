@@ -312,7 +312,6 @@ export default function ContactPage() {
                                     Have a question or need more information? We&apos;re here to help.
                                 </p>
                             </motion.div>
-
                             <div className="grid gap-8 md:grid-cols-2">
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
