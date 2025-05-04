@@ -1,29 +1,53 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
-import { ArrowLeft, GraduationCap, Mail } from "lucide-react"
+// import Link from "next/link"
+// import { ArrowLeft, GraduationCap, Mail } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Separator } from "@/components/ui/separator"
+// import { Checkbox } from "@/components/ui/checkbox"
+// import { Separator } from "@/components/ui/separator"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 export default function AuthPage() {
-    const [activeTab, setActiveTab] = useState("login")
+    const [activeTab, setActiveTab] = useState("login");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [submitting, setSubmitting] = useState(false);
+    const router = useRouter()
+
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault()
+        setSubmitting(true);
+
+        if (username === "jancetanaedu@2025" && password === "janchetana3110") {
+            localStorage.setItem("username", username)
+            localStorage.setItem("password", password)
+            localStorage.setItem("authenticated", "true")
+
+            toast("Login successful", {
+                description: "Redirecting to your dashboard...",
+                duration: 2000,
+            })
+
+            setSubmitting(false);
+            setTimeout(() => {
+                router.push("/dashboard")
+            }, 1000)
+        } else {
+            toast("Invalid credentials", {
+                description: "Please check your username and password",
+            })
+        }
+    }
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-secondary/20 dark:bg-gray-900/30 p-4">
-            <Link
-                href="/"
-                className="absolute top-8 left-8 flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-            >
-                <ArrowLeft className="h-4 w-4" />
-                <span>Back to Home</span>
-            </Link>
             <motion.div
                 className="w-full max-w-md"
                 initial={{ opacity: 0, y: 20 }}
@@ -32,25 +56,23 @@ export default function AuthPage() {
             >
                 <div className="flex justify-center mb-6">
                     <div className="flex flex-col items-center gap-2">
-                        <div className="flex items-center justify-center h-8 w-8 rounded-md bg-primary text-primary-foreground">
-                            <GraduationCap className="h-5 w-5" />
-                        </div>
-                        <h1 className="text-2xl font-bold">Horizon Academy</h1>
+                        <h1 className="text-2xl font-bold">Janchetana</h1>
                     </div>
                 </div>
                 <Tabs defaultValue="login" value={activeTab} onValueChange={setActiveTab} className="w-full">
-                    <TabsList className="grid w-full grid-cols-2 mb-4">
+                    <TabsList className="grid w-full grid-cols-1 mb-4">
                         <TabsTrigger value="login">Login</TabsTrigger>
-                        <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                        {/* <TabsTrigger value="signup">Sign Up</TabsTrigger> */}
                     </TabsList>
                     <TabsContent value="login">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Welcome back</CardTitle>
-                                <CardDescription>Enter your credentials to access your account</CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <div className="">
+                        <form onSubmit={handleLogin} className="space-y-4">
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle>Welcome back</CardTitle>
+                                    <CardDescription>Enter your credentials to access your account</CardDescription>
+                                </CardHeader>
+                                <CardContent className="space-y-4">
+                                    {/* <div className="">
                                     <Button variant="outline" className="w-full">
                                         <Mail className="h-4 w-4 mr-2" />
                                         <span className="sr-only sm:not-sr-only sm:text-xs md:text-sm">Google</span>
@@ -63,21 +85,33 @@ export default function AuthPage() {
                                     <div className="relative flex justify-center text-xs uppercase">
                                         <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
                                     </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="email">Email</Label>
-                                    <Input id="email" type="email" placeholder="your.email@example.com" />
-                                </div>
-                                <div className="space-y-2">
-                                    <div className="flex items-center justify-between">
-                                        <Label htmlFor="password">Password</Label>
-                                        <Link href="/forgot-password" className="text-xs text-primary hover:underline">
-                                            Forgot password?
-                                        </Link>
+                                </div> */}
+                                    <div className="space-y-2">
+                                        <Label htmlFor="username">Email</Label>
+                                        <Input
+                                            id="username"
+                                            type="username"
+                                            placeholder="janchetana@edu"
+                                            value={username}
+                                            onChange={(e) => setUsername(e.target.value)}
+                                        />
                                     </div>
-                                    <Input id="password" type="password" />
-                                </div>
-                                <div className="flex items-center space-x-2">
+                                    <div className="space-y-2">
+                                        <div className="flex items-center justify-between">
+                                            <Label htmlFor="password">Password</Label>
+                                            {/* <Link href="/forgot-password" className="text-xs text-primary hover:underline">
+                                            Forgot password?
+                                        </Link> */}
+                                        </div>
+                                        <Input
+                                            id="password"
+                                            type="password"
+                                            placeholder="********"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
+                                    </div>
+                                    {/* <div className="flex items-center space-x-2">
                                     <Checkbox id="remember" />
                                     <label
                                         htmlFor="remember"
@@ -85,20 +119,25 @@ export default function AuthPage() {
                                     >
                                         Remember me
                                     </label>
-                                </div>
-                            </CardContent>
-                            <CardFooter className="flex flex-col gap-4">
-                                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Login</Button>
-                                <p className="text-center text-sm text-muted-foreground">
+                                </div> */}
+                                </CardContent>
+                                <CardFooter className="flex flex-col gap-4">
+                                    <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                                        {
+                                            submitting ? "Logging In..." : "Login"
+                                        }
+                                    </Button>
+                                    {/* <p className="text-center text-sm text-muted-foreground">
                                     Don&apos;t have an account?{" "}
                                     <button onClick={() => setActiveTab("signup")} className="text-primary hover:underline">
                                         Sign up
                                     </button>
-                                </p>
-                            </CardFooter>
-                        </Card>
+                                </p> */}
+                                </CardFooter>
+                            </Card>
+                        </form>
                     </TabsContent>
-                    <TabsContent value="signup">
+                    {/* <TabsContent value="signup">
                         <Card>
                             <CardHeader>
                                 <CardTitle>Create an account</CardTitle>
@@ -168,7 +207,7 @@ export default function AuthPage() {
                                 </p>
                             </CardFooter>
                         </Card>
-                    </TabsContent>
+                    </TabsContent> */}
                 </Tabs>
             </motion.div>
         </div>

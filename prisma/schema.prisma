@@ -1,5 +1,6 @@
 generator client {
     provider = "prisma-client-js"
+    output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -19,13 +20,41 @@ model User {
     password             String?
     name                 String
     image                String    @default("https://res.cloudinary.com/dhfuckcax/image/upload/v1739810646/krk8x7fzjukcfcoefrea.jpg")
-    role                 Role      @default(USER)
+    role                 Role      @default(ADMIN)
     roleExplicitlyChosen Boolean   @default(false)
-	createdAt            DateTime  @default(now())
+    createdAt            DateTime  @default(now())
 
-    accounts              Account[]
+    techers  Teacher[]
+    articles Article[]
+    accounts Account[]
 
     @@index([email])
+}
+
+model Teacher {
+    id        String    @id @default(cuid())
+    name      String
+    subject   String
+    email     String    @unique
+    phone     String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    articles  Article[]
+    User      User?     @relation(fields: [userId], references: [id])
+    userId    String?
+}
+
+model Article {
+    id        String   @id @default(cuid())
+    title     String
+    content   String
+    status    String   @default("draft")
+    teacherId String?
+    teacher   Teacher? @relation(fields: [teacherId], references: [id], onDelete: SetNull)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    User      User?    @relation(fields: [userId], references: [id])
+    userId    String?
 }
 
 model Account {

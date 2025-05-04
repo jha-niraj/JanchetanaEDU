@@ -68,7 +68,7 @@ export function ArticleCarousel() {
 
     const nextSlide = useCallback(() => {
         setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1))
-    }, []);
+    }, [maxIndex]);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1))

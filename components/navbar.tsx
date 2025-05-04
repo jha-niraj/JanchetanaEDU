@@ -102,25 +102,27 @@ export function MainNav() {
                     </Link>
                 </motion.div>
                 <motion.nav
-                    className="hidden md:flex items-center justify-center"
+                    className="hidden lg:flex items-center justify-center"
                     variants={navVariants}
                     initial="hidden"
                     animate="visible"
                 >
                     <div className="flex items-center space-x-6 text-sm font-medium">
-                        {routes.map((route) => (
-                            <motion.div key={route.href} variants={itemVariants}>
-                                <Link
-                                    href={route.href}
-                                    className={cn(
-                                        "transition-colors hover:text-primary",
-                                        route.active ? "text-primary font-semibold" : "text-muted-foreground",
-                                    )}
-                                >
-                                    {route.label}
-                                </Link>
-                            </motion.div>
-                        ))}
+                        {
+                            routes.map((route) => (
+                                <motion.div key={route.href} variants={itemVariants}>
+                                    <Link
+                                        href={route.href}
+                                        className={cn(
+                                            "transition-colors hover:text-primary",
+                                            route.active ? "text-primary font-semibold" : "text-muted-foreground",
+                                        )}
+                                    >
+                                        {route.label}
+                                    </Link>
+                                </motion.div>
+                            ))
+                        }
                     </div>
                 </motion.nav>
                 <motion.div
@@ -129,7 +131,7 @@ export function MainNav() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="hidden md:flex items-center space-x-2">
+                    <div className="hidden lg:flex items-center space-x-2">
                         <Link href="/auth">
                             <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Login / Sign Up</Button>
                         </Link>
@@ -137,7 +139,7 @@ export function MainNav() {
                     <ModeToggle />
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
-                            <Button variant="outline" size="icon" className="md:hidden">
+                            <Button variant="outline" size="icon" className="lg:hidden">
                                 <Menu className="h-5 w-5" />
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
@@ -153,19 +155,21 @@ export function MainNav() {
                                 </div>
                             </Link>
                             <nav className="flex flex-col space-y-4">
-                                {routes.map((route) => (
-                                    <Link
-                                        key={route.href}
-                                        href={route.href}
-                                        className={cn(
-                                            "text-base transition-colors hover:text-primary",
-                                            route.active ? "text-primary font-semibold" : "text-muted-foreground",
-                                        )}
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {route.label}
-                                    </Link>
-                                ))}
+                                {
+                                    routes.map((route) => (
+                                        <Link
+                                            key={route.href}
+                                            href={route.href}
+                                            className={cn(
+                                                "text-base transition-colors hover:text-primary",
+                                                route.active ? "text-primary font-semibold" : "text-muted-foreground",
+                                            )}
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            {route.label}
+                                        </Link>
+                                    ))
+                                }
                                 <div className="flex flex-col space-y-2 pt-4 mt-4 border-t">
                                     <Link href="/auth" onClick={() => setIsOpen(false)}>
                                         <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
