@@ -519,7 +519,7 @@ export default function Home() {
 												</Button>
 											</Link>
 											<Link href="/contactus">
-												<Button size="lg" variant="outline" className="dark:text-white text-black border-white hover:bg-white/10">
+												<Button size="lg" variant="outline" className="dark:text-white text-black border-white hover:bg-white/10 hover:text-white dark:hover:text-black">
 													Schedule a Visit
 												</Button>
 											</Link>
