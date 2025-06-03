@@ -4,7 +4,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Award, BookOpen, Calendar, Camera, ChevronRight, CircleArrowOutUpLeft, GraduationCap, Library, MapPin, Users } from "lucide-react"
+import { ArrowRight, Award, BookOpen, Calendar, Camera, ChevronRight, CircleArrowOutUpLeft, GraduationCap, MapPin, Users } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -464,7 +464,7 @@ export default function Home() {
 									Rich Cultural Heritage
 								</h2>
 								<p className="text-lg text-gray-800 dark:text-gray-300 max-w-2xl mx-auto">
-									Immerse yourself in vibrant traditions, artistic expressions, and cultural celebrations that define our community's spirit and identity.
+									Immerse yourself in vibrant traditions, artistic expressions, and cultural celebrations that define our community&apos;s spirit and identity.
 								</p>
 							</motion.div>
 							<div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -543,10 +543,12 @@ export default function Home() {
 											transition={{ delay: index * 0.1, duration: 0.6 }}
 											whileHover={{ scale: 1.05 }}
 										>
-											<img
+											<Image
 												src={src}
 												alt={`Educational tour ${index + 1}`}
 												className="w-full h-full object-cover"
+												height={300}
+												width={400}
 											/>
 											<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 										</motion.div>

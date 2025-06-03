@@ -55,11 +55,23 @@ export namespace $Enums {
 
 export type Role = (typeof Role)[keyof typeof Role]
 
+
+export const AdmissionType: {
+  NURSERY_8: 'NURSERY_8',
+  GRADE_9_12: 'GRADE_9_12'
+};
+
+export type AdmissionType = (typeof AdmissionType)[keyof typeof AdmissionType]
+
 }
 
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
+
+export type AdmissionType = $Enums.AdmissionType
+
+export const AdmissionType: typeof $Enums.AdmissionType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -4912,6 +4924,7 @@ export namespace Prisma {
     phoneNumber: string | null
     parentName: string | null
     numberOfChildren: number | null
+    admissionType: $Enums.AdmissionType | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4921,6 +4934,7 @@ export namespace Prisma {
     phoneNumber: string | null
     parentName: string | null
     numberOfChildren: number | null
+    admissionType: $Enums.AdmissionType | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4931,6 +4945,8 @@ export namespace Prisma {
     parentName: number
     numberOfChildren: number
     desiredClasses: number
+    admissionType: number
+    streams: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4950,6 +4966,7 @@ export namespace Prisma {
     phoneNumber?: true
     parentName?: true
     numberOfChildren?: true
+    admissionType?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4959,6 +4976,7 @@ export namespace Prisma {
     phoneNumber?: true
     parentName?: true
     numberOfChildren?: true
+    admissionType?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4969,6 +4987,8 @@ export namespace Prisma {
     parentName?: true
     numberOfChildren?: true
     desiredClasses?: true
+    admissionType?: true
+    streams?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5066,6 +5086,8 @@ export namespace Prisma {
     parentName: string
     numberOfChildren: number
     desiredClasses: string[]
+    admissionType: $Enums.AdmissionType
+    streams: string[]
     createdAt: Date
     updatedAt: Date
     _count: AdmissionInquiryCountAggregateOutputType | null
@@ -5095,6 +5117,8 @@ export namespace Prisma {
     parentName?: boolean
     numberOfChildren?: boolean
     desiredClasses?: boolean
+    admissionType?: boolean
+    streams?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["admissionInquiry"]>
@@ -5105,6 +5129,8 @@ export namespace Prisma {
     parentName?: boolean
     numberOfChildren?: boolean
     desiredClasses?: boolean
+    admissionType?: boolean
+    streams?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["admissionInquiry"]>
@@ -5115,6 +5141,8 @@ export namespace Prisma {
     parentName?: boolean
     numberOfChildren?: boolean
     desiredClasses?: boolean
+    admissionType?: boolean
+    streams?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["admissionInquiry"]>
@@ -5125,11 +5153,13 @@ export namespace Prisma {
     parentName?: boolean
     numberOfChildren?: boolean
     desiredClasses?: boolean
+    admissionType?: boolean
+    streams?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AdmissionInquiryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phoneNumber" | "parentName" | "numberOfChildren" | "desiredClasses" | "createdAt" | "updatedAt", ExtArgs["result"]["admissionInquiry"]>
+  export type AdmissionInquiryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phoneNumber" | "parentName" | "numberOfChildren" | "desiredClasses" | "admissionType" | "streams" | "createdAt" | "updatedAt", ExtArgs["result"]["admissionInquiry"]>
 
   export type $AdmissionInquiryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AdmissionInquiry"
@@ -5140,6 +5170,8 @@ export namespace Prisma {
       parentName: string
       numberOfChildren: number
       desiredClasses: string[]
+      admissionType: $Enums.AdmissionType
+      streams: string[]
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["admissionInquiry"]>
@@ -5570,6 +5602,8 @@ export namespace Prisma {
     readonly parentName: FieldRef<"AdmissionInquiry", 'String'>
     readonly numberOfChildren: FieldRef<"AdmissionInquiry", 'Int'>
     readonly desiredClasses: FieldRef<"AdmissionInquiry", 'String[]'>
+    readonly admissionType: FieldRef<"AdmissionInquiry", 'AdmissionType'>
+    readonly streams: FieldRef<"AdmissionInquiry", 'String[]'>
     readonly createdAt: FieldRef<"AdmissionInquiry", 'DateTime'>
     readonly updatedAt: FieldRef<"AdmissionInquiry", 'DateTime'>
   }
@@ -8231,6 +8265,8 @@ export namespace Prisma {
     parentName: 'parentName',
     numberOfChildren: 'numberOfChildren',
     desiredClasses: 'desiredClasses',
+    admissionType: 'admissionType',
+    streams: 'streams',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8360,6 +8396,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AdmissionType'
+   */
+  export type EnumAdmissionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AdmissionType[]'
+   */
+  export type ListEnumAdmissionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionType[]'>
     
 
 
@@ -8616,6 +8666,8 @@ export namespace Prisma {
     parentName?: StringFilter<"AdmissionInquiry"> | string
     numberOfChildren?: IntFilter<"AdmissionInquiry"> | number
     desiredClasses?: StringNullableListFilter<"AdmissionInquiry">
+    admissionType?: EnumAdmissionTypeFilter<"AdmissionInquiry"> | $Enums.AdmissionType
+    streams?: StringNullableListFilter<"AdmissionInquiry">
     createdAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
     updatedAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
   }
@@ -8626,6 +8678,8 @@ export namespace Prisma {
     parentName?: SortOrder
     numberOfChildren?: SortOrder
     desiredClasses?: SortOrder
+    admissionType?: SortOrder
+    streams?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8639,6 +8693,8 @@ export namespace Prisma {
     parentName?: StringFilter<"AdmissionInquiry"> | string
     numberOfChildren?: IntFilter<"AdmissionInquiry"> | number
     desiredClasses?: StringNullableListFilter<"AdmissionInquiry">
+    admissionType?: EnumAdmissionTypeFilter<"AdmissionInquiry"> | $Enums.AdmissionType
+    streams?: StringNullableListFilter<"AdmissionInquiry">
     createdAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
     updatedAt?: DateTimeFilter<"AdmissionInquiry"> | Date | string
   }, "id">
@@ -8649,6 +8705,8 @@ export namespace Prisma {
     parentName?: SortOrder
     numberOfChildren?: SortOrder
     desiredClasses?: SortOrder
+    admissionType?: SortOrder
+    streams?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: AdmissionInquiryCountOrderByAggregateInput
@@ -8667,6 +8725,8 @@ export namespace Prisma {
     parentName?: StringWithAggregatesFilter<"AdmissionInquiry"> | string
     numberOfChildren?: IntWithAggregatesFilter<"AdmissionInquiry"> | number
     desiredClasses?: StringNullableListFilter<"AdmissionInquiry">
+    admissionType?: EnumAdmissionTypeWithAggregatesFilter<"AdmissionInquiry"> | $Enums.AdmissionType
+    streams?: StringNullableListFilter<"AdmissionInquiry">
     createdAt?: DateTimeWithAggregatesFilter<"AdmissionInquiry"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AdmissionInquiry"> | Date | string
   }
@@ -9093,6 +9153,8 @@ export namespace Prisma {
     parentName: string
     numberOfChildren: number
     desiredClasses?: AdmissionInquiryCreatedesiredClassesInput | string[]
+    admissionType: $Enums.AdmissionType
+    streams?: AdmissionInquiryCreatestreamsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9103,6 +9165,8 @@ export namespace Prisma {
     parentName: string
     numberOfChildren: number
     desiredClasses?: AdmissionInquiryCreatedesiredClassesInput | string[]
+    admissionType: $Enums.AdmissionType
+    streams?: AdmissionInquiryCreatestreamsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9113,6 +9177,8 @@ export namespace Prisma {
     parentName?: StringFieldUpdateOperationsInput | string
     numberOfChildren?: IntFieldUpdateOperationsInput | number
     desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    admissionType?: EnumAdmissionTypeFieldUpdateOperationsInput | $Enums.AdmissionType
+    streams?: AdmissionInquiryUpdatestreamsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9123,6 +9189,8 @@ export namespace Prisma {
     parentName?: StringFieldUpdateOperationsInput | string
     numberOfChildren?: IntFieldUpdateOperationsInput | number
     desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    admissionType?: EnumAdmissionTypeFieldUpdateOperationsInput | $Enums.AdmissionType
+    streams?: AdmissionInquiryUpdatestreamsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9133,6 +9201,8 @@ export namespace Prisma {
     parentName: string
     numberOfChildren: number
     desiredClasses?: AdmissionInquiryCreatedesiredClassesInput | string[]
+    admissionType: $Enums.AdmissionType
+    streams?: AdmissionInquiryCreatestreamsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9143,6 +9213,8 @@ export namespace Prisma {
     parentName?: StringFieldUpdateOperationsInput | string
     numberOfChildren?: IntFieldUpdateOperationsInput | number
     desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    admissionType?: EnumAdmissionTypeFieldUpdateOperationsInput | $Enums.AdmissionType
+    streams?: AdmissionInquiryUpdatestreamsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9153,6 +9225,8 @@ export namespace Prisma {
     parentName?: StringFieldUpdateOperationsInput | string
     numberOfChildren?: IntFieldUpdateOperationsInput | number
     desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
+    admissionType?: EnumAdmissionTypeFieldUpdateOperationsInput | $Enums.AdmissionType
+    streams?: AdmissionInquiryUpdatestreamsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9657,12 +9731,21 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type EnumAdmissionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionType | EnumAdmissionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionTypeFilter<$PrismaModel> | $Enums.AdmissionType
+  }
+
   export type AdmissionInquiryCountOrderByAggregateInput = {
     id?: SortOrder
     phoneNumber?: SortOrder
     parentName?: SortOrder
     numberOfChildren?: SortOrder
     desiredClasses?: SortOrder
+    admissionType?: SortOrder
+    streams?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9676,6 +9759,7 @@ export namespace Prisma {
     phoneNumber?: SortOrder
     parentName?: SortOrder
     numberOfChildren?: SortOrder
+    admissionType?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9685,6 +9769,7 @@ export namespace Prisma {
     phoneNumber?: SortOrder
     parentName?: SortOrder
     numberOfChildren?: SortOrder
+    admissionType?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9707,6 +9792,16 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumAdmissionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionType | EnumAdmissionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionTypeWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAdmissionTypeFilter<$PrismaModel>
+    _max?: NestedEnumAdmissionTypeFilter<$PrismaModel>
   }
 
   export type ContactInquiryCountOrderByAggregateInput = {
@@ -10079,6 +10174,10 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type AdmissionInquiryCreatestreamsInput = {
+    set: string[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -10088,6 +10187,15 @@ export namespace Prisma {
   }
 
   export type AdmissionInquiryUpdatedesiredClassesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type EnumAdmissionTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AdmissionType
+  }
+
+  export type AdmissionInquiryUpdatestreamsInput = {
     set?: string[]
     push?: string | string[]
   }
@@ -10278,6 +10386,13 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumAdmissionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionType | EnumAdmissionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionTypeFilter<$PrismaModel> | $Enums.AdmissionType
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -10303,6 +10418,16 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumAdmissionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionType | EnumAdmissionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionTypeWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAdmissionTypeFilter<$PrismaModel>
+    _max?: NestedEnumAdmissionTypeFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

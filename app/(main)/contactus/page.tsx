@@ -10,7 +10,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import SmoothScroll from "@/components/smoothscroll"
 import { addContactInquiry } from "@/actions/contact.action"
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -34,98 +33,98 @@ const staggerContainer = {
     },
 }
 
-const academicContacts = [
-    {
-        name: "Dr. Sarah Johnson",
-        title: "Principal",
-        email: "sjohnson@horizonacademy.edu",
-        phone: "(555) 123-4570",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "Michael Chen",
-        title: "Vice Principal, Academics",
-        email: "mchen@horizonacademy.edu",
-        phone: "(555) 123-4571",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "Dr. Emily Rodriguez",
-        title: "Curriculum Director",
-        email: "erodriguez@horizonacademy.edu",
-        phone: "(555) 123-4572",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-]
-const admissionsContacts = [
-    {
-        name: "Jennifer Williams",
-        title: "Director of Admissions",
-        email: "jwilliams@horizonacademy.edu",
-        phone: "(555) 123-4573",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "David Thompson",
-        title: "Admissions Counselor (Grades K-8)",
-        email: "dthompson@horizonacademy.edu",
-        phone: "(555) 123-4574",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "Lisa Martinez",
-        title: "Admissions Counselor (Grades 9-12)",
-        email: "lmartinez@horizonacademy.edu",
-        phone: "(555) 123-4575",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-]
-const athleticsContacts = [
-    {
-        name: "Robert Martinez",
-        title: "Athletic Director",
-        email: "rmartinez@horizonacademy.edu",
-        phone: "(555) 123-4576",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "James Wilson",
-        title: "Head Coach, Basketball",
-        email: "jwilson@horizonacademy.edu",
-        phone: "(555) 123-4577",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "Sophia Lee",
-        title: "Head Coach, Swimming",
-        email: "slee@horizonacademy.edu",
-        phone: "(555) 123-4578",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-]
-const supportContacts = [
-    {
-        name: "Thomas Garcia",
-        title: "Technology Support",
-        email: "tgarcia@horizonacademy.edu",
-        phone: "(555) 123-4579",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "Dr. Amara Okafor",
-        title: "School Counselor",
-        email: "aokafor@horizonacademy.edu",
-        phone: "(555) 123-4580",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        name: "Richard Kim",
-        title: "Facilities Manager",
-        email: "rkim@horizonacademy.edu",
-        phone: "(555) 123-4581",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-]
+// const academicContacts = [
+//     {
+//         name: "Dr. Sarah Johnson",
+//         title: "Principal",
+//         email: "sjohnson@horizonacademy.edu",
+//         phone: "(555) 123-4570",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "Michael Chen",
+//         title: "Vice Principal, Academics",
+//         email: "mchen@horizonacademy.edu",
+//         phone: "(555) 123-4571",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "Dr. Emily Rodriguez",
+//         title: "Curriculum Director",
+//         email: "erodriguez@horizonacademy.edu",
+//         phone: "(555) 123-4572",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+// ]
+// const admissionsContacts = [
+//     {
+//         name: "Jennifer Williams",
+//         title: "Director of Admissions",
+//         email: "jwilliams@horizonacademy.edu",
+//         phone: "(555) 123-4573",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "David Thompson",
+//         title: "Admissions Counselor (Grades K-8)",
+//         email: "dthompson@horizonacademy.edu",
+//         phone: "(555) 123-4574",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "Lisa Martinez",
+//         title: "Admissions Counselor (Grades 9-12)",
+//         email: "lmartinez@horizonacademy.edu",
+//         phone: "(555) 123-4575",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+// ]
+// const athleticsContacts = [
+//     {
+//         name: "Robert Martinez",
+//         title: "Athletic Director",
+//         email: "rmartinez@horizonacademy.edu",
+//         phone: "(555) 123-4576",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "James Wilson",
+//         title: "Head Coach, Basketball",
+//         email: "jwilson@horizonacademy.edu",
+//         phone: "(555) 123-4577",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "Sophia Lee",
+//         title: "Head Coach, Swimming",
+//         email: "slee@horizonacademy.edu",
+//         phone: "(555) 123-4578",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+// ]
+// const supportContacts = [
+//     {
+//         name: "Thomas Garcia",
+//         title: "Technology Support",
+//         email: "tgarcia@horizonacademy.edu",
+//         phone: "(555) 123-4579",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "Dr. Amara Okafor",
+//         title: "School Counselor",
+//         email: "aokafor@horizonacademy.edu",
+//         phone: "(555) 123-4580",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         name: "Richard Kim",
+//         title: "Facilities Manager",
+//         email: "rkim@horizonacademy.edu",
+//         phone: "(555) 123-4581",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+// ]
 const faqs = [
     {
         question: "What are the school hours?",
@@ -599,50 +598,50 @@ export default function ContactPage() {
     )
 }
 
-function ContactCard({
-    name,
-    title,
-    email,
-    phone,
-    image,
-}: {
-    name: string
-    title: string
-    email: string
-    phone: string
-    image: string
-}) {
-    return (
-        <motion.div variants={fadeInUp}>
-            <Card className="h-full">
-                <CardHeader className="flex flex-row items-center gap-4">
-                    <div className="relative h-12 w-12 rounded-full overflow-hidden">
-                        <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
-                    </div>
-                    <div>
-                        <CardTitle className="text-base">{name}</CardTitle>
-                        <CardDescription>{title}</CardDescription>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                            <Mail className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground">{email}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Phone className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground">{phone}</span>
-                        </div>
-                    </div>
-                </CardContent>
-                <CardFooter>
-                    <Button variant="ghost" size="sm" className="gap-1">
-                        <Mail className="h-4 w-4" />
-                        Contact
-                    </Button>
-                </CardFooter>
-            </Card>
-        </motion.div>
-    )
-}
+// function ContactCard({
+//     name,
+//     title,
+//     email,
+//     phone,
+//     image,
+// }: {
+//     name: string
+//     title: string
+//     email: string
+//     phone: string
+//     image: string
+// }) {
+//     return (
+//         <motion.div variants={fadeInUp}>
+//             <Card className="h-full">
+//                 <CardHeader className="flex flex-row items-center gap-4">
+//                     <div className="relative h-12 w-12 rounded-full overflow-hidden">
+//                         <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
+//                     </div>
+//                     <div>
+//                         <CardTitle className="text-base">{name}</CardTitle>
+//                         <CardDescription>{title}</CardDescription>
+//                     </div>
+//                 </CardHeader>
+//                 <CardContent>
+//                     <div className="space-y-2 text-sm">
+//                         <div className="flex items-center gap-2">
+//                             <Mail className="h-4 w-4 text-muted-foreground" />
+//                             <span className="text-muted-foreground">{email}</span>
+//                         </div>
+//                         <div className="flex items-center gap-2">
+//                             <Phone className="h-4 w-4 text-muted-foreground" />
+//                             <span className="text-muted-foreground">{phone}</span>
+//                         </div>
+//                     </div>
+//                 </CardContent>
+//                 <CardFooter>
+//                     <Button variant="ghost" size="sm" className="gap-1">
+//                         <Mail className="h-4 w-4" />
+//                         Contact
+//                     </Button>
+//                 </CardFooter>
+//             </Card>
+//         </motion.div>
+//     )
+// }

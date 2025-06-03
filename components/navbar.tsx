@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Badge } from "@/components/ui/badge"
 import {
-    Menu, BookOpen, User, GraduationCap, Users, Library, Heart, Phone,
+    Menu, BookOpen, User, GraduationCap, Users, Heart, Phone,
     Sun, Moon, Sparkles, ArrowRight, Code
 } from "lucide-react"
 import { cn } from "@/lib/utils"

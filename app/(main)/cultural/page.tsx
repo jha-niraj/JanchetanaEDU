@@ -134,7 +134,9 @@ const CulturalPage = () => {
                                     whileHover={{ y: -5 }}
                                 >
                                     <div className="relative h-48 overflow-hidden">
-                                        <img
+                                        <Image
+                                            height={200}
+                                            width={300}
                                             src={activity.image}
                                             alt={activity.name}
                                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"

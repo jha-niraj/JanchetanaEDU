@@ -160,6 +160,8 @@ exports.Prisma.AdmissionInquiryScalarFieldEnum = {
   parentName: 'parentName',
   numberOfChildren: 'numberOfChildren',
   desiredClasses: 'desiredClasses',
+  admissionType: 'admissionType',
+  streams: 'streams',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -208,6 +210,11 @@ exports.Prisma.NullsOrder = {
 exports.Role = exports.$Enums.Role = {
   USER: 'USER',
   ADMIN: 'ADMIN'
+};
+
+exports.AdmissionType = exports.$Enums.AdmissionType = {
+  NURSERY_8: 'NURSERY_8',
+  GRADE_9_12: 'GRADE_9_12'
 };
 
 exports.Prisma.ModelName = {

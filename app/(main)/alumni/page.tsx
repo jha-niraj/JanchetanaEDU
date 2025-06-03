@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label"
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Calendar, ChevronRight, GraduationCap, Heart, Mail, MapPin, Users, Book, Award } from "lucide-react"
+import { Calendar, ChevronRight, GraduationCap, Heart, MapPin, Users, Book, Award } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"

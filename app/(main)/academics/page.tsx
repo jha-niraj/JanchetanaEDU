@@ -707,13 +707,11 @@ function FacultyCard({
     name,
     department,
     image,
-    bio,
     education,
 }: {
     name: string
     department: string
     image: string
-    bio: string
     education: string
 }) {
     return (

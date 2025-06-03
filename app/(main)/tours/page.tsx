@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, MapPin } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 const ToursPage = () => {
@@ -92,7 +92,8 @@ const ToursPage = () => {
                                     whileHover={{ y: -5 }}
                                 >
                                     <div className="relative h-48 overflow-hidden">
-                                        <img
+                                        <Image
+                                            fill
                                             src={tour.image}
                                             alt={tour.name}
                                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"

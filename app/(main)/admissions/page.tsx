@@ -266,7 +266,7 @@ export default function AdmissionsPage() {
                                 Inquiry Submitted Successfully
                             </AlertDialogTitle>
                             <AlertDialogDescription className="text-gray-600 dark:text-gray-300">
-                                Thank you for your interest in Janchetana. We will contact you soon to discuss your child's admission process.
+                                Thank you for your interest in Janchetana. We will contact you soon to discuss your child&apos;s admission process.
                             </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
