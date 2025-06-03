@@ -4,7 +4,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Award, BookOpen, Calendar, ChevronRight, GraduationCap, Library, MapPin, Users } from "lucide-react"
+import { ArrowRight, Award, BookOpen, Calendar, Camera, ChevronRight, CircleArrowOutUpLeft, GraduationCap, Library, MapPin, Users } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -162,10 +162,10 @@ export default function Home() {
 									icon={<GraduationCap className="h-5 w-5 text-primary" />}
 								/>
 								<QuickLinkCard
-									href="/e-library"
-									title="E-Library"
-									description="Access digital books, notes, and resources"
-									icon={<Library className="h-5 w-5 text-primary" />}
+									href="/cultural"
+									title="Cultural Activities"
+									description="Explore our cultural programs and events"
+									icon={<CircleArrowOutUpLeft className="h-5 w-5 text-primary" />}
 								/>
 								<QuickLinkCard
 									href="/student-life"
@@ -175,8 +175,8 @@ export default function Home() {
 								/>
 								<QuickLinkCard
 									href="/contact"
-									title="Campus Map"
-									description="Find your way around our campus facilities"
+									title="Contact Us"
+									description="Get in touch with our administration"
 									icon={<MapPin className="h-5 w-5 text-primary" />}
 								/>
 							</motion.div>
@@ -446,6 +446,125 @@ export default function Home() {
 									View all events <Calendar className="h-4 w-4" />
 								</Button>
 							</motion.div>
+						</div>
+					</section>
+					<section className="py-16 px-4">
+						<div className="max-w-7xl mx-auto">
+							<motion.div
+								className="text-center mb-12"
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.6 }}
+							>
+								<div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 text-sm font-medium rounded-full mb-4">
+									<Users className="w-4 h-4 mr-2" />
+									Cultural Activities
+								</div>
+								<h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">
+									Rich Cultural Heritage
+								</h2>
+								<p className="text-lg text-gray-800 dark:text-gray-300 max-w-2xl mx-auto">
+									Immerse yourself in vibrant traditions, artistic expressions, and cultural celebrations that define our community's spirit and identity.
+								</p>
+							</motion.div>
+							<div className="grid md:grid-cols-3 gap-6 mb-8">
+								{
+									[
+										'culture/1.jpeg',
+										'culture/2.jpeg',
+										'culture/3.jpeg',
+									].map((src, index) => (
+										<motion.div
+											key={index}
+											className="relative h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											transition={{ delay: index * 0.1, duration: 0.6 }}
+											whileHover={{ scale: 1.05 }}
+										>
+											<Image
+												src={src}
+												alt={`Cultural activity ${index + 1}`}
+												className="w-full h-full object-cover"
+												height={300}
+												width={400}
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+										</motion.div>
+									))
+								}
+							</div>
+							<div className="text-center">
+								<Link href="/cultural">
+									<motion.button
+										className="inline-flex items-center px-8 py-3 bg-black text-white dark:bg-white dark:text-black font-semibold rounded-full hover:bg-purple-700 transition-colors duration-300 shadow-lg hover:shadow-xl"
+										whileHover={{ scale: 1.05 }}
+										whileTap={{ scale: 0.95 }}
+									>
+										Explore Cultural Activities
+										<ArrowRight className="ml-2 w-5 h-5" />
+									</motion.button>
+								</Link>
+							</div>
+						</div>
+					</section>
+					<section className="py-16 px-4 bg-white">
+						<div className="max-w-7xl mx-auto">
+							<motion.div
+								className="text-center mb-12"
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.6 }}
+							>
+								<div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 text-sm font-medium rounded-full mb-4">
+									<Camera className="w-4 h-4 mr-2" />
+									Educational Tours
+								</div>
+								<h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+									Explore & Learn Together
+								</h2>
+								<p className="text-lg text-gray-600 max-w-2xl mx-auto">
+									Join our exciting educational trips and field visits where students explore historical sites, museums, and natural wonders beyond the classroom.
+								</p>
+							</motion.div>
+
+							<div className="grid md:grid-cols-3 gap-6 mb-8">
+								{
+									[
+										'/tour/1.jpeg',
+										'/tour/2.jpeg',
+										'/tour/3.jpeg'
+									].map((src, index) => (
+										<motion.div
+											key={index}
+											className="relative h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											transition={{ delay: index * 0.1, duration: 0.6 }}
+											whileHover={{ scale: 1.05 }}
+										>
+											<img
+												src={src}
+												alt={`Educational tour ${index + 1}`}
+												className="w-full h-full object-cover"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+										</motion.div>
+									))
+								}
+							</div>
+							<div className="text-center">
+								<Link href="/tours">
+									<motion.button
+										className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl"
+										whileHover={{ scale: 1.05 }}
+										whileTap={{ scale: 0.95 }}
+									>
+										View Our Educational Tours
+										<ArrowRight className="ml-2 w-5 h-5" />
+									</motion.button>
+								</Link>
+							</div>
 						</div>
 					</section>
 					<section className="w-full py-16">

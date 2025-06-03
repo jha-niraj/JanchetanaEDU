@@ -225,24 +225,17 @@ const facultySpotlight = [
     {
         name: "Dr. Elizabeth Morgan",
         department: "Science Department Chair",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+        image: "/academics/physicsteacher.jpeg",
         bio: "Dr. Morgan has been teaching physics and astronomy at Horizon Academy for 15 years. Her innovative approach to science education has inspired countless students to pursue STEM careers.",
         education: "Ph.D. in Physics, MIT",
     },
     {
         name: "Mr. James Wilson",
         department: "English Literature",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+        image: "/academics/computerengineer.jpeg",
         bio: "An award-winning educator with a passion for classic and contemporary literature. Mr. Wilson's creative teaching methods bring literary works to life for his students.",
         education: "M.A. in English Literature, Columbia University",
-    },
-    {
-        name: "Ms. Sophia Rodriguez",
-        department: "Mathematics",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        bio: "Known for making complex mathematical concepts accessible and engaging, Ms. Rodriguez leads our competitive math team and advanced calculus program.",
-        education: "M.S. in Mathematics, Stanford University",
-    },
+    }
 ]
 
 export default function AcademicsPage() {
@@ -251,9 +244,9 @@ export default function AcademicsPage() {
             <div className="flex min-h-screen flex-col">
                 <main className="flex-1">
                     <section className="w-full">
-                        <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
+                        <div className="relative h-[300px] md:h-screen w-full overflow-hidden">
                             <Image
-                                src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                src="/studentlife/3.jpeg"
                                 alt="Students learning in classroom"
                                 fill
                                 priority
@@ -376,7 +369,7 @@ export default function AcademicsPage() {
                                             Take a guided virtual tour of our state-of-the-art facilities, classrooms, laboratories, and
                                             recreational spaces. Experience the environment where our students learn, grow, and thrive.
                                         </p>
-                                        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Start Full Tour</Button>
+                                        {/* <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Start Full Tour</Button> */}
                                     </div>
                                 </motion.div>
                                 <motion.div
@@ -544,7 +537,7 @@ export default function AcademicsPage() {
                                 </p>
                                 <div className="flex flex-wrap justify-center gap-4 pt-4">
                                     <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                                        <Link href="/contact">Contact an Advisor</Link>
+                                        <Link href="/contactus">Contact an Advisor</Link>
                                     </Button>
                                     <Button size="lg" variant="outline">
                                         Download Curriculum Guide
@@ -734,17 +727,17 @@ function FacultyCard({
                     <CardDescription>{department}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <p className="text-muted-foreground">{bio}</p>
+                    {/* <p className="text-muted-foreground">{bio}</p> */}
                     <div className="flex items-center gap-2">
                         <GraduationCap className="h-4 w-4 text-primary/70" />
                         <span className="text-sm text-muted-foreground">{education}</span>
                     </div>
                 </CardContent>
-                <CardFooter>
+                {/* <CardFooter>
                     <Button variant="ghost" size="sm" className="gap-1">
                         View profile <ChevronRight className="h-4 w-4" />
                     </Button>
-                </CardFooter>
+                </CardFooter> */}
             </Card>
         </motion.div>
     )

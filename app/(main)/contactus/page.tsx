@@ -251,7 +251,6 @@ export default function ContactPage() {
                                     </CardContent>
                                 </Card>
                             </motion.div>
-
                             <motion.div variants={fadeInUp}>
                                 <Card className="h-full">
                                     <CardHeader>
@@ -297,9 +296,8 @@ export default function ContactPage() {
                                         </div>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground">Monday - Friday: 8:00 AM - 4:30 PM</p>
+                                        <p className="text-muted-foreground">Sunday - Friday: 8:00 AM - 4:30 PM</p>
                                         <p className="text-muted-foreground">Saturday: 9:00 AM - 12:00 PM (Admissions Only)</p>
-                                        <p className="text-muted-foreground">Sunday: Closed</p>
                                     </CardContent>
                                 </Card>
                             </motion.div>

@@ -30,101 +30,48 @@ const staggerContainer = {
 
 const leadershipTeam = [
     {
-        name: "Dr. Sarah Johnson",
-        role: "Principal",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        bio: "Dr. Johnson has over 20 years of experience in education and has been leading Horizon Academy since 2015. She holds a Ph.D. in Educational Leadership from Stanford University.",
+        name: "Ram Prakash Chaudhary",
+        role: "Leader",
+        image: "/leader/ramprakash.jpeg",
+        // bio: "A former professional athlete, Mr. Martinez brings his expertise and passion for sports to our athletic programs. He has developed a comprehensive sports curriculum that emphasizes teamwork, discipline, and personal growth.",
     },
     {
-        name: "Michael Chen",
-        role: "Vice Principal, Academics",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        bio: "With a background in curriculum development and a passion for innovative teaching methods, Mr. Chen oversees all academic programs and faculty development.",
+        name: "Arjun Prasad Khanal",
+        role: "Team Leader",
+        image: "/leader/arjunprasad.jpeg",
+        // bio: "Dr. Prasad has over 20 years of experience in education and has been leading Horizon Academy since 2015. He holds a Ph.D. in Educational Leadership from Stanford University.",
     },
     {
-        name: "Dr. Amara Okafor",
-        role: "Vice Principal, Student Affairs",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        bio: "Dr. Okafor focuses on creating a supportive environment for students. She has pioneered several mental health and wellness initiatives at the school.",
+        name: "Ashok Kashyap",
+        role: "Leader",
+        image: "/leader/ashokkashyap.jpeg",
+        // bio: "With a background in curriculum development and a passion for innovative teaching methods, Mr. Chen oversees all academic programs and faculty development.",
     },
     {
-        name: "Robert Martinez",
-        role: "Director of Athletics",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        bio: "A former professional athlete, Mr. Martinez brings his expertise and passion for sports to our athletic programs. He has developed a comprehensive sports curriculum that emphasizes teamwork, discipline, and personal growth.",
-    },
-    {
-        name: "Jennifer Williams",
-        role: "Director of Arts",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        bio: "Ms. Williams is an accomplished artist and educator who has transformed our arts program into one of the most respected in the region. She believes in the power of creative expression for all students.",
-    },
-    {
-        name: "David Thompson",
-        role: "Director of Technology",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        bio: "Mr. Thompson leads our technology initiatives, ensuring that students and staff have access to cutting-edge tools and resources. He has implemented several innovative EdTech solutions across campus.",
-    },
-]
-const facilities = [
-    {
-        title: "Modern Classrooms",
-        description:
-            "Our spacious, technology-enhanced classrooms provide the perfect environment for engaged learning with interactive smartboards and flexible seating arrangements.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Science Laboratories",
-        description:
-            "State-of-the-art science labs equipped with advanced equipment allow students to conduct experiments and research in physics, chemistry, and biology.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Library & Media Center",
-        description:
-            "Our comprehensive library houses over 20,000 volumes and digital resources, with dedicated spaces for research, collaboration, and quiet study.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Athletic Facilities",
-        description:
-            "Including a gymnasium, swimming pool, tennis courts, and sports fields that support our diverse athletic programs and physical education curriculum.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Performing Arts Center",
-        description:
-            "A 500-seat auditorium with professional lighting and sound systems, music studios, and rehearsal spaces for our thriving arts programs.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Innovation Hub",
-        description:
-            "A dedicated makerspace and technology center where students can explore robotics, coding, 3D printing, and other emerging technologies.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
+        name: "Dharmpal Chaudhary",
+        role: "Leader",
+        image: "/leader/dharmpal.jpeg",
+        // bio: "Dr. Okafor focuses on creating a supportive environment for students. She has pioneered several mental health and wellness initiatives at the school.",
+    }
 ]
 const testimonials = [
     {
         quote:
             "The teachers at Horizon Academy don't just teach subjects; they inspire a love of learning that will last a lifetime. My daughter has flourished here in ways I never imagined possible.",
-        name: "Maria Rodriguez",
+        name: "Rohan Sahu",
         role: "Parent of 10th Grader",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
         quote:
             "The personalized attention and challenging curriculum prepared me exceptionally well for university. The critical thinking skills I developed at Horizon have been invaluable in my studies and career.",
-        name: "James Wilson",
+        name: "Reshma Singh",
         role: "Alumni, Class of 2018",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
         quote:
             "As a transfer student, I was nervous about fitting in, but the welcoming community at Horizon made me feel at home immediately. The diverse clubs and activities helped me discover new passions.",
-        name: "Aisha Patel",
+        name: "Rohan Kumar",
         role: "Current Student, Grade 11",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
 ]
 
@@ -133,7 +80,7 @@ export default function AboutPage() {
         <SmoothScroll>
             <div className="flex min-h-screen flex-col">
                 <main className="flex-1">
-                    <section className="max-w-7xl mx-auto">
+                    <section className="relative">
                         <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                             <Image
                                 src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
@@ -181,7 +128,7 @@ export default function AboutPage() {
                             </div>
                             <TabsContent value="mission">
                                 <motion.div
-                                    className="max-w-3xl mx-auto text-center space-y-6"
+                                    className="max-w-5xl mx-auto text-center space-y-6"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5 }}
@@ -206,7 +153,7 @@ export default function AboutPage() {
                             </TabsContent>
                             <TabsContent value="history">
                                 <motion.div
-                                    className="max-w-3xl mx-auto text-center space-y-6"
+                                    className="max-w-5xl mx-auto text-center space-y-6"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5 }}
@@ -233,7 +180,7 @@ export default function AboutPage() {
                             </TabsContent>
                             <TabsContent value="values">
                                 <motion.div
-                                    className="max-w-3xl mx-auto text-center space-y-6"
+                                    className="max-w-5xl mx-auto text-center space-y-6"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5 }}
@@ -343,31 +290,6 @@ export default function AboutPage() {
                             </motion.div>
                         </div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
-                        <motion.div
-                            className="text-center max-w-2xl mx-auto mb-12"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <h2 className="text-3xl font-bold tracking-tight mb-4">Campus Facilities</h2>
-                            <p className="text-lg text-muted-foreground">
-                                Our state-of-the-art facilities provide the perfect environment for learning and growth
-                            </p>
-                        </motion.div>
-                        <motion.div
-                            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-                            variants={staggerContainer}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                        >
-                            {facilities.map((facility) => (
-                                <FacilityCard key={facility.title} {...facility} />
-                            ))}
-                        </motion.div>
-                    </section>
                     <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
                         <div className="max-w-7xl mx-auto">
                             <motion.div
@@ -382,11 +304,12 @@ export default function AboutPage() {
                                     Hear from students, parents, and alumni about their Horizon Academy experience
                                 </p>
                             </motion.div>
-
                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                {testimonials.map((testimonial, index) => (
+                                {
+                                testimonials.map((testimonial, index) => (
                                     <TestimonialCard key={index} {...testimonial} />
-                                ))}
+                                ))
+                                }
                             </div>
                         </div>
                     </section>
@@ -422,26 +345,24 @@ function TeamMemberCard({
     name,
     role,
     image,
-    bio,
 }: {
     name: string
     role: string
     image: string
-    bio: string
 }) {
     return (
         <motion.div variants={fadeInUp}>
             <Card className="overflow-hidden h-full">
-                <div className="relative h-64 w-full">
+                <div className="relative h-96 w-full">
                     <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
                 </div>
                 <CardHeader>
                     <CardTitle>{name}</CardTitle>
                     <CardDescription>{role}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                {/* <CardContent>
                     <p className="text-muted-foreground">{bio}</p>
-                </CardContent>
+                </CardContent> */}
                 {/* <CardFooter>
                     <Button variant="ghost" size="sm" className="gap-1">
                         Read full bio <ChevronRight className="h-4 w-4" />
@@ -452,42 +373,14 @@ function TeamMemberCard({
     )
 }
 
-function FacilityCard({
-    title,
-    description,
-    image,
-}: {
-    title: string
-    description: string
-    image: string
-}) {
-    return (
-        <motion.div variants={fadeInUp}>
-            <Card className="overflow-hidden h-full">
-                <div className="relative h-48 w-full">
-                    <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
-                </div>
-                <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground">{description}</p>
-                </CardContent>
-            </Card>
-        </motion.div>
-    )
-}
-
 function TestimonialCard({
     quote,
     name,
     role,
-    image,
 }: {
     quote: string
     name: string
     role: string
-    image: string
 }) {
     return (
         <motion.div
@@ -503,9 +396,6 @@ function TestimonialCard({
                             <p className="italic text-muted-foreground">&quot;{quote}&quot;</p>
                         </div>
                         <div className="mt-auto pt-4 flex items-center gap-3">
-                            <div className="relative h-10 w-10 rounded-full overflow-hidden">
-                                <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
-                            </div>
                             <div>
                                 <p className="font-medium text-sm">{name}</p>
                                 <p className="text-xs text-muted-foreground">{role}</p>

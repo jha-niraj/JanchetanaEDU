@@ -257,7 +257,7 @@ export default function StudentLifePage() {
                             >
                                 <motion.div variants={fadeInUp} className="rounded-lg overflow-hidden">
                                     <Image
-                                        src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                        src="/studentlife/1.jpeg"
                                         alt="Students in art studio"
                                         width={300}
                                         height={300}
@@ -266,7 +266,7 @@ export default function StudentLifePage() {
                                 </motion.div>
                                 <motion.div variants={fadeInUp} className="rounded-lg overflow-hidden">
                                     <Image
-                                        src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                        src="/studentlife/2.jpeg"
                                         alt="Students playing basketball"
                                         width={300}
                                         height={300}
@@ -275,7 +275,7 @@ export default function StudentLifePage() {
                                 </motion.div>
                                 <motion.div variants={fadeInUp} className="rounded-lg overflow-hidden">
                                     <Image
-                                        src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                        src="/studentlife/3.jpeg"
                                         alt="Students in debate competition"
                                         width={300}
                                         height={300}
@@ -284,7 +284,7 @@ export default function StudentLifePage() {
                                 </motion.div>
                                 <motion.div variants={fadeInUp} className="rounded-lg overflow-hidden">
                                     <Image
-                                        src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                        src="/studentlife/4.jpeg"
                                         alt="Students in music performance"
                                         width={300}
                                         height={300}
