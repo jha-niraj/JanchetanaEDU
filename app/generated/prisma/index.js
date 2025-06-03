@@ -202,7 +202,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/niraj-jha/Documents/shunyatech/client-projects/janchetanaedu/app/generated/prisma",
+      "value": "C:\\Users\\ASUS\\Documents\\janchetana-web\\app\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -211,7 +211,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       },
       {
@@ -220,12 +220,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/niraj-jha/Documents/shunyatech/client-projects/janchetanaedu/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\ASUS\\Documents\\janchetana-web\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.7.0",
@@ -283,8 +282,8 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
-path.join(process.cwd(), "app/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node")
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "app/generated/prisma/query_engine-windows.dll.node")
 
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");

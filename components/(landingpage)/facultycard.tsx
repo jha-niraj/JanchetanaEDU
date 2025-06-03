@@ -28,9 +28,9 @@ export function FacilityCard({ title, description, imageSrc }: FacilityCardProps
                 <CardContent className="p-5">
                     <h3 className="font-bold text-xl mb-2">{title}</h3>
                     <p className="text-muted-foreground mb-4">{description}</p>
-                    <Button variant="ghost" size="sm" className="gap-1 p-0 h-auto">
+                    {/* <Button variant="ghost" size="sm" className="gap-1 p-0 h-auto">
                         Learn more <ArrowRight className="h-4 w-4 ml-1" />
-                    </Button>
+                    </Button> */}
                 </CardContent>
             </Card>
         </motion.div>

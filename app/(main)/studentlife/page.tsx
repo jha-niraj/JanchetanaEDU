@@ -165,7 +165,7 @@ export default function StudentLifePage() {
                     <section className="relative">
                         <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                             <Image
-                                src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                src="/studentlife/mainimage.jpeg"
                                 alt="Students enjoying campus life"
                                 fill
                                 priority

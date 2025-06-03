@@ -192,7 +192,7 @@ export default function ContactPage() {
                     <section className="relative">
                         <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                             <Image
-                                src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                src="/admissions/mainimage.jpeg"
                                 alt="School campus"
                                 fill
                                 priority
@@ -428,7 +428,7 @@ export default function ContactPage() {
                                         <CardContent className="p-0">
                                             <div className="relative h-[400px] w-full">
                                                 <Image
-                                                    src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                                    src="/landingpage/hero/2.jpeg"
                                                     alt="Campus map"
                                                     fill
                                                     className="object-cover"
@@ -452,7 +452,7 @@ export default function ContactPage() {
                             </div>
                         </div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    {/* <section className="max-w-7xl mx-auto py-12 md:py-16">
                         <motion.div
                             className="text-center max-w-2xl mx-auto mb-12"
                             initial={{ opacity: 0, y: 20 }}
@@ -535,7 +535,7 @@ export default function ContactPage() {
                                 </motion.div>
                             </TabsContent>
                         </Tabs>
-                    </section>
+                    </section> */}
                     <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
                         <div className="max-w-7xl mx-auto">
                             <motion.div

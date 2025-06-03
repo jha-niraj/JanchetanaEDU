@@ -66,7 +66,7 @@ export default function Home() {
 									transition={{ duration: 0.6 }}
 								>
 									<Badge className="px-3 py-1 text-sm bg-primary/10 text-primary border-primary/20 mb-2">
-										Established 1975
+										Established 2060
 									</Badge>
 									<h2 className="text-3xl md:text-4xl font-bold tracking-tight">Welcome to Janchetana School</h2>
 									<p className="text-muted-foreground">
@@ -122,7 +122,7 @@ export default function Home() {
 									transition={{ duration: 0.6, delay: 0.2 }}
 								>
 									<Image
-										src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										src="/landingpage/hero/2.jpeg"
 										alt="School building"
 										fill
 										className="object-cover"
@@ -131,8 +131,6 @@ export default function Home() {
 							</div>
 						</div>
 					</section>
-
-					{/* Quick Links Section */}
 					<section className="w-full py-16">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -184,8 +182,6 @@ export default function Home() {
 							</motion.div>
 						</div>
 					</section>
-
-					{/* School Leadership Section */}
 					<section className="w-full py-16 bg-secondary/10">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -202,7 +198,7 @@ export default function Home() {
 								</p>
 							</motion.div>
 							<motion.div
-								className="grid grid-cols-1 md:grid-cols-3 gap-8"
+								className="grid grid-cols-1 md:grid-cols-2 gap-8"
 								variants={staggerContainer}
 								initial="hidden"
 								whileInView="visible"
@@ -210,33 +206,31 @@ export default function Home() {
 							>
 								<motion.div variants={fadeInUp}>
 									<LeadershipCard
-										name="Dr. Rajendra Sharma"
+										name="Mr. Dewanand thakur"
 										position="Principal"
-										bio="With over 25 years of experience in education, Dr. Sharma has transformed our school into a center of academic excellence."
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										bio="Study at Tribhuvan University, Nepal (M.Ed), Studied Master of Education at Tribhuwan University, Kirtipur, Studied Bachelor at Kapilvastu Multiple Campus."
+										imageSrc="/leadership/principal.jpeg"
 									/>
 								</motion.div>
 								<motion.div variants={fadeInUp}>
 									<LeadershipCard
-										name="Mrs. Anita Gurung"
+										name="Mr. Bishnu  Sharma"
 										position="Vice Principal"
-										bio="Mrs. Gurung oversees curriculum development and ensures our teaching standards remain at the highest level."
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										bio="Mr. Bishnu Sharma oversees curriculum development and ensures our teaching standards remain at the highest level."
+										imageSrc="/leadership/vice-principal.jpeg"
 									/>
 								</motion.div>
-								<motion.div variants={fadeInUp}>
+								{/* <motion.div variants={fadeInUp}>
 									<LeadershipCard
 										name="Mr. Deepak Thapa"
 										position="Head of Administration"
 										bio="Mr. Thapa manages the school's operations and facilities, creating an optimal learning environment for all students."
 										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
 									/>
-								</motion.div>
+								</motion.div> */}
 							</motion.div>
 						</div>
 					</section>
-
-					{/* Featured Articles Section */}
 					<section className="w-full py-16">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -255,8 +249,6 @@ export default function Home() {
 							<ArticleCarousel />
 						</div>
 					</section>
-
-					{/* School Facilities Section */}
 					<section className="w-full py-16 bg-gradient-to-b from-primary/5 to-transparent">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -281,33 +273,33 @@ export default function Home() {
 							>
 								<motion.div variants={fadeInUp}>
 									<FacilityCard
-										title="Science Laboratories"
-										description="State-of-the-art labs for physics, chemistry, and biology with modern equipment for hands-on learning."
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										title="Computer Science Lab"
+										description="State-of-the-art computer lab with the latest hardware and software for programming and digital skills."
+										imageSrc="facilities/computer.jpeg"
 									/>
 								</motion.div>
 								<motion.div variants={fadeInUp}>
 									<FacilityCard
-										title="Computer Center"
-										description="Fully equipped computer labs with high-speed internet and the latest software for digital literacy."
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										title="Physics Lab"
+										description="Well-equipped physics lab with modern instruments for hands-on experiments and research."
+										imageSrc="facilities/physics.jpeg"
 									/>
 								</motion.div>
 								<motion.div variants={fadeInUp}>
 									<FacilityCard
-										title="Library"
-										description="Extensive collection of books, journals, and digital resources to foster a love for reading and research."
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										title="Chemistry Lab"
+										description="Advanced chemistry lab with safety equipment and resources for practical learning."
+										imageSrc="facilities/chemistry.jpeg"
 									/>
 								</motion.div>
 								<motion.div variants={fadeInUp}>
 									<FacilityCard
-										title="Sports Complex"
-										description="Multi-purpose sports facilities including basketball courts, football field, and indoor games area."
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										title="Electrical Lab"
+										description="Specialized lab for electrical engineering students, equipped with modern tools and equipment."
+										imageSrc="facilities/electrical-2.jpeg"
 									/>
 								</motion.div>
-								<motion.div variants={fadeInUp}>
+								{/* <motion.div variants={fadeInUp}>
 									<FacilityCard
 										title="Auditorium"
 										description="Modern auditorium for school events, performances, and community gatherings."
@@ -320,12 +312,10 @@ export default function Home() {
 										description="Creative space for visual arts, crafts, and design projects to nurture artistic talents."
 										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
 									/>
-								</motion.div>
+								</motion.div> */}
 							</motion.div>
 						</div>
 					</section>
-
-					{/* Academic Excellence Section */}
 					<section className="w-full py-16">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -383,8 +373,6 @@ export default function Home() {
 							</motion.div>
 						</div>
 					</section>
-
-					{/* Upcoming Activities Section */}
 					<section className="w-full py-16 bg-secondary/10">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -460,8 +448,6 @@ export default function Home() {
 							</motion.div>
 						</div>
 					</section>
-
-					{/* Alumni Spotlight Section */}
 					<section className="w-full py-16">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -471,7 +457,7 @@ export default function Home() {
 								viewport={{ once: true }}
 								transition={{ duration: 0.5 }}
 							>
-								<Badge className="px-3 py-1 text-sm bg-primary/10 text-primary border-primary/20">Success Stories</Badge>
+								<Badge className="px-3 py-1 text-sm bg-primary/10 text-black hover:text-white border-primary/20">Success Stories</Badge>
 								<h2 className="text-3xl font-bold tracking-tight">Alumni Spotlight</h2>
 								<p className="text-muted-foreground max-w-2xl mx-auto">
 									Meet our distinguished alumni who are making a difference in the world
@@ -494,8 +480,6 @@ export default function Home() {
 							</motion.div>
 						</div>
 					</section>
-
-					{/* Call to Action Section */}
 					<section className="w-full py-16 bg-primary/5">
 						<div className="max-w-7xl mx-auto px-4 sm:px-6">
 							<motion.div
@@ -527,7 +511,7 @@ export default function Home() {
 									</div>
 									<div className="relative h-[300px] rounded-xl overflow-hidden shadow-lg hidden md:block">
 										<Image
-											src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+											src="/landingpage/cta-image.jpeg"
 											alt="Students in classroom"
 											fill
 											className="object-cover"
