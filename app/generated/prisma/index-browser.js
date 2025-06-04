@@ -166,6 +166,37 @@ exports.Prisma.AdmissionInquiryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AlumniRegistrationScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  graduationYear: 'graduationYear',
+  course: 'course',
+  profession: 'profession',
+  company: 'company',
+  address: 'address',
+  city: 'city',
+  country: 'country',
+  bio: 'bio',
+  socialLinks: 'socialLinks',
+  interests: 'interests',
+  isVerified: 'isVerified',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.NewsletterSubscriptionScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  graduationYear: 'graduationYear',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ContactInquiryScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -198,6 +229,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -206,6 +242,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.Role = exports.$Enums.Role = {
   USER: 'USER',
@@ -222,6 +264,8 @@ exports.Prisma.ModelName = {
   Teacher: 'Teacher',
   Article: 'Article',
   AdmissionInquiry: 'AdmissionInquiry',
+  AlumniRegistration: 'AlumniRegistration',
+  NewsletterSubscription: 'NewsletterSubscription',
   ContactInquiry: 'ContactInquiry',
   Account: 'Account'
 };

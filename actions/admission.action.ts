@@ -14,7 +14,7 @@ const admissionSchema = z.object({
     desiredClasses: z
         .array(z.string().min(1, "Class selection is required"))
         .min(1, "At least one class is required"),
-    admissionType: z.enum(["nursery-8", "grade-9-12"], {
+    admissionType: z.enum(["NURSERY_8", "GRADE_9_12"], {
         required_error: "Admission type is required"
     }),
     streams: z.array(z.string()).optional(), // Optional, only for grade-9-12
@@ -35,7 +35,7 @@ export async function addAdmissionInquiry(formData: FormData) {
         const validatedData = admissionSchema.parse(data);
 
         // Additional validation for grade-9-12
-        if (validatedData.admissionType === "grade-9-12") {
+        if (validatedData.admissionType === "GRADE_9_12") {
             if (!validatedData.streams || validatedData.streams.length !== validatedData.numberOfChildren) {
                 return {
                     success: false,
@@ -61,7 +61,7 @@ export async function addAdmissionInquiry(formData: FormData) {
         ];
         const grade9To12Classes = ["Grade 9", "Grade 10", "Grade 11", "Grade 12"];
 
-        const validClasses = validatedData.admissionType === "nursery-8"
+        const validClasses = validatedData.admissionType === "NURSERY_8"
             ? nurseryTo8Classes
             : grade9To12Classes;
 

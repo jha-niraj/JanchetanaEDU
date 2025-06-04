@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, MapPin } from 'lucide-react';
@@ -7,19 +9,19 @@ const ToursPage = () => {
     const educationalTours = [
         {
             id: 1,
-            image: 'tour/1.jpeg',
+            image: '/tour/1.jpeg',
             name: 'Historical Museum Visit',
             time: 'Full Day - 8:00 AM'
         },
         {
             id: 2,
-            image: 'tour/2.jpeg',
+            image: '/tour/2.jpeg',
             name: 'Science Center Excursion',
             time: 'Half Day - 9:00 AM'
         },
         {
             id: 3,
-            image: 'tour/3.jpeg',
+            image: '/tour/3.jpeg',
             name: 'Nature Park Field Trip',
             time: 'Full Day - 7:30 AM'
         }
@@ -82,37 +84,37 @@ const ToursPage = () => {
                         </motion.div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {
-                            educationalTours.map((tour, index) => (
-                                <motion.div
-                                    key={tour.id}
-                                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <div className="relative h-48 overflow-hidden">
-                                        <Image
-                                            fill
-                                            src={tour.image}
-                                            alt={tour.name}
-                                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                                        />
-                                    </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center justify-between text-sm text-gray-500">
-                                            <div className="flex items-center">
-                                                <MapPin className="w-4 h-4 mr-1" />
-                                                <span>{tour.name}</span>
+                                educationalTours.map((tour, index) => (
+                                    <motion.div
+                                        key={tour.id}
+                                        className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.1, duration: 0.6 }}
+                                        whileHover={{ y: -5 }}
+                                    >
+                                        <div className="relative h-48 overflow-hidden">
+                                            <Image
+                                                fill
+                                                src={tour.image}
+                                                alt={tour.name}
+                                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                                            />
+                                        </div>
+                                        <div className="p-6">
+                                            <div className="flex items-center justify-between text-sm text-gray-500">
+                                                <div className="flex items-center">
+                                                    <MapPin className="w-4 h-4 mr-1" />
+                                                    <span>{tour.name}</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center mt-2 text-sm text-blue-600">
+                                                <Clock className="w-4 h-4 mr-1" />
+                                                <span>{tour.time}</span>
                                             </div>
                                         </div>
-                                        <div className="flex items-center mt-2 text-sm text-blue-600">
-                                            <Clock className="w-4 h-4 mr-1" />
-                                            <span>{tour.time}</span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))
+                                    </motion.div>
+                                ))
                             }
                         </div>
                     </div>

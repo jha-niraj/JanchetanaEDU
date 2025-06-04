@@ -34,6 +34,16 @@ export type Article = $Result.DefaultSelection<Prisma.$ArticlePayload>
  */
 export type AdmissionInquiry = $Result.DefaultSelection<Prisma.$AdmissionInquiryPayload>
 /**
+ * Model AlumniRegistration
+ * 
+ */
+export type AlumniRegistration = $Result.DefaultSelection<Prisma.$AlumniRegistrationPayload>
+/**
+ * Model NewsletterSubscription
+ * 
+ */
+export type NewsletterSubscription = $Result.DefaultSelection<Prisma.$NewsletterSubscriptionPayload>
+/**
  * Model ContactInquiry
  * 
  */
@@ -237,6 +247,26 @@ export class PrismaClient<
     * ```
     */
   get admissionInquiry(): Prisma.AdmissionInquiryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.alumniRegistration`: Exposes CRUD operations for the **AlumniRegistration** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AlumniRegistrations
+    * const alumniRegistrations = await prisma.alumniRegistration.findMany()
+    * ```
+    */
+  get alumniRegistration(): Prisma.AlumniRegistrationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.newsletterSubscription`: Exposes CRUD operations for the **NewsletterSubscription** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NewsletterSubscriptions
+    * const newsletterSubscriptions = await prisma.newsletterSubscription.findMany()
+    * ```
+    */
+  get newsletterSubscription(): Prisma.NewsletterSubscriptionDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.contactInquiry`: Exposes CRUD operations for the **ContactInquiry** model.
@@ -701,6 +731,8 @@ export namespace Prisma {
     Teacher: 'Teacher',
     Article: 'Article',
     AdmissionInquiry: 'AdmissionInquiry',
+    AlumniRegistration: 'AlumniRegistration',
+    NewsletterSubscription: 'NewsletterSubscription',
     ContactInquiry: 'ContactInquiry',
     Account: 'Account'
   };
@@ -721,7 +753,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "teacher" | "article" | "admissionInquiry" | "contactInquiry" | "account"
+      modelProps: "user" | "teacher" | "article" | "admissionInquiry" | "alumniRegistration" | "newsletterSubscription" | "contactInquiry" | "account"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1021,6 +1053,154 @@ export namespace Prisma {
           }
         }
       }
+      AlumniRegistration: {
+        payload: Prisma.$AlumniRegistrationPayload<ExtArgs>
+        fields: Prisma.AlumniRegistrationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AlumniRegistrationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AlumniRegistrationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>
+          }
+          findFirst: {
+            args: Prisma.AlumniRegistrationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AlumniRegistrationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>
+          }
+          findMany: {
+            args: Prisma.AlumniRegistrationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>[]
+          }
+          create: {
+            args: Prisma.AlumniRegistrationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>
+          }
+          createMany: {
+            args: Prisma.AlumniRegistrationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AlumniRegistrationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>[]
+          }
+          delete: {
+            args: Prisma.AlumniRegistrationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>
+          }
+          update: {
+            args: Prisma.AlumniRegistrationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>
+          }
+          deleteMany: {
+            args: Prisma.AlumniRegistrationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AlumniRegistrationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AlumniRegistrationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>[]
+          }
+          upsert: {
+            args: Prisma.AlumniRegistrationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumniRegistrationPayload>
+          }
+          aggregate: {
+            args: Prisma.AlumniRegistrationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAlumniRegistration>
+          }
+          groupBy: {
+            args: Prisma.AlumniRegistrationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AlumniRegistrationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AlumniRegistrationCountArgs<ExtArgs>
+            result: $Utils.Optional<AlumniRegistrationCountAggregateOutputType> | number
+          }
+        }
+      }
+      NewsletterSubscription: {
+        payload: Prisma.$NewsletterSubscriptionPayload<ExtArgs>
+        fields: Prisma.NewsletterSubscriptionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NewsletterSubscriptionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NewsletterSubscriptionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>
+          }
+          findFirst: {
+            args: Prisma.NewsletterSubscriptionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NewsletterSubscriptionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>
+          }
+          findMany: {
+            args: Prisma.NewsletterSubscriptionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>[]
+          }
+          create: {
+            args: Prisma.NewsletterSubscriptionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>
+          }
+          createMany: {
+            args: Prisma.NewsletterSubscriptionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NewsletterSubscriptionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>[]
+          }
+          delete: {
+            args: Prisma.NewsletterSubscriptionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>
+          }
+          update: {
+            args: Prisma.NewsletterSubscriptionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>
+          }
+          deleteMany: {
+            args: Prisma.NewsletterSubscriptionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NewsletterSubscriptionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NewsletterSubscriptionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>[]
+          }
+          upsert: {
+            args: Prisma.NewsletterSubscriptionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NewsletterSubscriptionPayload>
+          }
+          aggregate: {
+            args: Prisma.NewsletterSubscriptionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNewsletterSubscription>
+          }
+          groupBy: {
+            args: Prisma.NewsletterSubscriptionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NewsletterSubscriptionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NewsletterSubscriptionCountArgs<ExtArgs>
+            result: $Utils.Optional<NewsletterSubscriptionCountAggregateOutputType> | number
+          }
+        }
+      }
       ContactInquiry: {
         payload: Prisma.$ContactInquiryPayload<ExtArgs>
         fields: Prisma.ContactInquiryFieldRefs
@@ -1257,6 +1437,8 @@ export namespace Prisma {
     teacher?: TeacherOmit
     article?: ArticleOmit
     admissionInquiry?: AdmissionInquiryOmit
+    alumniRegistration?: AlumniRegistrationOmit
+    newsletterSubscription?: NewsletterSubscriptionOmit
     contactInquiry?: ContactInquiryOmit
     account?: AccountOmit
   }
@@ -5973,6 +6155,2187 @@ export namespace Prisma {
 
 
   /**
+   * Model AlumniRegistration
+   */
+
+  export type AggregateAlumniRegistration = {
+    _count: AlumniRegistrationCountAggregateOutputType | null
+    _min: AlumniRegistrationMinAggregateOutputType | null
+    _max: AlumniRegistrationMaxAggregateOutputType | null
+  }
+
+  export type AlumniRegistrationMinAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    graduationYear: string | null
+    course: string | null
+    profession: string | null
+    company: string | null
+    address: string | null
+    city: string | null
+    country: string | null
+    bio: string | null
+    interests: string | null
+    isVerified: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AlumniRegistrationMaxAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    graduationYear: string | null
+    course: string | null
+    profession: string | null
+    company: string | null
+    address: string | null
+    city: string | null
+    country: string | null
+    bio: string | null
+    interests: string | null
+    isVerified: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AlumniRegistrationCountAggregateOutputType = {
+    id: number
+    firstName: number
+    lastName: number
+    email: number
+    phone: number
+    graduationYear: number
+    course: number
+    profession: number
+    company: number
+    address: number
+    city: number
+    country: number
+    bio: number
+    socialLinks: number
+    interests: number
+    isVerified: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AlumniRegistrationMinAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    graduationYear?: true
+    course?: true
+    profession?: true
+    company?: true
+    address?: true
+    city?: true
+    country?: true
+    bio?: true
+    interests?: true
+    isVerified?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AlumniRegistrationMaxAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    graduationYear?: true
+    course?: true
+    profession?: true
+    company?: true
+    address?: true
+    city?: true
+    country?: true
+    bio?: true
+    interests?: true
+    isVerified?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AlumniRegistrationCountAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    graduationYear?: true
+    course?: true
+    profession?: true
+    company?: true
+    address?: true
+    city?: true
+    country?: true
+    bio?: true
+    socialLinks?: true
+    interests?: true
+    isVerified?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AlumniRegistrationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AlumniRegistration to aggregate.
+     */
+    where?: AlumniRegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AlumniRegistrations to fetch.
+     */
+    orderBy?: AlumniRegistrationOrderByWithRelationInput | AlumniRegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AlumniRegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AlumniRegistrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AlumniRegistrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AlumniRegistrations
+    **/
+    _count?: true | AlumniRegistrationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AlumniRegistrationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AlumniRegistrationMaxAggregateInputType
+  }
+
+  export type GetAlumniRegistrationAggregateType<T extends AlumniRegistrationAggregateArgs> = {
+        [P in keyof T & keyof AggregateAlumniRegistration]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAlumniRegistration[P]>
+      : GetScalarType<T[P], AggregateAlumniRegistration[P]>
+  }
+
+
+
+
+  export type AlumniRegistrationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AlumniRegistrationWhereInput
+    orderBy?: AlumniRegistrationOrderByWithAggregationInput | AlumniRegistrationOrderByWithAggregationInput[]
+    by: AlumniRegistrationScalarFieldEnum[] | AlumniRegistrationScalarFieldEnum
+    having?: AlumniRegistrationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AlumniRegistrationCountAggregateInputType | true
+    _min?: AlumniRegistrationMinAggregateInputType
+    _max?: AlumniRegistrationMaxAggregateInputType
+  }
+
+  export type AlumniRegistrationGroupByOutputType = {
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string | null
+    graduationYear: string
+    course: string | null
+    profession: string | null
+    company: string | null
+    address: string | null
+    city: string | null
+    country: string | null
+    bio: string | null
+    socialLinks: JsonValue | null
+    interests: string | null
+    isVerified: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: AlumniRegistrationCountAggregateOutputType | null
+    _min: AlumniRegistrationMinAggregateOutputType | null
+    _max: AlumniRegistrationMaxAggregateOutputType | null
+  }
+
+  type GetAlumniRegistrationGroupByPayload<T extends AlumniRegistrationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AlumniRegistrationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AlumniRegistrationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AlumniRegistrationGroupByOutputType[P]>
+            : GetScalarType<T[P], AlumniRegistrationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AlumniRegistrationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    course?: boolean
+    profession?: boolean
+    company?: boolean
+    address?: boolean
+    city?: boolean
+    country?: boolean
+    bio?: boolean
+    socialLinks?: boolean
+    interests?: boolean
+    isVerified?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["alumniRegistration"]>
+
+  export type AlumniRegistrationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    course?: boolean
+    profession?: boolean
+    company?: boolean
+    address?: boolean
+    city?: boolean
+    country?: boolean
+    bio?: boolean
+    socialLinks?: boolean
+    interests?: boolean
+    isVerified?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["alumniRegistration"]>
+
+  export type AlumniRegistrationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    course?: boolean
+    profession?: boolean
+    company?: boolean
+    address?: boolean
+    city?: boolean
+    country?: boolean
+    bio?: boolean
+    socialLinks?: boolean
+    interests?: boolean
+    isVerified?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["alumniRegistration"]>
+
+  export type AlumniRegistrationSelectScalar = {
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    course?: boolean
+    profession?: boolean
+    company?: boolean
+    address?: boolean
+    city?: boolean
+    country?: boolean
+    bio?: boolean
+    socialLinks?: boolean
+    interests?: boolean
+    isVerified?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AlumniRegistrationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phone" | "graduationYear" | "course" | "profession" | "company" | "address" | "city" | "country" | "bio" | "socialLinks" | "interests" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["alumniRegistration"]>
+
+  export type $AlumniRegistrationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AlumniRegistration"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      firstName: string
+      lastName: string
+      email: string
+      phone: string | null
+      graduationYear: string
+      course: string | null
+      profession: string | null
+      company: string | null
+      address: string | null
+      city: string | null
+      country: string | null
+      bio: string | null
+      socialLinks: Prisma.JsonValue | null
+      interests: string | null
+      isVerified: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["alumniRegistration"]>
+    composites: {}
+  }
+
+  type AlumniRegistrationGetPayload<S extends boolean | null | undefined | AlumniRegistrationDefaultArgs> = $Result.GetResult<Prisma.$AlumniRegistrationPayload, S>
+
+  type AlumniRegistrationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AlumniRegistrationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AlumniRegistrationCountAggregateInputType | true
+    }
+
+  export interface AlumniRegistrationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AlumniRegistration'], meta: { name: 'AlumniRegistration' } }
+    /**
+     * Find zero or one AlumniRegistration that matches the filter.
+     * @param {AlumniRegistrationFindUniqueArgs} args - Arguments to find a AlumniRegistration
+     * @example
+     * // Get one AlumniRegistration
+     * const alumniRegistration = await prisma.alumniRegistration.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AlumniRegistrationFindUniqueArgs>(args: SelectSubset<T, AlumniRegistrationFindUniqueArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AlumniRegistration that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AlumniRegistrationFindUniqueOrThrowArgs} args - Arguments to find a AlumniRegistration
+     * @example
+     * // Get one AlumniRegistration
+     * const alumniRegistration = await prisma.alumniRegistration.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AlumniRegistrationFindUniqueOrThrowArgs>(args: SelectSubset<T, AlumniRegistrationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AlumniRegistration that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlumniRegistrationFindFirstArgs} args - Arguments to find a AlumniRegistration
+     * @example
+     * // Get one AlumniRegistration
+     * const alumniRegistration = await prisma.alumniRegistration.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AlumniRegistrationFindFirstArgs>(args?: SelectSubset<T, AlumniRegistrationFindFirstArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AlumniRegistration that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlumniRegistrationFindFirstOrThrowArgs} args - Arguments to find a AlumniRegistration
+     * @example
+     * // Get one AlumniRegistration
+     * const alumniRegistration = await prisma.alumniRegistration.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AlumniRegistrationFindFirstOrThrowArgs>(args?: SelectSubset<T, AlumniRegistrationFindFirstOrThrowArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AlumniRegistrations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlumniRegistrationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AlumniRegistrations
+     * const alumniRegistrations = await prisma.alumniRegistration.findMany()
+     * 
+     * // Get first 10 AlumniRegistrations
+     * const alumniRegistrations = await prisma.alumniRegistration.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const alumniRegistrationWithIdOnly = await prisma.alumniRegistration.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AlumniRegistrationFindManyArgs>(args?: SelectSubset<T, AlumniRegistrationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AlumniRegistration.
+     * @param {AlumniRegistrationCreateArgs} args - Arguments to create a AlumniRegistration.
+     * @example
+     * // Create one AlumniRegistration
+     * const AlumniRegistration = await prisma.alumniRegistration.create({
+     *   data: {
+     *     // ... data to create a AlumniRegistration
+     *   }
+     * })
+     * 
+     */
+    create<T extends AlumniRegistrationCreateArgs>(args: SelectSubset<T, AlumniRegistrationCreateArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AlumniRegistrations.
+     * @param {AlumniRegistrationCreateManyArgs} args - Arguments to create many AlumniRegistrations.
+     * @example
+     * // Create many AlumniRegistrations
+     * const alumniRegistration = await prisma.alumniRegistration.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AlumniRegistrationCreateManyArgs>(args?: SelectSubset<T, AlumniRegistrationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AlumniRegistrations and returns the data saved in the database.
+     * @param {AlumniRegistrationCreateManyAndReturnArgs} args - Arguments to create many AlumniRegistrations.
+     * @example
+     * // Create many AlumniRegistrations
+     * const alumniRegistration = await prisma.alumniRegistration.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AlumniRegistrations and only return the `id`
+     * const alumniRegistrationWithIdOnly = await prisma.alumniRegistration.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AlumniRegistrationCreateManyAndReturnArgs>(args?: SelectSubset<T, AlumniRegistrationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AlumniRegistration.
+     * @param {AlumniRegistrationDeleteArgs} args - Arguments to delete one AlumniRegistration.
+     * @example
+     * // Delete one AlumniRegistration
+     * const AlumniRegistration = await prisma.alumniRegistration.delete({
+     *   where: {
+     *     // ... filter to delete one AlumniRegistration
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AlumniRegistrationDeleteArgs>(args: SelectSubset<T, AlumniRegistrationDeleteArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AlumniRegistration.
+     * @param {AlumniRegistrationUpdateArgs} args - Arguments to update one AlumniRegistration.
+     * @example
+     * // Update one AlumniRegistration
+     * const alumniRegistration = await prisma.alumniRegistration.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AlumniRegistrationUpdateArgs>(args: SelectSubset<T, AlumniRegistrationUpdateArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AlumniRegistrations.
+     * @param {AlumniRegistrationDeleteManyArgs} args - Arguments to filter AlumniRegistrations to delete.
+     * @example
+     * // Delete a few AlumniRegistrations
+     * const { count } = await prisma.alumniRegistration.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AlumniRegistrationDeleteManyArgs>(args?: SelectSubset<T, AlumniRegistrationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AlumniRegistrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlumniRegistrationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AlumniRegistrations
+     * const alumniRegistration = await prisma.alumniRegistration.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AlumniRegistrationUpdateManyArgs>(args: SelectSubset<T, AlumniRegistrationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AlumniRegistrations and returns the data updated in the database.
+     * @param {AlumniRegistrationUpdateManyAndReturnArgs} args - Arguments to update many AlumniRegistrations.
+     * @example
+     * // Update many AlumniRegistrations
+     * const alumniRegistration = await prisma.alumniRegistration.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AlumniRegistrations and only return the `id`
+     * const alumniRegistrationWithIdOnly = await prisma.alumniRegistration.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AlumniRegistrationUpdateManyAndReturnArgs>(args: SelectSubset<T, AlumniRegistrationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AlumniRegistration.
+     * @param {AlumniRegistrationUpsertArgs} args - Arguments to update or create a AlumniRegistration.
+     * @example
+     * // Update or create a AlumniRegistration
+     * const alumniRegistration = await prisma.alumniRegistration.upsert({
+     *   create: {
+     *     // ... data to create a AlumniRegistration
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AlumniRegistration we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AlumniRegistrationUpsertArgs>(args: SelectSubset<T, AlumniRegistrationUpsertArgs<ExtArgs>>): Prisma__AlumniRegistrationClient<$Result.GetResult<Prisma.$AlumniRegistrationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AlumniRegistrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlumniRegistrationCountArgs} args - Arguments to filter AlumniRegistrations to count.
+     * @example
+     * // Count the number of AlumniRegistrations
+     * const count = await prisma.alumniRegistration.count({
+     *   where: {
+     *     // ... the filter for the AlumniRegistrations we want to count
+     *   }
+     * })
+    **/
+    count<T extends AlumniRegistrationCountArgs>(
+      args?: Subset<T, AlumniRegistrationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AlumniRegistrationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AlumniRegistration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlumniRegistrationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AlumniRegistrationAggregateArgs>(args: Subset<T, AlumniRegistrationAggregateArgs>): Prisma.PrismaPromise<GetAlumniRegistrationAggregateType<T>>
+
+    /**
+     * Group by AlumniRegistration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlumniRegistrationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AlumniRegistrationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AlumniRegistrationGroupByArgs['orderBy'] }
+        : { orderBy?: AlumniRegistrationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AlumniRegistrationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlumniRegistrationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AlumniRegistration model
+   */
+  readonly fields: AlumniRegistrationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AlumniRegistration.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AlumniRegistrationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AlumniRegistration model
+   */
+  interface AlumniRegistrationFieldRefs {
+    readonly id: FieldRef<"AlumniRegistration", 'String'>
+    readonly firstName: FieldRef<"AlumniRegistration", 'String'>
+    readonly lastName: FieldRef<"AlumniRegistration", 'String'>
+    readonly email: FieldRef<"AlumniRegistration", 'String'>
+    readonly phone: FieldRef<"AlumniRegistration", 'String'>
+    readonly graduationYear: FieldRef<"AlumniRegistration", 'String'>
+    readonly course: FieldRef<"AlumniRegistration", 'String'>
+    readonly profession: FieldRef<"AlumniRegistration", 'String'>
+    readonly company: FieldRef<"AlumniRegistration", 'String'>
+    readonly address: FieldRef<"AlumniRegistration", 'String'>
+    readonly city: FieldRef<"AlumniRegistration", 'String'>
+    readonly country: FieldRef<"AlumniRegistration", 'String'>
+    readonly bio: FieldRef<"AlumniRegistration", 'String'>
+    readonly socialLinks: FieldRef<"AlumniRegistration", 'Json'>
+    readonly interests: FieldRef<"AlumniRegistration", 'String'>
+    readonly isVerified: FieldRef<"AlumniRegistration", 'Boolean'>
+    readonly createdAt: FieldRef<"AlumniRegistration", 'DateTime'>
+    readonly updatedAt: FieldRef<"AlumniRegistration", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AlumniRegistration findUnique
+   */
+  export type AlumniRegistrationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * Filter, which AlumniRegistration to fetch.
+     */
+    where: AlumniRegistrationWhereUniqueInput
+  }
+
+  /**
+   * AlumniRegistration findUniqueOrThrow
+   */
+  export type AlumniRegistrationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * Filter, which AlumniRegistration to fetch.
+     */
+    where: AlumniRegistrationWhereUniqueInput
+  }
+
+  /**
+   * AlumniRegistration findFirst
+   */
+  export type AlumniRegistrationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * Filter, which AlumniRegistration to fetch.
+     */
+    where?: AlumniRegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AlumniRegistrations to fetch.
+     */
+    orderBy?: AlumniRegistrationOrderByWithRelationInput | AlumniRegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AlumniRegistrations.
+     */
+    cursor?: AlumniRegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AlumniRegistrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AlumniRegistrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AlumniRegistrations.
+     */
+    distinct?: AlumniRegistrationScalarFieldEnum | AlumniRegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * AlumniRegistration findFirstOrThrow
+   */
+  export type AlumniRegistrationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * Filter, which AlumniRegistration to fetch.
+     */
+    where?: AlumniRegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AlumniRegistrations to fetch.
+     */
+    orderBy?: AlumniRegistrationOrderByWithRelationInput | AlumniRegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AlumniRegistrations.
+     */
+    cursor?: AlumniRegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AlumniRegistrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AlumniRegistrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AlumniRegistrations.
+     */
+    distinct?: AlumniRegistrationScalarFieldEnum | AlumniRegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * AlumniRegistration findMany
+   */
+  export type AlumniRegistrationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * Filter, which AlumniRegistrations to fetch.
+     */
+    where?: AlumniRegistrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AlumniRegistrations to fetch.
+     */
+    orderBy?: AlumniRegistrationOrderByWithRelationInput | AlumniRegistrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AlumniRegistrations.
+     */
+    cursor?: AlumniRegistrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AlumniRegistrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AlumniRegistrations.
+     */
+    skip?: number
+    distinct?: AlumniRegistrationScalarFieldEnum | AlumniRegistrationScalarFieldEnum[]
+  }
+
+  /**
+   * AlumniRegistration create
+   */
+  export type AlumniRegistrationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * The data needed to create a AlumniRegistration.
+     */
+    data: XOR<AlumniRegistrationCreateInput, AlumniRegistrationUncheckedCreateInput>
+  }
+
+  /**
+   * AlumniRegistration createMany
+   */
+  export type AlumniRegistrationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AlumniRegistrations.
+     */
+    data: AlumniRegistrationCreateManyInput | AlumniRegistrationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AlumniRegistration createManyAndReturn
+   */
+  export type AlumniRegistrationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * The data used to create many AlumniRegistrations.
+     */
+    data: AlumniRegistrationCreateManyInput | AlumniRegistrationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AlumniRegistration update
+   */
+  export type AlumniRegistrationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * The data needed to update a AlumniRegistration.
+     */
+    data: XOR<AlumniRegistrationUpdateInput, AlumniRegistrationUncheckedUpdateInput>
+    /**
+     * Choose, which AlumniRegistration to update.
+     */
+    where: AlumniRegistrationWhereUniqueInput
+  }
+
+  /**
+   * AlumniRegistration updateMany
+   */
+  export type AlumniRegistrationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AlumniRegistrations.
+     */
+    data: XOR<AlumniRegistrationUpdateManyMutationInput, AlumniRegistrationUncheckedUpdateManyInput>
+    /**
+     * Filter which AlumniRegistrations to update
+     */
+    where?: AlumniRegistrationWhereInput
+    /**
+     * Limit how many AlumniRegistrations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AlumniRegistration updateManyAndReturn
+   */
+  export type AlumniRegistrationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * The data used to update AlumniRegistrations.
+     */
+    data: XOR<AlumniRegistrationUpdateManyMutationInput, AlumniRegistrationUncheckedUpdateManyInput>
+    /**
+     * Filter which AlumniRegistrations to update
+     */
+    where?: AlumniRegistrationWhereInput
+    /**
+     * Limit how many AlumniRegistrations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AlumniRegistration upsert
+   */
+  export type AlumniRegistrationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * The filter to search for the AlumniRegistration to update in case it exists.
+     */
+    where: AlumniRegistrationWhereUniqueInput
+    /**
+     * In case the AlumniRegistration found by the `where` argument doesn't exist, create a new AlumniRegistration with this data.
+     */
+    create: XOR<AlumniRegistrationCreateInput, AlumniRegistrationUncheckedCreateInput>
+    /**
+     * In case the AlumniRegistration was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AlumniRegistrationUpdateInput, AlumniRegistrationUncheckedUpdateInput>
+  }
+
+  /**
+   * AlumniRegistration delete
+   */
+  export type AlumniRegistrationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+    /**
+     * Filter which AlumniRegistration to delete.
+     */
+    where: AlumniRegistrationWhereUniqueInput
+  }
+
+  /**
+   * AlumniRegistration deleteMany
+   */
+  export type AlumniRegistrationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AlumniRegistrations to delete
+     */
+    where?: AlumniRegistrationWhereInput
+    /**
+     * Limit how many AlumniRegistrations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AlumniRegistration without action
+   */
+  export type AlumniRegistrationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlumniRegistration
+     */
+    select?: AlumniRegistrationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AlumniRegistration
+     */
+    omit?: AlumniRegistrationOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model NewsletterSubscription
+   */
+
+  export type AggregateNewsletterSubscription = {
+    _count: NewsletterSubscriptionCountAggregateOutputType | null
+    _min: NewsletterSubscriptionMinAggregateOutputType | null
+    _max: NewsletterSubscriptionMaxAggregateOutputType | null
+  }
+
+  export type NewsletterSubscriptionMinAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    graduationYear: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NewsletterSubscriptionMaxAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    graduationYear: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NewsletterSubscriptionCountAggregateOutputType = {
+    id: number
+    firstName: number
+    lastName: number
+    email: number
+    graduationYear: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NewsletterSubscriptionMinAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    graduationYear?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NewsletterSubscriptionMaxAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    graduationYear?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NewsletterSubscriptionCountAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    graduationYear?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NewsletterSubscriptionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NewsletterSubscription to aggregate.
+     */
+    where?: NewsletterSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NewsletterSubscriptions to fetch.
+     */
+    orderBy?: NewsletterSubscriptionOrderByWithRelationInput | NewsletterSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NewsletterSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NewsletterSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NewsletterSubscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NewsletterSubscriptions
+    **/
+    _count?: true | NewsletterSubscriptionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NewsletterSubscriptionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NewsletterSubscriptionMaxAggregateInputType
+  }
+
+  export type GetNewsletterSubscriptionAggregateType<T extends NewsletterSubscriptionAggregateArgs> = {
+        [P in keyof T & keyof AggregateNewsletterSubscription]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNewsletterSubscription[P]>
+      : GetScalarType<T[P], AggregateNewsletterSubscription[P]>
+  }
+
+
+
+
+  export type NewsletterSubscriptionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NewsletterSubscriptionWhereInput
+    orderBy?: NewsletterSubscriptionOrderByWithAggregationInput | NewsletterSubscriptionOrderByWithAggregationInput[]
+    by: NewsletterSubscriptionScalarFieldEnum[] | NewsletterSubscriptionScalarFieldEnum
+    having?: NewsletterSubscriptionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NewsletterSubscriptionCountAggregateInputType | true
+    _min?: NewsletterSubscriptionMinAggregateInputType
+    _max?: NewsletterSubscriptionMaxAggregateInputType
+  }
+
+  export type NewsletterSubscriptionGroupByOutputType = {
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    graduationYear: string
+    createdAt: Date
+    updatedAt: Date
+    _count: NewsletterSubscriptionCountAggregateOutputType | null
+    _min: NewsletterSubscriptionMinAggregateOutputType | null
+    _max: NewsletterSubscriptionMaxAggregateOutputType | null
+  }
+
+  type GetNewsletterSubscriptionGroupByPayload<T extends NewsletterSubscriptionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NewsletterSubscriptionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NewsletterSubscriptionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NewsletterSubscriptionGroupByOutputType[P]>
+            : GetScalarType<T[P], NewsletterSubscriptionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NewsletterSubscriptionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    graduationYear?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["newsletterSubscription"]>
+
+  export type NewsletterSubscriptionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    graduationYear?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["newsletterSubscription"]>
+
+  export type NewsletterSubscriptionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    graduationYear?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["newsletterSubscription"]>
+
+  export type NewsletterSubscriptionSelectScalar = {
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    graduationYear?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NewsletterSubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "graduationYear" | "createdAt" | "updatedAt", ExtArgs["result"]["newsletterSubscription"]>
+
+  export type $NewsletterSubscriptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "NewsletterSubscription"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      firstName: string
+      lastName: string
+      email: string
+      graduationYear: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["newsletterSubscription"]>
+    composites: {}
+  }
+
+  type NewsletterSubscriptionGetPayload<S extends boolean | null | undefined | NewsletterSubscriptionDefaultArgs> = $Result.GetResult<Prisma.$NewsletterSubscriptionPayload, S>
+
+  type NewsletterSubscriptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NewsletterSubscriptionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NewsletterSubscriptionCountAggregateInputType | true
+    }
+
+  export interface NewsletterSubscriptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['NewsletterSubscription'], meta: { name: 'NewsletterSubscription' } }
+    /**
+     * Find zero or one NewsletterSubscription that matches the filter.
+     * @param {NewsletterSubscriptionFindUniqueArgs} args - Arguments to find a NewsletterSubscription
+     * @example
+     * // Get one NewsletterSubscription
+     * const newsletterSubscription = await prisma.newsletterSubscription.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NewsletterSubscriptionFindUniqueArgs>(args: SelectSubset<T, NewsletterSubscriptionFindUniqueArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one NewsletterSubscription that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NewsletterSubscriptionFindUniqueOrThrowArgs} args - Arguments to find a NewsletterSubscription
+     * @example
+     * // Get one NewsletterSubscription
+     * const newsletterSubscription = await prisma.newsletterSubscription.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NewsletterSubscriptionFindUniqueOrThrowArgs>(args: SelectSubset<T, NewsletterSubscriptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NewsletterSubscription that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NewsletterSubscriptionFindFirstArgs} args - Arguments to find a NewsletterSubscription
+     * @example
+     * // Get one NewsletterSubscription
+     * const newsletterSubscription = await prisma.newsletterSubscription.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NewsletterSubscriptionFindFirstArgs>(args?: SelectSubset<T, NewsletterSubscriptionFindFirstArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NewsletterSubscription that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NewsletterSubscriptionFindFirstOrThrowArgs} args - Arguments to find a NewsletterSubscription
+     * @example
+     * // Get one NewsletterSubscription
+     * const newsletterSubscription = await prisma.newsletterSubscription.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NewsletterSubscriptionFindFirstOrThrowArgs>(args?: SelectSubset<T, NewsletterSubscriptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more NewsletterSubscriptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NewsletterSubscriptionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NewsletterSubscriptions
+     * const newsletterSubscriptions = await prisma.newsletterSubscription.findMany()
+     * 
+     * // Get first 10 NewsletterSubscriptions
+     * const newsletterSubscriptions = await prisma.newsletterSubscription.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const newsletterSubscriptionWithIdOnly = await prisma.newsletterSubscription.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NewsletterSubscriptionFindManyArgs>(args?: SelectSubset<T, NewsletterSubscriptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a NewsletterSubscription.
+     * @param {NewsletterSubscriptionCreateArgs} args - Arguments to create a NewsletterSubscription.
+     * @example
+     * // Create one NewsletterSubscription
+     * const NewsletterSubscription = await prisma.newsletterSubscription.create({
+     *   data: {
+     *     // ... data to create a NewsletterSubscription
+     *   }
+     * })
+     * 
+     */
+    create<T extends NewsletterSubscriptionCreateArgs>(args: SelectSubset<T, NewsletterSubscriptionCreateArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many NewsletterSubscriptions.
+     * @param {NewsletterSubscriptionCreateManyArgs} args - Arguments to create many NewsletterSubscriptions.
+     * @example
+     * // Create many NewsletterSubscriptions
+     * const newsletterSubscription = await prisma.newsletterSubscription.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NewsletterSubscriptionCreateManyArgs>(args?: SelectSubset<T, NewsletterSubscriptionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many NewsletterSubscriptions and returns the data saved in the database.
+     * @param {NewsletterSubscriptionCreateManyAndReturnArgs} args - Arguments to create many NewsletterSubscriptions.
+     * @example
+     * // Create many NewsletterSubscriptions
+     * const newsletterSubscription = await prisma.newsletterSubscription.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many NewsletterSubscriptions and only return the `id`
+     * const newsletterSubscriptionWithIdOnly = await prisma.newsletterSubscription.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NewsletterSubscriptionCreateManyAndReturnArgs>(args?: SelectSubset<T, NewsletterSubscriptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a NewsletterSubscription.
+     * @param {NewsletterSubscriptionDeleteArgs} args - Arguments to delete one NewsletterSubscription.
+     * @example
+     * // Delete one NewsletterSubscription
+     * const NewsletterSubscription = await prisma.newsletterSubscription.delete({
+     *   where: {
+     *     // ... filter to delete one NewsletterSubscription
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NewsletterSubscriptionDeleteArgs>(args: SelectSubset<T, NewsletterSubscriptionDeleteArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one NewsletterSubscription.
+     * @param {NewsletterSubscriptionUpdateArgs} args - Arguments to update one NewsletterSubscription.
+     * @example
+     * // Update one NewsletterSubscription
+     * const newsletterSubscription = await prisma.newsletterSubscription.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NewsletterSubscriptionUpdateArgs>(args: SelectSubset<T, NewsletterSubscriptionUpdateArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more NewsletterSubscriptions.
+     * @param {NewsletterSubscriptionDeleteManyArgs} args - Arguments to filter NewsletterSubscriptions to delete.
+     * @example
+     * // Delete a few NewsletterSubscriptions
+     * const { count } = await prisma.newsletterSubscription.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NewsletterSubscriptionDeleteManyArgs>(args?: SelectSubset<T, NewsletterSubscriptionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NewsletterSubscriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NewsletterSubscriptionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NewsletterSubscriptions
+     * const newsletterSubscription = await prisma.newsletterSubscription.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NewsletterSubscriptionUpdateManyArgs>(args: SelectSubset<T, NewsletterSubscriptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NewsletterSubscriptions and returns the data updated in the database.
+     * @param {NewsletterSubscriptionUpdateManyAndReturnArgs} args - Arguments to update many NewsletterSubscriptions.
+     * @example
+     * // Update many NewsletterSubscriptions
+     * const newsletterSubscription = await prisma.newsletterSubscription.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NewsletterSubscriptions and only return the `id`
+     * const newsletterSubscriptionWithIdOnly = await prisma.newsletterSubscription.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NewsletterSubscriptionUpdateManyAndReturnArgs>(args: SelectSubset<T, NewsletterSubscriptionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one NewsletterSubscription.
+     * @param {NewsletterSubscriptionUpsertArgs} args - Arguments to update or create a NewsletterSubscription.
+     * @example
+     * // Update or create a NewsletterSubscription
+     * const newsletterSubscription = await prisma.newsletterSubscription.upsert({
+     *   create: {
+     *     // ... data to create a NewsletterSubscription
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NewsletterSubscription we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NewsletterSubscriptionUpsertArgs>(args: SelectSubset<T, NewsletterSubscriptionUpsertArgs<ExtArgs>>): Prisma__NewsletterSubscriptionClient<$Result.GetResult<Prisma.$NewsletterSubscriptionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of NewsletterSubscriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NewsletterSubscriptionCountArgs} args - Arguments to filter NewsletterSubscriptions to count.
+     * @example
+     * // Count the number of NewsletterSubscriptions
+     * const count = await prisma.newsletterSubscription.count({
+     *   where: {
+     *     // ... the filter for the NewsletterSubscriptions we want to count
+     *   }
+     * })
+    **/
+    count<T extends NewsletterSubscriptionCountArgs>(
+      args?: Subset<T, NewsletterSubscriptionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NewsletterSubscriptionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NewsletterSubscription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NewsletterSubscriptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NewsletterSubscriptionAggregateArgs>(args: Subset<T, NewsletterSubscriptionAggregateArgs>): Prisma.PrismaPromise<GetNewsletterSubscriptionAggregateType<T>>
+
+    /**
+     * Group by NewsletterSubscription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NewsletterSubscriptionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NewsletterSubscriptionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NewsletterSubscriptionGroupByArgs['orderBy'] }
+        : { orderBy?: NewsletterSubscriptionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NewsletterSubscriptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNewsletterSubscriptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the NewsletterSubscription model
+   */
+  readonly fields: NewsletterSubscriptionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NewsletterSubscription.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NewsletterSubscriptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the NewsletterSubscription model
+   */
+  interface NewsletterSubscriptionFieldRefs {
+    readonly id: FieldRef<"NewsletterSubscription", 'String'>
+    readonly firstName: FieldRef<"NewsletterSubscription", 'String'>
+    readonly lastName: FieldRef<"NewsletterSubscription", 'String'>
+    readonly email: FieldRef<"NewsletterSubscription", 'String'>
+    readonly graduationYear: FieldRef<"NewsletterSubscription", 'String'>
+    readonly createdAt: FieldRef<"NewsletterSubscription", 'DateTime'>
+    readonly updatedAt: FieldRef<"NewsletterSubscription", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * NewsletterSubscription findUnique
+   */
+  export type NewsletterSubscriptionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * Filter, which NewsletterSubscription to fetch.
+     */
+    where: NewsletterSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * NewsletterSubscription findUniqueOrThrow
+   */
+  export type NewsletterSubscriptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * Filter, which NewsletterSubscription to fetch.
+     */
+    where: NewsletterSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * NewsletterSubscription findFirst
+   */
+  export type NewsletterSubscriptionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * Filter, which NewsletterSubscription to fetch.
+     */
+    where?: NewsletterSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NewsletterSubscriptions to fetch.
+     */
+    orderBy?: NewsletterSubscriptionOrderByWithRelationInput | NewsletterSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NewsletterSubscriptions.
+     */
+    cursor?: NewsletterSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NewsletterSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NewsletterSubscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NewsletterSubscriptions.
+     */
+    distinct?: NewsletterSubscriptionScalarFieldEnum | NewsletterSubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * NewsletterSubscription findFirstOrThrow
+   */
+  export type NewsletterSubscriptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * Filter, which NewsletterSubscription to fetch.
+     */
+    where?: NewsletterSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NewsletterSubscriptions to fetch.
+     */
+    orderBy?: NewsletterSubscriptionOrderByWithRelationInput | NewsletterSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NewsletterSubscriptions.
+     */
+    cursor?: NewsletterSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NewsletterSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NewsletterSubscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NewsletterSubscriptions.
+     */
+    distinct?: NewsletterSubscriptionScalarFieldEnum | NewsletterSubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * NewsletterSubscription findMany
+   */
+  export type NewsletterSubscriptionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * Filter, which NewsletterSubscriptions to fetch.
+     */
+    where?: NewsletterSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NewsletterSubscriptions to fetch.
+     */
+    orderBy?: NewsletterSubscriptionOrderByWithRelationInput | NewsletterSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NewsletterSubscriptions.
+     */
+    cursor?: NewsletterSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NewsletterSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NewsletterSubscriptions.
+     */
+    skip?: number
+    distinct?: NewsletterSubscriptionScalarFieldEnum | NewsletterSubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * NewsletterSubscription create
+   */
+  export type NewsletterSubscriptionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a NewsletterSubscription.
+     */
+    data: XOR<NewsletterSubscriptionCreateInput, NewsletterSubscriptionUncheckedCreateInput>
+  }
+
+  /**
+   * NewsletterSubscription createMany
+   */
+  export type NewsletterSubscriptionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many NewsletterSubscriptions.
+     */
+    data: NewsletterSubscriptionCreateManyInput | NewsletterSubscriptionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NewsletterSubscription createManyAndReturn
+   */
+  export type NewsletterSubscriptionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * The data used to create many NewsletterSubscriptions.
+     */
+    data: NewsletterSubscriptionCreateManyInput | NewsletterSubscriptionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NewsletterSubscription update
+   */
+  export type NewsletterSubscriptionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a NewsletterSubscription.
+     */
+    data: XOR<NewsletterSubscriptionUpdateInput, NewsletterSubscriptionUncheckedUpdateInput>
+    /**
+     * Choose, which NewsletterSubscription to update.
+     */
+    where: NewsletterSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * NewsletterSubscription updateMany
+   */
+  export type NewsletterSubscriptionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update NewsletterSubscriptions.
+     */
+    data: XOR<NewsletterSubscriptionUpdateManyMutationInput, NewsletterSubscriptionUncheckedUpdateManyInput>
+    /**
+     * Filter which NewsletterSubscriptions to update
+     */
+    where?: NewsletterSubscriptionWhereInput
+    /**
+     * Limit how many NewsletterSubscriptions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NewsletterSubscription updateManyAndReturn
+   */
+  export type NewsletterSubscriptionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * The data used to update NewsletterSubscriptions.
+     */
+    data: XOR<NewsletterSubscriptionUpdateManyMutationInput, NewsletterSubscriptionUncheckedUpdateManyInput>
+    /**
+     * Filter which NewsletterSubscriptions to update
+     */
+    where?: NewsletterSubscriptionWhereInput
+    /**
+     * Limit how many NewsletterSubscriptions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NewsletterSubscription upsert
+   */
+  export type NewsletterSubscriptionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the NewsletterSubscription to update in case it exists.
+     */
+    where: NewsletterSubscriptionWhereUniqueInput
+    /**
+     * In case the NewsletterSubscription found by the `where` argument doesn't exist, create a new NewsletterSubscription with this data.
+     */
+    create: XOR<NewsletterSubscriptionCreateInput, NewsletterSubscriptionUncheckedCreateInput>
+    /**
+     * In case the NewsletterSubscription was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NewsletterSubscriptionUpdateInput, NewsletterSubscriptionUncheckedUpdateInput>
+  }
+
+  /**
+   * NewsletterSubscription delete
+   */
+  export type NewsletterSubscriptionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+    /**
+     * Filter which NewsletterSubscription to delete.
+     */
+    where: NewsletterSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * NewsletterSubscription deleteMany
+   */
+  export type NewsletterSubscriptionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NewsletterSubscriptions to delete
+     */
+    where?: NewsletterSubscriptionWhereInput
+    /**
+     * Limit how many NewsletterSubscriptions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * NewsletterSubscription without action
+   */
+  export type NewsletterSubscriptionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsletterSubscription
+     */
+    select?: NewsletterSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsletterSubscription
+     */
+    omit?: NewsletterSubscriptionOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model ContactInquiry
    */
 
@@ -8274,6 +10637,43 @@ export namespace Prisma {
   export type AdmissionInquiryScalarFieldEnum = (typeof AdmissionInquiryScalarFieldEnum)[keyof typeof AdmissionInquiryScalarFieldEnum]
 
 
+  export const AlumniRegistrationScalarFieldEnum: {
+    id: 'id',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    email: 'email',
+    phone: 'phone',
+    graduationYear: 'graduationYear',
+    course: 'course',
+    profession: 'profession',
+    company: 'company',
+    address: 'address',
+    city: 'city',
+    country: 'country',
+    bio: 'bio',
+    socialLinks: 'socialLinks',
+    interests: 'interests',
+    isVerified: 'isVerified',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AlumniRegistrationScalarFieldEnum = (typeof AlumniRegistrationScalarFieldEnum)[keyof typeof AlumniRegistrationScalarFieldEnum]
+
+
+  export const NewsletterSubscriptionScalarFieldEnum: {
+    id: 'id',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    email: 'email',
+    graduationYear: 'graduationYear',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NewsletterSubscriptionScalarFieldEnum = (typeof NewsletterSubscriptionScalarFieldEnum)[keyof typeof NewsletterSubscriptionScalarFieldEnum]
+
+
   export const ContactInquiryScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -8315,6 +10715,14 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
@@ -8329,6 +10737,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -8410,6 +10827,20 @@ export namespace Prisma {
    * Reference to a field of type 'AdmissionType[]'
    */
   export type ListEnumAdmissionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -8729,6 +11160,185 @@ export namespace Prisma {
     streams?: StringNullableListFilter<"AdmissionInquiry">
     createdAt?: DateTimeWithAggregatesFilter<"AdmissionInquiry"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AdmissionInquiry"> | Date | string
+  }
+
+  export type AlumniRegistrationWhereInput = {
+    AND?: AlumniRegistrationWhereInput | AlumniRegistrationWhereInput[]
+    OR?: AlumniRegistrationWhereInput[]
+    NOT?: AlumniRegistrationWhereInput | AlumniRegistrationWhereInput[]
+    id?: StringFilter<"AlumniRegistration"> | string
+    firstName?: StringFilter<"AlumniRegistration"> | string
+    lastName?: StringFilter<"AlumniRegistration"> | string
+    email?: StringFilter<"AlumniRegistration"> | string
+    phone?: StringNullableFilter<"AlumniRegistration"> | string | null
+    graduationYear?: StringFilter<"AlumniRegistration"> | string
+    course?: StringNullableFilter<"AlumniRegistration"> | string | null
+    profession?: StringNullableFilter<"AlumniRegistration"> | string | null
+    company?: StringNullableFilter<"AlumniRegistration"> | string | null
+    address?: StringNullableFilter<"AlumniRegistration"> | string | null
+    city?: StringNullableFilter<"AlumniRegistration"> | string | null
+    country?: StringNullableFilter<"AlumniRegistration"> | string | null
+    bio?: StringNullableFilter<"AlumniRegistration"> | string | null
+    socialLinks?: JsonNullableFilter<"AlumniRegistration">
+    interests?: StringNullableFilter<"AlumniRegistration"> | string | null
+    isVerified?: BoolFilter<"AlumniRegistration"> | boolean
+    createdAt?: DateTimeFilter<"AlumniRegistration"> | Date | string
+    updatedAt?: DateTimeFilter<"AlumniRegistration"> | Date | string
+  }
+
+  export type AlumniRegistrationOrderByWithRelationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    graduationYear?: SortOrder
+    course?: SortOrderInput | SortOrder
+    profession?: SortOrderInput | SortOrder
+    company?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    socialLinks?: SortOrderInput | SortOrder
+    interests?: SortOrderInput | SortOrder
+    isVerified?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AlumniRegistrationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email?: string
+    AND?: AlumniRegistrationWhereInput | AlumniRegistrationWhereInput[]
+    OR?: AlumniRegistrationWhereInput[]
+    NOT?: AlumniRegistrationWhereInput | AlumniRegistrationWhereInput[]
+    firstName?: StringFilter<"AlumniRegistration"> | string
+    lastName?: StringFilter<"AlumniRegistration"> | string
+    phone?: StringNullableFilter<"AlumniRegistration"> | string | null
+    graduationYear?: StringFilter<"AlumniRegistration"> | string
+    course?: StringNullableFilter<"AlumniRegistration"> | string | null
+    profession?: StringNullableFilter<"AlumniRegistration"> | string | null
+    company?: StringNullableFilter<"AlumniRegistration"> | string | null
+    address?: StringNullableFilter<"AlumniRegistration"> | string | null
+    city?: StringNullableFilter<"AlumniRegistration"> | string | null
+    country?: StringNullableFilter<"AlumniRegistration"> | string | null
+    bio?: StringNullableFilter<"AlumniRegistration"> | string | null
+    socialLinks?: JsonNullableFilter<"AlumniRegistration">
+    interests?: StringNullableFilter<"AlumniRegistration"> | string | null
+    isVerified?: BoolFilter<"AlumniRegistration"> | boolean
+    createdAt?: DateTimeFilter<"AlumniRegistration"> | Date | string
+    updatedAt?: DateTimeFilter<"AlumniRegistration"> | Date | string
+  }, "id" | "email">
+
+  export type AlumniRegistrationOrderByWithAggregationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    graduationYear?: SortOrder
+    course?: SortOrderInput | SortOrder
+    profession?: SortOrderInput | SortOrder
+    company?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    socialLinks?: SortOrderInput | SortOrder
+    interests?: SortOrderInput | SortOrder
+    isVerified?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AlumniRegistrationCountOrderByAggregateInput
+    _max?: AlumniRegistrationMaxOrderByAggregateInput
+    _min?: AlumniRegistrationMinOrderByAggregateInput
+  }
+
+  export type AlumniRegistrationScalarWhereWithAggregatesInput = {
+    AND?: AlumniRegistrationScalarWhereWithAggregatesInput | AlumniRegistrationScalarWhereWithAggregatesInput[]
+    OR?: AlumniRegistrationScalarWhereWithAggregatesInput[]
+    NOT?: AlumniRegistrationScalarWhereWithAggregatesInput | AlumniRegistrationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AlumniRegistration"> | string
+    firstName?: StringWithAggregatesFilter<"AlumniRegistration"> | string
+    lastName?: StringWithAggregatesFilter<"AlumniRegistration"> | string
+    email?: StringWithAggregatesFilter<"AlumniRegistration"> | string
+    phone?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    graduationYear?: StringWithAggregatesFilter<"AlumniRegistration"> | string
+    course?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    profession?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    company?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    address?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    city?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    country?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    bio?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    socialLinks?: JsonNullableWithAggregatesFilter<"AlumniRegistration">
+    interests?: StringNullableWithAggregatesFilter<"AlumniRegistration"> | string | null
+    isVerified?: BoolWithAggregatesFilter<"AlumniRegistration"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"AlumniRegistration"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AlumniRegistration"> | Date | string
+  }
+
+  export type NewsletterSubscriptionWhereInput = {
+    AND?: NewsletterSubscriptionWhereInput | NewsletterSubscriptionWhereInput[]
+    OR?: NewsletterSubscriptionWhereInput[]
+    NOT?: NewsletterSubscriptionWhereInput | NewsletterSubscriptionWhereInput[]
+    id?: StringFilter<"NewsletterSubscription"> | string
+    firstName?: StringFilter<"NewsletterSubscription"> | string
+    lastName?: StringFilter<"NewsletterSubscription"> | string
+    email?: StringFilter<"NewsletterSubscription"> | string
+    graduationYear?: StringFilter<"NewsletterSubscription"> | string
+    createdAt?: DateTimeFilter<"NewsletterSubscription"> | Date | string
+    updatedAt?: DateTimeFilter<"NewsletterSubscription"> | Date | string
+  }
+
+  export type NewsletterSubscriptionOrderByWithRelationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    graduationYear?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NewsletterSubscriptionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email?: string
+    AND?: NewsletterSubscriptionWhereInput | NewsletterSubscriptionWhereInput[]
+    OR?: NewsletterSubscriptionWhereInput[]
+    NOT?: NewsletterSubscriptionWhereInput | NewsletterSubscriptionWhereInput[]
+    firstName?: StringFilter<"NewsletterSubscription"> | string
+    lastName?: StringFilter<"NewsletterSubscription"> | string
+    graduationYear?: StringFilter<"NewsletterSubscription"> | string
+    createdAt?: DateTimeFilter<"NewsletterSubscription"> | Date | string
+    updatedAt?: DateTimeFilter<"NewsletterSubscription"> | Date | string
+  }, "id" | "email">
+
+  export type NewsletterSubscriptionOrderByWithAggregationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    graduationYear?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NewsletterSubscriptionCountOrderByAggregateInput
+    _max?: NewsletterSubscriptionMaxOrderByAggregateInput
+    _min?: NewsletterSubscriptionMinOrderByAggregateInput
+  }
+
+  export type NewsletterSubscriptionScalarWhereWithAggregatesInput = {
+    AND?: NewsletterSubscriptionScalarWhereWithAggregatesInput | NewsletterSubscriptionScalarWhereWithAggregatesInput[]
+    OR?: NewsletterSubscriptionScalarWhereWithAggregatesInput[]
+    NOT?: NewsletterSubscriptionScalarWhereWithAggregatesInput | NewsletterSubscriptionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"NewsletterSubscription"> | string
+    firstName?: StringWithAggregatesFilter<"NewsletterSubscription"> | string
+    lastName?: StringWithAggregatesFilter<"NewsletterSubscription"> | string
+    email?: StringWithAggregatesFilter<"NewsletterSubscription"> | string
+    graduationYear?: StringWithAggregatesFilter<"NewsletterSubscription"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"NewsletterSubscription"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"NewsletterSubscription"> | Date | string
   }
 
   export type ContactInquiryWhereInput = {
@@ -9227,6 +11837,223 @@ export namespace Prisma {
     desiredClasses?: AdmissionInquiryUpdatedesiredClassesInput | string[]
     admissionType?: EnumAdmissionTypeFieldUpdateOperationsInput | $Enums.AdmissionType
     streams?: AdmissionInquiryUpdatestreamsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AlumniRegistrationCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    graduationYear: string
+    course?: string | null
+    profession?: string | null
+    company?: string | null
+    address?: string | null
+    city?: string | null
+    country?: string | null
+    bio?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    interests?: string | null
+    isVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AlumniRegistrationUncheckedCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    graduationYear: string
+    course?: string | null
+    profession?: string | null
+    company?: string | null
+    address?: string | null
+    city?: string | null
+    country?: string | null
+    bio?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    interests?: string | null
+    isVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AlumniRegistrationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: StringFieldUpdateOperationsInput | string
+    course?: NullableStringFieldUpdateOperationsInput | string | null
+    profession?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AlumniRegistrationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: StringFieldUpdateOperationsInput | string
+    course?: NullableStringFieldUpdateOperationsInput | string | null
+    profession?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AlumniRegistrationCreateManyInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    graduationYear: string
+    course?: string | null
+    profession?: string | null
+    company?: string | null
+    address?: string | null
+    city?: string | null
+    country?: string | null
+    bio?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    interests?: string | null
+    isVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AlumniRegistrationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: StringFieldUpdateOperationsInput | string
+    course?: NullableStringFieldUpdateOperationsInput | string | null
+    profession?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AlumniRegistrationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: StringFieldUpdateOperationsInput | string
+    course?: NullableStringFieldUpdateOperationsInput | string | null
+    profession?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NewsletterSubscriptionCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    graduationYear: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NewsletterSubscriptionUncheckedCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    graduationYear: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NewsletterSubscriptionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    graduationYear?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NewsletterSubscriptionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    graduationYear?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NewsletterSubscriptionCreateManyInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    graduationYear: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NewsletterSubscriptionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    graduationYear?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NewsletterSubscriptionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    graduationYear?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9802,6 +12629,146 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumAdmissionTypeFilter<$PrismaModel>
     _max?: NestedEnumAdmissionTypeFilter<$PrismaModel>
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type AlumniRegistrationCountOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    graduationYear?: SortOrder
+    course?: SortOrder
+    profession?: SortOrder
+    company?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    country?: SortOrder
+    bio?: SortOrder
+    socialLinks?: SortOrder
+    interests?: SortOrder
+    isVerified?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AlumniRegistrationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    graduationYear?: SortOrder
+    course?: SortOrder
+    profession?: SortOrder
+    company?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    country?: SortOrder
+    bio?: SortOrder
+    interests?: SortOrder
+    isVerified?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AlumniRegistrationMinOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    graduationYear?: SortOrder
+    course?: SortOrder
+    profession?: SortOrder
+    company?: SortOrder
+    address?: SortOrder
+    city?: SortOrder
+    country?: SortOrder
+    bio?: SortOrder
+    interests?: SortOrder
+    isVerified?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type NewsletterSubscriptionCountOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    graduationYear?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NewsletterSubscriptionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    graduationYear?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NewsletterSubscriptionMinOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    graduationYear?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ContactInquiryCountOrderByAggregateInput = {
@@ -10428,6 +13395,29 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumAdmissionTypeFilter<$PrismaModel>
     _max?: NestedEnumAdmissionTypeFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

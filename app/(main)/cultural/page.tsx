@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock } from 'lucide-react';
@@ -7,61 +9,61 @@ const CulturalPage = () => {
     const culturalActivities = [
         {
             id: 1,
-            image: 'culture/1.jpeg',
+            image: '/culture/1.jpeg',
             name: 'Traditional Dance Festival',
             time: '6:00 PM - 9:00 PM'
         },
         {
             id: 2,
-            image: 'culture/2.jpeg',
+            image: '/culture/2.jpeg',
             name: 'Music Concert Evening',
             time: '7:30 PM - 10:00 PM'
         },
         {
             id: 3,
-            image: 'culture/3.jpeg',
+            image: '/culture/3.jpeg',
             name: 'Art Exhibition',
             time: '10:00 AM - 5:00 PM'
         },
         {
             id: 4,
-            image: 'culture/4.jpeg',
+            image: '/culture/4.jpeg',
             name: 'Poetry Reading Session',
             time: '4:00 PM - 6:00 PM'
         },
         {
             id: 5,
-            image: 'culture/5.jpeg',
+            image: '/culture/5.jpeg',
             name: 'Cultural Heritage Workshop',
             time: '2:00 PM - 5:00 PM'
         },
         {
             id: 6,
-            image: 'culture/6.jpeg',
+            image: '/culture/6.jpeg',
             name: 'International Food Festival',
             time: '11:00 AM - 8:00 PM'
         },
         {
             id: 7,
-            image: 'culture/7.jpeg',
+            image: '/culture/7.jpeg',
             name: 'Theater Performance',
             time: '8:00 PM - 10:30 PM'
         },
         {
             id: 8,
-            image: 'culture/8.jpeg',
+            image: '/culture/8.jpeg',
             name: 'Folk Music Workshop',
             time: '3:00 PM - 5:30 PM'
         },
         {
             id: 9,
-            image: 'culture/9.jpeg',
+            image: '/culture/9.jpeg',
             name: 'Cultural Storytelling Night',
             time: '7:00 PM - 9:30 PM'
         },
         {
             id: 10,
-            image: 'culture/10.jpeg',
+            image: '/culture/10.jpeg',
             name: 'Traditional Craft Making',
             time: '1:00 PM - 4:00 PM'
         }
@@ -73,7 +75,7 @@ const CulturalPage = () => {
                 <section className="w-full">
                     <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                         <Image
-                            src="culture/1.jpeg"
+                            src="/culture/gathering.jpeg"
                             alt="Cultural activities showcase"
                             className="w-full h-full object-cover"
                             height={400}
@@ -124,38 +126,38 @@ const CulturalPage = () => {
                         </motion.div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {
-                            culturalActivities.map((activity, index) => (
-                                <motion.div
-                                    key={activity.id}
-                                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <div className="relative h-48 overflow-hidden">
-                                        <Image
-                                            height={200}
-                                            width={300}
-                                            src={activity.image}
-                                            alt={activity.name}
-                                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                                        />
-                                    </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center justify-between text-sm text-gray-500">
-                                            <div className="flex items-center">
-                                                <Calendar className="w-4 h-4 mr-1" />
-                                                <span>{activity.name}</span>
+                                culturalActivities.map((activity, index) => (
+                                    <motion.div
+                                        key={activity.id}
+                                        className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.1, duration: 0.6 }}
+                                        whileHover={{ y: -5 }}
+                                    >
+                                        <div className="relative h-48 overflow-hidden">
+                                            <Image
+                                                height={200}
+                                                width={300}
+                                                src={activity.image}
+                                                alt={activity.name}
+                                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                                            />
+                                        </div>
+                                        <div className="p-6">
+                                            <div className="flex items-center justify-between text-sm text-gray-500">
+                                                <div className="flex items-center">
+                                                    <Calendar className="w-4 h-4 mr-1" />
+                                                    <span>{activity.name}</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center mt-2 text-sm text-purple-600">
+                                                <Clock className="w-4 h-4 mr-1" />
+                                                <span>{activity.time}</span>
                                             </div>
                                         </div>
-                                        <div className="flex items-center mt-2 text-sm text-purple-600">
-                                            <Clock className="w-4 h-4 mr-1" />
-                                            <span>{activity.time}</span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))
+                                    </motion.div>
+                                ))
                             }
                         </div>
                     </div>
