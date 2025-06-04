@@ -3,7 +3,7 @@ import { MainNav } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-    title: "School Dashboard",
+    title: "Janchetana EDU",
     description: "Dashboard for school principal",
 }
 
