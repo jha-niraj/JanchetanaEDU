@@ -3,9 +3,9 @@
 import type React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Calendar, ChevronRight, GraduationCap, Heart, Mail, MapPin, Users, Book, Award } from "lucide-react"
+import { Calendar, ChevronRight, GraduationCap, Heart, MapPin, Users, Book, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import SmoothScroll from "@/components/smoothscroll"
@@ -70,29 +70,53 @@ const benefits = [
 ]
 const notableAlumni = [
     {
-        name: "Dr. James Wilson",
+        name: "Omkar Chauhan",
         graduationYear: "2008",
         profession: "Environmental Scientist",
         achievement:
             "Leading researcher in renewable energy solutions, recipient of the National Science Foundation's Early Career Award, and author of over 30 peer-reviewed publications.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+        image: "/alumni/omkarchauhan.jpeg",
     },
     {
-        name: "Sarah Johnson",
+        name: "Ram Prasad",
         graduationYear: "1995",
         profession: "Tech Entrepreneur",
         achievement:
             "Founder and CEO of InnovateTech, a pioneering software company valued at $500 million. Named one of Forbes' 'Most Influential Women in Tech' for three consecutive years.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+        image: "/alumni/ramprasad.jpeg",
     },
     {
-        name: "Michael Chen",
+        name: "Satya Kumar Chaudhary",
         graduationYear: "2010",
         profession: "Humanitarian",
         achievement:
             "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+        image: "/alumni/satyakumar.jpeg",
     },
+    {
+        name: "Shyam Sundar",
+        graduationYear: "2010",
+        profession: "Humanitarian",
+        achievement:
+            "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
+        image: "/alumni/shyamsundar.jpeg",
+    },
+    {
+        name: "Dipesh Kumar",
+        graduationYear: "2010",
+        profession: "Humanitarian",
+        achievement:
+            "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
+        image: "/alumni/dipeshkumar.jpeg",
+    },
+    {
+        name: "Pradeep Kumar",
+        graduationYear: "2010",
+        profession: "Humanitarian",
+        achievement:
+            "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
+        image: "/alumni/pradeepkumar.jpeg",
+    }
 ]
 const events = [
     {
@@ -126,7 +150,7 @@ export default function AlumniPage() {
                     <section className="relative">
                         <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                             <Image
-                                src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                src="/alumni/mainimage.png"
                                 alt="Alumni gathering"
                                 fill
                                 priority
@@ -218,7 +242,7 @@ export default function AlumniPage() {
                                 transition={{ duration: 0.5 }}
                             >
                                 <Image
-                                    src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                    src="/alumni/mainimage.png"
                                     alt="Alumni networking"
                                     fill
                                     className="object-cover"
@@ -388,7 +412,7 @@ export default function AlumniPage() {
                                     </div>
                                     <div className="relative h-[300px] rounded-lg overflow-hidden">
                                         <Image
-                                            src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                            src="/alumni/volunteer.png"
                                             alt="Alumni volunteering"
                                             fill
                                             className="object-cover"
@@ -433,7 +457,7 @@ export default function AlumniPage() {
                                     </div>
                                     <div className="relative h-[300px] rounded-lg overflow-hidden">
                                         <Image
-                                            src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                            src="/alumni/mentor.png"
                                             alt="Alumni mentoring"
                                             fill
                                             className="object-cover"
@@ -476,7 +500,7 @@ export default function AlumniPage() {
                                     </div>
                                     <div className="relative h-[300px] rounded-lg overflow-hidden">
                                         <Image
-                                            src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+                                            src="alumni/donate.png"
                                             alt="Scholarship presentation"
                                             fill
                                             className="object-cover"
@@ -509,7 +533,7 @@ export default function AlumniPage() {
                             >
                                 <NewsletterSubscriptionForm />
                             </motion.div>
-                            <motion.div
+                            {/* <motion.div
                                 className="flex justify-center mt-8 gap-4"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
@@ -523,7 +547,7 @@ export default function AlumniPage() {
                                 <Button variant="outline" className="gap-1">
                                     Update Your Information
                                 </Button>
-                            </motion.div>
+                            </motion.div> */}
                         </div>
                     </section>
                 </main>
@@ -591,11 +615,11 @@ function AlumniCard({
                 <CardContent>
                     <p className="text-muted-foreground">{achievement}</p>
                 </CardContent>
-                <CardFooter>
+                {/* <CardFooter>
                     <Button variant="outline" size="sm" className="gap-1">
                         Read Full Profile <ChevronRight className="h-4 w-4" />
                     </Button>
-                </CardFooter>
+                </CardFooter> */}
             </Card>
         </motion.div>
     )
@@ -631,14 +655,14 @@ function EventCard({
                 <CardContent>
                     <p className="text-muted-foreground">{description}</p>
                 </CardContent>
-                <CardFooter className="flex justify-between">
+                {/* <CardFooter className="flex justify-between">
                     <Button variant="outline" size="sm">
                         Register
                     </Button>
                     <Button variant="ghost" size="sm" className="gap-1">
                         Details <ChevronRight className="h-4 w-4" />
                     </Button>
-                </CardFooter>
+                </CardFooter> */}
             </Card>
         </motion.div>
     )
