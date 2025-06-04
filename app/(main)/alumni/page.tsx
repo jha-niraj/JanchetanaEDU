@@ -1,19 +1,16 @@
 "use client"
 
 import type React from "react"
-
-import { Label } from "@/components/ui/label"
-
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Calendar, ChevronRight, GraduationCap, Heart, MapPin, Users, Book, Award } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
 import SmoothScroll from "@/components/smoothscroll"
+import { AlumniRegistrationForm } from "./_components/alumniregistrationform"
+import { NewsletterSubscriptionForm } from "./_components/newslettersubscritpion"
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -23,7 +20,6 @@ const fadeInUp = {
         transition: { duration: 0.6 },
     },
 }
-
 const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -79,7 +75,7 @@ const notableAlumni = [
         profession: "Environmental Scientist",
         achievement:
             "Leading researcher in renewable energy solutions, recipient of the National Science Foundation's Early Career Award, and author of over 30 peer-reviewed publications.",
-        image: "alumni/omkarchauhan.jpeg",
+        image: "/alumni/omkarchauhan.jpeg",
     },
     {
         name: "Ram Prasad",
@@ -87,7 +83,7 @@ const notableAlumni = [
         profession: "Tech Entrepreneur",
         achievement:
             "Founder and CEO of InnovateTech, a pioneering software company valued at $500 million. Named one of Forbes' 'Most Influential Women in Tech' for three consecutive years.",
-        image: "alumni/ramprasad.jpeg",
+        image: "/alumni/ramprasad.jpeg",
     },
     {
         name: "Satya Kumar Chaudhary",
@@ -95,7 +91,7 @@ const notableAlumni = [
         profession: "Humanitarian",
         achievement:
             "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
-        image: "alumni/satyakumar.jpeg",
+        image: "/alumni/satyakumar.jpeg",
     },
     {
         name: "Shyam Sundar",
@@ -103,7 +99,7 @@ const notableAlumni = [
         profession: "Humanitarian",
         achievement:
             "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
-        image: "alumni/shyamsundar.jpeg",
+        image: "/alumni/shyamsundar.jpeg",
     },
     {
         name: "Dipesh Kumar",
@@ -111,7 +107,7 @@ const notableAlumni = [
         profession: "Humanitarian",
         achievement:
             "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
-        image: "alumni/dipeshkumar.jpeg",
+        image: "/alumni/dipeshkumar.jpeg",
     },
     {
         name: "Pradeep Kumar",
@@ -119,7 +115,7 @@ const notableAlumni = [
         profession: "Humanitarian",
         achievement:
             "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
-        image: "alumni/pradeepkumar.jpeg",
+        image: "/alumni/pradeepkumar.jpeg",
     }
 ]
 const events = [
@@ -154,7 +150,7 @@ export default function AlumniPage() {
                     <section className="relative">
                         <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                             <Image
-                                src="alumni/mainimage.png"
+                                src="/alumni/mainimage.png"
                                 alt="Alumni gathering"
                                 fill
                                 priority
@@ -235,8 +231,7 @@ export default function AlumniPage() {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.3, duration: 0.5 }}
                                 >
-                                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Join Alumni Network</Button>
-                                    <Button variant="outline">Update Your Information</Button>
+                                    <AlumniRegistrationForm />
                                 </motion.div>
                             </div>
                             <motion.div
@@ -247,7 +242,7 @@ export default function AlumniPage() {
                                 transition={{ duration: 0.5 }}
                             >
                                 <Image
-                                    src="alumni/mainimage.png"
+                                    src="/alumni/mainimage.png"
                                     alt="Alumni networking"
                                     fill
                                     className="object-cover"
@@ -308,7 +303,7 @@ export default function AlumniPage() {
                                 ))
                             }
                         </motion.div>
-                        {/* <motion.div
+                        <motion.div
                             className="flex justify-center mt-8"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
@@ -318,7 +313,7 @@ export default function AlumniPage() {
                             <Button variant="outline" className="gap-1">
                                 View More Alumni Stories <ChevronRight className="h-4 w-4" />
                             </Button>
-                        </motion.div> */}
+                        </motion.div>
                     </section>
                     <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
                         <div className="max-w-7xl mx-auto">
@@ -347,7 +342,7 @@ export default function AlumniPage() {
                                     ))
                                 }
                             </motion.div>
-                            {/* <motion.div
+                            <motion.div
                                 className="flex justify-center mt-8"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
@@ -357,7 +352,7 @@ export default function AlumniPage() {
                                 <Button variant="outline" className="gap-1">
                                     View All Events <Calendar className="h-4 w-4" />
                                 </Button>
-                            </motion.div> */}
+                            </motion.div>
                         </div>
                     </section>
                     <section className="max-w-7xl mx-auto py-12 md:py-16">
@@ -417,7 +412,7 @@ export default function AlumniPage() {
                                     </div>
                                     <div className="relative h-[300px] rounded-lg overflow-hidden">
                                         <Image
-                                            src="alumni/volunteer.png"
+                                            src="/alumni/volunteer.png"
                                             alt="Alumni volunteering"
                                             fill
                                             className="object-cover"
@@ -462,7 +457,7 @@ export default function AlumniPage() {
                                     </div>
                                     <div className="relative h-[300px] rounded-lg overflow-hidden">
                                         <Image
-                                            src="alumni/mentor.png"
+                                            src="/alumni/mentor.png"
                                             alt="Alumni mentoring"
                                             fill
                                             className="object-cover"
@@ -536,39 +531,7 @@ export default function AlumniPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <Card>
-                                    <CardHeader>
-                                        <CardTitle>Subscribe to Alumni Newsletter</CardTitle>
-                                        <CardDescription>
-                                            Receive quarterly updates on alumni events, school news, and opportunities to get involved.
-                                        </CardDescription>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <div className="grid gap-4">
-                                            <div className="grid grid-cols-2 gap-4">
-                                                <div className="space-y-2">
-                                                    <Label htmlFor="first-name">First name</Label>
-                                                    <Input id="first-name" placeholder="John" />
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <Label htmlFor="last-name">Last name</Label>
-                                                    <Input id="last-name" placeholder="Doe" />
-                                                </div>
-                                            </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="email">Email</Label>
-                                                <Input id="email" type="email" placeholder="john.doe@example.com" />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="graduation-year">Graduation Year</Label>
-                                                <Input id="graduation-year" placeholder="e.g. 2010" />
-                                            </div>
-                                        </div>
-                                    </CardContent>
-                                    <CardFooter>
-                                        <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Subscribe</Button>
-                                    </CardFooter>
-                                </Card>
+                                <NewsletterSubscriptionForm />
                             </motion.div>
                             {/* <motion.div
                                 className="flex justify-center mt-8 gap-4"
@@ -634,15 +597,9 @@ function AlumniCard({
 }) {
     return (
         <motion.div variants={fadeInUp}>
-            <Card className="overflow-hidden h-full w-full">
-                <div className="relative w-full h-96 overflow-hidden">
-                    <Image
-                        src={image || "/placeholder.svg"}
-                        alt={name}
-                        className="object-cover w-full h-full"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+            <Card className="overflow-hidden h-full">
+                <div className="relative h-64 w-full">
+                    <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
                 </div>
                 <CardHeader>
                     <div className="flex justify-between items-start">
@@ -658,6 +615,11 @@ function AlumniCard({
                 <CardContent>
                     <p className="text-muted-foreground">{achievement}</p>
                 </CardContent>
+                {/* <CardFooter>
+                    <Button variant="outline" size="sm" className="gap-1">
+                        Read Full Profile <ChevronRight className="h-4 w-4" />
+                    </Button>
+                </CardFooter> */}
             </Card>
         </motion.div>
     )
