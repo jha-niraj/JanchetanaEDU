@@ -83,8 +83,8 @@ export default function AboutPage() {
                     <section className="relative">
                         <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                             <Image
-                                src="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
-                                alt="School campus aerial view"
+                                src="/landing/hero/2.jpeg"
+                                alt="School Entrance View"
                                 fill
                                 priority
                                 className="object-cover"
@@ -103,7 +103,7 @@ export default function AboutPage() {
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 0.2, duration: 0.8 }}
                                     >
-                                        About Horizon Academy
+                                        About Janchetana School
                                     </motion.h1>
                                     <motion.p
                                         className="text-base md:text-lg text-white/90 max-w-md mx-auto"
@@ -163,7 +163,7 @@ export default function AboutPage() {
                                     </div>
                                     <h2 className="text-3xl font-bold tracking-tight">Our History</h2>
                                     <p className="text-lg text-muted-foreground">
-                                        Founded in 1985, Janchetans began as a small community school with just 50 students and 5
+                                        Founded in 2060, Janchetana School began as a small community school with just 50 students and 5
                                         teachers. Our founder, Dr. Elizabeth Morgan, envisioned a school that would combine academic rigor
                                         with a nurturing approach to education.
                                     </p>
@@ -306,9 +306,9 @@ export default function AboutPage() {
                             </motion.div>
                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                                 {
-                                testimonials.map((testimonial, index) => (
-                                    <TestimonialCard key={index} {...testimonial} />
-                                ))
+                                    testimonials.map((testimonial, index) => (
+                                        <TestimonialCard key={index} {...testimonial} />
+                                    ))
                                 }
                             </div>
                         </div>
@@ -330,7 +330,9 @@ export default function AboutPage() {
                                     <Link href="/admissions">Apply for Admission</Link>
                                 </Button>
                                 <Button size="lg" variant="outline">
-                                    Schedule a Visit
+                                    <Link href="/contactus">
+                                        Schedule a Visit
+                                    </Link>
                                 </Button>
                             </div>
                         </motion.div>
