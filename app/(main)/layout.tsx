@@ -1,5 +1,4 @@
 import type React from "react"
-import { MainNav } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export const metadata = {

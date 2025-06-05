@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { BookText, Home, Menu, Users, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { useState, useEffect } from "react"
 

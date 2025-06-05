@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { GraduationCap, Quote, BookOpen, CalendarDays, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -79,7 +79,6 @@ export default function Dashboard() {
                     <span className="font-medium">{format(new Date(), "EEEE, MMMM d, yyyy")}</span>
                 </motion.div>
             </div>
-
             <motion.div
                 className="grid gap-6 md:grid-cols-3"
                 variants={container}
@@ -95,11 +94,13 @@ export default function Dashboard() {
                                     <div className="text-muted-foreground">{stat.icon}</div>
                                 </CardHeader>
                                 <CardContent>
-                                    {isLoading ? (
-                                        <Skeleton className="h-10 w-20" />
-                                    ) : (
-                                        <div className="text-3xl font-bold">{stat.value}</div>
-                                    )}
+                                    {
+                                        isLoading ? (
+                                            <Skeleton className="h-10 w-20" />
+                                        ) : (
+                                            <div className="text-3xl font-bold">{stat.value}</div>
+                                        )
+                                    }
                                 </CardContent>
                             </Card>
                         </motion.div>
@@ -156,22 +157,24 @@ export default function Dashboard() {
                                     </div>
                                 ) : stats.latestArticles.length > 0 ? (
                                     <div className="space-y-4">
-                                        {stats.latestArticles.map((article) => (
-                                            <div key={article.id} className="space-y-3">
-                                                <h3 className="font-semibold text-lg">{article.title}</h3>
-                                                <div className="flex space-x-2 items-center">
-                                                    <Badge variant={article.status === 'published' ? 'default' : 'outline'}>
-                                                        {article.status === 'published' ? 'Published' : 'Draft'}
-                                                    </Badge>
-                                                    <span className="text-xs text-muted-foreground">
-                                                        {format(new Date(article.createdAt), "MMM d, yyyy")}
-                                                    </span>
+                                        {
+                                            stats.latestArticles.map((article) => (
+                                                <div key={article.id} className="space-y-3">
+                                                    <h3 className="font-semibold text-lg">{article.title}</h3>
+                                                    <div className="flex space-x-2 items-center">
+                                                        <Badge variant={article.status === 'published' ? 'default' : 'outline'}>
+                                                            {article.status === 'published' ? 'Published' : 'Draft'}
+                                                        </Badge>
+                                                        <span className="text-xs text-muted-foreground">
+                                                            {format(new Date(article.createdAt), "MMM d, yyyy")}
+                                                        </span>
+                                                    </div>
+                                                    <p className="text-sm text-muted-foreground line-clamp-3">
+                                                        {article.content}
+                                                    </p>
                                                 </div>
-                                                <p className="text-sm text-muted-foreground line-clamp-3">
-                                                    {article.content}
-                                                </p>
-                                            </div>
-                                        ))}
+                                            ))
+                                        }
                                     </div>
                                 ) : (
                                     <div className="flex flex-col items-center justify-center py-6 text-center">

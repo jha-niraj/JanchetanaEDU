@@ -254,93 +254,94 @@ export default function ArticlesPage() {
                                 animate="show"
                             >
                                 <AnimatePresence>
-                                    {articles.map((article) => (
-                                        <motion.div
-                                            key={article.id}
-                                            variants={item}
-                                            exit={{ opacity: 0, y: -20 }}
-                                            layout
-                                        >
-                                            <Card className="overflow-hidden">
-                                                <CardHeader className="pb-3">
-                                                    <div className="flex justify-between items-start">
-                                                        <div>
-                                                            <CardTitle className="text-lg">{article.title}</CardTitle>
-                                                            <div className="flex items-center mt-1 space-x-3">
-                                                                <Badge variant={article.status === "published" ? "default" : "outline"}>
-                                                                    {article.status === "published" ? "Published" : "Draft"}
-                                                                </Badge>
-                                                                <div className="flex items-center text-sm text-muted-foreground">
-                                                                    <CalendarIcon className="mr-1 h-3 w-3" />
-                                                                    {article.updatedAt
-                                                                        ? format(new Date(article.updatedAt), "MMM d, yyyy")
-                                                                        : format(new Date(article.createdAt), "MMM d, yyyy")}
+                                    {
+                                        articles.map((article) => (
+                                            <motion.div
+                                                key={article.id}
+                                                variants={item}
+                                                exit={{ opacity: 0, y: -20 }}
+                                                layout
+                                            >
+                                                <Card className="overflow-hidden">
+                                                    <CardHeader className="pb-3">
+                                                        <div className="flex justify-between items-start">
+                                                            <div>
+                                                                <CardTitle className="text-lg">{article.title}</CardTitle>
+                                                                <div className="flex items-center mt-1 space-x-3">
+                                                                    <Badge variant={article.status === "published" ? "default" : "outline"}>
+                                                                        {article.status === "published" ? "Published" : "Draft"}
+                                                                    </Badge>
+                                                                    <div className="flex items-center text-sm text-muted-foreground">
+                                                                        <CalendarIcon className="mr-1 h-3 w-3" />
+                                                                        {article.updatedAt
+                                                                            ? format(new Date(article.updatedAt), "MMM d, yyyy")
+                                                                            : format(new Date(article.createdAt), "MMM d, yyyy")}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </CardHeader>
-                                                <CardContent className="pb-4">
-                                                    <ScrollArea className="h-24">
-                                                        <p className="text-sm text-muted-foreground line-clamp-3">
-                                                            {article.content}
-                                                        </p>
-                                                    </ScrollArea>
-                                                </CardContent>
-                                                <CardFooter className="bg-muted/50 p-3 flex justify-end gap-2">
-                                                    <AlertDialog
-                                                        open={isDeleteDialogOpen && selectedArticleId === article.id}
-                                                        onOpenChange={(open) => {
-                                                            if (!open) setSelectedArticleId(null);
-                                                            setIsDeleteDialogOpen(open);
-                                                        }}
-                                                    >
-                                                        <AlertDialogTrigger asChild>
-                                                            <Button
-                                                                variant="destructive"
-                                                                size="sm"
-                                                                onClick={() => {
-                                                                    setSelectedArticleId(article.id);
-                                                                    setIsDeleteDialogOpen(true);
-                                                                }}
-                                                            >
-                                                                <Trash2 className="h-4 w-4 mr-2" />
-                                                                Delete
-                                                            </Button>
-                                                        </AlertDialogTrigger>
-                                                        <AlertDialogContent>
-                                                            <AlertDialogHeader>
-                                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                                                <AlertDialogDescription>
-                                                                    This will permanently remove this article from the database.
-                                                                    This action cannot be undone.
-                                                                </AlertDialogDescription>
-                                                            </AlertDialogHeader>
-                                                            <AlertDialogFooter>
-                                                                <AlertDialogCancel disabled={isPending}>Cancel</AlertDialogCancel>
-                                                                <AlertDialogAction
-                                                                    onClick={handleDeleteArticle}
-                                                                    disabled={isPending}
-                                                                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                                    </CardHeader>
+                                                    <CardContent className="pb-4">
+                                                        <ScrollArea className="h-24">
+                                                            <p className="text-sm text-muted-foreground line-clamp-3">
+                                                                {article.content}
+                                                            </p>
+                                                        </ScrollArea>
+                                                    </CardContent>
+                                                    <CardFooter className="bg-muted/50 p-3 flex justify-end gap-2">
+                                                        <AlertDialog
+                                                            open={isDeleteDialogOpen && selectedArticleId === article.id}
+                                                            onOpenChange={(open) => {
+                                                                if (!open) setSelectedArticleId(null);
+                                                                setIsDeleteDialogOpen(open);
+                                                            }}
+                                                        >
+                                                            <AlertDialogTrigger asChild>
+                                                                <Button
+                                                                    variant="destructive"
+                                                                    size="sm"
+                                                                    onClick={() => {
+                                                                        setSelectedArticleId(article.id);
+                                                                        setIsDeleteDialogOpen(true);
+                                                                    }}
                                                                 >
-                                                                    {
-                                                                        isPending ? (
-                                                                            <>
-                                                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                                                Deleting...
-                                                                            </>
-                                                                        ) : (
-                                                                            <>Delete</>
-                                                                        )
-                                                                    }
-                                                                </AlertDialogAction>
-                                                            </AlertDialogFooter>
-                                                        </AlertDialogContent>
-                                                    </AlertDialog>
-                                                </CardFooter>
-                                            </Card>
-                                        </motion.div>
-                                    ))
+                                                                    <Trash2 className="h-4 w-4 mr-2" />
+                                                                    Delete
+                                                                </Button>
+                                                            </AlertDialogTrigger>
+                                                            <AlertDialogContent>
+                                                                <AlertDialogHeader>
+                                                                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                                    <AlertDialogDescription>
+                                                                        This will permanently remove this article from the database.
+                                                                        This action cannot be undone.
+                                                                    </AlertDialogDescription>
+                                                                </AlertDialogHeader>
+                                                                <AlertDialogFooter>
+                                                                    <AlertDialogCancel disabled={isPending}>Cancel</AlertDialogCancel>
+                                                                    <AlertDialogAction
+                                                                        onClick={handleDeleteArticle}
+                                                                        disabled={isPending}
+                                                                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                                                    >
+                                                                        {
+                                                                            isPending ? (
+                                                                                <>
+                                                                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                                                    Deleting...
+                                                                                </>
+                                                                            ) : (
+                                                                                <>Delete</>
+                                                                            )
+                                                                        }
+                                                                    </AlertDialogAction>
+                                                                </AlertDialogFooter>
+                                                            </AlertDialogContent>
+                                                        </AlertDialog>
+                                                    </CardFooter>
+                                                </Card>
+                                            </motion.div>
+                                        ))
                                     }
                                 </AnimatePresence>
                             </motion.div>

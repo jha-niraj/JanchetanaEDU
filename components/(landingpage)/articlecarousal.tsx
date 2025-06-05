@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import Image from "next/image"
-import { ArrowLeft, ArrowRight, X } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
@@ -115,9 +115,9 @@ export function ArticleCarousel() {
         setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1))
     }, [maxIndex])
 
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1))
-    }
+    // const prevSlide = () => {
+    //     setCurrentIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1))
+    // }
 
     const startAutoplay = useCallback(() => {
         if (autoplayRef.current) clearInterval(autoplayRef.current)

@@ -21,7 +21,6 @@ import { Label } from "@/components/ui/label";
 import { addTeacher, updateTeacher, deleteTeacher, getTeachers } from "@/actions/teacher.action";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
 
 interface Teacher {
     id: string;
@@ -60,7 +59,7 @@ export default function TeachersPage() {
             if (result.success) {
                 const teachersList = result.teachers || [];
                 setTeachers(teachersList);
-                
+
                 // Get unique subjects and sort them
                 const subjects = Array.from(new Set(
                     teachersList.map(teacher => teacher.subject.trim())
@@ -234,7 +233,6 @@ export default function TeachersPage() {
 
     return (
         <section className="min-h-screen bg-background">
-            {/* Header Section */}
             <div className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container py-4">
                     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -371,309 +369,321 @@ export default function TeachersPage() {
                             </DialogContent>
                         </Dialog>
                     </div>
-
-                    {/* Subject Filters */}
-                    {uniqueSubjects.length > 0 && (
-                        <div className="mt-4 border-t pt-4">
-                            <div className="flex flex-wrap items-center gap-3">
-                                <h2 className="text-sm font-medium text-muted-foreground">
-                                    Filter by Subject:
-                                </h2>
-                                <div className="flex flex-wrap items-center gap-2">
-                                    {uniqueSubjects.map((subject) => (
-                                        <Badge
-                                            key={subject}
-                                            variant={selectedSubject?.toLowerCase() === subject.toLowerCase() ? "default" : "secondary"}
-                                            className="cursor-pointer transition-colors hover:bg-primary/80 hover:text-black"
-                                            onClick={() => handleSubjectFilter(subject)}
-                                        >
-                                            {subject}
-                                            {selectedSubject?.toLowerCase() === subject.toLowerCase() && (
-                                                <X 
-                                                    className="ml-1 h-3 w-3 hover:text-destructive" 
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        setSelectedSubject(null);
-                                                    }}
-                                                />
-                                            )}
-                                        </Badge>
-                                    ))}
+                    {
+                        uniqueSubjects.length > 0 && (
+                            <div className="mt-4 border-t pt-4">
+                                <div className="flex flex-wrap items-center gap-3">
+                                    <h2 className="text-sm font-medium text-muted-foreground">
+                                        Filter by Subject:
+                                    </h2>
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        {
+                                            uniqueSubjects.map((subject) => (
+                                                <Badge
+                                                    key={subject}
+                                                    variant={selectedSubject?.toLowerCase() === subject.toLowerCase() ? "default" : "secondary"}
+                                                    className="cursor-pointer transition-colors hover:bg-primary/80 hover:text-black"
+                                                    onClick={() => handleSubjectFilter(subject)}
+                                                >
+                                                    {subject}
+                                                    {
+                                                        selectedSubject?.toLowerCase() === subject.toLowerCase() && (
+                                                            <X
+                                                                className="ml-1 h-3 w-3 hover:text-destructive"
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    setSelectedSubject(null);
+                                                                }}
+                                                            />
+                                                        )
+                                                    }
+                                                </Badge>
+                                            ))
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )}
+                        )
+                    }
                 </div>
             </div>
-
-            {/* Main Content */}
             <div className="container py-6">
-                {filteredTeachers.length === 0 ? (
-                    <div className="flex min-h-[400px] flex-col items-center justify-center rounded-lg border border-dashed p-8 text-center animate-in fade-in-50">
-                        <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
-                            <GraduationCap className="h-10 w-10 text-muted-foreground mb-4" />
-                            <h3 className="text-lg font-semibold">
-                                {selectedSubject 
-                                    ? `No teachers found for ${selectedSubject}`
-                                    : "No teachers found"}
-                            </h3>
-                            <p className="mb-4 mt-2 text-sm text-muted-foreground">
-                                {selectedSubject 
-                                    ? `There are no teachers assigned to teach ${selectedSubject}.`
-                                    : "There are no teachers in the system yet. Add your first teacher to get started."}
-                            </p>
-                            <Button onClick={() => setIsAddDialogOpen(true)} size="sm">
-                                <Plus className="mr-2 h-4 w-4" />
-                                Add Your First Teacher
-                            </Button>
+                {
+                    filteredTeachers.length === 0 ? (
+                        <div className="flex min-h-[400px] flex-col items-center justify-center rounded-lg border border-dashed p-8 text-center animate-in fade-in-50">
+                            <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
+                                <GraduationCap className="h-10 w-10 text-muted-foreground mb-4" />
+                                <h3 className="text-lg font-semibold">
+                                    {
+                                        selectedSubject
+                                            ? `No teachers found for ${selectedSubject}`
+                                            : "No teachers found"
+                                    }
+                                </h3>
+                                <p className="mb-4 mt-2 text-sm text-muted-foreground">
+                                    {
+                                        selectedSubject
+                                            ? `There are no teachers assigned to teach ${selectedSubject}.`
+                                            : "There are no teachers in the system yet. Add your first teacher to get started."
+                                    }
+                                </p>
+                                <Button onClick={() => setIsAddDialogOpen(true)} size="sm">
+                                    <Plus className="mr-2 h-4 w-4" />
+                                    Add Your First Teacher
+                                </Button>
+                            </div>
                         </div>
-                    </div>
-                ) : (
-                    <motion.div
-                        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                        variants={container}
-                        initial="hidden"
-                        animate="show"
-                    >
-                        <AnimatePresence>
-                            {filteredTeachers.map((teacher) => (
-                                <motion.div 
-                                    key={teacher.id} 
-                                    variants={item} 
-                                    exit={{ opacity: 0, y: -20 }} 
-                                    layout
-                                    className="group"
-                                >
-                                    <Card className="overflow-hidden hover:shadow-md transition-all duration-200 group-hover:border-primary/20">
-                                        <CardContent className="p-0">
-                                            <div className="flex flex-col">
-                                                {/* Top Section with Image and Name */}
-                                                <div className="relative p-6 pb-4 flex flex-col items-center bg-muted/30">
-                                                    <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-background shadow-lg">
-                                                        <Image
-                                                            src={teacher.image}
-                                                            alt={teacher.name}
-                                                            fill
-                                                            className="object-cover"
-                                                        />
-                                                    </div>
-                                                    <h3 className="mt-4 text-xl font-semibold tracking-tight">{teacher.name}</h3>
-                                                    <div className="flex items-center mt-1 text-muted-foreground">
-                                                        <BookOpen className="h-4 w-4 mr-2" />
-                                                        <span className="text-base">{teacher.subject}</span>
-                                                    </div>
-                                                </div>
-
-                                                {/* Contact Information */}
-                                                <div className="p-4 space-y-3 border-t bg-card">
-                                                    <div className="flex items-center gap-3 text-sm">
-                                                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted">
-                                                            <Mail className="h-4 w-4 text-muted-foreground" />
+                    ) : (
+                        <motion.div
+                            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                            variants={container}
+                            initial="hidden"
+                            animate="show"
+                        >
+                            <AnimatePresence>
+                                {
+                                    filteredTeachers.map((teacher) => (
+                                        <motion.div
+                                            key={teacher.id}
+                                            variants={item}
+                                            exit={{ opacity: 0, y: -20 }}
+                                            layout
+                                            className="group"
+                                        >
+                                            <Card className="overflow-hidden hover:shadow-md transition-all duration-200 group-hover:border-primary/20">
+                                                <CardContent className="p-0">
+                                                    <div className="flex flex-col">
+                                                        <div className="relative p-6 pb-4 flex flex-col items-center bg-muted/30">
+                                                            <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-background shadow-lg">
+                                                                <Image
+                                                                    src={teacher.image}
+                                                                    alt={teacher.name}
+                                                                    fill
+                                                                    className="object-cover"
+                                                                />
+                                                            </div>
+                                                            <h3 className="mt-4 text-xl font-semibold tracking-tight">{teacher.name}</h3>
+                                                            <div className="flex items-center mt-1 text-muted-foreground">
+                                                                <BookOpen className="h-4 w-4 mr-2" />
+                                                                <span className="text-base">{teacher.subject}</span>
+                                                            </div>
                                                         </div>
-                                                        <div className="flex-1 min-w-0">
-                                                            <p className="text-xs text-muted-foreground">Email</p>
-                                                            <p className="truncate">{teacher.email}</p>
+                                                        <div className="p-4 space-y-3 border-t bg-card">
+                                                            <div className="flex items-center gap-3 text-sm">
+                                                                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted">
+                                                                    <Mail className="h-4 w-4 text-muted-foreground" />
+                                                                </div>
+                                                                <div className="flex-1 min-w-0">
+                                                                    <p className="text-xs text-muted-foreground">Email</p>
+                                                                    <p className="truncate">{teacher.email}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="flex items-center gap-3 text-sm">
+                                                                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted">
+                                                                    <Phone className="h-4 w-4 text-muted-foreground" />
+                                                                </div>
+                                                                <div className="flex-1 min-w-0">
+                                                                    <p className="text-xs text-muted-foreground">Phone</p>
+                                                                    <p className="truncate">{teacher.phone}</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className="flex items-center gap-3 text-sm">
-                                                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted">
-                                                            <Phone className="h-4 w-4 text-muted-foreground" />
-                                                        </div>
-                                                        <div className="flex-1 min-w-0">
-                                                            <p className="text-xs text-muted-foreground">Phone</p>
-                                                            <p className="truncate">{teacher.phone}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </CardContent>
-
-                                        {/* Actions Footer */}
-                                        <CardFooter className="flex justify-end gap-2 p-3 border-t bg-muted/30">
-                                            <Button
-                                                variant="ghost"
-                                                size="sm"
-                                                onClick={() => {
-                                                    setSelectedTeacher(teacher);
-                                                    setPreviewUrl(null);
-                                                    setIsEditDialogOpen(true);
-                                                }}
-                                                className="h-8 px-3 text-sm"
-                                            >
-                                                <Pencil className="h-4 w-4 mr-2" />
-                                                Edit
-                                            </Button>
-                                            <AlertDialog
-                                                open={isDeleteDialogOpen && selectedTeacher?.id === teacher.id}
-                                                onOpenChange={(open) => {
-                                                    if (!open) setSelectedTeacher(null);
-                                                    setIsDeleteDialogOpen(open);
-                                                }}
-                                            >
-                                                <AlertDialogTrigger asChild>
+                                                </CardContent>
+                                                <CardFooter className="flex justify-end gap-2 p-3 border-t bg-muted/30">
                                                     <Button
                                                         variant="ghost"
                                                         size="sm"
-                                                        className="h-8 px-3 text-sm hover:bg-destructive hover:text-destructive-foreground"
                                                         onClick={() => {
                                                             setSelectedTeacher(teacher);
-                                                            setIsDeleteDialogOpen(true);
+                                                            setPreviewUrl(null);
+                                                            setIsEditDialogOpen(true);
+                                                        }}
+                                                        className="h-8 px-3 text-sm"
+                                                    >
+                                                        <Pencil className="h-4 w-4 mr-2" />
+                                                        Edit
+                                                    </Button>
+                                                    <AlertDialog
+                                                        open={isDeleteDialogOpen && selectedTeacher?.id === teacher.id}
+                                                        onOpenChange={(open) => {
+                                                            if (!open) setSelectedTeacher(null);
+                                                            setIsDeleteDialogOpen(open);
                                                         }}
                                                     >
-                                                        <Trash2 className="h-4 w-4 mr-2" />
-                                                        Remove
-                                                    </Button>
-                                                </AlertDialogTrigger>
-                                                <AlertDialogContent>
-                                                    <AlertDialogHeader>
-                                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                                        <AlertDialogDescription>
-                                                            This will permanently remove {teacher.name} from the database.
-                                                            This action cannot be undone.
-                                                        </AlertDialogDescription>
-                                                    </AlertDialogHeader>
-                                                    <AlertDialogFooter>
-                                                        <AlertDialogCancel disabled={isPending}>Cancel</AlertDialogCancel>
-                                                        <AlertDialogAction
-                                                            onClick={handleDeleteTeacher}
-                                                            disabled={isPending}
-                                                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                                                        >
-                                                            {isPending ? (
-                                                                <>
-                                                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                                    Deleting...
-                                                                </>
-                                                            ) : (
-                                                                <>Delete</>
-                                                            )}
-                                                        </AlertDialogAction>
-                                                    </AlertDialogFooter>
-                                                </AlertDialogContent>
-                                            </AlertDialog>
-                                        </CardFooter>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
-                    </motion.div>
-                )}
+                                                        <AlertDialogTrigger asChild>
+                                                            <Button
+                                                                variant="ghost"
+                                                                size="sm"
+                                                                className="h-8 px-3 text-sm hover:bg-destructive hover:text-destructive-foreground"
+                                                                onClick={() => {
+                                                                    setSelectedTeacher(teacher);
+                                                                    setIsDeleteDialogOpen(true);
+                                                                }}
+                                                            >
+                                                                <Trash2 className="h-4 w-4 mr-2" />
+                                                                Remove
+                                                            </Button>
+                                                        </AlertDialogTrigger>
+                                                        <AlertDialogContent>
+                                                            <AlertDialogHeader>
+                                                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                                <AlertDialogDescription>
+                                                                    This will permanently remove {teacher.name} from the database.
+                                                                    This action cannot be undone.
+                                                                </AlertDialogDescription>
+                                                            </AlertDialogHeader>
+                                                            <AlertDialogFooter>
+                                                                <AlertDialogCancel disabled={isPending}>Cancel</AlertDialogCancel>
+                                                                <AlertDialogAction
+                                                                    onClick={handleDeleteTeacher}
+                                                                    disabled={isPending}
+                                                                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                                                >
+                                                                    {
+                                                                        isPending ? (
+                                                                            <>
+                                                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                                                Deleting...
+                                                                            </>
+                                                                        ) : (
+                                                                            <>Delete</>
+                                                                        )
+                                                                    }
+                                                                </AlertDialogAction>
+                                                            </AlertDialogFooter>
+                                                        </AlertDialogContent>
+                                                    </AlertDialog>
+                                                </CardFooter>
+                                            </Card>
+                                        </motion.div>
+                                    ))
+                                }
+                            </AnimatePresence>
+                        </motion.div>
+                    )
+                }
             </div>
-
             <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
                 <DialogContent className="sm:max-w-md">
                     <DialogHeader>
                         <DialogTitle>Edit Teacher</DialogTitle>
                         <DialogDescription>Update the teacher&apos;s information below.</DialogDescription>
                     </DialogHeader>
-                    {selectedTeacher && (
-                        <div className="grid gap-4 py-4">
-                            <div className="grid gap-2">
-                                <Label>Profile Picture</Label>
-                                <div className="flex flex-col items-center gap-4">
-                                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-muted">
-                                        {previewUrl ? (
-                                            <Image
-                                                src={previewUrl}
-                                                alt="Preview"
-                                                fill
-                                                className="object-cover"
+                    {
+                        selectedTeacher && (
+                            <div className="grid gap-4 py-4">
+                                <div className="grid gap-2">
+                                    <Label>Profile Picture</Label>
+                                    <div className="flex flex-col items-center gap-4">
+                                        <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-muted">
+                                            {
+                                                previewUrl ? (
+                                                    <Image
+                                                        src={previewUrl}
+                                                        alt="Preview"
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                ) : (
+                                                    <Image
+                                                        src={selectedTeacher.image}
+                                                        alt={selectedTeacher.name}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                )
+                                            }
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Input
+                                                type="file"
+                                                accept="image/*"
+                                                className="hidden"
+                                                id="edit-teacher-image"
+                                                onChange={(e) => handleImageChange(e, true)}
                                             />
-                                        ) : (
-                                            <Image
-                                                src={selectedTeacher.image}
-                                                alt={selectedTeacher.name}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        )}
+                                            <Label
+                                                htmlFor="edit-teacher-image"
+                                                className="cursor-pointer inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                                            >
+                                                <Upload className="mr-2 h-4 w-4" />
+                                                Change Image
+                                            </Label>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-2">
+                                </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="edit-name">Full Name</Label>
+                                    <div className="relative">
+                                        <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                                         <Input
-                                            type="file"
-                                            accept="image/*"
-                                            className="hidden"
-                                            id="edit-teacher-image"
-                                            onChange={(e) => handleImageChange(e, true)}
+                                            id="edit-name"
+                                            name="name"
+                                            className="pl-9"
+                                            value={selectedTeacher.name}
+                                            onChange={handleInputChange}
                                         />
-                                        <Label
-                                            htmlFor="edit-teacher-image"
-                                            className="cursor-pointer inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-                                        >
-                                            <Upload className="mr-2 h-4 w-4" />
-                                            Change Image
-                                        </Label>
+                                    </div>
+                                </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="edit-subject">Subject</Label>
+                                    <div className="relative">
+                                        <BookOpen className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                                        <Input
+                                            id="edit-subject"
+                                            name="subject"
+                                            className="pl-9"
+                                            value={selectedTeacher.subject}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="edit-email">Email Address</Label>
+                                    <div className="relative">
+                                        <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                                        <Input
+                                            id="edit-email"
+                                            name="email"
+                                            type="email"
+                                            className="pl-9"
+                                            value={selectedTeacher.email}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="edit-phone">Phone Number</Label>
+                                    <div className="relative">
+                                        <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                                        <Input
+                                            id="edit-phone"
+                                            name="phone"
+                                            className="pl-9"
+                                            value={selectedTeacher.phone}
+                                            onChange={handleInputChange}
+                                        />
                                     </div>
                                 </div>
                             </div>
-                            <div className="grid gap-2">
-                                <Label htmlFor="edit-name">Full Name</Label>
-                                <div className="relative">
-                                    <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                                    <Input
-                                        id="edit-name"
-                                        name="name"
-                                        className="pl-9"
-                                        value={selectedTeacher.name}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className="grid gap-2">
-                                <Label htmlFor="edit-subject">Subject</Label>
-                                <div className="relative">
-                                    <BookOpen className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                                    <Input
-                                        id="edit-subject"
-                                        name="subject"
-                                        className="pl-9"
-                                        value={selectedTeacher.subject}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className="grid gap-2">
-                                <Label htmlFor="edit-email">Email Address</Label>
-                                <div className="relative">
-                                    <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                                    <Input
-                                        id="edit-email"
-                                        name="email"
-                                        type="email"
-                                        className="pl-9"
-                                        value={selectedTeacher.email}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className="grid gap-2">
-                                <Label htmlFor="edit-phone">Phone Number</Label>
-                                <div className="relative">
-                                    <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                                    <Input
-                                        id="edit-phone"
-                                        name="phone"
-                                        className="pl-9"
-                                        value={selectedTeacher.phone}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    )}
+                        )
+                    }
                     <DialogFooter>
                         <Button variant="outline" onClick={() => setIsEditDialogOpen(false)} disabled={isPending}>
                             Cancel
                         </Button>
                         <Button onClick={handleUpdateTeacher} disabled={isPending}>
-                            {isPending ? (
-                                <>
-                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                    Updating...
-                                </>
-                            ) : (
-                                <>Save Changes</>
-                            )}
+                            {
+                                isPending ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        Updating...
+                                    </>
+                                ) : (
+                                    <>Save Changes</>
+                                )
+                            }
                         </Button>
                     </DialogFooter>
                 </DialogContent>
