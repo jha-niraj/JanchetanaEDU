@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
+import cloudinary from "@/utils/cloudinary"
 
 // Define interfaces based on Prisma schema
 interface Teacher {
@@ -10,6 +11,7 @@ interface Teacher {
 	subject: string;
 	email: string;
 	phone: string;
+	image: string;
 	createdAt: Date;
 	updatedAt: Date;
 }
@@ -19,6 +21,7 @@ interface TeacherData {
 	email: string;
 	subject: string;
 	phone?: string;
+	image?: File;
 }
 
 interface TeacherResponse<T> {
@@ -39,11 +42,38 @@ interface CountResponse {
 	error?: string;
 }
 
+async function uploadToCloudinary(file: File): Promise<string> {
+	try {
+		const arrayBuffer = await file.arrayBuffer();
+		const buffer = Buffer.from(arrayBuffer);
+
+		return new Promise((resolve, reject) => {
+			cloudinary.uploader.upload_stream((error, result) => {
+				if (error) reject(error);
+				else resolve(result?.secure_url || '');
+			}).end(buffer);
+		});
+	} catch (error) {
+		console.error('Error uploading to Cloudinary:', error);
+		throw new Error('Failed to upload image');
+	}
+}
+
 export async function getTeachers(): Promise<TeachersResponse> {
 	try {
 		const teachers = await prisma.teacher.findMany({
 			orderBy: {
 				createdAt: 'desc'
+			},
+			select: {
+				id: true,
+				name: true,
+				subject: true,
+				email: true,
+				phone: true,
+				image: true,
+				createdAt: true,
+				updatedAt: true,
 			}
 		});
 
@@ -58,14 +88,24 @@ export async function getTeachers(): Promise<TeachersResponse> {
 export async function getTeacherById(id: string): Promise<TeacherResponse<Teacher>> {
 	try {
 		const teacher = await prisma.teacher.findUnique({
-			where: { id }
+			where: { id },
+			select: {
+				id: true,
+				name: true,
+				subject: true,
+				email: true,
+				phone: true,
+				image: true,
+				createdAt: true,
+				updatedAt: true,
+			}
 		});
 
 		if (!teacher) {
 			return { success: false, error: "Teacher not found" };
 		}
 
-		return { success: true, teacher };
+		return { success: true, teacher: teacher as Teacher };
 	} catch (err) {
 		const error = err as Error;
 		console.error(`Failed to fetch teacher with ID ${id}:`, error);
@@ -89,6 +129,13 @@ export async function addTeacher(teacherData: TeacherData): Promise<TeacherRespo
 			return { success: false, error: "A teacher with this email already exists" };
 		}
 
+		let imageUrl = "https://res.cloudinary.com/dhfuckcax/image/upload/v1739810646/krk8x7fzjukcfcoefrea.jpg";
+
+		// Upload image if provided
+		if (teacherData.image) {
+			imageUrl = await uploadToCloudinary(teacherData.image);
+		}
+
 		// Create the teacher
 		const teacher = await prisma.teacher.create({
 			data: {
@@ -96,10 +143,11 @@ export async function addTeacher(teacherData: TeacherData): Promise<TeacherRespo
 				subject: teacherData.subject,
 				email: teacherData.email,
 				phone: teacherData.phone || "",
+				image: imageUrl,
 			}
 		});
 
-		revalidatePath('/teachers');
+		revalidatePath('/dashboard/teachers');
 		revalidatePath('/dashboard');
 
 		return { success: true, teacher };
@@ -110,9 +158,6 @@ export async function addTeacher(teacherData: TeacherData): Promise<TeacherRespo
 	}
 }
 
-/**
- * Update an existing teacher
- */
 export async function updateTeacher(id: string, teacherData: TeacherData): Promise<TeacherResponse<Teacher>> {
 	try {
 		// Basic validation
@@ -129,7 +174,6 @@ export async function updateTeacher(id: string, teacherData: TeacherData): Promi
 			return { success: false, error: "Teacher not found" };
 		}
 
-		// Check if another teacher with the same email exists (for email updates)
 		if (teacherData.email !== existingTeacher.email) {
 			const emailExists = await prisma.teacher.findUnique({
 				where: { email: teacherData.email }
@@ -140,6 +184,13 @@ export async function updateTeacher(id: string, teacherData: TeacherData): Promi
 			}
 		}
 
+		let imageUrl = existingTeacher.image;
+
+		// Upload new image if provided
+		if (teacherData.image) {
+			imageUrl = await uploadToCloudinary(teacherData.image);
+		}
+
 		// Update the teacher
 		const teacher = await prisma.teacher.update({
 			where: { id },
@@ -148,11 +199,11 @@ export async function updateTeacher(id: string, teacherData: TeacherData): Promi
 				subject: teacherData.subject,
 				email: teacherData.email,
 				phone: teacherData.phone || "",
+				image: imageUrl,
 			}
 		});
 
-		revalidatePath('/teachers');
-		revalidatePath(`/teachers/${id}`);
+		revalidatePath('/dashboard/teachers');
 		revalidatePath('/dashboard');
 
 		return { success: true, teacher };
@@ -163,9 +214,6 @@ export async function updateTeacher(id: string, teacherData: TeacherData): Promi
 	}
 }
 
-/**
- * Delete a teacher
- */
 export async function deleteTeacher(id: string): Promise<{ success: boolean; error?: string }> {
 	try {
 		// Check if teacher exists
@@ -193,9 +241,6 @@ export async function deleteTeacher(id: string): Promise<{ success: boolean; err
 	}
 }
 
-/**
- * Get teacher count
- */
 export async function getTeacherCount(): Promise<CountResponse> {
 	try {
 		const count = await prisma.teacher.count();

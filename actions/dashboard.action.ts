@@ -1,3 +1,5 @@
+'use server'
+
 import { prisma } from "@/lib/prisma";
 
 export interface DashboardStats {
@@ -15,30 +17,30 @@ export interface DashboardStats {
 
 export async function getDashboardStats(): Promise<DashboardStats> {
     try {
-        const [teacherCount, latestArticles] = await Promise.all([
-            prisma.teacher.count(),
-            prisma.article.findMany({
-                where: { status: 'published' },
-                orderBy: { createdAt: 'desc' },
-                take: 1,
-                select: {
-                    id: true,
-                    title: true,
-                    content: true,
-                    status: true,
-                    createdAt: true,
-                },
-            }),
-        ]);
+        // Get teacher count
+        const teacherCount = await prisma.teacher.count();
+
+        // Get latest articles
+        const latestArticles = await prisma.article.findMany({
+            take: 5,
+            orderBy: {
+                createdAt: 'desc'
+            },
+            select: {
+                id: true,
+                title: true,
+                content: true,
+                status: true,
+                createdAt: true,
+            }
+        });
 
         return {
             teacherCount,
-            latestArticles
+            latestArticles,
         };
     } catch (error) {
-        console.error("Failed to fetch dashboard stats:", error);
-        throw new Error("Failed to fetch dashboard stats");
-    } finally {
-        await prisma.$disconnect();
+        console.error('Error fetching dashboard stats:', error);
+        throw new Error('Failed to fetch dashboard stats');
     }
 }

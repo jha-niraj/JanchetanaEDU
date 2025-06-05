@@ -343,7 +343,7 @@ export default function Home() {
 										title="National Science Olympiad"
 										description="Our students secured top positions in the National Science Olympiad, demonstrating exceptional scientific aptitude."
 										year="2023"
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										imageSrc="/landingpage/sciencecompetition.png"
 									/>
 								</motion.div>
 								<motion.div variants={fadeInUp}>
@@ -351,7 +351,7 @@ export default function Home() {
 										title="Regional Debate Championship"
 										description="Janchetana School debate team won the Regional Debate Championship, showcasing outstanding critical thinking and public speaking skills."
 										year="2023"
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										imageSrc="/landingpage/debatecompetition.png"
 									/>
 								</motion.div>
 								<motion.div variants={fadeInUp}>
@@ -359,7 +359,7 @@ export default function Home() {
 										title="Mathematics Competition"
 										description="Our students received gold medals in the National Mathematics Competition, reflecting our strong STEM education."
 										year="2022"
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										imageSrc="/landingpage/mathematicscompetition.png"
 									/>
 								</motion.div>
 								<motion.div variants={fadeInUp}>
@@ -367,7 +367,7 @@ export default function Home() {
 										title="Arts & Literature Festival"
 										description="Students won multiple awards at the National Arts & Literature Festival for their creative writing and artistic expressions."
 										year="2022"
-										imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+										imageSrc="/landingpage/artandliterature.png"
 									/>
 								</motion.div>
 							</motion.div>
@@ -435,7 +435,7 @@ export default function Home() {
 									/>
 								</motion.div>
 							</motion.div>
-							<motion.div
+							{/* <motion.div
 								className="mt-8 flex justify-center"
 								initial={{ opacity: 0 }}
 								whileInView={{ opacity: 1 }}
@@ -445,7 +445,7 @@ export default function Home() {
 								<Button variant="outline" className="gap-1">
 									View all events <Calendar className="h-4 w-4" />
 								</Button>
-							</motion.div>
+							</motion.div> */}
 						</div>
 					</section>
 					<section className="py-16 px-4">
@@ -578,7 +578,7 @@ export default function Home() {
 								viewport={{ once: true }}
 								transition={{ duration: 0.5 }}
 							>
-								<Badge className="px-3 py-1 text-sm bg-primary/10 text-black hover:text-white border-primary/20">Success Stories</Badge>
+								<Badge className="px-3 py-1 text-sm bg-primary/10 text-black hover:text-white dark:text-white dark:hover:text-black border-primary/20">Success Stories</Badge>
 								<h2 className="text-3xl font-bold tracking-tight">Alumni Spotlight</h2>
 								<p className="text-muted-foreground max-w-2xl mx-auto">
 									Meet our distinguished alumni who are making a difference in the world
@@ -592,11 +592,11 @@ export default function Home() {
 								transition={{ duration: 0.5 }}
 							>
 								<AlumniSpotlight
-									name="Dr. Aarav Poudel"
-									graduationYear="2008"
-									achievement="Leading Researcher in Sustainable Energy"
+									name="Satya Kumar Chaudhary"
+									graduationYear="2021"
+									achievement="Software Engineer"
 									quote="The foundation I received at Janchetana School gave me the confidence to pursue my dreams in science and make a difference in the world. The mentorship from dedicated teachers and the hands-on learning experiences prepared me for the challenges of academic research."
-									imageSrc="https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp"
+									imageSrc="/alumni/satyakumar.jpeg"
 								/>
 							</motion.div>
 						</div>

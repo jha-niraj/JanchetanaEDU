@@ -138,6 +138,7 @@ exports.Prisma.TeacherScalarFieldEnum = {
   subject: 'subject',
   email: 'email',
   phone: 'phone',
+  image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId'

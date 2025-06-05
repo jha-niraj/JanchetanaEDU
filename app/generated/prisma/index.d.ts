@@ -2808,6 +2808,7 @@ export namespace Prisma {
     subject: string | null
     email: string | null
     phone: string | null
+    image: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -2819,6 +2820,7 @@ export namespace Prisma {
     subject: string | null
     email: string | null
     phone: string | null
+    image: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -2830,6 +2832,7 @@ export namespace Prisma {
     subject: number
     email: number
     phone: number
+    image: number
     createdAt: number
     updatedAt: number
     userId: number
@@ -2843,6 +2846,7 @@ export namespace Prisma {
     subject?: true
     email?: true
     phone?: true
+    image?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -2854,6 +2858,7 @@ export namespace Prisma {
     subject?: true
     email?: true
     phone?: true
+    image?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -2865,6 +2870,7 @@ export namespace Prisma {
     subject?: true
     email?: true
     phone?: true
+    image?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -2949,6 +2955,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image: string
     createdAt: Date
     updatedAt: Date
     userId: string | null
@@ -2977,6 +2984,7 @@ export namespace Prisma {
     subject?: boolean
     email?: boolean
     phone?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -2991,6 +2999,7 @@ export namespace Prisma {
     subject?: boolean
     email?: boolean
     phone?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -3003,6 +3012,7 @@ export namespace Prisma {
     subject?: boolean
     email?: boolean
     phone?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -3015,12 +3025,13 @@ export namespace Prisma {
     subject?: boolean
     email?: boolean
     phone?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
   }
 
-  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subject" | "email" | "phone" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["teacher"]>
+  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subject" | "email" | "phone" | "image" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["teacher"]>
   export type TeacherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     articles?: boolean | Teacher$articlesArgs<ExtArgs>
     User?: boolean | Teacher$UserArgs<ExtArgs>
@@ -3045,6 +3056,7 @@ export namespace Prisma {
       subject: string
       email: string
       phone: string
+      image: string
       createdAt: Date
       updatedAt: Date
       userId: string | null
@@ -3478,6 +3490,7 @@ export namespace Prisma {
     readonly subject: FieldRef<"Teacher", 'String'>
     readonly email: FieldRef<"Teacher", 'String'>
     readonly phone: FieldRef<"Teacher", 'String'>
+    readonly image: FieldRef<"Teacher", 'String'>
     readonly createdAt: FieldRef<"Teacher", 'DateTime'>
     readonly updatedAt: FieldRef<"Teacher", 'DateTime'>
     readonly userId: FieldRef<"Teacher", 'String'>
@@ -10600,6 +10613,7 @@ export namespace Prisma {
     subject: 'subject',
     email: 'email',
     phone: 'phone',
+    image: 'image',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     userId: 'userId'
@@ -10951,6 +10965,7 @@ export namespace Prisma {
     subject?: StringFilter<"Teacher"> | string
     email?: StringFilter<"Teacher"> | string
     phone?: StringFilter<"Teacher"> | string
+    image?: StringFilter<"Teacher"> | string
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
     updatedAt?: DateTimeFilter<"Teacher"> | Date | string
     userId?: StringNullableFilter<"Teacher"> | string | null
@@ -10964,6 +10979,7 @@ export namespace Prisma {
     subject?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
@@ -10980,6 +10996,7 @@ export namespace Prisma {
     name?: StringFilter<"Teacher"> | string
     subject?: StringFilter<"Teacher"> | string
     phone?: StringFilter<"Teacher"> | string
+    image?: StringFilter<"Teacher"> | string
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
     updatedAt?: DateTimeFilter<"Teacher"> | Date | string
     userId?: StringNullableFilter<"Teacher"> | string | null
@@ -10993,6 +11010,7 @@ export namespace Prisma {
     subject?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
@@ -11010,6 +11028,7 @@ export namespace Prisma {
     subject?: StringWithAggregatesFilter<"Teacher"> | string
     email?: StringWithAggregatesFilter<"Teacher"> | string
     phone?: StringWithAggregatesFilter<"Teacher"> | string
+    image?: StringWithAggregatesFilter<"Teacher"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
     userId?: StringNullableWithAggregatesFilter<"Teacher"> | string | null
@@ -11608,6 +11627,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     articles?: ArticleCreateNestedManyWithoutTeacherInput
@@ -11620,6 +11640,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
@@ -11632,6 +11653,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     articles?: ArticleUpdateManyWithoutTeacherNestedInput
@@ -11644,6 +11666,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11656,6 +11679,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
@@ -11667,6 +11691,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11677,6 +11702,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12474,6 +12500,7 @@ export namespace Prisma {
     subject?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -12485,6 +12512,7 @@ export namespace Prisma {
     subject?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -12496,6 +12524,7 @@ export namespace Prisma {
     subject?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -13453,6 +13482,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     articles?: ArticleCreateNestedManyWithoutTeacherInput
@@ -13464,6 +13494,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     articles?: ArticleUncheckedCreateNestedManyWithoutTeacherInput
@@ -13576,6 +13607,7 @@ export namespace Prisma {
     subject?: StringFilter<"Teacher"> | string
     email?: StringFilter<"Teacher"> | string
     phone?: StringFilter<"Teacher"> | string
+    image?: StringFilter<"Teacher"> | string
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
     updatedAt?: DateTimeFilter<"Teacher"> | Date | string
     userId?: StringNullableFilter<"Teacher"> | string | null
@@ -13771,6 +13803,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     User?: UserCreateNestedOneWithoutTechersInput
@@ -13782,6 +13815,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
@@ -13842,6 +13876,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUpdateOneWithoutTechersNestedInput
@@ -13853,6 +13888,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13975,6 +14011,7 @@ export namespace Prisma {
     subject: string
     email: string
     phone: string
+    image?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14011,6 +14048,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     articles?: ArticleUpdateManyWithoutTeacherNestedInput
@@ -14022,6 +14060,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     articles?: ArticleUncheckedUpdateManyWithoutTeacherNestedInput
@@ -14033,6 +14072,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

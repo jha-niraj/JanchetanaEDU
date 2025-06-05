@@ -2,10 +2,12 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BookText, ChevronLeft, Home, Users } from "lucide-react"
+import { BookText, Home, Menu, Users, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useSidebar } from "./sidebarprovider"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { useState, useEffect } from "react"
 
 const navItems = [
     { href: "/dashboard", label: "Dashboard", icon: <Home className="h-5 w-5" /> },
@@ -15,51 +17,90 @@ const navItems = [
 
 export function Sidebar() {
     const pathname = usePathname()
-    const { isOpen, toggle } = useSidebar()
+    const [isOpen, setIsOpen] = useState(false)
+    const isDesktop = useMediaQuery("(min-width: 768px)")
 
-    if (!isOpen) {
-        return (
-            <Button
-                variant="outline"
-                size="icon"
-                onClick={toggle}
-                className="fixed left-4 top-4 z-50"
-            >
-                <ChevronLeft className="h-5 w-5" />
-            </Button>
-        )
-    }
+    // Close sheet on path change on mobile
+    useEffect(() => {
+        if (!isDesktop) {
+            setIsOpen(false)
+        }
+    }, [pathname, isDesktop])
 
-    return (
-        <div className="flex h-full w-64 flex-col border-r bg-background shadow-sm">
-            <div className="flex h-14 items-center justify-between border-b px-4">
-                <h1 className="text-xl font-semibold">Principal Dashboard</h1>
-                <Button variant="ghost" size="icon" onClick={toggle}>
-                    <ChevronLeft className="h-5 w-5" />
-                </Button>
-            </div>
-
-            <nav className="flex-1 space-y-1 p-4">
-                {navItems.map((item) => {
+    const NavContent = () => (
+        <nav className="flex-1 space-y-2 p-4">
+            {
+                navItems.map((item) => {
                     const isActive = pathname === item.href
 
                     return (
                         <Link
                             key={item.href}
                             href={item.href}
+                            onClick={() => !isDesktop && setIsOpen(false)}
                             className={cn(
-                                "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                                "flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200",
+                                "hover:bg-accent hover:text-accent-foreground hover:shadow-sm",
                                 isActive
-                                    ? "bg-muted text-foreground"
-                                    : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                                    ? "bg-accent text-accent-foreground shadow-sm"
+                                    : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             {item.icon}
                             <span>{item.label}</span>
                         </Link>
                     )
-                })}
-            </nav>
-        </div>
+                })
+            }
+        </nav>
+    )
+
+    // Desktop sidebar
+    if (isDesktop) {
+        return (
+            <div className="flex h-[calc(100vh-4rem)] w-64 flex-col fixed left-0 top-16 border-r bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <div className="flex h-16 items-center border-b px-6">
+                    <h1 className="text-xl font-semibold tracking-tight">Dashboard</h1>
+                </div>
+                <NavContent />
+            </div>
+        )
+    }
+
+    // Mobile sidebar (Sheet)
+    return (
+        <>
+            <div className="flex h-16 items-center px-4 border-b md:hidden">
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hover:bg-accent"
+                    onClick={() => setIsOpen(true)}
+                >
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+                <h1 className="text-xl font-semibold tracking-tight ml-4">Dashboard</h1>
+            </div>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetContent
+                    side="left"
+                    className="w-[280px] p-0 border-r bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+                >
+                    <div className="flex h-16 items-center border-b px-6">
+                        <h1 className="text-xl font-semibold tracking-tight">Dashboard</h1>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="ml-auto hover:bg-accent"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            <X className="h-5 w-5" />
+                        </Button>
+                    </div>
+                    <NavContent />
+                </SheetContent>
+            </Sheet>
+        </>
     )
 }

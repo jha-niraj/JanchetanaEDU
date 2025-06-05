@@ -71,50 +71,50 @@ const benefits = [
 const notableAlumni = [
     {
         name: "Omkar Chauhan",
-        graduationYear: "2008",
-        profession: "Environmental Scientist",
-        achievement:
-            "Leading researcher in renewable energy solutions, recipient of the National Science Foundation's Early Career Award, and author of over 30 peer-reviewed publications.",
+        graduationYear: "2021",
+        profession: "Chemical Engineer",
+        // achievement:
+        //     "Leading researcher in renewable energy solutions, recipient of the National Science Foundation's Early Career Award, and author of over 30 peer-reviewed publications.",
         image: "/alumni/omkarchauhan.jpeg",
     },
     {
         name: "Ram Prasad",
-        graduationYear: "1995",
-        profession: "Tech Entrepreneur",
-        achievement:
-            "Founder and CEO of InnovateTech, a pioneering software company valued at $500 million. Named one of Forbes' 'Most Influential Women in Tech' for three consecutive years.",
+        graduationYear: "2021",
+        profession: "Computer Engineer",
+        // achievement:
+        //     "Founder and CEO of InnovateTech, a pioneering software company valued at $500 million. Named one of Forbes' 'Most Influential Women in Tech' for three consecutive years.",
         image: "/alumni/ramprasad.jpeg",
     },
     {
         name: "Satya Kumar Chaudhary",
-        graduationYear: "2010",
-        profession: "Humanitarian",
-        achievement:
-            "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
+        graduationYear: "2021",
+        profession: "Computer Engineer",
+        // achievement:
+        //     "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
         image: "/alumni/satyakumar.jpeg",
     },
     {
         name: "Shyam Sundar",
-        graduationYear: "2010",
-        profession: "Humanitarian",
-        achievement:
-            "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
+        graduationYear: "2021",
+        profession: "Computer Engineer",
+        // achievement:
+        //     "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
         image: "/alumni/shyamsundar.jpeg",
     },
     {
-        name: "Dipesh Kumar",
-        graduationYear: "2010",
-        profession: "Humanitarian",
-        achievement:
-            "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
+        name: "Dinesh Kumar Chaudhary",
+        graduationYear: "2021",
+        profession: "Computer Operator(Police)",
+        // achievement:
+        //     "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
         image: "/alumni/dipeshkumar.jpeg",
     },
     {
         name: "Pradeep Kumar",
-        graduationYear: "2010",
-        profession: "Humanitarian",
-        achievement:
-            "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
+        graduationYear: "2021",
+        profession: "Computer Engineer",
+        // achievement:
+        //     "Founder of Global Health Initiative, providing medical care to underserved communities in over 15 countries. Recipient of the International Humanitarian Award in 2022.",
         image: "/alumni/pradeepkumar.jpeg",
     }
 ]
@@ -302,17 +302,6 @@ export default function AlumniPage() {
                                     <AlumniCard key={alumni.name} {...alumni} />
                                 ))
                             }
-                        </motion.div>
-                        <motion.div
-                            className="flex justify-center mt-8"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4, duration: 0.5 }}
-                        >
-                            <Button variant="outline" className="gap-1">
-                                View More Alumni Stories <ChevronRight className="h-4 w-4" />
-                            </Button>
                         </motion.div>
                     </section>
                     <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
@@ -592,34 +581,37 @@ function AlumniCard({
     name: string
     graduationYear: string
     profession: string
-    achievement: string
+    achievement?: string
     image: string
 }) {
     return (
         <motion.div variants={fadeInUp}>
-            <Card className="overflow-hidden h-full">
-                <div className="relative h-64 w-full">
-                    <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
+            <Card className="overflow-hidden h-full flex flex-col">
+                <div className="relative aspect-[3/4] w-full">
+                    <Image 
+                        src={image || "/placeholder.svg"} 
+                        alt={name} 
+                        fill 
+                        className="object-cover object-center"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={false}
+                        quality={95}
+                    />
                 </div>
-                <CardHeader>
-                    <div className="flex justify-between items-start">
+                <CardHeader className="flex-none">
+                    <div className="flex justify-between items-start gap-2">
                         <div>
-                            <CardTitle>{name}</CardTitle>
+                            <CardTitle className="line-clamp-1">{name}</CardTitle>
                             <CardDescription>Class of {graduationYear}</CardDescription>
                         </div>
-                        <Badge variant="outline" className="bg-primary/5">
+                        <Badge variant="outline" className="bg-primary/5 whitespace-nowrap">
                             {profession}
                         </Badge>
                     </div>
                 </CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground">{achievement}</p>
+                <CardContent className="flex-grow">
+                    <p className="text-muted-foreground line-clamp-3">{achievement}</p>
                 </CardContent>
-                {/* <CardFooter>
-                    <Button variant="outline" size="sm" className="gap-1">
-                        Read Full Profile <ChevronRight className="h-4 w-4" />
-                    </Button>
-                </CardFooter> */}
             </Card>
         </motion.div>
     )

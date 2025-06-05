@@ -223,18 +223,18 @@ const calendarEvents = [
 ]
 const facultySpotlight = [
     {
-        name: "Dr. Elizabeth Morgan",
-        department: "Science Department Chair",
+        name: "Mohamad Aslam",
+        department: "Science Department - Physics",
         image: "/academics/physicsteacher.jpeg",
-        bio: "Dr. Morgan has been teaching physics and astronomy at Horizon Academy for 15 years. Her innovative approach to science education has inspired countless students to pursue STEM careers.",
-        education: "Ph.D. in Physics, MIT",
+        // bio: "Dr. Morgan has been teaching physics and astronomy at Horizon Academy for 15 years. Her innovative approach to science education has inspired countless students to pursue STEM careers.",
+        // education: "Ph.D. in Physics, MIT",
     },
     {
-        name: "Mr. James Wilson",
-        department: "English Literature",
+        name: "Ram Prakash Chaudhary",
+        department: "Engineer",
         image: "/academics/computerengineer.jpeg",
-        bio: "An award-winning educator with a passion for classic and contemporary literature. Mr. Wilson's creative teaching methods bring literary works to life for his students.",
-        education: "M.A. in English Literature, Columbia University",
+        // bio: "An award-winning educator with a passion for classic and contemporary literature. Mr. Wilson's creative teaching methods bring literary works to life for his students.",
+        // education: "M.A. in English Literature, Columbia University",
     }
 ]
 
@@ -712,7 +712,7 @@ function FacultyCard({
     name: string
     department: string
     image: string
-    education: string
+    education?: string
 }) {
     return (
         <motion.div variants={fadeInUp}>
@@ -724,13 +724,13 @@ function FacultyCard({
                     <CardTitle>{name}</CardTitle>
                     <CardDescription>{department}</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    {/* <p className="text-muted-foreground">{bio}</p> */}
+                {/* <CardContent className="space-y-4">
+                    <p className="text-muted-foreground">{bio}</p>
                     <div className="flex items-center gap-2">
                         <GraduationCap className="h-4 w-4 text-primary/70" />
                         <span className="text-sm text-muted-foreground">{education}</span>
                     </div>
-                </CardContent>
+                </CardContent> */}
                 {/* <CardFooter>
                     <Button variant="ghost" size="sm" className="gap-1">
                         View profile <ChevronRight className="h-4 w-4" />

@@ -14,7 +14,6 @@ export default function RootLayout({
 }) {
     return (
         <section>
-            <MainNav />
             {children}
             <Footer />
         </section>
