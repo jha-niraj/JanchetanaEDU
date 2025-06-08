@@ -83,7 +83,7 @@ export default function AboutPage() {
                     <section className="relative">
                         <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                             <Image
-                                src="/landing/hero/2.jpeg"
+                                src="/landingpage/hero/2.jpeg"
                                 alt="School Entrance View"
                                 fill
                                 priority

@@ -1,5 +1,6 @@
 import type React from "react"
 import { Footer } from "@/components/footer"
+import { MainNav } from "@/components/navbar"
 
 export const metadata = {
     title: "Janchetana EDU",
@@ -13,6 +14,7 @@ export default function RootLayout({
 }) {
     return (
         <section>
+            <MainNav />
             {children}
             <Footer />
         </section>

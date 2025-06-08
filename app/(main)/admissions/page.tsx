@@ -210,7 +210,7 @@ export default function AdmissionsPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Card className="w-full shadow-2xl border-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
+                            <Card className="w-full shadow-2xl border-0 backdrop-blur-sm">
                                 <CardHeader className="pb-6">
                                     <CardTitle className="text-2xl text-gray-800 dark:text-gray-100 flex items-center gap-2">
                                         <GraduationCap className="h-6 w-6 text-teal-600" />
