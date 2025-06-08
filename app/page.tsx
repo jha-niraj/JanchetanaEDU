@@ -18,6 +18,7 @@ import { LeadershipCard } from "@/components/(landingpage)/leadershipcarousal"
 import { FacilityCard } from "@/components/(landingpage)/facultycard"
 import { AchievementCard } from "@/components/(landingpage)/acheivmentscard"
 import SmoothScroll from "@/components/smoothscroll"
+import Head from "next/head"
 
 const fadeInUp = {
 	hidden: { opacity: 0, y: 20 },
@@ -49,6 +50,14 @@ export default function Home() {
 
 	return (
 		<SmoothScroll>
+			<Head>
+				<title>Janchetana EDU</title>
+				<meta property="og:title" content="Janchetana EDU" />
+				<meta property="og:description" content="Education comes first" />
+				<meta property="og:image" content="https://janchetanaedu.vercel.app/mainlogo.ico" />
+				<meta property="og:url" content="https://janchetanaedu.vercel.app" />
+				<meta name="twitter:card" content="summary_large_image" />
+			</Head>
 			<section className="flex min-h-screen flex-col w-full">
 				<MainNav />
 				<main className="flex-1">
