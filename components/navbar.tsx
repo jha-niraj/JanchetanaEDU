@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Badge } from "@/components/ui/badge"
 import {
     Menu, BookOpen, User, GraduationCap, Users, Heart, Phone,
-    Sun, Moon, Sparkles, ArrowRight, Code
+    Sun, Moon, Sparkles, Code
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTheme } from "next-themes"

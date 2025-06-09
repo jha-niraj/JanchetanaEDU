@@ -3,13 +3,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Calendar, ChevronRight, Clock, Play, Users } from "lucide-react"
+import { Calendar, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+// import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import SmoothScroll from "@/components/smoothscroll"
 
 const fadeInUp = {
@@ -31,68 +31,68 @@ const staggerContainer = {
     },
 }
 
-const academicPrograms = [
-    {
-        title: "Early Childhood Development (ECD)",
-        description:
-            "Foundation stage focusing on early learning experiences for young children aged 3-5 years. Our ECD program emphasizes play-based learning, social skills development, and preparation for formal education through creative activities and structured play.",
-        grades: "Ages 3-5",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Primary Education (Classes 1-5)",
-        description:
-            "Building strong foundation in core subjects including Nepali, English, Mathematics, Science, and Social Studies. Our primary education focuses on developing basic literacy, numeracy, and critical thinking skills through interactive teaching methods.",
-        grades: "Classes 1-5",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Lower Secondary Education (Classes 6-8)", 
-        description:
-            "Expanded curriculum covering all core subjects with introduction to specialized topics. Students develop analytical skills and prepare for secondary education through comprehensive subject knowledge and practical learning experiences.",
-        grades: "Classes 6-8",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Secondary Education (Classes 9-10)",
-        description:
-            "Comprehensive secondary education following national curriculum standards. Students complete their School Leaving Certificate (SLC) preparation with strong foundation in all major subjects, preparing them for higher secondary education.",
-        grades: "Classes 9-10", 
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Higher Secondary - Science Stream with Optional Mathematics",
-        description:
-            "Advanced science education with Physics, Chemistry, Biology, and optional Mathematics. Perfect for students aiming for careers in engineering, medicine, research, and other STEM fields. Comprehensive preparation for university entrance exams.",
-        grades: "Classes 11-12",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Higher Secondary - General Stream with Optional English & Health Education",
-        description:
-            "Flexible higher secondary program with optional English and Health & Physical Education. Ideal for students pursuing careers in humanities, social sciences, management, or seeking diverse academic pathways to higher education.",
-        grades: "Classes 11-12",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-]
-const campusTourLocations = [
-    {
-        title: "Science Wing",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Library",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Athletic Complex",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-    {
-        title: "Arts Center",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-    },
-]
+// const academicPrograms = [
+//     {
+//         title: "Early Childhood Development (ECD)",
+//         description:
+//             "Foundation stage focusing on early learning experiences for young children aged 3-5 years. Our ECD program emphasizes play-based learning, social skills development, and preparation for formal education through creative activities and structured play.",
+//         grades: "Ages 3-5",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Primary Education (Classes 1-5)",
+//         description:
+//             "Building strong foundation in core subjects including Nepali, English, Mathematics, Science, and Social Studies. Our primary education focuses on developing basic literacy, numeracy, and critical thinking skills through interactive teaching methods.",
+//         grades: "Classes 1-5",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Lower Secondary Education (Classes 6-8)", 
+//         description:
+//             "Expanded curriculum covering all core subjects with introduction to specialized topics. Students develop analytical skills and prepare for secondary education through comprehensive subject knowledge and practical learning experiences.",
+//         grades: "Classes 6-8",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Secondary Education (Classes 9-10)",
+//         description:
+//             "Comprehensive secondary education following national curriculum standards. Students complete their School Leaving Certificate (SLC) preparation with strong foundation in all major subjects, preparing them for higher secondary education.",
+//         grades: "Classes 9-10", 
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Higher Secondary - Science Stream with Optional Mathematics",
+//         description:
+//             "Advanced science education with Physics, Chemistry, Biology, and optional Mathematics. Perfect for students aiming for careers in engineering, medicine, research, and other STEM fields. Comprehensive preparation for university entrance exams.",
+//         grades: "Classes 11-12",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Higher Secondary - General Stream with Optional English & Health Education",
+//         description:
+//             "Flexible higher secondary program with optional English and Health & Physical Education. Ideal for students pursuing careers in humanities, social sciences, management, or seeking diverse academic pathways to higher education.",
+//         grades: "Classes 11-12",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+// ]
+// const campusTourLocations = [
+//     {
+//         title: "Science Wing",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Library",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Athletic Complex",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+//     {
+//         title: "Arts Center",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//     },
+// ]
 const educationTourActivities = [
     {
         title: "Historical Sites Visit",
@@ -747,14 +747,10 @@ export default function AcademicsPage() {
 
 function ActivityCard({
     title,
-    schedule,
-    image,
-    advisor,
+    image
 }: {
     title: string
-    schedule: string
     image: string
-    advisor: string
 }) {
     return (
         <motion.div variants={fadeInUp}>

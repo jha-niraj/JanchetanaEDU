@@ -3,10 +3,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Calendar, ChevronRight, Medal, Music, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import SmoothScroll from "@/components/smoothscroll"
 
@@ -610,122 +609,122 @@ export default function StudentLifePage() {
     )
 }
 
-function AthleticCard({
-    title,
-    description,
-    image,
-    season,
-    achievements,
-}: {
-    title: string
-    description: string
-    image: string
-    season: string
-    achievements: string
-}) {
-    return (
-        <motion.div variants={fadeInUp}>
-            <Card className="overflow-hidden h-full">
-                <div className="relative h-48 w-full">
-                    <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
-                </div>
-                <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription>{season}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                    <p className="text-muted-foreground">{description}</p>
-                    <div className="pt-2">
-                        <p className="text-sm font-medium">Recent Achievements:</p>
-                        <p className="text-sm text-muted-foreground">{achievements}</p>
-                    </div>
-                </CardContent>
-                <CardFooter>
-                    <Button variant="outline" size="sm" className="gap-1">
-                        Team Details <ChevronRight className="h-4 w-4" />
-                    </Button>
-                </CardFooter>
-            </Card>
-        </motion.div>
-    )
-}
+// function AthleticCard({
+//     title,
+//     description,
+//     image,
+//     season,
+//     achievements,
+// }: {
+//     title: string
+//     description: string
+//     image: string
+//     season: string
+//     achievements: string
+// }) {
+//     return (
+//         <motion.div variants={fadeInUp}>
+//             <Card className="overflow-hidden h-full">
+//                 <div className="relative h-48 w-full">
+//                     <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+//                 </div>
+//                 <CardHeader>
+//                     <CardTitle>{title}</CardTitle>
+//                     <CardDescription>{season}</CardDescription>
+//                 </CardHeader>
+//                 <CardContent className="space-y-2">
+//                     <p className="text-muted-foreground">{description}</p>
+//                     <div className="pt-2">
+//                         <p className="text-sm font-medium">Recent Achievements:</p>
+//                         <p className="text-sm text-muted-foreground">{achievements}</p>
+//                     </div>
+//                 </CardContent>
+//                 <CardFooter>
+//                     <Button variant="outline" size="sm" className="gap-1">
+//                         Team Details <ChevronRight className="h-4 w-4" />
+//                     </Button>
+//                 </CardFooter>
+//             </Card>
+//         </motion.div>
+//     )
+// }
 
-function ArtsCard({
-    title,
-    description,
-    image,
-    instructor,
-    upcoming,
-}: {
-    title: string
-    description: string
-    image: string
-    instructor: string
-    upcoming: string
-}) {
-    return (
-        <motion.div variants={fadeInUp}>
-            <Card className="overflow-hidden h-full">
-                <div className="relative h-48 w-full">
-                    <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
-                </div>
-                <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription>Instructor: {instructor}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                    <p className="text-muted-foreground">{description}</p>
-                    <div className="pt-2">
-                        <p className="text-sm font-medium">Upcoming:</p>
-                        <p className="text-sm text-muted-foreground">{upcoming}</p>
-                    </div>
-                </CardContent>
-                <CardFooter>
-                    <Button variant="outline" size="sm" className="gap-1">
-                        Program Details <ChevronRight className="h-4 w-4" />
-                    </Button>
-                </CardFooter>
-            </Card>
-        </motion.div>
-    )
-}
+// function ArtsCard({
+//     title,
+//     description,
+//     image,
+//     instructor,
+//     upcoming,
+// }: {
+//     title: string
+//     description: string
+//     image: string
+//     instructor: string
+//     upcoming: string
+// }) {
+//     return (
+//         <motion.div variants={fadeInUp}>
+//             <Card className="overflow-hidden h-full">
+//                 <div className="relative h-48 w-full">
+//                     <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+//                 </div>
+//                 <CardHeader>
+//                     <CardTitle>{title}</CardTitle>
+//                     <CardDescription>Instructor: {instructor}</CardDescription>
+//                 </CardHeader>
+//                 <CardContent className="space-y-2">
+//                     <p className="text-muted-foreground">{description}</p>
+//                     <div className="pt-2">
+//                         <p className="text-sm font-medium">Upcoming:</p>
+//                         <p className="text-sm text-muted-foreground">{upcoming}</p>
+//                     </div>
+//                 </CardContent>
+//                 <CardFooter>
+//                     <Button variant="outline" size="sm" className="gap-1">
+//                         Program Details <ChevronRight className="h-4 w-4" />
+//                     </Button>
+//                 </CardFooter>
+//             </Card>
+//         </motion.div>
+//     )
+// }
 
-function ClubCard({
-    title,
-    description,
-    image,
-    meetingTime,
-    advisor,
-}: {
-    title: string
-    description: string
-    image: string
-    meetingTime: string
-    advisor: string
-}) {
-    return (
-        <motion.div variants={fadeInUp}>
-            <Card className="overflow-hidden h-full">
-                <div className="relative h-48 w-full">
-                    <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
-                </div>
-                <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription>{meetingTime}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                    <p className="text-muted-foreground">{description}</p>
-                    <p className="text-sm text-muted-foreground pt-2">Advisor: {advisor}</p>
-                </CardContent>
-                <CardFooter>
-                    <Button variant="outline" size="sm" className="gap-1">
-                        Join Club <ChevronRight className="h-4 w-4" />
-                    </Button>
-                </CardFooter>
-            </Card>
-        </motion.div>
-    )
-}
+// function ClubCard({
+//     title,
+//     description,
+//     image,
+//     meetingTime,
+//     advisor,
+// }: {
+//     title: string
+//     description: string
+//     image: string
+//     meetingTime: string
+//     advisor: string
+// }) {
+//     return (
+//         <motion.div variants={fadeInUp}>
+//             <Card className="overflow-hidden h-full">
+//                 <div className="relative h-48 w-full">
+//                     <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+//                 </div>
+//                 <CardHeader>
+//                     <CardTitle>{title}</CardTitle>
+//                     <CardDescription>{meetingTime}</CardDescription>
+//                 </CardHeader>
+//                 <CardContent className="space-y-2">
+//                     <p className="text-muted-foreground">{description}</p>
+//                     <p className="text-sm text-muted-foreground pt-2">Advisor: {advisor}</p>
+//                 </CardContent>
+//                 <CardFooter>
+//                     <Button variant="outline" size="sm" className="gap-1">
+//                         Join Club <ChevronRight className="h-4 w-4" />
+//                     </Button>
+//                 </CardFooter>
+//             </Card>
+//         </motion.div>
+//     )
+// }
 
 function TestimonialCard({
     quote,

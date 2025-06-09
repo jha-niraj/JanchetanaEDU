@@ -329,7 +329,7 @@ export default function ContactPage() {
                                     <Card className="shadow-xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
                                         <CardHeader>
                                             <CardTitle className="text-2xl text-gray-800 dark:text-gray-100">Get in Touch</CardTitle>
-                                            <p className="text-gray-500 dark:text-gray-400">Fill out the form below, and we'll contact you soon.</p>
+                                            <p className="text-gray-500 dark:text-gray-400">Fill out the form below, and we`&apos;ll contact you soon.</p>
                                         </CardHeader>
                                         <CardContent>
                                             <form onSubmit={handleSubmit} className="space-y-4">
