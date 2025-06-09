@@ -29,84 +29,84 @@ const staggerContainer = {
     },
 }
 
-const athletics = [
-    {
-        title: "Varsity Basketball",
-        description:
-            "Our championship basketball program develops skilled players and emphasizes teamwork, discipline, and sportsmanship.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        season: "Winter Season (November-March)",
-        achievements: "Regional Champions 2022, State Semifinalists 2023",
-    },
-    {
-        title: "Swimming & Diving",
-        description:
-            "Our aquatics program offers competitive swimming and diving opportunities for students of all skill levels.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        season: "Winter Season (November-February)",
-        achievements: "State Champions in 200m Freestyle Relay, Multiple Individual State Qualifiers",
-    },
-    {
-        title: "Track & Field",
-        description:
-            "Our track and field program offers opportunities in running, jumping, and throwing events for athletes of all abilities.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        season: "Spring Season (March-June)",
-        achievements: "Conference Champions 2023, Four State Qualifiers in Distance Events",
-    },
-]
-const arts = [
-    {
-        title: "Chamber Orchestra",
-        description:
-            "Our select string ensemble performs challenging classical and contemporary repertoire at school and community events.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        instructor: "Ms. Jennifer Williams",
-        upcoming: "Spring Concert (May 15), Community Arts Festival (June 3)",
-    },
-    {
-        title: "Theater Program",
-        description:
-            "Students explore all aspects of theatrical production, from acting and directing to set design and technical theater.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        instructor: "Mr. Thomas Garcia",
-        upcoming: "Spring Musical: 'Into the Woods' (April 21-23)",
-    },
-    {
-        title: "Visual Arts Studio",
-        description:
-            "Students develop skills in various media including drawing, painting, sculpture, photography, and digital art.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        instructor: "Ms. Emily Chen",
-        upcoming: "Student Art Exhibition (May 5-19), Senior Portfolio Showcase (June 1)",
-    },
-]
-const clubs = [
-    {
-        title: "Robotics Club",
-        description:
-            "Students design, build, and program robots to compete in regional and national competitions, developing engineering and teamwork skills.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        meetingTime: "Tuesdays & Thursdays, 3:30-5:00 PM",
-        advisor: "Mr. David Thompson",
-    },
-    {
-        title: "Environmental Club",
-        description:
-            "Students work on sustainability initiatives, campus beautification, and community environmental education projects.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        meetingTime: "Fridays, 3:30-5:00 PM",
-        advisor: "Dr. James Wilson",
-    },
-    {
-        title: "Model United Nations",
-        description:
-            "Students simulate UN committees, representing different countries and debating global issues to develop diplomacy and public speaking skills.",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        meetingTime: "Mondays, 3:30-5:00 PM",
-        advisor: "Ms. Rebecca Chen",
-    },
-]
+// const athletics = [
+//     {
+//         title: "Varsity Basketball",
+//         description:
+//             "Our championship basketball program develops skilled players and emphasizes teamwork, discipline, and sportsmanship.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         season: "Winter Season (November-March)",
+//         achievements: "Regional Champions 2022, State Semifinalists 2023",
+//     },
+//     {
+//         title: "Swimming & Diving",
+//         description:
+//             "Our aquatics program offers competitive swimming and diving opportunities for students of all skill levels.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         season: "Winter Season (November-February)",
+//         achievements: "State Champions in 200m Freestyle Relay, Multiple Individual State Qualifiers",
+//     },
+//     {
+//         title: "Track & Field",
+//         description:
+//             "Our track and field program offers opportunities in running, jumping, and throwing events for athletes of all abilities.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         season: "Spring Season (March-June)",
+//         achievements: "Conference Champions 2023, Four State Qualifiers in Distance Events",
+//     },
+// ]
+// const arts = [
+//     {
+//         title: "Chamber Orchestra",
+//         description:
+//             "Our select string ensemble performs challenging classical and contemporary repertoire at school and community events.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         instructor: "Ms. Jennifer Williams",
+//         upcoming: "Spring Concert (May 15), Community Arts Festival (June 3)",
+//     },
+//     {
+//         title: "Theater Program",
+//         description:
+//             "Students explore all aspects of theatrical production, from acting and directing to set design and technical theater.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         instructor: "Mr. Thomas Garcia",
+//         upcoming: "Spring Musical: 'Into the Woods' (April 21-23)",
+//     },
+//     {
+//         title: "Visual Arts Studio",
+//         description:
+//             "Students develop skills in various media including drawing, painting, sculpture, photography, and digital art.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         instructor: "Ms. Emily Chen",
+//         upcoming: "Student Art Exhibition (May 5-19), Senior Portfolio Showcase (June 1)",
+//     },
+// ]
+// const clubs = [
+//     {
+//         title: "Robotics Club",
+//         description:
+//             "Students design, build, and program robots to compete in regional and national competitions, developing engineering and teamwork skills.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         meetingTime: "Tuesdays & Thursdays, 3:30-5:00 PM",
+//         advisor: "Mr. David Thompson",
+//     },
+//     {
+//         title: "Environmental Club",
+//         description:
+//             "Students work on sustainability initiatives, campus beautification, and community environmental education projects.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         meetingTime: "Fridays, 3:30-5:00 PM",
+//         advisor: "Dr. James Wilson",
+//     },
+//     {
+//         title: "Model United Nations",
+//         description:
+//             "Students simulate UN committees, representing different countries and debating global issues to develop diplomacy and public speaking skills.",
+//         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
+//         meetingTime: "Mondays, 3:30-5:00 PM",
+//         advisor: "Ms. Rebecca Chen",
+//     },
+// ]
 const testimonials = [
     {
         quote:
@@ -294,7 +294,7 @@ export default function StudentLifePage() {
                             </motion.div>
                         </motion.div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    {/* <section className="max-w-7xl mx-auto py-12 md:py-16">
                         <div className="container">
                             <motion.div
                                 className="text-center max-w-2xl mx-auto mb-12"
@@ -495,7 +495,7 @@ export default function StudentLifePage() {
                                 </TabsContent>
                             </Tabs>
                         </div>
-                    </section>
+                    </section> */}
                     <section className="max-w-7xl mx-auto py-12 md:py-16">
                         <motion.div
                             className="text-center max-w-2xl mx-auto mb-12"
@@ -566,7 +566,7 @@ export default function StudentLifePage() {
                                     ))
                                 }
                             </motion.div>
-                            <motion.div
+                            {/* <motion.div
                                 className="flex justify-center mt-8"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
@@ -576,7 +576,7 @@ export default function StudentLifePage() {
                                 <Button variant="outline" className="gap-1">
                                     View All Events <Calendar className="h-4 w-4" />
                                 </Button>
-                            </motion.div>
+                            </motion.div> */}
                         </div>
                     </section>
                     <section className="max-w-7xl mx-auto py-12 md:py-16">
@@ -594,10 +594,12 @@ export default function StudentLifePage() {
                             </p>
                             <div className="flex flex-wrap justify-center gap-4 pt-4">
                                 <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                                    <Link href="/student-activities">Browse Activities</Link>
+                                    <Link href="/admissions">Admission</Link>
                                 </Button>
                                 <Button size="lg" variant="outline">
-                                    View Events Calendar
+                                    <Link href="/aboutus">
+                                        About Us
+                                    </Link>
                                 </Button>
                             </div>
                         </motion.div>

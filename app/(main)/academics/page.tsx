@@ -33,45 +33,45 @@ const staggerContainer = {
 
 const academicPrograms = [
     {
-        title: "Elementary Program",
+        title: "Early Childhood Development (ECD)",
         description:
-            "A foundational curriculum that nurtures curiosity and builds core academic skills through hands-on, project-based learning experiences.",
-        grades: "Grades K-5",
+            "Foundation stage focusing on early learning experiences for young children aged 3-5 years. Our ECD program emphasizes play-based learning, social skills development, and preparation for formal education through creative activities and structured play.",
+        grades: "Ages 3-5",
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
-        title: "Middle School Program",
+        title: "Primary Education (Classes 1-5)",
         description:
-            "A transitional curriculum that balances academic rigor with social-emotional development, preparing students for the challenges of high school.",
-        grades: "Grades 6-8",
+            "Building strong foundation in core subjects including Nepali, English, Mathematics, Science, and Social Studies. Our primary education focuses on developing basic literacy, numeracy, and critical thinking skills through interactive teaching methods.",
+        grades: "Classes 1-5",
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
-        title: "High School Program",
+        title: "Lower Secondary Education (Classes 6-8)", 
         description:
-            "A comprehensive college preparatory curriculum that offers advanced coursework, specialized electives, and opportunities for independent research.",
-        grades: "Grades 9-12",
+            "Expanded curriculum covering all core subjects with introduction to specialized topics. Students develop analytical skills and prepare for secondary education through comprehensive subject knowledge and practical learning experiences.",
+        grades: "Classes 6-8",
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
-        title: "Advanced Placement",
+        title: "Secondary Education (Classes 9-10)",
         description:
-            "College-level courses that allow students to earn university credit while still in high school, with offerings in over 15 subject areas.",
-        grades: "Grades 10-12",
+            "Comprehensive secondary education following national curriculum standards. Students complete their School Leaving Certificate (SLC) preparation with strong foundation in all major subjects, preparing them for higher secondary education.",
+        grades: "Classes 9-10", 
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
-        title: "STEM Focus Program",
+        title: "Higher Secondary - Science Stream with Optional Mathematics",
         description:
-            "An intensive track for students interested in science, technology, engineering, and mathematics, featuring specialized coursework and research opportunities.",
-        grades: "Grades 6-12",
+            "Advanced science education with Physics, Chemistry, Biology, and optional Mathematics. Perfect for students aiming for careers in engineering, medicine, research, and other STEM fields. Comprehensive preparation for university entrance exams.",
+        grades: "Classes 11-12",
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
     {
-        title: "Arts Immersion Program",
+        title: "Higher Secondary - General Stream with Optional English & Health Education",
         description:
-            "A specialized track for artistically inclined students, offering advanced instruction in visual arts, music, theater, and dance alongside academic coursework.",
-        grades: "Grades 6-12",
+            "Flexible higher secondary program with optional English and Health & Physical Education. Ideal for students pursuing careers in humanities, social sciences, management, or seeking diverse academic pathways to higher education.",
+        grades: "Classes 11-12",
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
 ]
@@ -93,82 +93,156 @@ const campusTourLocations = [
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
 ]
-const clubs = [
+const educationTourActivities = [
     {
-        title: "Robotics Club",
-        description:
-            "Design, build, and program robots to compete in regional and national competitions. Learn engineering principles and teamwork.",
-        schedule: "Tuesdays & Thursdays, 3:30-5:00 PM",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Mr. David Thompson",
+        title: "Historical Sites Visit",
+        schedule: "Quarterly field trips",
+        image: "/academics/1_1.jpeg",
+        advisor: "Social Studies Department",
     },
     {
-        title: "Debate Team",
-        description:
-            "Develop public speaking, critical thinking, and research skills while competing in debate tournaments on current events and philosophical topics.",
-        schedule: "Mondays & Wednesdays, 3:30-5:00 PM",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Ms. Rebecca Chen",
+        title: "Museum Exploration",
+        schedule: "Monthly educational visits",
+        image: "/academics/1_2.jpeg",
+        advisor: "Cultural Studies Team",
     },
     {
-        title: "Environmental Club",
-        description:
-            "Work on sustainability initiatives, campus beautification, and community environmental education projects.",
-        schedule: "Fridays, 3:30-5:00 PM",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Dr. James Wilson",
+        title: "Science Park Tours",
+        schedule: "Bi-annual trips",
+        image: "/academics/1_3.jpeg",
+        advisor: "Science Department",
     },
+    {
+        title: "Industrial Visits",
+        schedule: "Annual trips for senior classes",
+        image: "/academics/1_4.jpeg",
+        advisor: "Career Guidance Team",
+    },
+    // {
+    //     title: "Nature & Wildlife Tours",
+    //     schedule: "Seasonal outdoor education",
+    //     image: "/academics/1_5.jpeg",
+    //     advisor: "Environmental Education",
+    // },
+    // {
+    //     title: "University Campus Visits",
+    //     schedule: "For higher secondary students",
+    //     image: "/academics/1_6.jpeg",
+    //     advisor: "Academic Counselor",
+    // },
 ]
-const sports = [
+const scienceExhibitionActivities = [
     {
-        title: "Varsity Basketball",
-        description:
-            "Compete at the highest level of interscholastic basketball, developing athletic skills, teamwork, and sportsmanship.",
-        schedule: "Practice: Mon-Fri, 3:30-5:30 PM | Games: Tuesdays & Fridays",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Coach Robert Martinez",
+        title: "Physics Project Showcase",
+        schedule: "Annual science fair",
+        image: "/academics/2_1.jpeg",
+        advisor: "Physics Department",
     },
     {
-        title: "Swim Team",
-        description:
-            "Train and compete in various swimming events at local, regional, and state levels. All skill levels welcome.",
-        schedule: "Practice: Mon-Fri, 6:00-7:30 AM | Meets: Saturdays",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Coach Sarah Johnson",
+        title: "Chemistry Experiments Display",
+        schedule: "Bi-annual exhibitions",
+        image: "/academics/2_2.jpeg",
+        advisor: "Chemistry Department",
     },
-    {
-        title: "Track & Field",
-        description:
-            "Participate in running, jumping, and throwing events while building endurance, strength, and athletic technique.",
-        schedule: "Practice: Mon-Thurs, 3:30-5:00 PM | Meets: Fridays",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Coach Michael Brown",
-    },
+    // {
+    //     title: "Biology Models & Research",
+    //     schedule: "Annual bio-science fair",
+    //     image: "/academics/2_3.jpeg",
+    //     advisor: "Biology Department",
+    // },
+    // {
+    //     title: "Mathematics Problem Solving",
+    //     schedule: "Math olympiad preparation",
+    //     image: "/academics/2_4.jpeg",
+    //     advisor: "Mathematics Department",
+    // },
+    // {
+    //     title: "Technology & Innovation Fair",
+    //     schedule: "Annual tech showcase",
+    //     image: "/academics/2_5.jpeg",
+    //     advisor: "Computer Science Team",
+    // },
 ]
-const arts = [
+const gamesAndSportsActivities = [
     {
-        title: "Chamber Orchestra",
-        description:
-            "Perform classical and contemporary pieces in a small ensemble setting. Open to string, woodwind, brass, and percussion players.",
-        schedule: "Rehearsals: Tuesdays & Thursdays, 3:30-5:00 PM",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Ms. Jennifer Williams",
+        title: "Football Tournament",
+        schedule: "Inter-house competitions",
+        image: "/academics/3_1.jpeg",
+        advisor: "Sports Department",
     },
     {
-        title: "Drama Club",
-        description:
-            "Produce and perform in two major theatrical productions each year, with opportunities for acting, directing, and technical theater.",
-        schedule: "Rehearsals: Mon, Wed, Fri, 3:30-5:30 PM (production dependent)",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Mr. Thomas Garcia",
+        title: "Basketball Championships",
+        schedule: "Seasonal tournaments",
+        image: "/academics/3_2.jpeg",
+        advisor: "Basketball Coach",
     },
     {
-        title: "Visual Arts Studio",
-        description:
-            "Create artwork in various media including painting, sculpture, photography, and digital art. Participate in the annual student art exhibition.",
-        schedule: "Open Studio: Mon-Thurs, 3:30-5:00 PM",
-        image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
-        advisor: "Ms. Emily Chen",
+        title: "Track & Field Events",
+        schedule: "Annual sports meet",
+        image: "/academics/3_3.jpeg",
+        advisor: "Athletics Coach",
+    },
+    // {
+    //     title: "Cricket Matches",
+    //     schedule: "Regular practice & matches",
+    //     image: "/academics/3_4.jpeg",
+    //     advisor: "Cricket Coach",
+    // },
+    // {
+    //     title: "Volleyball Competitions",
+    //     schedule: "Inter-school tournaments",
+    //     image: "/academics/3_5.jpeg",
+    //     advisor: "Volleyball Coach",
+    // },
+    // {
+    //     title: "Table Tennis & Badminton",
+    //     schedule: "Indoor sports activities",
+    //     image: "/academics/3_6.jpeg",
+    //     advisor: "Indoor Sports Coordinator",
+    // },
+]
+const extraCurricularActivities = [
+    {
+        title: "Cultural Dance Programs",
+        schedule: "Festival celebrations",
+        image: "/academics/4_1.jpeg",
+        advisor: "Cultural Committee",
+    },
+    {
+        title: "Music & Singing Competitions",
+        schedule: "Monthly music events",
+        image: "/academics/4_2.jpeg",
+        advisor: "Music Department",
+    },
+    {
+        title: "Drama & Theater",
+        schedule: "Annual dramatic performances",
+        image: "/academics/4_3.jpeg",
+        advisor: "Drama Club",
+    },
+    {
+        title: "Art & Craft Exhibitions",
+        schedule: "Bi-annual art shows",
+        image: "/academics/4_4.jpeg",
+        advisor: "Art Department",
+    },
+    {
+        title: "Community Service Projects",
+        schedule: "Monthly community work",
+        image: "/academics/4_5.jpeg",
+        advisor: "Social Service Club",
+    },
+    {
+        title: "Community Service Projects",
+        schedule: "Monthly community work",
+        image: "/academics/4_6.jpeg",
+        advisor: "Social Service Club",
+    },
+    {
+        title: "Community Service Projects",
+        schedule: "Monthly community work",
+        image: "/academics/4_7.jpeg",
+        advisor: "Social Service Club",
     },
 ]
 const calendarEvents = [
@@ -235,7 +309,27 @@ const facultySpotlight = [
         image: "/academics/computerengineer.jpeg",
         // bio: "An award-winning educator with a passion for classic and contemporary literature. Mr. Wilson's creative teaching methods bring literary works to life for his students.",
         // education: "M.A. in English Literature, Columbia University",
-    }
+    },
+    {
+        name: "Mr. Ashok kharar",
+        department: "Computer Engineer",
+        image: "/academics/ashokkahar.jpeg",
+    },
+    {
+        name: "Mr. Manoj Kumar Chaudhary",
+        department: "Chemistry Teacher",
+        image: "/academics/manojkumar.jpeg",
+    },
+    {
+        name: "Mr. Amrish Pandey",
+        department: "Computer Engineer",
+        image: "/academics/amrishpandey.jpeg",
+    },
+    {
+        name: "Kaushal Kumar Chaudhary",
+        department: "Lab Technician",
+        image: "/academics/kaushalkishor.jpeg",
+    },
 ]
 
 export default function AcademicsPage() {
@@ -282,18 +376,35 @@ export default function AcademicsPage() {
                     </section>
                     <section className="max-w-7xl mx-auto py-12 md:py-16">
                         <motion.div
-                            className="text-center max-w-2xl mx-auto mb-12"
+                            className="text-center max-w-3xl mx-auto mb-12"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
                             <h2 className="text-3xl font-bold tracking-tight mb-4">Academic Programs</h2>
-                            <p className="text-lg text-muted-foreground">
-                                Our comprehensive curriculum is designed to challenge, inspire, and prepare students for future success
+                            <p className="text-lg text-muted-foreground mb-6">
+                                Janchetana School offers a complete General Stream education from Early Childhood Development (ECD) through Class 12. Our comprehensive curriculum follows national standards while preparing students for success in higher education and future careers.
                             </p>
+                            <div className="bg-primary/10 dark:bg-primary/5 rounded-lg p-6 text-left">
+                                <h3 className="font-semibold text-lg mb-3 text-primary">Complete Educational Journey:</h3>
+                                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <p className="font-medium mb-2">🎓 <strong>General Stream:</strong> ECD to Class 12</p>
+                                        <p className="text-muted-foreground">Continuous academic progression with strong foundation in all core subjects</p>
+                                    </div>
+                                    <div>
+                                        <p className="font-medium mb-2">📚 <strong>Higher Secondary Options (Classes 11-12):</strong></p>
+                                        <ul className="text-muted-foreground space-y-1">
+                                            <li>• Optional Mathematics (Science Stream)</li>
+                                            <li>• Optional English</li>
+                                            <li>• Health & Physical Education</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </motion.div>
-                        <motion.div
+                        {/* <motion.div
                             className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
                             variants={staggerContainer}
                             initial="hidden"
@@ -305,9 +416,9 @@ export default function AcademicsPage() {
                                     <AcademicProgramCard key={program.title} {...program} />
                                 ))
                             }
-                        </motion.div>
+                        </motion.div> */}
                     </section>
-                    <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
+                    {/* <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
                         <div className="max-w-7xl mx-auto">
                             <motion.div
                                 className="text-center max-w-2xl mx-auto mb-12"
@@ -369,7 +480,6 @@ export default function AcademicsPage() {
                                             Take a guided virtual tour of our state-of-the-art facilities, classrooms, laboratories, and
                                             recreational spaces. Experience the environment where our students learn, grow, and thrive.
                                         </p>
-                                        {/* <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Start Full Tour</Button> */}
                                     </div>
                                 </motion.div>
                                 <motion.div
@@ -387,7 +497,7 @@ export default function AcademicsPage() {
                                 </motion.div>
                             </div>
                         </div>
-                    </section>
+                    </section> */}
                     <section className="max-w-7xl mx-auto py-12 md:py-16">
                         <motion.div
                             className="text-center max-w-2xl mx-auto mb-12"
@@ -403,10 +513,11 @@ export default function AcademicsPage() {
                         </motion.div>
                         <Tabs defaultValue="clubs" className="w-full">
                             <div className="flex justify-center mb-8">
-                                <TabsList className="grid w-full max-w-2xl grid-cols-3">
-                                    <TabsTrigger value="clubs">Clubs & Organizations</TabsTrigger>
-                                    <TabsTrigger value="sports">Sports</TabsTrigger>
-                                    <TabsTrigger value="arts">Arts & Culture</TabsTrigger>
+                                <TabsList className="grid w-full max-w-3xl grid-cols-4">
+                                    <TabsTrigger value="clubs">Education Tour</TabsTrigger>
+                                    <TabsTrigger value="sports">Science Exhibition</TabsTrigger>
+                                    <TabsTrigger value="arts">Games & Sports</TabsTrigger>
+                                    <TabsTrigger value="extraCurricular">Extra Curricular Activities</TabsTrigger>
                                 </TabsList>
                             </div>
                             <TabsContent value="clubs">
@@ -418,8 +529,8 @@ export default function AcademicsPage() {
                                     viewport={{ once: true }}
                                 >
                                     {
-                                        clubs.map((club) => (
-                                            <ActivityCard key={club.title} {...club} />
+                                        educationTourActivities.map((activity) => (
+                                            <ActivityCard key={activity.title} {...activity} />
                                         ))
                                     }
                                 </motion.div>
@@ -433,8 +544,8 @@ export default function AcademicsPage() {
                                     viewport={{ once: true }}
                                 >
                                     {
-                                        sports.map((sport) => (
-                                            <ActivityCard key={sport.title} {...sport} />
+                                        scienceExhibitionActivities.map((activity) => (
+                                            <ActivityCard key={activity.title} {...activity} />
                                         ))
                                     }
                                 </motion.div>
@@ -448,8 +559,23 @@ export default function AcademicsPage() {
                                     viewport={{ once: true }}
                                 >
                                     {
-                                        arts.map((art) => (
-                                            <ActivityCard key={art.title} {...art} />
+                                        gamesAndSportsActivities.map((activity) => (
+                                            <ActivityCard key={activity.title} {...activity} />
+                                        ))
+                                    }
+                                </motion.div>
+                            </TabsContent>
+                            <TabsContent value="extraCurricular">
+                                <motion.div
+                                    className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                                    variants={staggerContainer}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                >
+                                    {
+                                        extraCurricularActivities.map((activity) => (
+                                            <ActivityCard key={activity.title} {...activity} />
                                         ))
                                     }
                                 </motion.div>
@@ -552,82 +678,80 @@ export default function AcademicsPage() {
     )
 }
 
-function AcademicProgramCard({
-    title,
-    description,
-    grades,
-    image,
-}: {
-    title: string
-    description: string
-    grades: string
-    image: string
-}) {
-    return (
-        <motion.div variants={fadeInUp}>
-            <Card className="overflow-hidden h-full">
-                <div className="relative h-48 w-full">
-                    <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
-                    <div className="absolute bottom-0 left-0 m-3">
-                        <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm dark:bg-gray-800/80">
-                            {grades}
-                        </Badge>
-                    </div>
-                </div>
-                <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground">{description}</p>
-                </CardContent>
-                {/* <CardFooter>
-                    <Button variant="ghost" size="sm" className="gap-1">
-                        Learn more <ChevronRight className="h-4 w-4" />
-                    </Button>
-                </CardFooter> */}
-            </Card>
-        </motion.div>
-    )
-}
+// function AcademicProgramCard({
+//     title,
+//     description,
+//     grades,
+//     image,
+// }: {
+//     title: string
+//     description: string
+//     grades: string
+//     image: string
+// }) {
+//     return (
+//         <motion.div variants={fadeInUp}>
+//             <Card className="overflow-hidden h-full">
+//                 <div className="relative h-48 w-full">
+//                     <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+//                     <div className="absolute bottom-0 left-0 m-3">
+//                         <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm dark:bg-gray-800/80">
+//                             {grades}
+//                         </Badge>
+//                     </div>
+//                 </div>
+//                 <CardHeader>
+//                     <CardTitle>{title}</CardTitle>
+//                 </CardHeader>
+//                 <CardContent>
+//                     <p className="text-muted-foreground">{description}</p>
+//                 </CardContent>
+//                 {/* <CardFooter>
+//                     <Button variant="ghost" size="sm" className="gap-1">
+//                         Learn more <ChevronRight className="h-4 w-4" />
+//                     </Button>
+//                 </CardFooter> */}
+//             </Card>
+//         </motion.div>
+//     )
+// }
 
-function TourLocationCard({
-    title,
-    image,
-}: {
-    title: string
-    image: string
-}) {
-    return (
-        <motion.div variants={fadeInUp} className="group">
-            <div className="relative aspect-square rounded-lg overflow-hidden">
-                <Image
-                    src={image || "/placeholder.svg"}
-                    alt={title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
-                    <h3 className="text-white font-medium">{title}</h3>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30">
-                    <Button variant="outline" size="sm" className="text-white border-white/50 bg-black/30 hover:bg-black/40">
-                        View Area
-                    </Button>
-                </div>
-            </div>
-        </motion.div>
-    )
-}
+// function TourLocationCard({
+//     title,
+//     image,
+// }: {
+//     title: string
+//     image: string
+// }) {
+//     return (
+//         <motion.div variants={fadeInUp} className="group">
+//             <div className="relative aspect-square rounded-lg overflow-hidden">
+//                 <Image
+//                     src={image || "/placeholder.svg"}
+//                     alt={title}
+//                     fill
+//                     className="object-cover transition-transform duration-300 group-hover:scale-105"
+//                 />
+//                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+//                     <h3 className="text-white font-medium">{title}</h3>
+//                 </div>
+//                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30">
+//                     <Button variant="outline" size="sm" className="text-white border-white/50 bg-black/30 hover:bg-black/40">
+//                         View Area
+//                     </Button>
+//                 </div>
+//             </div>
+//         </motion.div>
+//     )
+// }
 
 function ActivityCard({
     title,
-    description,
     schedule,
     image,
     advisor,
 }: {
     title: string
-    description: string
     schedule: string
     image: string
     advisor: string
@@ -638,11 +762,10 @@ function ActivityCard({
                 <div className="relative h-48 w-full">
                     <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
                 </div>
-                <CardHeader>
+                {/* <CardHeader>
                     <CardTitle>{title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <p className="text-muted-foreground">{description}</p>
                     <div className="flex flex-col gap-2 text-sm">
                         <div className="flex items-center gap-2">
                             <Clock className="h-4 w-4 text-primary/70" />
@@ -653,12 +776,7 @@ function ActivityCard({
                             <span className="text-muted-foreground">Advisor: {advisor}</span>
                         </div>
                     </div>
-                </CardContent>
-                <CardFooter>
-                    <Button variant="outline" size="sm">
-                        Join Activity
-                    </Button>
-                </CardFooter>
+                </CardContent> */}
             </Card>
         </motion.div>
     )
@@ -715,12 +833,22 @@ function FacultyCard({
     return (
         <motion.div variants={fadeInUp}>
             <Card className="overflow-hidden h-full">
-                <div className="relative h-64 w-full">
-                    <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
+                <div className="relative h-64 w-full bg-gray-50 dark:bg-gray-800">
+                    <Image 
+                        src={image || "/placeholder.svg"} 
+                        alt={name} 
+                        fill 
+                        className="object-contain object-center p-2" 
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                 </div>
                 <CardHeader>
-                    <CardTitle>{name}</CardTitle>
-                    <CardDescription>{department}</CardDescription>
+                    <div className="flex items-start justify-between gap-2">
+                        <CardTitle className="flex-1">{name}</CardTitle>
+                        <Badge variant="secondary" className="shrink-0 text-xs">
+                            {department}
+                        </Badge>
+                    </div>
                 </CardHeader>
                 {/* <CardContent className="space-y-4">
                     <p className="text-muted-foreground">{bio}</p>

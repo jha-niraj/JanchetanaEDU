@@ -244,9 +244,11 @@ export default function ContactPage() {
                                         </div>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground">Main Office: (555) 123-4567</p>
-                                        <p className="text-muted-foreground">Admissions: (555) 123-4568</p>
-                                        <p className="text-muted-foreground">Student Services: (555) 123-4569</p>
+                                        <p className="text-muted-foreground">Head Teacher: +977-9847370585</p>
+                                        <p className="text-muted-foreground">Admission: +977-9847015421</p>
+                                        <p className="text-muted-foreground">Admission: +977-9811545242</p>
+                                        <p className="text-muted-foreground">Technical & Vocational HOD: +977-9847190727</p>
+                                        <p className="text-muted-foreground">Information Officer: +977-9847385324</p>
                                     </CardContent>
                                 </Card>
                             </motion.div>
@@ -261,9 +263,8 @@ export default function ContactPage() {
                                         </div>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground">General Inquiries: info@horizonacademy.edu</p>
-                                        <p className="text-muted-foreground">Admissions: admissions@horizonacademy.edu</p>
-                                        <p className="text-muted-foreground">Support: support@horizonacademy.edu</p>
+                                        <p className="text-muted-foreground">General Inquiries: janchetanacsschool@gmail.com</p>
+                                        <p className="text-muted-foreground">Technical & Vocational: bishnubk818@gmail.com</p>
                                     </CardContent>
                                 </Card>
                             </motion.div>
@@ -278,9 +279,10 @@ export default function ContactPage() {
                                         </div>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground">123 Education Lane</p>
-                                        <p className="text-muted-foreground">Learning City, LC 12345</p>
-                                        <p className="text-muted-foreground">United States</p>
+                                        <p className="text-muted-foreground">Shree Janchetana Community Secondary School</p>
+                                        <p className="text-muted-foreground">Shivraj Municipality Ward No. 08</p>
+                                        <p className="text-muted-foreground">Laxmanpur, Lumbini Province</p>
+                                        <p className="text-muted-foreground">Kapilvastu, Nepal</p>
                                     </CardContent>
                                 </Card>
                             </motion.div>
@@ -295,8 +297,9 @@ export default function ContactPage() {
                                         </div>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground">Sunday - Friday: 8:00 AM - 4:30 PM</p>
-                                        <p className="text-muted-foreground">Saturday: 9:00 AM - 12:00 PM (Admissions Only)</p>
+                                        <p className="text-muted-foreground">Sunday - Thursday: 9:30 AM - 4:00 PM</p>
+                                        <p className="text-muted-foreground">Friday: 9:30 AM - 2:00 PM</p>
+                                        <p className="text-muted-foreground">Saturday: Weekend (Holiday)</p>
                                     </CardContent>
                                 </Card>
                             </motion.div>
@@ -326,7 +329,7 @@ export default function ContactPage() {
                                     <Card className="shadow-xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
                                         <CardHeader>
                                             <CardTitle className="text-2xl text-gray-800 dark:text-gray-100">Get in Touch</CardTitle>
-                                            <p className="text-gray-500 dark:text-gray-400">Fill out the form below, and we’ll contact you soon.</p>
+                                            <p className="text-gray-500 dark:text-gray-400">Fill out the form below, and we'll contact you soon.</p>
                                         </CardHeader>
                                         <CardContent>
                                             <form onSubmit={handleSubmit} className="space-y-4">

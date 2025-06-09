@@ -131,12 +131,12 @@ export function MainNav() {
                                     )
                                 }
                             </Button>
-                            <Link href="/auth">
+                            {/* <Link href="/auth">
                                 <Button className="cursor-pointer bg-gradient-to-r from-teal-500 to-cyan-500 text-white hover:from-teal-600 hover:to-cyan-600 shadow-md hover:shadow-lg transition-all duration-300">
                                     Login / Sign Up
                                     <ArrowRight className="ml-2 h-4 w-4" />
                                 </Button>
-                            </Link>
+                            </Link> */}
                         </div>
                         <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild>
@@ -212,12 +212,12 @@ export function MainNav() {
                                                 <Sparkles className="h-3 w-3 mr-1" />
                                                 School of Excellence
                                             </Badge>
-                                            <Link href="/auth" onClick={() => setIsOpen(false)}>
+                                            {/* <Link href="/auth" onClick={() => setIsOpen(false)}>
                                                 <Button className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white hover:from-teal-600 hover:to-cyan-600">
                                                     Login / Sign Up
                                                     <ArrowRight className="ml-2 h-4 w-4" />
                                                 </Button>
-                                            </Link>
+                                            </Link> */}
                                         </div>
                                         <div className="mt-8">
                                             <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-4">Quick Links</h3>

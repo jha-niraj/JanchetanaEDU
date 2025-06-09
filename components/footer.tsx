@@ -62,12 +62,11 @@ export function Footer() {
                             </Button>
                         </div>
                     </motion.div>
-
                     <motion.div variants={itemVariants}>
                         <h3 className="mb-4 text-sm font-semibold">Quick Links</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <Link href="/about" className="text-muted-foreground hover:text-primary">
+                                <Link href="/aboutus" className="text-muted-foreground hover:text-primary">
                                     About Us
                                 </Link>
                             </li>
@@ -81,7 +80,7 @@ export function Footer() {
                                     Admissions
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/calendar" className="text-muted-foreground hover:text-primary">
                                     School Calendar
                                 </Link>
@@ -95,14 +94,13 @@ export function Footer() {
                                 <Link href="/careers" className="text-muted-foreground hover:text-primary">
                                     Careers
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </motion.div>
-
                     <motion.div variants={itemVariants}>
                         <h3 className="mb-4 text-sm font-semibold">Resources</h3>
                         <ul className="space-y-2 text-sm">
-                            <li>
+                            {/* <li>
                                 <Link href="/e-library" className="text-muted-foreground hover:text-primary">
                                     E-Library
                                 </Link>
@@ -116,14 +114,14 @@ export function Footer() {
                                 <Link href="/parent-portal" className="text-muted-foreground hover:text-primary">
                                     Parent Portal
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link href="/alumni" className="text-muted-foreground hover:text-primary">
                                     Alumni Network
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/support" className="text-muted-foreground hover:text-primary">
+                                <Link href="/contactus" className="text-muted-foreground hover:text-primary">
                                     Technical Support
                                 </Link>
                             </li>
@@ -133,15 +131,15 @@ export function Footer() {
                         <h3 className="text-sm font-semibold">Contact Us</h3>
                         <div className="flex items-start space-x-3 text-sm">
                             <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground" />
-                            <span className="text-muted-foreground">Kathmandu, Nepal</span>
+                            <span className="text-muted-foreground">Shivraj municipality -08, Laxmanpur Kapilvastu, Nepal</span>
                         </div>
                         <div className="flex items-center space-x-3 text-sm">
                             <Phone className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground">+977 1 4123456</span>
+                            <span className="text-muted-foreground">+977 9847370585</span>
                         </div>
                         <div className="flex items-center space-x-3 text-sm">
                             <Mail className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground">info@janchetana.edu.np</span>
+                            <span className="text-muted-foreground"> janchetanacsschool@gmail.com</span>
                         </div>
                         {/* <div className="pt-2">
                             <h4 className="text-sm font-medium mb-2">Subscribe to our newsletter</h4>
@@ -154,11 +152,11 @@ export function Footer() {
                 </div>
             </motion.div>
             <div className="border-t py-6 dark:border-gray-800">
-                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left px-4 sm:px-6">
+                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-center sm:text-left px-4 sm:px-6">
                     <p className="text-xs text-muted-foreground">
                         &copy; {new Date().getFullYear()} Janchetana School. All rights reserved.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
+                    {/* <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
                         <Link href="/privacy" className="hover:underline">
                             Privacy Policy
                         </Link>
@@ -168,7 +166,7 @@ export function Footer() {
                         <Link href="/accessibility" className="hover:underline">
                             Accessibility
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </footer>

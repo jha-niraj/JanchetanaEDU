@@ -10,9 +10,9 @@ import { useMediaQuery } from "@/hooks/use-media-query"
 import { useState, useEffect } from "react"
 
 const navItems = [
-    { href: "/dashboard", label: "Dashboard", icon: <Home className="h-5 w-5" /> },
-    { href: "/dashboard/teachers", label: "Teacher Details", icon: <Users className="h-5 w-5" /> },
-    { href: "/dashboard/articles", label: "Article Writing", icon: <BookText className="h-5 w-5" /> },
+    { href: "/admin/dashboard", label: "Dashboard", icon: <Home className="h-5 w-5" /> },
+    { href: "/admin/teachers", label: "Teacher Details", icon: <Users className="h-5 w-5" /> },
+    { href: "/admin/articles", label: "Article Writing", icon: <BookText className="h-5 w-5" /> },
 ]
 
 export function Sidebar() {
@@ -55,7 +55,6 @@ export function Sidebar() {
         </nav>
     )
 
-    // Desktop sidebar
     if (isDesktop) {
         return (
             <div className="flex h-[calc(100vh-4rem)] w-64 flex-col fixed left-0 top-16 border-r bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -67,7 +66,6 @@ export function Sidebar() {
         )
     }
 
-    // Mobile sidebar (Sheet)
     return (
         <>
             <div className="flex h-16 items-center px-4 border-b md:hidden">

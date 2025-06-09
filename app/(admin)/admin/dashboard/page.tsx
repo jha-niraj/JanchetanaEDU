@@ -142,7 +142,7 @@ export default function Dashboard() {
                                 variant="ghost"
                                 size="sm"
                                 className="text-xs text-muted-foreground"
-                                onClick={() => router.push('/dashboard/articles')}
+                                onClick={() => router.push('/admin/articles')}
                             >
                                 View All <ArrowUpRight className="h-3 w-3 ml-1" />
                             </Button>
