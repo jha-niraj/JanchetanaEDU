@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-providers";
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "./providers/providers";
+import Head from "next/head";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -32,9 +33,20 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
+			<Head>
 				<link rel="icon" href="/mainlogo.ico" />
-			</head>
+
+				<meta property="og:title" content="Janchetana EDU - Education comes first" />
+				<meta property="og:description" content="Education comes first" />
+				<meta property="og:image" content="https://www.janchetanaschool.edu.np/mainlogo.png" />
+				<meta property="og:url" content="https://www.janchetanaschool.edu.np" />
+				<meta property="og:type" content="website" />
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content="Janchetana EDU" />
+				<meta name="twitter:description" content="Education comes first" />
+				<meta name="twitter:image" content="https://www.janchetanaschool.edu.np/mainlogo.png" />
+			</Head>
 			<body
 				className={`${spaceGrotesk.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
 			>

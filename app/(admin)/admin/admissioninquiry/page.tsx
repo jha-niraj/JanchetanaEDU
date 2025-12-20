@@ -46,10 +46,6 @@ export default function AdmissionInquiryPage() {
         fetchInquiries()
     }, [])
 
-    const getAdmissionTypeLabel = (type: string) => {
-        return type === "NURSERY_8" ? "Nursery - Grade 8" : "Grade 9 - 12"
-    }
-
     const getAdmissionTypeBadge = (type: string) => {
         return type === "NURSERY_8" ? (
             <Badge className="bg-blue-500">Nursery-8</Badge>

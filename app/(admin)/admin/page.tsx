@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/card";
 import { 
     GraduationCap, Quote, BookOpen, CalendarDays, ArrowUpRight, 
-    Bell, UserPlus, Calendar, Users, FileText
+    Bell, UserPlus, Calendar, Users
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";

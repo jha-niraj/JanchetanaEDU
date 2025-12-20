@@ -53,14 +53,6 @@ export default function Home() {
 
 	return (
 		<SmoothScroll>
-			<Head>
-				<title>Janchetana EDU</title>
-				<meta property="og:title" content="Janchetana EDU" />
-				<meta property="og:description" content="Education comes first" />
-				<meta property="og:image" content="https://janchetanaedu.vercel.app/mainlogo.ico" />
-				<meta property="og:url" content="https://janchetanaedu.vercel.app" />
-				<meta name="twitter:card" content="summary_large_image" />
-			</Head>
 			<section className="flex min-h-screen flex-col w-full">
 				<MainNav />
 				<main className="flex-1">
