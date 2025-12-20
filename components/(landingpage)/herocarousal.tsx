@@ -72,20 +72,24 @@ export function HeroCarousel() {
 
     return (
         <div className="relative w-full h-full overflow-hidden">
-            {/* School Header Section */}
             <div className="absolute top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm pt-24">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                     <div className="flex items-center justify-between">
-                        {/* Left: School Logo/Emblem */}
                         <div className="flex items-center gap-3">
                             <div className="relative w-16 h-16 flex items-center justify-center">
                                 <div className="absolute inset-0 bg-blue-100 rounded-full border-2 border-red-500 flex items-center justify-center">
-                                    <span className="text-xs font-bold text-red-600">श्री</span>
+                                    <Image
+                                        src="/mainlogo.png"
+                                        alt="School Logo"
+                                        width={60}
+                                        height={60}
+                                        className="object-contain"
+                                        quality={90}
+                                        priority={true}
+                                    />
                                 </div>
                             </div>
                         </div>
-
-                        {/* Center: School Name */}
                         <div className="flex-1 text-center">
                             <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-1">
                                 श्री जनचेतना माध्यमिक विद्यालय
@@ -100,8 +104,6 @@ export function HeroCarousel() {
                                 Shivraj Municipality-08, Laxmanpur, Kapilvastu
                             </p>
                         </div>
-
-                        {/* Right: Nepal Flag */}
                         <div className="flex items-center">
                             <Image
                                 src="/nepalflag.gif"
@@ -113,46 +115,47 @@ export function HeroCarousel() {
                         </div>
                     </div>
                 </div>
-
-                {/* Marquee for Notices */}
-                {notices.length > 0 && (
-                    <div 
-                        className="bg-red-600 text-white py-2 overflow-hidden relative"
-                        onMouseEnter={() => setIsHovering(true)}
-                        onMouseLeave={() => setIsHovering(false)}
-                    >
-                        <div className="flex items-center">
-                            <div className="flex items-center gap-2 px-4 bg-red-700 rounded-r-full py-1 z-10 flex-shrink-0">
-                                <span className="text-xs font-bold">नयाँ</span>
-                            </div>
-                            <div className="flex-1 overflow-hidden">
-                                <div className="flex gap-8 whitespace-nowrap">
-                                    <div 
-                                        className={`flex gap-8 ${isHovering ? '' : 'animate-marquee'}`}
-                                        style={{
-                                            animationPlayState: isHovering ? 'paused' : 'running'
-                                        }}
-                                    >
-                                    {/* Duplicate content for seamless loop */}
-                                    {[...notices, ...notices].map((notice, index) => (
-                                        <div 
-                                            key={`${notice.id}-${index}`} 
-                                            className="flex items-center gap-2 flex-shrink-0 cursor-pointer hover:underline"
-                                            onClick={() => handleNoticeClick(notice)}
+                {
+                    notices.length > 0 && (
+                        <div
+                            className="bg-red-600 text-white py-2 overflow-hidden relative"
+                            onMouseEnter={() => setIsHovering(true)}
+                            onMouseLeave={() => setIsHovering(false)}
+                        >
+                            <div className="flex items-center">
+                                <div className="flex items-center gap-2 px-4 bg-red-700 rounded-r-full py-1 z-10 flex-shrink-0">
+                                    <span className="text-xs font-bold">नयाँ</span>
+                                </div>
+                                <div className="flex-1 overflow-hidden">
+                                    <div className="flex gap-8 whitespace-nowrap">
+                                        <div
+                                            className={`flex gap-8 ${isHovering ? '' : 'animate-marquee'}`}
+                                            style={{
+                                                animationPlayState: isHovering ? 'paused' : 'running'
+                                            }}
                                         >
-                                            <span className="text-sm font-medium">{notice.title}:</span>
-                                            <span className="text-sm">{notice.content}</span>
-                                            <span className="text-red-400 mx-4">•</span>
+                                            {/* Duplicate content for seamless loop */}
+                                            {
+                                                [...notices, ...notices].map((notice, index) => (
+                                                    <div
+                                                        key={`${notice.id}-${index}`}
+                                                        className="flex items-center gap-2 flex-shrink-0 cursor-pointer hover:underline"
+                                                        onClick={() => handleNoticeClick(notice)}
+                                                    >
+                                                        <span className="text-sm font-medium">{notice.title}:</span>
+                                                        <span className="text-sm">{notice.content}</span>
+                                                        <span className="text-red-400 mx-4">•</span>
+                                                    </div>
+                                                ))
+                                            }
                                         </div>
-                                    ))}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                )}
+                    )
+                }
             </div>
-
             <div className="absolute inset-0 pt-48">
                 {
                     heroImages.map((image, index) => (
