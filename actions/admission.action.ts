@@ -103,3 +103,40 @@ export async function addAdmissionInquiry(formData: FormData) {
         };
     }
 }
+
+export interface AdmissionInquiry {
+    id: string;
+    phoneNumber: string;
+    parentName: string;
+    numberOfChildren: number;
+    desiredClasses: string[];
+    admissionType: "NURSERY_8" | "GRADE_9_12";
+    streams: string[];
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export async function getAllAdmissionInquiries(): Promise<{
+    success: boolean;
+    inquiries?: AdmissionInquiry[];
+    error?: string;
+}> {
+    try {
+        const inquiries = await prisma.admissionInquiry.findMany({
+            orderBy: {
+                createdAt: 'desc'
+            }
+        });
+
+        return {
+            success: true,
+            inquiries: inquiries as AdmissionInquiry[]
+        };
+    } catch (error) {
+        console.error("Error fetching admission inquiries:", error);
+        return {
+            success: false,
+            error: "Failed to fetch admission inquiries"
+        };
+    }
+}

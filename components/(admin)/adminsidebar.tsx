@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { 
-    BookText, Home, Menu, Users, X, GraduationCap, Bell, Calendar 
+    BookText, Home, Menu, Users, X, GraduationCap, Bell, Calendar, UserPlus
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -16,6 +16,7 @@ const navItems = [
     { href: "/admin/teachers", label: "Teachers", icon: Users },
     { href: "/admin/articles", label: "Articles", icon: BookText }, 
     { href: "/admin/notices", label: "Notices", icon: Bell },
+    { href: "/admin/admissioninquiry", label: "Admission Inquiries", icon: UserPlus },
     { href: "/admin/alumni", label: "Alumni", icon: Users },
     { href: "/admin/schoolevents", label: "School Events", icon: Calendar },
 ]
