@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock } from 'lucide-react';
+import { 
+    Calendar, Clock 
+} from 'lucide-react';
 import Image from 'next/image';
 
 const CulturalPage = () => {

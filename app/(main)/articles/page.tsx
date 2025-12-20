@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardFooter, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { getPublishedArticles } from "@/actions/article.action"
@@ -83,83 +85,91 @@ export default function ArticlesPage() {
                             </p>
                         </motion.div>
 
-                        {isLoading ? (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {[1, 2, 3].map((i) => (
-                                    <Card key={i} className="animate-pulse">
-                                        <CardHeader>
-                                            <div className="h-6 bg-muted rounded w-3/4 mb-2" />
-                                            <div className="h-4 bg-muted rounded w-1/2" />
-                                        </CardHeader>
-                                        <CardContent>
-                                            <div className="h-20 bg-muted rounded" />
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                            </div>
-                        ) : articles.length === 0 ? (
-                            <div className="flex flex-col items-center justify-center py-16 text-center">
-                                <BookOpen className="h-16 w-16 text-muted-foreground mb-4" />
-                                <h3 className="text-xl font-semibold mb-2">No articles yet</h3>
-                                <p className="text-muted-foreground max-w-md">
-                                    Check back soon for the latest news and updates from our school.
-                                </p>
-                            </div>
-                        ) : (
-                            <motion.div
-                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                                variants={container}
-                                initial="hidden"
-                                animate="show"
-                            >
-                                {articles.map((article) => (
-                                    <motion.div key={article.id} variants={item}>
-                                        <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 group border-2 hover:border-primary/20">
-                                            <CardHeader className="pb-3">
-                                                <div className="flex items-start justify-between gap-2 mb-2">
-                                                    <Badge variant="outline" className="text-xs">
-                                                        Published
-                                                    </Badge>
-                                                    <Calendar className="h-4 w-4 text-muted-foreground" />
-                                                </div>
-                                                <CardTitle className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors">
-                                                    {article.title}
-                                                </CardTitle>
-                                                <div className="flex items-center gap-3 text-sm text-muted-foreground mt-2">
-                                                    {article.teacher && (
-                                                        <div className="flex items-center gap-1">
-                                                            <User className="h-3 w-3" />
-                                                            <span>{article.teacher.name}</span>
+                        {
+                            isLoading ? (
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {
+                                        [1, 2, 3].map((i) => (
+                                            <Card key={i} className="animate-pulse">
+                                                <CardHeader>
+                                                    <div className="h-6 bg-muted rounded w-3/4 mb-2" />
+                                                    <div className="h-4 bg-muted rounded w-1/2" />
+                                                </CardHeader>
+                                                <CardContent>
+                                                    <div className="h-20 bg-muted rounded" />
+                                                </CardContent>
+                                            </Card>
+                                        ))
+                                    }
+                                </div>
+                            ) : articles.length === 0 ? (
+                                <div className="flex flex-col items-center justify-center py-16 text-center">
+                                    <BookOpen className="h-16 w-16 text-muted-foreground mb-4" />
+                                    <h3 className="text-xl font-semibold mb-2">No articles yet</h3>
+                                    <p className="text-muted-foreground max-w-md">
+                                        Check back soon for the latest news and updates from our school.
+                                    </p>
+                                </div>
+                            ) : (
+                                <motion.div
+                                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                                    variants={container}
+                                    initial="hidden"
+                                    animate="show"
+                                >
+                                    {
+                                        articles.map((article) => (
+                                            <motion.div key={article.id} variants={item}>
+                                                <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 group border-2 hover:border-primary/20">
+                                                    <CardHeader className="pb-3">
+                                                        <div className="flex items-start justify-between gap-2 mb-2">
+                                                            <Badge variant="outline" className="text-xs">
+                                                                Published
+                                                            </Badge>
+                                                            <Calendar className="h-4 w-4 text-muted-foreground" />
                                                         </div>
-                                                    )}
-                                                    <div className="flex items-center gap-1">
-                                                        <Calendar className="h-3 w-3" />
-                                                        <span>{format(new Date(article.createdAt), "MMM d, yyyy")}</span>
-                                                    </div>
-                                                </div>
-                                            </CardHeader>
-                                            <CardContent className="flex-1">
-                                                <p className="text-muted-foreground line-clamp-4 text-sm leading-relaxed">
-                                                    {article.content}
-                                                </p>
-                                            </CardContent>
-                                            <CardFooter className="pt-4 border-t">
-                                                <Button
-                                                    asChild
-                                                    variant="ghost"
-                                                    className="w-full group/btn justify-between"
-                                                >
-                                                    <Link href={`/articles/${article.slug}`}>
-                                                        Read More
-                                                        <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                                                    </Link>
-                                                </Button>
-                                            </CardFooter>
-                                        </Card>
-                                    </motion.div>
-                                ))}
-                            </motion.div>
-                        )}
+                                                        <CardTitle className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors">
+                                                            {article.title}
+                                                        </CardTitle>
+                                                        <div className="flex items-center gap-3 text-sm text-muted-foreground mt-2">
+                                                            {
+                                                                article.teacher && (
+                                                                    <div className="flex items-center gap-1">
+                                                                        <User className="h-3 w-3" />
+                                                                        <span>{article.teacher.name}</span>
+                                                                    </div>
+                                                                )
+                                                            }
+                                                            <div className="flex items-center gap-1">
+                                                                <Calendar className="h-3 w-3" />
+                                                                <span>{format(new Date(article.createdAt), "MMM d, yyyy")}</span>
+                                                            </div>
+                                                        </div>
+                                                    </CardHeader>
+                                                    <CardContent className="flex-1">
+                                                        <p className="text-muted-foreground line-clamp-4 text-sm leading-relaxed">
+                                                            {article.content}
+                                                        </p>
+                                                    </CardContent>
+                                                    <CardFooter className="pt-4 border-t">
+                                                        <Button
+                                                            asChild
+                                                            variant="ghost"
+                                                            className="w-full group/btn justify-between"
+                                                        >
+                                                            <Link href={`/articles/${article.slug}`}>
+                                                                Read More
+                                                                <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                                                            </Link>
+                                                        </Button>
+                                                    </CardFooter>
+                                                </Card>
+                                            </motion.div>
+                                        ))
+                                    }
+                                </motion.div>
+                            )
+                        }
                     </div>
                 </section>
             </main>
@@ -167,4 +177,3 @@ export default function ArticlesPage() {
         </div>
     )
 }
-

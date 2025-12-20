@@ -27,14 +27,16 @@ export function SubmitButton({
             aria-disabled={pending}
             {...props}
         >
-            {pending ? (
-                <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {loadingText}
-                </>
-            ) : (
-                children
-            )}
+            {
+                pending ? (
+                    <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        {loadingText}
+                    </>
+                ) : (
+                    children
+                )
+            }
         </Button>
     )
 }

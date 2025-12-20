@@ -49,7 +49,7 @@ export async function uploadImageToCloudinary(formData: FormData) {
         const uploadPromise = new Promise<CloudinaryUploadResult>((resolve, reject) => {
             const uploadStream = cloudinary.uploader.upload_stream(
                 {
-                    folder: "thecoderz/profile-pictures",
+                    folder: "janchetana/teachers",
                     transformation: [
                         { width: 500, height: 500, crop: "fill", gravity: "face" },
                         { quality: "auto:good" },

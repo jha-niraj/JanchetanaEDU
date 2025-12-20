@@ -3,13 +3,21 @@
 import { useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Book, BookOpen, ChevronRight, Download, FileText, Search } from "lucide-react"
+import {
+    Book, BookOpen, ChevronRight, Download, FileText, Search
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+    Tabs, TabsContent, TabsList, TabsTrigger
+} from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue
+} from "@/components/ui/select"
 import SmoothScroll from "@/components/smoothscroll"
 
 const fadeInUp = {
@@ -241,38 +249,38 @@ export default function ELibraryPage() {
                         </div>
                     </section>
                     <section className="max-w-7xl mx-auto py-8 md:py-12">
-                    <motion.div
-                        className="max-w-4xl mx-auto"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <div className="flex flex-col md:flex-row gap-4">
-                            <div className="relative flex-grow">
-                                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                                <Input
-                                    placeholder="Search by title, author, or keyword..."
-                                    className="pl-10"
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                />
+                        <motion.div
+                            className="max-w-4xl mx-auto"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <div className="flex flex-col md:flex-row gap-4">
+                                <div className="relative flex-grow">
+                                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                                    <Input
+                                        placeholder="Search by title, author, or keyword..."
+                                        className="pl-10"
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                    />
+                                </div>
+                                <div className="flex gap-2">
+                                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                                        <SelectTrigger className="w-[180px]">
+                                            <SelectValue placeholder="Category" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="all">All Categories</SelectItem>
+                                            <SelectItem value="books">Books</SelectItem>
+                                            <SelectItem value="journals">Journals</SelectItem>
+                                            <SelectItem value="research">Research Papers</SelectItem>
+                                            <SelectItem value="multimedia">Multimedia</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
                             </div>
-                            <div className="flex gap-2">
-                                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                                    <SelectTrigger className="w-[180px]">
-                                        <SelectValue placeholder="Category" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="all">All Categories</SelectItem>
-                                        <SelectItem value="books">Books</SelectItem>
-                                        <SelectItem value="journals">Journals</SelectItem>
-                                        <SelectItem value="research">Research Papers</SelectItem>
-                                        <SelectItem value="multimedia">Multimedia</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
                     </section>
                     <section className="w-full py-8 md:py-12 bg-secondary/20 dark:bg-gray-900/30">
                         <div className="max-w-7xl mx-auto">
@@ -476,11 +484,13 @@ function ResourceCard({ resource, featured = false }: { resource: Resource; feat
                 <CardContent>
                     <p className="text-muted-foreground line-clamp-3">{resource.description}</p>
                     <div className="flex flex-wrap gap-2 mt-4">
-                        {resource.tags.map((tag) => (
-                            <Badge key={tag} variant="outline" className="bg-primary/5">
-                                {tag}
-                            </Badge>
-                        ))}
+                        {
+                            resource.tags.map((tag) => (
+                                <Badge key={tag} variant="outline" className="bg-primary/5">
+                                    {tag}
+                                </Badge>
+                            ))
+                        }
                     </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
@@ -501,26 +511,30 @@ function ResourceCard({ resource, featured = false }: { resource: Resource; feat
 function ResourceGrid({ resources }: { resources: Resource[] }) {
     return (
         <>
-            {resources.length > 0 ? (
-                <motion.div
-                    className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
-                    {resources.map((resource) => (
-                        <ResourceCard key={resource.id} resource={resource} />
-                    ))}
-                </motion.div>
-            ) : (
-                <div className="text-center py-12">
-                    <p className="text-muted-foreground">No resources found matching your criteria.</p>
-                    <Button variant="outline" className="mt-4">
-                        Clear Filters
-                    </Button>
-                </div>
-            )}
+            {
+                resources.length > 0 ? (
+                    <motion.div
+                        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {
+                            resources.map((resource) => (
+                                <ResourceCard key={resource.id} resource={resource} />
+                            ))
+                        }
+                    </motion.div>
+                ) : (
+                    <div className="text-center py-12">
+                        <p className="text-muted-foreground">No resources found matching your criteria.</p>
+                        <Button variant="outline" className="mt-4">
+                            Clear Filters
+                        </Button>
+                    </div>
+                )
+            }
         </>
     )
 }

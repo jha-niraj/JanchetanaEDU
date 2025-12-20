@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, MapPin } from 'lucide-react';
+import {
+    Clock, MapPin
+} from 'lucide-react';
 import Image from 'next/image';
 
 const ToursPage = () => {

@@ -4,14 +4,22 @@ import { useState, useEffect, useTransition } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { getAllEvents, createEvent, updateEvent, deleteEvent, type Event } from "@/actions/event.action"
+import {
+    getAllEvents, createEvent, updateEvent, deleteEvent, type Event
+} from "@/actions/event.action"
 import { useRouter } from "next/navigation"
-import { Loader2, Calendar, Trash2, Edit, Plus } from "lucide-react"
+import {
+    Loader2, Calendar, Trash2, Edit, Plus
+} from "lucide-react"
 import { format } from "date-fns"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+    Tabs, TabsContent, TabsList, TabsTrigger
+} from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import {
     AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
@@ -210,13 +218,11 @@ export default function SchoolEventsPage() {
                 <h1 className="text-3xl font-bold mb-2">School Events Management</h1>
                 <p className="text-muted-foreground">Create and manage school events</p>
             </div>
-
             <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
                 <TabsList className="grid w-full max-w-md grid-cols-2">
                     <TabsTrigger value="create">Create Event</TabsTrigger>
                     <TabsTrigger value="events">All Events ({events.length})</TabsTrigger>
                 </TabsList>
-
                 <TabsContent value="create" className="mt-6">
                     <Card>
                         <CardHeader>
@@ -232,7 +238,6 @@ export default function SchoolEventsPage() {
                                     placeholder="e.g. Annual Sports Day"
                                 />
                             </div>
-
                             <div className="space-y-2">
                                 <Label htmlFor="description">Description *</Label>
                                 <Textarea
@@ -243,7 +248,6 @@ export default function SchoolEventsPage() {
                                     className="min-h-[120px]"
                                 />
                             </div>
-
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <Label htmlFor="date">Date & Time *</Label>
@@ -265,9 +269,8 @@ export default function SchoolEventsPage() {
                                     />
                                 </div>
                             </div>
-
                             <div className="flex items-center space-x-2">
-                                <input
+                                <Input
                                     type="checkbox"
                                     id="isActive"
                                     checked={newEvent.isActive}
@@ -276,121 +279,128 @@ export default function SchoolEventsPage() {
                                 />
                                 <Label htmlFor="isActive">Active (visible on website)</Label>
                             </div>
-
                             <Button onClick={handleCreateEvent} disabled={isPending} className="w-full">
-                                {isPending ? (
-                                    <>
-                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                        Creating...
-                                    </>
-                                ) : (
-                                    <>
-                                        <Plus className="mr-2 h-4 w-4" />
-                                        Create Event
-                                    </>
-                                )}
+                                {
+                                    isPending ? (
+                                        <>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            Creating...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Plus className="mr-2 h-4 w-4" />
+                                            Create Event
+                                        </>
+                                    )
+                                }
                             </Button>
                         </CardContent>
                     </Card>
                 </TabsContent>
-
                 <TabsContent value="events" className="mt-6">
-                    {events.length === 0 ? (
-                        <Card>
-                            <CardContent className="py-12 text-center">
-                                <Calendar className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                                <p className="text-muted-foreground">No school events created yet.</p>
-                            </CardContent>
-                        </Card>
-                    ) : (
-                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            {events.map((event) => (
-                                <motion.div
-                                    key={event.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                >
-                                    <Card className="h-full">
-                                        <CardHeader>
-                                            <div className="flex items-start justify-between">
-                                                <CardTitle className="text-lg line-clamp-2">{event.title}</CardTitle>
-                                                <Badge variant={event.isActive ? "default" : "secondary"}>
-                                                    {event.isActive ? "Active" : "Inactive"}
-                                                </Badge>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent className="space-y-3">
-                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                <Calendar className="h-4 w-4" />
-                                                <span>{format(new Date(event.date), "MMM d, yyyy 'at' h:mm a")}</span>
-                                            </div>
-                                            {event.location && (
-                                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                    <span>📍</span>
-                                                    <span>{event.location}</span>
-                                                </div>
-                                            )}
-                                            <p className="text-sm text-muted-foreground line-clamp-3">{event.description}</p>
-                                            <div className="flex gap-2 pt-2">
-                                                <Button
-                                                    variant="outline"
-                                                    size="sm"
-                                                    onClick={() => handleEditClick(event)}
-                                                    className="flex-1"
-                                                >
-                                                    <Edit className="h-4 w-4 mr-2" />
-                                                    Edit
-                                                </Button>
-                                                <AlertDialog open={isDeleteDialogOpen && selectedEventId === event.id} onOpenChange={(open) => {
-                                                    setIsDeleteDialogOpen(open)
-                                                    if (!open) setSelectedEventId(null)
-                                                }}>
-                                                    <AlertDialogTrigger asChild>
+                    {
+                        events.length === 0 ? (
+                            <Card>
+                                <CardContent className="py-12 text-center">
+                                    <Calendar className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                                    <p className="text-muted-foreground">No school events created yet.</p>
+                                </CardContent>
+                            </Card>
+                        ) : (
+                            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                {
+                                    events.map((event) => (
+                                        <motion.div
+                                            key={event.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                        >
+                                            <Card className="h-full">
+                                                <CardHeader>
+                                                    <div className="flex items-start justify-between">
+                                                        <CardTitle className="text-lg line-clamp-2">{event.title}</CardTitle>
+                                                        <Badge variant={event.isActive ? "default" : "secondary"}>
+                                                            {event.isActive ? "Active" : "Inactive"}
+                                                        </Badge>
+                                                    </div>
+                                                </CardHeader>
+                                                <CardContent className="space-y-3">
+                                                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                        <Calendar className="h-4 w-4" />
+                                                        <span>{format(new Date(event.date), "MMM d, yyyy 'at' h:mm a")}</span>
+                                                    </div>
+                                                    {
+                                                        event.location && (
+                                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                                <span>📍</span>
+                                                                <span>{event.location}</span>
+                                                            </div>
+                                                        )
+                                                    }
+                                                    <p className="text-sm text-muted-foreground line-clamp-3">{event.description}</p>
+                                                    <div className="flex gap-2 pt-2">
                                                         <Button
-                                                            variant="destructive"
+                                                            variant="outline"
                                                             size="sm"
-                                                            onClick={() => {
-                                                                setSelectedEventId(event.id)
-                                                                setIsDeleteDialogOpen(true)
-                                                            }}
+                                                            onClick={() => handleEditClick(event)}
                                                             className="flex-1"
                                                         >
-                                                            <Trash2 className="h-4 w-4 mr-2" />
-                                                            Delete
+                                                            <Edit className="h-4 w-4 mr-2" />
+                                                            Edit
                                                         </Button>
-                                                    </AlertDialogTrigger>
-                                                    <AlertDialogContent>
-                                                        <AlertDialogHeader>
-                                                            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                                                            <AlertDialogDescription>
-                                                                This action cannot be undone. This will permanently delete the event.
-                                                            </AlertDialogDescription>
-                                                        </AlertDialogHeader>
-                                                        <AlertDialogFooter>
-                                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                            <AlertDialogAction onClick={handleDeleteEvent} disabled={isPending}>
-                                                                {isPending ? (
-                                                                    <>
-                                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                                        Deleting...
-                                                                    </>
-                                                                ) : (
-                                                                    "Delete"
-                                                                )}
-                                                            </AlertDialogAction>
-                                                        </AlertDialogFooter>
-                                                    </AlertDialogContent>
-                                                </AlertDialog>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
-                    )}
+                                                        <AlertDialog open={isDeleteDialogOpen && selectedEventId === event.id} onOpenChange={(open) => {
+                                                            setIsDeleteDialogOpen(open)
+                                                            if (!open) setSelectedEventId(null)
+                                                        }}>
+                                                            <AlertDialogTrigger asChild>
+                                                                <Button
+                                                                    variant="destructive"
+                                                                    size="sm"
+                                                                    onClick={() => {
+                                                                        setSelectedEventId(event.id)
+                                                                        setIsDeleteDialogOpen(true)
+                                                                    }}
+                                                                    className="flex-1"
+                                                                >
+                                                                    <Trash2 className="h-4 w-4 mr-2" />
+                                                                    Delete
+                                                                </Button>
+                                                            </AlertDialogTrigger>
+                                                            <AlertDialogContent>
+                                                                <AlertDialogHeader>
+                                                                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                                                                    <AlertDialogDescription>
+                                                                        This action cannot be undone. This will permanently delete the event.
+                                                                    </AlertDialogDescription>
+                                                                </AlertDialogHeader>
+                                                                <AlertDialogFooter>
+                                                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                                    <AlertDialogAction onClick={handleDeleteEvent} disabled={isPending}>
+                                                                        {
+                                                                            isPending ? (
+                                                                                <>
+                                                                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                                                    Deleting...
+                                                                                </>
+                                                                            ) : (
+                                                                                "Delete"
+                                                                            )
+                                                                        }
+                                                                    </AlertDialogAction>
+                                                                </AlertDialogFooter>
+                                                            </AlertDialogContent>
+                                                        </AlertDialog>
+                                                    </div>
+                                                </CardContent>
+                                            </Card>
+                                        </motion.div>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
                 </TabsContent>
             </Tabs>
-
             <Sheet open={isEditSheetOpen} onOpenChange={setIsEditSheetOpen}>
                 <SheetContent side="right" className="sm:max-w-2xl overflow-y-auto">
                     <SheetHeader>
@@ -407,7 +417,6 @@ export default function SchoolEventsPage() {
                                 placeholder="e.g. Annual Sports Day"
                             />
                         </div>
-
                         <div className="space-y-2">
                             <Label htmlFor="edit-description">Description *</Label>
                             <Textarea
@@ -418,7 +427,6 @@ export default function SchoolEventsPage() {
                                 className="min-h-[120px]"
                             />
                         </div>
-
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="edit-date">Date & Time *</Label>
@@ -429,7 +437,6 @@ export default function SchoolEventsPage() {
                                     onChange={handleInputChange}
                                 />
                             </div>
-
                             <div className="space-y-2">
                                 <Label htmlFor="edit-location">Location</Label>
                                 <Input
@@ -440,9 +447,8 @@ export default function SchoolEventsPage() {
                                 />
                             </div>
                         </div>
-
                         <div className="flex items-center space-x-2">
-                            <input
+                            <Input
                                 type="checkbox"
                                 id="isActive"
                                 checked={newEvent.isActive}
@@ -457,14 +463,16 @@ export default function SchoolEventsPage() {
                             Cancel
                         </Button>
                         <Button onClick={handleUpdateEvent} disabled={isPending}>
-                            {isPending ? (
-                                <>
-                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                    Updating...
-                                </>
-                            ) : (
-                                "Update Event"
-                            )}
+                            {
+                                isPending ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        Updating...
+                                    </>
+                                ) : (
+                                    "Update Event"
+                                )
+                            }
                         </Button>
                     </SheetFooter>
                 </SheetContent>
@@ -472,4 +480,3 @@ export default function SchoolEventsPage() {
         </div>
     )
 }
-

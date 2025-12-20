@@ -3,8 +3,12 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Calendar, MapPin } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Calendar, MapPin
+} from "lucide-react"
+import {
+    Card, CardContent, CardDescription, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MainNav } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -101,7 +105,6 @@ export default function SchoolEventsPage() {
                             </div>
                         </div>
                     </section>
-
                     <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6">
                             <motion.div
@@ -120,70 +123,76 @@ export default function SchoolEventsPage() {
                                 </p>
                             </motion.div>
 
-                            {isLoadingEvents ? (
-                                <div className="flex items-center justify-center py-12">
-                                    <div className="text-muted-foreground">Loading events...</div>
-                                </div>
-                            ) : schoolEvents.length > 0 ? (
-                                <motion.div
-                                    className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-                                    variants={staggerContainer}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true }}
-                                >
-                                    {
-                                        schoolEvents.map((event) => {
-                                            const eventDate = new Date(event.date)
-                                            const isPast = eventDate < new Date()
-                                            
-                                            return (
-                                                <motion.div key={event.id} variants={fadeInUp}>
-                                                    <Card className="h-full hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20 group">
-                                                        <CardHeader>
-                                                            <div className="flex items-start justify-between gap-2 mb-2">
-                                                                <CardTitle className="text-xl line-clamp-2">{event.title}</CardTitle>
-                                                                {isPast && (
-                                                                    <Badge variant="secondary" className="flex-shrink-0">
-                                                                        Past
-                                                                    </Badge>
-                                                                )}
-                                                            </div>
-                                                            <CardDescription className="flex flex-col gap-2 mt-2">
-                                                                <div className="flex items-center gap-2">
-                                                                    <Calendar className="h-4 w-4 text-primary" />
-                                                                    <span className="font-medium">{format(eventDate, "MMMM d, yyyy")}</span>
+                            {
+                                isLoadingEvents ? (
+                                    <div className="flex items-center justify-center py-12">
+                                        <div className="text-muted-foreground">Loading events...</div>
+                                    </div>
+                                ) : schoolEvents.length > 0 ? (
+                                    <motion.div
+                                        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                                        variants={staggerContainer}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                    >
+                                        {
+                                            schoolEvents.map((event) => {
+                                                const eventDate = new Date(event.date)
+                                                const isPast = eventDate < new Date()
+
+                                                return (
+                                                    <motion.div key={event.id} variants={fadeInUp}>
+                                                        <Card className="h-full hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20 group">
+                                                            <CardHeader>
+                                                                <div className="flex items-start justify-between gap-2 mb-2">
+                                                                    <CardTitle className="text-xl line-clamp-2">{event.title}</CardTitle>
+                                                                    {
+                                                                        isPast && (
+                                                                            <Badge variant="secondary" className="flex-shrink-0">
+                                                                                Past
+                                                                            </Badge>
+                                                                        )
+                                                                    }
                                                                 </div>
-                                                                {event.location && (
+                                                                <CardDescription className="flex flex-col gap-2 mt-2">
                                                                     <div className="flex items-center gap-2">
-                                                                        <MapPin className="h-4 w-4 text-primary" />
-                                                                        <span>{event.location}</span>
+                                                                        <Calendar className="h-4 w-4 text-primary" />
+                                                                        <span className="font-medium">{format(eventDate, "MMMM d, yyyy")}</span>
                                                                     </div>
-                                                                )}
-                                                            </CardDescription>
-                                                        </CardHeader>
-                                                        <CardContent>
-                                                            <p className="text-muted-foreground line-clamp-4">{event.description}</p>
-                                                        </CardContent>
-                                                    </Card>
-                                                </motion.div>
-                                            )
-                                        })
-                                    }
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    className="text-center py-12"
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <Calendar className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                                    <h3 className="text-xl font-semibold mb-2">Coming Soon</h3>
-                                    <p className="text-muted-foreground">No school events scheduled at the moment. Check back soon for updates!</p>
-                                </motion.div>
-                            )}
+                                                                    {
+                                                                        event.location && (
+                                                                            <div className="flex items-center gap-2">
+                                                                                <MapPin className="h-4 w-4 text-primary" />
+                                                                                <span>{event.location}</span>
+                                                                            </div>
+                                                                        )
+                                                                    }
+                                                                </CardDescription>
+                                                            </CardHeader>
+                                                            <CardContent>
+                                                                <p className="text-muted-foreground line-clamp-4">{event.description}</p>
+                                                            </CardContent>
+                                                        </Card>
+                                                    </motion.div>
+                                                )
+                                            })
+                                        }
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        className="text-center py-12"
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        <Calendar className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                                        <h3 className="text-xl font-semibold mb-2">Coming Soon</h3>
+                                        <p className="text-muted-foreground">No school events scheduled at the moment. Check back soon for updates!</p>
+                                    </motion.div>
+                                )
+                            }
                         </div>
                     </section>
                 </main>
@@ -192,4 +201,3 @@ export default function SchoolEventsPage() {
         </SmoothScroll>
     )
 }
-

@@ -4,15 +4,22 @@ import type React from "react"
 import { useState, useTransition } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Mail, MapPin, Phone, Clock, MessageSquare, User, CheckCircle } from "lucide-react"
+import {
+    Mail, MapPin, Phone, Clock, MessageSquare, User, CheckCircle
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import SmoothScroll from "@/components/smoothscroll"
 import { addContactInquiry } from "@/actions/contact.action"
-import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import {
+    AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter,
+    AlertDialogHeader, AlertDialogTitle
+} from "@/components/ui/alert-dialog";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },

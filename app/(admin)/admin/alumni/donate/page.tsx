@@ -2,12 +2,20 @@
 
 import { useState, useEffect, useTransition } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { getAllDonationRequests, updateDonationRequestStatus, type DonationRequest } from "@/actions/alumni-requests.action"
+import {
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue
+} from "@/components/ui/select"
+import {
+    getAllDonationRequests, updateDonationRequestStatus, type DonationRequest
+} from "@/actions/alumni-requests.action"
 import { format } from "date-fns"
-import { DollarSign, Mail, Phone, Calendar, MessageSquare } from "lucide-react"
+import {
+    DollarSign, Mail, Phone, Calendar, MessageSquare
+} from "lucide-react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 
@@ -75,87 +83,96 @@ export default function DonatePage() {
                 <p className="text-muted-foreground">Manage donation requests from alumni and supporters</p>
             </div>
 
-            {requests.length === 0 ? (
-                <Card>
-                    <CardContent className="py-12 text-center">
-                        <DollarSign className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                        <p className="text-muted-foreground">No donation requests yet.</p>
-                    </CardContent>
-                </Card>
-            ) : (
-                <div className="grid gap-4">
-                    {requests.map((request: DonationRequest) => (
-                        <motion.div
-                            key={request.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                        >
-                            <Card>
-                                <CardHeader>
-                                    <div className="flex items-start justify-between">
-                                        <div className="flex-1">
-                                            <CardTitle className="text-lg mb-2">
-                                                {request.firstName} {request.lastName}
-                                            </CardTitle>
-                                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                                <div className="flex items-center gap-1">
-                                                    <Mail className="h-4 w-4" />
-                                                    <span>{request.email}</span>
-                                                </div>
-                                                {request.phone && (
-                                                    <div className="flex items-center gap-1">
-                                                        <Phone className="h-4 w-4" />
-                                                        <span>{request.phone}</span>
+            {
+                requests.length === 0 ? (
+                    <Card>
+                        <CardContent className="py-12 text-center">
+                            <DollarSign className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                            <p className="text-muted-foreground">No donation requests yet.</p>
+                        </CardContent>
+                    </Card>
+                ) : (
+                    <div className="grid gap-4">
+                        {
+                            requests.map((request: DonationRequest) => (
+                                <motion.div
+                                    key={request.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                >
+                                    <Card>
+                                        <CardHeader>
+                                            <div className="flex items-start justify-between">
+                                                <div className="flex-1">
+                                                    <CardTitle className="text-lg mb-2">
+                                                        {request.firstName} {request.lastName}
+                                                    </CardTitle>
+                                                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                                        <div className="flex items-center gap-1">
+                                                            <Mail className="h-4 w-4" />
+                                                            <span>{request.email}</span>
+                                                        </div>
+                                                        {
+                                                            request.phone && (
+                                                                <div className="flex items-center gap-1">
+                                                                    <Phone className="h-4 w-4" />
+                                                                    <span>{request.phone}</span>
+                                                                </div>
+                                                            )
+                                                        }
+                                                        <div className="flex items-center gap-1">
+                                                            <Calendar className="h-4 w-4" />
+                                                            <span>{format(new Date(request.createdAt), "MMM d, yyyy")}</span>
+                                                        </div>
                                                     </div>
-                                                )}
-                                                <div className="flex items-center gap-1">
-                                                    <Calendar className="h-4 w-4" />
-                                                    <span>{format(new Date(request.createdAt), "MMM d, yyyy")}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    {getStatusBadge(request.status)}
+                                                    <Select
+                                                        value={request.status}
+                                                        onValueChange={(value) => handleStatusUpdate(request.id, value)}
+                                                        disabled={isPending}
+                                                    >
+                                                        <SelectTrigger className="w-32">
+                                                            <SelectValue />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            <SelectItem value="pending">Pending</SelectItem>
+                                                            <SelectItem value="approved">Approved</SelectItem>
+                                                            <SelectItem value="rejected">Rejected</SelectItem>
+                                                        </SelectContent>
+                                                    </Select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            {getStatusBadge(request.status)}
-                                            <Select
-                                                value={request.status}
-                                                onValueChange={(value) => handleStatusUpdate(request.id, value)}
-                                                disabled={isPending}
-                                            >
-                                                <SelectTrigger className="w-32">
-                                                    <SelectValue />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    <SelectItem value="pending">Pending</SelectItem>
-                                                    <SelectItem value="approved">Approved</SelectItem>
-                                                    <SelectItem value="rejected">Rejected</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                        </div>
-                                    </div>
-                                </CardHeader>
-                                <CardContent className="space-y-3">
-                                    {request.amount && (
-                                        <div className="flex items-center gap-2 text-lg font-semibold text-green-600">
-                                            <DollarSign className="h-5 w-5" />
-                                            <span>NPR {request.amount}</span>
-                                        </div>
-                                    )}
-                                    {request.message && (
-                                        <div className="text-sm">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <MessageSquare className="h-4 w-4 text-muted-foreground" />
-                                                <span className="text-muted-foreground">Message:</span>
-                                            </div>
-                                            <p className="pl-6">{request.message}</p>
-                                        </div>
-                                    )}
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                    ))}
-                </div>
-            )}
+                                        </CardHeader>
+                                        <CardContent className="space-y-3">
+                                            {
+                                                request.amount && (
+                                                    <div className="flex items-center gap-2 text-lg font-semibold text-green-600">
+                                                        <DollarSign className="h-5 w-5" />
+                                                        <span>NPR {request.amount}</span>
+                                                    </div>
+                                                )
+                                            }
+                                            {
+                                                request.message && (
+                                                    <div className="text-sm">
+                                                        <div className="flex items-center gap-2 mb-1">
+                                                            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+                                                            <span className="text-muted-foreground">Message:</span>
+                                                        </div>
+                                                        <p className="pl-6">{request.message}</p>
+                                                    </div>
+                                                )
+                                            }
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+                            ))
+                        }
+                    </div>
+                )
+            }
         </div>
     )
 }
-

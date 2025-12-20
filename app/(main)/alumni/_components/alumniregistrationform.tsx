@@ -4,9 +4,12 @@ import { useState } from "react"
 import { useFormState } from "react-dom"
 import { SubmitButton } from "./submitbutton"
 import { toast } from "sonner"
-import { AlumniFormState, submitAlumniRegistration } from "@/actions/alumni.action"
-
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import {
+    AlumniFormState, submitAlumniRegistration
+} from "@/actions/alumni.action"
+import {
+    Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger
+} from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -38,17 +41,16 @@ export function AlumniRegistrationForm() {
                         Register to join the alumni network and stay connected with your alma mater.
                     </SheetDescription>
                 </SheetHeader>
-
                 <form action={formAction} className="space-y-6 py-6">
-                    {state.errors?._form && (
-                        <div className="rounded-md bg-destructive/15 p-3">
-                            <FormErrorMessage errors={state.errors._form} />
-                        </div>
-                    )}
-
+                    {
+                        state.errors?._form && (
+                            <div className="rounded-md bg-destructive/15 p-3">
+                                <FormErrorMessage errors={state.errors._form} />
+                            </div>
+                        )
+                    }
                     <div className="space-y-4">
                         <h3 className="text-sm font-medium">Personal Information</h3>
-
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="firstName">First Name *</Label>
@@ -58,11 +60,12 @@ export function AlumniRegistrationForm() {
                                     placeholder="John"
                                     aria-describedby="firstName-error"
                                 />
-                                {state.errors?.firstName && (
-                                    <FormErrorMessage id="firstName-error" errors={state.errors.firstName} />
-                                )}
+                                {
+                                    state.errors?.firstName && (
+                                        <FormErrorMessage id="firstName-error" errors={state.errors.firstName} />
+                                    )
+                                }
                             </div>
-
                             <div className="space-y-2">
                                 <Label htmlFor="lastName">Last Name *</Label>
                                 <Input
@@ -71,12 +74,13 @@ export function AlumniRegistrationForm() {
                                     placeholder="Doe"
                                     aria-describedby="lastName-error"
                                 />
-                                {state.errors?.lastName && (
-                                    <FormErrorMessage id="lastName-error" errors={state.errors.lastName} />
-                                )}
+                                {
+                                    state.errors?.lastName && (
+                                        <FormErrorMessage id="lastName-error" errors={state.errors.lastName} />
+                                    )
+                                }
                             </div>
                         </div>
-
                         <div className="space-y-2">
                             <Label htmlFor="email">Email *</Label>
                             <Input
@@ -86,11 +90,12 @@ export function AlumniRegistrationForm() {
                                 placeholder="john.doe@example.com"
                                 aria-describedby="email-error"
                             />
-                            {state.errors?.email && (
-                                <FormErrorMessage id="email-error" errors={state.errors.email} />
-                            )}
+                            {
+                                state.errors?.email && (
+                                    <FormErrorMessage id="email-error" errors={state.errors.email} />
+                                )
+                            }
                         </div>
-
                         <div className="space-y-2">
                             <Label htmlFor="phone">Phone Number</Label>
                             <Input
@@ -99,9 +104,11 @@ export function AlumniRegistrationForm() {
                                 placeholder="+977 9847370585"
                                 aria-describedby="phone-error"
                             />
-                            {state.errors?.phone && (
-                                <FormErrorMessage id="phone-error" errors={state.errors.phone} />
-                            )}
+                            {
+                                state.errors?.phone && (
+                                    <FormErrorMessage id="phone-error" errors={state.errors.phone} />
+                                )
+                            }
                         </div>
                     </div>
 
@@ -119,11 +126,12 @@ export function AlumniRegistrationForm() {
                                     placeholder="e.g. 2010"
                                     aria-describedby="graduationYear-error"
                                 />
-                                {state.errors?.graduationYear && (
-                                    <FormErrorMessage id="graduationYear-error" errors={state.errors.graduationYear} />
-                                )}
+                                {
+                                    state.errors?.graduationYear && (
+                                        <FormErrorMessage id="graduationYear-error" errors={state.errors.graduationYear} />
+                                    )
+                                }
                             </div>
-
                             <div className="space-y-2">
                                 <Label htmlFor="course">Course/Program</Label>
                                 <Input
@@ -133,7 +141,6 @@ export function AlumniRegistrationForm() {
                                 />
                             </div>
                         </div>
-
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="profession">Current Profession</Label>
@@ -143,7 +150,6 @@ export function AlumniRegistrationForm() {
                                     placeholder="e.g. Software Engineer"
                                 />
                             </div>
-
                             <div className="space-y-2">
                                 <Label htmlFor="company">Company/Organization</Label>
                                 <Input
@@ -168,7 +174,6 @@ export function AlumniRegistrationForm() {
                                 placeholder="e.g. Ward No. 8, Laxmanpur, Kapilvastu"
                             />
                         </div>
-
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="city">City</Label>
@@ -178,7 +183,6 @@ export function AlumniRegistrationForm() {
                                     placeholder="e.g. Kathmandu, Pokhara, Laxmanpur, Butwal"
                                 />
                             </div>
-
                             <div className="space-y-2">
                                 <Label htmlFor="country">Country</Label>
                                 <Input
@@ -204,7 +208,6 @@ export function AlumniRegistrationForm() {
                                 className="resize-y min-h-[100px]"
                             />
                         </div>
-
                         <div className="space-y-2">
                             <Label htmlFor="interests">Interests (comma separated)</Label>
                             <Input
@@ -228,7 +231,6 @@ export function AlumniRegistrationForm() {
                                 placeholder="https://linkedin.com/in/username"
                             />
                         </div>
-
                         <div className="space-y-2">
                             <Label htmlFor="twitter">Twitter</Label>
                             <Input
@@ -237,7 +239,6 @@ export function AlumniRegistrationForm() {
                                 placeholder="https://twitter.com/username"
                             />
                         </div>
-
                         <div className="space-y-2">
                             <Label htmlFor="facebook">Facebook</Label>
                             <Input
@@ -247,7 +248,6 @@ export function AlumniRegistrationForm() {
                             />
                         </div>
                     </div>
-
                     <div className="flex justify-end gap-2">
                         <Button
                             type="button"

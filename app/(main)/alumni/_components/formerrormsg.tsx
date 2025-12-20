@@ -10,9 +10,11 @@ export function FormErrorMessage({ id, errors }: FormErrorMessageProps) {
 
     return (
         <div id={id} aria-live="polite" className="text-sm font-medium text-destructive">
-            {errors.map((error, index) => (
-                <p key={index}>{error}</p>
-            ))}
+            {
+                errors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                ))
+            }
         </div>
     )
 }

@@ -117,12 +117,25 @@ export default function TeachersPage() {
     };
 
     const handleAddTeacher = () => {
+        if (!newTeacher.name.trim() || !newTeacher.email.trim() || !newTeacher.subject.trim()) {
+            toast("Validation Error", {
+                description: "Name, email, and subject are required.",
+            });
+            return;
+        }
+
         startTransition(async () => {
             try {
                 const teacherData = {
-                    ...newTeacher,
+                    name: newTeacher.name,
+                    email: newTeacher.email,
+                    subject: newTeacher.subject,
+                    phone: newTeacher.phone,
                     image: newTeacher.image || undefined,
                 };
+                
+                console.log("Adding teacher with image:", newTeacher.image ? "Yes" : "No");
+                
                 const result = await addTeacher(teacherData);
                 if (result.success) {
                     if (result.teacher) {
@@ -140,7 +153,7 @@ export default function TeachersPage() {
                     });
                 }
             } catch (error) {
-                console.log("Error occurred while adding teacher:", error);
+                console.error("Error occurred while adding teacher:", error);
                 toast("Error", {
                     description: "Something went wrong. Please try again.",
                 });
@@ -150,12 +163,26 @@ export default function TeachersPage() {
 
     const handleUpdateTeacher = () => {
         if (!selectedTeacher) return;
+        
+        if (!selectedTeacher.name.trim() || !selectedTeacher.email.trim() || !selectedTeacher.subject.trim()) {
+            toast("Validation Error", {
+                description: "Name, email, and subject are required.",
+            });
+            return;
+        }
+
         startTransition(async () => {
             try {
                 const teacherData = {
-                    ...selectedTeacher,
+                    name: selectedTeacher.name,
+                    email: selectedTeacher.email,
+                    subject: selectedTeacher.subject,
+                    phone: selectedTeacher.phone,
                     image: selectedImage || undefined,
                 };
+                
+                console.log("Updating teacher with new image:", selectedImage ? "Yes" : "No (keeping existing)");
+                
                 const result = await updateTeacher(selectedTeacher.id, teacherData);
                 if (result.success) {
                     setTeachers(
@@ -176,7 +203,7 @@ export default function TeachersPage() {
                     });
                 }
             } catch (error) {
-                console.log("Error occurred while updating teacher:", error);
+                console.error("Error occurred while updating teacher:", error);
                 toast("Error", {
                     description: "Something went wrong. Please try again.",
                 });

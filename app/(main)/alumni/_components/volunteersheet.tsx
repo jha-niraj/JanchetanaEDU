@@ -1,14 +1,20 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import {
+    Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger
+} from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue
+} from "@/components/ui/select"
 import { toast } from "sonner"
-import { submitVolunteerRequest, getVolunteerOpportunities } from "@/actions/alumni-requests.action"
+import {
+    submitVolunteerRequest, getVolunteerOpportunities
+} from "@/actions/alumni-requests.action"
 
 interface VolunteerSheetProps {
     children: React.ReactNode
@@ -80,11 +86,13 @@ export function VolunteerSheet({ children }: VolunteerSheetProps) {
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem value="">None - General Inquiry</SelectItem>
-                                {opportunities.map((opp) => (
-                                    <SelectItem key={opp.id} value={opp.id}>
-                                        {opp.title}
-                                    </SelectItem>
-                                ))}
+                                {
+                                    opportunities.map((opp) => (
+                                        <SelectItem key={opp.id} value={opp.id}>
+                                            {opp.title}
+                                        </SelectItem>
+                                    ))
+                                }
                             </SelectContent>
                         </Select>
                     </div>
@@ -157,4 +165,3 @@ export function VolunteerSheet({ children }: VolunteerSheetProps) {
         </Sheet>
     )
 }
-

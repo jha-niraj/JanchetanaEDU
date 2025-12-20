@@ -117,11 +117,27 @@ export async function addTeacher(teacherData: TeacherData): Promise<TeacherRespo
 
 		// Upload image if provided
 		if (teacherData.image) {
-			const formData = new FormData();
-			formData.append('file', teacherData.image);
-			const uploadResult = await uploadImageToCloudinary(formData);
-			if (uploadResult.success && uploadResult.url) {
-				imageUrl = uploadResult.url;
+			try {
+				// Check if it's a File object
+				const file = teacherData.image;
+				if (file && (file instanceof File || (typeof file === 'object' && 'name' in file && 'size' in file))) {
+					const formData = new FormData();
+					formData.append('file', file as File);
+					const uploadResult = await uploadImageToCloudinary(formData);
+					if (uploadResult.success && uploadResult.url) {
+						imageUrl = uploadResult.url;
+						console.log("Teacher image uploaded successfully:", imageUrl);
+					} else {
+						console.error("Image upload failed:", uploadResult.message);
+						return { success: false, error: uploadResult.message || "Failed to upload teacher image. Please try again." };
+					}
+				} else {
+					console.error("Invalid file object provided");
+					return { success: false, error: "Invalid image file. Please upload a valid image." };
+				}
+			} catch (uploadError) {
+				console.error("Error during image upload:", uploadError);
+				return { success: false, error: "Failed to upload teacher image. Please try again." };
 			}
 		}
 
@@ -177,11 +193,27 @@ export async function updateTeacher(id: string, teacherData: TeacherData): Promi
 
 		// Upload new image if provided
 		if (teacherData.image) {
-			const formData = new FormData();
-			formData.append('file', teacherData.image);
-			const uploadResult = await uploadImageToCloudinary(formData);
-			if (uploadResult.success && uploadResult.url) {
-				imageUrl = uploadResult.url;
+			try {
+				// Check if it's a File object
+				const file = teacherData.image;
+				if (file && (file instanceof File || (typeof file === 'object' && 'name' in file && 'size' in file))) {
+					const formData = new FormData();
+					formData.append('file', file as File);
+					const uploadResult = await uploadImageToCloudinary(formData);
+					if (uploadResult.success && uploadResult.url) {
+						imageUrl = uploadResult.url;
+						console.log("Teacher image updated successfully:", imageUrl);
+					} else {
+						console.error("Image upload failed:", uploadResult.message);
+						// Keep existing image if upload fails, but don't fail the entire update
+					}
+				} else {
+					console.error("Invalid file object provided for update");
+					// Keep existing image if invalid file provided
+				}
+			} catch (uploadError) {
+				console.error("Error during image upload:", uploadError);
+				// Keep existing image if upload fails, but don't fail the entire update
 			}
 		}
 

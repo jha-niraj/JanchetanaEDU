@@ -2,20 +2,22 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { 
-    Users, Mail, Heart, DollarSign, Calendar, 
+import {
+    Users, Mail, Heart, DollarSign, Calendar,
     ArrowRight, UserCheck
 } from "lucide-react"
 import { format } from "date-fns"
 import Link from "next/link"
-import { 
-    getAllAlumniRegistrations, getAllNewsletterSubscriptions 
+import {
+    getAllAlumniRegistrations, getAllNewsletterSubscriptions
 } from "@/actions/alumni.action"
-import { 
-    getAllVolunteerRequests, getAllMentorshipRequests, getAllDonationRequests 
+import {
+    getAllVolunteerRequests, getAllMentorshipRequests, getAllDonationRequests
 } from "@/actions/alumni-requests.action"
 import { getAllEvents } from "@/actions/event.action"
 
@@ -115,36 +117,33 @@ export default function AlumniDashboard() {
                 <h1 className="text-3xl font-bold mb-2">Alumni Dashboard</h1>
                 <p className="text-muted-foreground">Overview of all alumni-related activities and data</p>
             </div>
-
-            {/* Stats Grid */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-8">
-                {statCards.map((stat, index) => (
-                    <motion.div
-                        key={stat.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                    >
-                        <Link href={stat.link}>
-                            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-                                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-                                    <div className={`${stat.bg} p-2 rounded-lg`}>
-                                        <stat.icon className={`h-4 w-4 ${stat.color}`} />
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="text-2xl font-bold">{stat.value}</div>
-                                </CardContent>
-                            </Card>
-                        </Link>
-                    </motion.div>
-                ))}
+                {
+                    statCards.map((stat, index) => (
+                        <motion.div
+                            key={stat.title}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                        >
+                            <Link href={stat.link}>
+                                <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+                                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                                        <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
+                                        <div className={`${stat.bg} p-2 rounded-lg`}>
+                                            <stat.icon className={`h-4 w-4 ${stat.color}`} />
+                                        </div>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <div className="text-2xl font-bold">{stat.value}</div>
+                                    </CardContent>
+                                </Card>
+                            </Link>
+                        </motion.div>
+                    ))
+                }
             </div>
-
-            {/* Recent Data */}
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {/* Recent Registrations */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg">Recent Registrations</CardTitle>
@@ -155,27 +154,29 @@ export default function AlumniDashboard() {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        {recentData.registrations.length > 0 ? (
-                            <div className="space-y-3">
-                                {recentData.registrations.map((reg) => (
-                                    <div key={reg.id} className="flex items-center justify-between text-sm">
-                                        <div>
-                                            <p className="font-medium">{reg.firstName} {reg.lastName}</p>
-                                            <p className="text-muted-foreground text-xs">{reg.email}</p>
-                                        </div>
-                                        <Badge variant="outline" className="text-xs">
-                                            {format(new Date(reg.createdAt), "MMM d")}
-                                        </Badge>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-sm text-muted-foreground">No recent registrations</p>
-                        )}
+                        {
+                            recentData.registrations.length > 0 ? (
+                                <div className="space-y-3">
+                                    {
+                                        recentData.registrations.map((reg) => (
+                                            <div key={reg.id} className="flex items-center justify-between text-sm">
+                                                <div>
+                                                    <p className="font-medium">{reg.firstName} {reg.lastName}</p>
+                                                    <p className="text-muted-foreground text-xs">{reg.email}</p>
+                                                </div>
+                                                <Badge variant="outline" className="text-xs">
+                                                    {format(new Date(reg.createdAt), "MMM d")}
+                                                </Badge>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            ) : (
+                                <p className="text-sm text-muted-foreground">No recent registrations</p>
+                            )
+                        }
                     </CardContent>
                 </Card>
-
-                {/* Recent Newsletter Subscriptions */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg">Recent Subscriptions</CardTitle>
@@ -186,27 +187,29 @@ export default function AlumniDashboard() {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        {recentData.newsletters.length > 0 ? (
-                            <div className="space-y-3">
-                                {recentData.newsletters.map((sub) => (
-                                    <div key={sub.id} className="flex items-center justify-between text-sm">
-                                        <div>
-                                            <p className="font-medium">{sub.firstName} {sub.lastName}</p>
-                                            <p className="text-muted-foreground text-xs">{sub.email}</p>
-                                        </div>
-                                        <Badge variant="outline" className="text-xs">
-                                            {format(new Date(sub.createdAt), "MMM d")}
-                                        </Badge>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-sm text-muted-foreground">No recent subscriptions</p>
-                        )}
+                        {
+                            recentData.newsletters.length > 0 ? (
+                                <div className="space-y-3">
+                                    {
+                                        recentData.newsletters.map((sub) => (
+                                            <div key={sub.id} className="flex items-center justify-between text-sm">
+                                                <div>
+                                                    <p className="font-medium">{sub.firstName} {sub.lastName}</p>
+                                                    <p className="text-muted-foreground text-xs">{sub.email}</p>
+                                                </div>
+                                                <Badge variant="outline" className="text-xs">
+                                                    {format(new Date(sub.createdAt), "MMM d")}
+                                                </Badge>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            ) : (
+                                <p className="text-sm text-muted-foreground">No recent subscriptions</p>
+                            )
+                        }
                     </CardContent>
                 </Card>
-
-                {/* Recent Volunteer Requests */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg">Recent Volunteer Requests</CardTitle>
@@ -217,28 +220,30 @@ export default function AlumniDashboard() {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        {recentData.volunteerRequests.length > 0 ? (
-                            <div className="space-y-3">
-                                {recentData.volunteerRequests.map((req) => (
-                                    <div key={req.id} className="flex items-center justify-between text-sm">
-                                        <div>
-                                            <p className="font-medium">{req.firstName} {req.lastName}</p>
-                                            <div className="flex items-center gap-2 mt-1">
-                                                <Badge variant={req.status === 'pending' ? 'secondary' : req.status === 'approved' ? 'default' : 'destructive'} className="text-xs">
-                                                    {req.status}
-                                                </Badge>
+                        {
+                            recentData.volunteerRequests.length > 0 ? (
+                                <div className="space-y-3">
+                                    {
+                                        recentData.volunteerRequests.map((req) => (
+                                            <div key={req.id} className="flex items-center justify-between text-sm">
+                                                <div>
+                                                    <p className="font-medium">{req.firstName} {req.lastName}</p>
+                                                    <div className="flex items-center gap-2 mt-1">
+                                                        <Badge variant={req.status === 'pending' ? 'secondary' : req.status === 'approved' ? 'default' : 'destructive'} className="text-xs">
+                                                            {req.status}
+                                                        </Badge>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-sm text-muted-foreground">No recent requests</p>
-                        )}
+                                        ))
+                                    }
+                                </div>
+                            ) : (
+                                <p className="text-sm text-muted-foreground">No recent requests</p>
+                            )
+                        }
                     </CardContent>
                 </Card>
-
-                {/* Recent Mentorship Requests */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg">Recent Mentorship Requests</CardTitle>
@@ -249,26 +254,28 @@ export default function AlumniDashboard() {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        {recentData.mentorshipRequests.length > 0 ? (
-                            <div className="space-y-3">
-                                {recentData.mentorshipRequests.map((req) => (
-                                    <div key={req.id} className="flex items-center justify-between text-sm">
-                                        <div>
-                                            <p className="font-medium">{req.firstName} {req.lastName}</p>
-                                            <Badge variant={req.status === 'pending' ? 'secondary' : req.status === 'approved' ? 'default' : 'destructive'} className="text-xs mt-1">
-                                                {req.status}
-                                            </Badge>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-sm text-muted-foreground">No recent requests</p>
-                        )}
+                        {
+                            recentData.mentorshipRequests.length > 0 ? (
+                                <div className="space-y-3">
+                                    {
+                                        recentData.mentorshipRequests.map((req) => (
+                                            <div key={req.id} className="flex items-center justify-between text-sm">
+                                                <div>
+                                                    <p className="font-medium">{req.firstName} {req.lastName}</p>
+                                                    <Badge variant={req.status === 'pending' ? 'secondary' : req.status === 'approved' ? 'default' : 'destructive'} className="text-xs mt-1">
+                                                        {req.status}
+                                                    </Badge>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            ) : (
+                                <p className="text-sm text-muted-foreground">No recent requests</p>
+                            )
+                        }
                     </CardContent>
                 </Card>
-
-                {/* Recent Donation Requests */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg">Recent Donation Requests</CardTitle>
@@ -279,29 +286,31 @@ export default function AlumniDashboard() {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        {recentData.donationRequests.length > 0 ? (
-                            <div className="space-y-3">
-                                {recentData.donationRequests.map((req) => (
-                                    <div key={req.id} className="flex items-center justify-between text-sm">
-                                        <div>
-                                            <p className="font-medium">{req.firstName} {req.lastName}</p>
-                                            <p className="text-muted-foreground text-xs">
-                                                {req.amount ? `NPR ${req.amount}` : 'Amount not specified'}
-                                            </p>
-                                        </div>
-                                        <Badge variant={req.status === 'pending' ? 'secondary' : req.status === 'approved' ? 'default' : 'destructive'} className="text-xs">
-                                            {req.status}
-                                        </Badge>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-sm text-muted-foreground">No recent requests</p>
-                        )}
+                        {
+                            recentData.donationRequests.length > 0 ? (
+                                <div className="space-y-3">
+                                    {
+                                        recentData.donationRequests.map((req) => (
+                                            <div key={req.id} className="flex items-center justify-between text-sm">
+                                                <div>
+                                                    <p className="font-medium">{req.firstName} {req.lastName}</p>
+                                                    <p className="text-muted-foreground text-xs">
+                                                        {req.amount ? `NPR ${req.amount}` : 'Amount not specified'}
+                                                    </p>
+                                                </div>
+                                                <Badge variant={req.status === 'pending' ? 'secondary' : req.status === 'approved' ? 'default' : 'destructive'} className="text-xs">
+                                                    {req.status}
+                                                </Badge>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            ) : (
+                                <p className="text-sm text-muted-foreground">No recent requests</p>
+                            )
+                        }
                     </CardContent>
                 </Card>
-
-                {/* Recent Events */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg">Recent Alumni Events</CardTitle>
@@ -312,24 +321,27 @@ export default function AlumniDashboard() {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        {recentData.events.length > 0 ? (
-                            <div className="space-y-3">
-                                {recentData.events.map((event) => (
-                                    <div key={event.id} className="text-sm">
-                                        <p className="font-medium line-clamp-1">{event.title}</p>
-                                        <p className="text-muted-foreground text-xs mt-1">
-                                            {format(new Date(event.date), "MMM d, yyyy")}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-sm text-muted-foreground">No recent events</p>
-                        )}
+                        {
+                            recentData.events.length > 0 ? (
+                                <div className="space-y-3">
+                                    {
+                                        recentData.events.map((event) => (
+                                            <div key={event.id} className="text-sm">
+                                                <p className="font-medium line-clamp-1">{event.title}</p>
+                                                <p className="text-muted-foreground text-xs mt-1">
+                                                    {format(new Date(event.date), "MMM d, yyyy")}
+                                                </p>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            ) : (
+                                <p className="text-sm text-muted-foreground">No recent events</p>
+                            )
+                        }
                     </CardContent>
                 </Card>
             </div>
         </div>
     )
 }
-

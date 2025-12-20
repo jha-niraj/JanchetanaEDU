@@ -4,15 +4,20 @@ import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import {
+    Card, CardContent
+} from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { getArticleBySlug } from "@/actions/article.action"
-import { Calendar, User, ArrowLeft, Share2 } from "lucide-react"
+import {
+    Calendar, User, ArrowLeft, Share2
+} from "lucide-react"
 import { format } from "date-fns"
 import { MainNav } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Skeleton } from "@/components/ui/skeleton"
+import { toast } from "sonner"
 
 interface Article {
     id: string
@@ -64,12 +69,12 @@ export default function ArticleDetailPage() {
                 url: window.location.href,
             })
         }
+        toast.success("Article copied to clipboard successfully")
     }
 
     if (isLoading) {
         return (
             <div className="min-h-screen flex flex-col">
-                <MainNav />
                 <main className="flex-1 pt-24">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                         <Skeleton className="h-10 w-3/4 mb-4" />
@@ -78,7 +83,6 @@ export default function ArticleDetailPage() {
                         <Skeleton className="h-64 w-full" />
                     </div>
                 </main>
-                <Footer />
             </div>
         )
     }
@@ -109,7 +113,6 @@ export default function ArticleDetailPage() {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <MainNav />
             <main className="flex-1 pt-24">
                 <article className="w-full py-12 md:py-16">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,7 +131,6 @@ export default function ArticleDetailPage() {
                                     Back to Articles
                                 </Link>
                             </Button>
-
                             <Card className="border-2">
                                 <CardContent className="pt-8 pb-8">
                                     <div className="flex items-center justify-between mb-6">
@@ -136,12 +138,14 @@ export default function ArticleDetailPage() {
                                             Published
                                         </Badge>
                                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                            {article.teacher && (
-                                                <div className="flex items-center gap-2">
-                                                    <User className="h-4 w-4" />
-                                                    <span>{article.teacher.name}</span>
-                                                </div>
-                                            )}
+                                            {
+                                                article.teacher && (
+                                                    <div className="flex items-center gap-2">
+                                                        <User className="h-4 w-4" />
+                                                        <span>{article.teacher.name}</span>
+                                                    </div>
+                                                )
+                                            }
                                             <div className="flex items-center gap-2">
                                                 <Calendar className="h-4 w-4" />
                                                 <span>{format(new Date(article.createdAt), "MMMM d, yyyy")}</span>
@@ -155,14 +159,15 @@ export default function ArticleDetailPage() {
 
                                     <div className="prose prose-lg dark:prose-invert max-w-none mb-8">
                                         <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed">
-                                            {article.content.split('\n\n').map((paragraph, index) => (
-                                                <p key={index} className="mb-4 text-base">
-                                                    {paragraph}
-                                                </p>
-                                            ))}
+                                            {
+                                                article.content.split('\n\n').map((paragraph, index) => (
+                                                    <p key={index} className="mb-4 text-base">
+                                                        {paragraph}
+                                                    </p>
+                                                ))
+                                            }
                                         </div>
                                     </div>
-
                                     <div className="flex items-center gap-4 pt-6 border-t">
                                         <Button
                                             variant="outline"
@@ -190,4 +195,3 @@ export default function ArticleDetailPage() {
         </div>
     )
 }
-

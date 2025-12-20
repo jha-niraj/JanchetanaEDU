@@ -4,9 +4,13 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Calendar, ChevronRight, GraduationCap, Heart, MapPin, Users, Book, Award } from "lucide-react"
+import {
+    Calendar, ChevronRight, GraduationCap, Heart, MapPin, Users, Book, Award
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardDescription, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import SmoothScroll from "@/components/smoothscroll"
 import { AlumniRegistrationForm } from "./_components/alumniregistrationform"
@@ -338,45 +342,47 @@ export default function AlumniPage() {
                                     Join us for these special events designed to reconnect and celebrate our alumni community
                                 </p>
                             </motion.div>
-                            {isLoadingEvents ? (
-                                <div className="flex items-center justify-center py-12">
-                                    <div className="text-muted-foreground">Loading events...</div>
-                                </div>
-                            ) : alumniEvents.length > 0 ? (
-                                <>
+                            {
+                                isLoadingEvents ? (
+                                    <div className="flex items-center justify-center py-12">
+                                        <div className="text-muted-foreground">Loading events...</div>
+                                    </div>
+                                ) : alumniEvents.length > 0 ? (
+                                    <>
+                                        <motion.div
+                                            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                                            variants={staggerContainer}
+                                            initial="hidden"
+                                            whileInView="visible"
+                                            viewport={{ once: true }}
+                                        >
+                                            {
+                                                alumniEvents.map((event) => (
+                                                    <EventCard
+                                                        key={event.id}
+                                                        title={event.title}
+                                                        date={format(new Date(event.date), "MMMM d, yyyy")}
+                                                        location={event.location || "TBA"}
+                                                        description={event.description}
+                                                    />
+                                                ))
+                                            }
+                                        </motion.div>
+                                    </>
+                                ) : (
                                     <motion.div
-                                        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-                                        variants={staggerContainer}
-                                        initial="hidden"
-                                        whileInView="visible"
+                                        className="text-center py-12"
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
                                         viewport={{ once: true }}
+                                        transition={{ duration: 0.5 }}
                                     >
-                                        {
-                                            alumniEvents.map((event) => (
-                                                <EventCard 
-                                                    key={event.id} 
-                                                    title={event.title}
-                                                    date={format(new Date(event.date), "MMMM d, yyyy")}
-                                                    location={event.location || "TBA"}
-                                                    description={event.description}
-                                                />
-                                            ))
-                                        }
+                                        <Calendar className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                                        <h3 className="text-xl font-semibold mb-2">Coming Soon</h3>
+                                        <p className="text-muted-foreground">No alumni events scheduled at the moment. Check back soon for updates!</p>
                                     </motion.div>
-                                </>
-                            ) : (
-                                <motion.div
-                                    className="text-center py-12"
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <Calendar className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                                    <h3 className="text-xl font-semibold mb-2">Coming Soon</h3>
-                                    <p className="text-muted-foreground">No alumni events scheduled at the moment. Check back soon for updates!</p>
-                                </motion.div>
-                            )}
+                                )
+                            }
                         </div>
                     </section>
                     <section className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6">
@@ -429,7 +435,6 @@ export default function AlumniPage() {
                                     </VolunteerSheet>
                                 </div>
                             </motion.div>
-
                             <motion.div
                                 className="space-y-6 p-6 rounded-lg border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-lg"
                                 initial={{ opacity: 0, y: 20 }}
@@ -463,7 +468,6 @@ export default function AlumniPage() {
                                     </MentorshipSheet>
                                 </div>
                             </motion.div>
-
                             <motion.div
                                 className="space-y-6 p-6 rounded-lg border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-lg"
                                 initial={{ opacity: 0, y: 20 }}
@@ -591,10 +595,10 @@ function AlumniCard({
         <motion.div variants={fadeInUp}>
             <Card className="overflow-hidden h-full flex flex-col">
                 <div className="relative aspect-[3/4] w-full">
-                    <Image 
-                        src={image || "/placeholder.svg"} 
-                        alt={name} 
-                        fill 
+                    <Image
+                        src={image || "/placeholder.svg"}
+                        alt={name}
+                        fill
                         className="object-cover object-center"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         priority={false}

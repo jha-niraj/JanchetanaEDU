@@ -2,20 +2,28 @@
 
 import { useState, useEffect, useTransition } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card, CardContent, CardHeader, CardTitle
+} from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
-    getAllVolunteerRequests, updateVolunteerRequestStatus,
-    getAllVolunteerOpportunities, createVolunteerOpportunity, deleteVolunteerOpportunity
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue
+} from "@/components/ui/select"
+import {
+    Tabs, TabsContent, TabsList, TabsTrigger
+} from "@/components/ui/tabs"
+import {
+    getAllVolunteerRequests, updateVolunteerRequestStatus, getAllVolunteerOpportunities,
+    createVolunteerOpportunity, deleteVolunteerOpportunity
 } from "@/actions/alumni-requests.action"
 import { format } from "date-fns"
-import { Heart, Mail, Phone, Calendar, Loader2, Plus, Trash2 } from "lucide-react"
+import {
+    Heart, Mail, Phone, Calendar, Loader2, Plus, Trash2
+} from "lucide-react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import {
@@ -147,99 +155,108 @@ export default function VolunteerPage() {
                 <h1 className="text-3xl font-bold mb-2">Volunteer Management</h1>
                 <p className="text-muted-foreground">Manage volunteer opportunities and requests</p>
             </div>
-
             <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
                 <TabsList className="grid w-full max-w-md grid-cols-2">
                     <TabsTrigger value="requests">Requests ({requests.length})</TabsTrigger>
                     <TabsTrigger value="opportunities">Opportunities ({opportunities.length})</TabsTrigger>
                 </TabsList>
-
                 <TabsContent value="requests" className="mt-6">
-                    {requests.length === 0 ? (
-                        <Card>
-                            <CardContent className="py-12 text-center">
-                                <Heart className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                                <p className="text-muted-foreground">No volunteer requests yet.</p>
-                            </CardContent>
-                        </Card>
-                    ) : (
-                        <div className="grid gap-4">
-                            {requests.map((request) => (
-                                <motion.div
-                                    key={request.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                >
-                                    <Card>
-                                        <CardHeader>
-                                            <div className="flex items-start justify-between">
-                                                <div className="flex-1">
-                                                    <CardTitle className="text-lg mb-2">
-                                                        {request.firstName} {request.lastName}
-                                                    </CardTitle>
-                                                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                                        <div className="flex items-center gap-1">
-                                                            <Mail className="h-4 w-4" />
-                                                            <span>{request.email}</span>
-                                                        </div>
-                                                        {request.phone && (
-                                                            <div className="flex items-center gap-1">
-                                                                <Phone className="h-4 w-4" />
-                                                                <span>{request.phone}</span>
+                    {
+                        requests.length === 0 ? (
+                            <Card>
+                                <CardContent className="py-12 text-center">
+                                    <Heart className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                                    <p className="text-muted-foreground">No volunteer requests yet.</p>
+                                </CardContent>
+                            </Card>
+                        ) : (
+                            <div className="grid gap-4">
+                                {
+                                    requests.map((request) => (
+                                        <motion.div
+                                            key={request.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                        >
+                                            <Card>
+                                                <CardHeader>
+                                                    <div className="flex items-start justify-between">
+                                                        <div className="flex-1">
+                                                            <CardTitle className="text-lg mb-2">
+                                                                {request.firstName} {request.lastName}
+                                                            </CardTitle>
+                                                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                                                <div className="flex items-center gap-1">
+                                                                    <Mail className="h-4 w-4" />
+                                                                    <span>{request.email}</span>
+                                                                </div>
+                                                                {
+                                                                    request.phone && (
+                                                                        <div className="flex items-center gap-1">
+                                                                            <Phone className="h-4 w-4" />
+                                                                            <span>{request.phone}</span>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                                <div className="flex items-center gap-1">
+                                                                    <Calendar className="h-4 w-4" />
+                                                                    <span>{format(new Date(request.createdAt), "MMM d, yyyy")}</span>
+                                                                </div>
                                                             </div>
-                                                        )}
-                                                        <div className="flex items-center gap-1">
-                                                            <Calendar className="h-4 w-4" />
-                                                            <span>{format(new Date(request.createdAt), "MMM d, yyyy")}</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2">
+                                                            {getStatusBadge(request.status)}
+                                                            <Select
+                                                                value={request.status}
+                                                                onValueChange={(value) => handleStatusUpdate(request.id, value)}
+                                                                disabled={isPending}
+                                                            >
+                                                                <SelectTrigger className="w-32">
+                                                                    <SelectValue />
+                                                                </SelectTrigger>
+                                                                <SelectContent>
+                                                                    <SelectItem value="pending">Pending</SelectItem>
+                                                                    <SelectItem value="approved">Approved</SelectItem>
+                                                                    <SelectItem value="rejected">Rejected</SelectItem>
+                                                                </SelectContent>
+                                                            </Select>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    {getStatusBadge(request.status)}
-                                                    <Select
-                                                        value={request.status}
-                                                        onValueChange={(value) => handleStatusUpdate(request.id, value)}
-                                                        disabled={isPending}
-                                                    >
-                                                        <SelectTrigger className="w-32">
-                                                            <SelectValue />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                            <SelectItem value="pending">Pending</SelectItem>
-                                                            <SelectItem value="approved">Approved</SelectItem>
-                                                            <SelectItem value="rejected">Rejected</SelectItem>
-                                                        </SelectContent>
-                                                    </Select>
-                                                </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent className="space-y-3">
-                                            {request.opportunity && (
-                                                <div className="text-sm">
-                                                    <span className="text-muted-foreground">Opportunity:</span>
-                                                    <span className="font-medium ml-2">{request.opportunity.title}</span>
-                                                </div>
-                                            )}
-                                            {request.subject && (
-                                                <div className="text-sm">
-                                                    <span className="text-muted-foreground">Subject/Area:</span>
-                                                    <span className="font-medium ml-2">{request.subject}</span>
-                                                </div>
-                                            )}
-                                            {request.message && (
-                                                <div className="text-sm">
-                                                    <span className="text-muted-foreground">Message:</span>
-                                                    <p className="mt-1">{request.message}</p>
-                                                </div>
-                                            )}
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
-                    )}
+                                                </CardHeader>
+                                                <CardContent className="space-y-3">
+                                                    {
+                                                        request.opportunity && (
+                                                            <div className="text-sm">
+                                                                <span className="text-muted-foreground">Opportunity:</span>
+                                                                <span className="font-medium ml-2">{request.opportunity.title}</span>
+                                                            </div>
+                                                        )
+                                                    }
+                                                    {
+                                                        request.subject && (
+                                                            <div className="text-sm">
+                                                                <span className="text-muted-foreground">Subject/Area:</span>
+                                                                <span className="font-medium ml-2">{request.subject}</span>
+                                                            </div>
+                                                        )
+                                                    }
+                                                    {
+                                                        request.message && (
+                                                            <div className="text-sm">
+                                                                <span className="text-muted-foreground">Message:</span>
+                                                                <p className="mt-1">{request.message}</p>
+                                                            </div>
+                                                        )
+                                                    }
+                                                </CardContent>
+                                            </Card>
+                                        </motion.div>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
                 </TabsContent>
-
                 <TabsContent value="opportunities" className="mt-6">
                     <Card className="mb-6">
                         <CardHeader>
@@ -275,103 +292,111 @@ export default function VolunteerPage() {
                                 />
                             </div>
                             <Button onClick={handleCreateOpportunity} disabled={isPending} className="w-full">
-                                {isPending ? (
-                                    <>
-                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                        Creating...
-                                    </>
-                                ) : (
-                                    <>
-                                        <Plus className="mr-2 h-4 w-4" />
-                                        Create Opportunity
-                                    </>
-                                )}
+                                {
+                                    isPending ? (
+                                        <>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            Creating...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Plus className="mr-2 h-4 w-4" />
+                                            Create Opportunity
+                                        </>
+                                    )
+                                }
                             </Button>
                         </CardContent>
                     </Card>
-
-                    {opportunities.length === 0 ? (
-                        <Card>
-                            <CardContent className="py-12 text-center">
-                                <Heart className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                                <p className="text-muted-foreground">No volunteer opportunities created yet.</p>
-                            </CardContent>
-                        </Card>
-                    ) : (
-                        <div className="grid gap-4">
-                            {opportunities.map((opportunity) => (
-                                <motion.div
-                                    key={opportunity.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                >
-                                    <Card>
-                                        <CardHeader>
-                                            <div className="flex items-start justify-between">
-                                                <div className="flex-1">
-                                                    <CardTitle className="text-lg">{opportunity.title}</CardTitle>
-                                                    {opportunity.subject && (
-                                                        <p className="text-sm text-muted-foreground mt-1">
-                                                            Subject: {opportunity.subject}
-                                                        </p>
-                                                    )}
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <Badge variant={opportunity.isActive ? "default" : "secondary"}>
-                                                        {opportunity.isActive ? "Active" : "Inactive"}
-                                                    </Badge>
-                                                    <AlertDialog open={isDeleteDialogOpen && selectedOpportunityId === opportunity.id} onOpenChange={(open) => {
-                                                        setIsDeleteDialogOpen(open)
-                                                        if (!open) setSelectedOpportunityId(null)
-                                                    }}>
-                                                        <AlertDialogTrigger asChild>
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="sm"
-                                                                onClick={() => {
-                                                                    setSelectedOpportunityId(opportunity.id)
-                                                                    setIsDeleteDialogOpen(true)
-                                                                }}
-                                                            >
-                                                                <Trash2 className="h-4 w-4" />
-                                                            </Button>
-                                                        </AlertDialogTrigger>
-                                                        <AlertDialogContent>
-                                                            <AlertDialogHeader>
-                                                                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                                                                <AlertDialogDescription>
-                                                                    This will permanently delete this opportunity.
-                                                                </AlertDialogDescription>
-                                                            </AlertDialogHeader>
-                                                            <AlertDialogFooter>
-                                                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                                <AlertDialogAction onClick={handleDeleteOpportunity} disabled={isPending}>
-                                                                    {isPending ? (
-                                                                        <>
-                                                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                                            Deleting...
-                                                                        </>
-                                                                    ) : (
-                                                                        "Delete"
-                                                                    )}
-                                                                </AlertDialogAction>
-                                                            </AlertDialogFooter>
-                                                        </AlertDialogContent>
-                                                    </AlertDialog>
-                                                </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p className="text-sm text-muted-foreground">{opportunity.description}</p>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
-                    )}
+                    {
+                        opportunities.length === 0 ? (
+                            <Card>
+                                <CardContent className="py-12 text-center">
+                                    <Heart className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                                    <p className="text-muted-foreground">No volunteer opportunities created yet.</p>
+                                </CardContent>
+                            </Card>
+                        ) : (
+                            <div className="grid gap-4">
+                                {
+                                    opportunities.map((opportunity) => (
+                                        <motion.div
+                                            key={opportunity.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                        >
+                                            <Card>
+                                                <CardHeader>
+                                                    <div className="flex items-start justify-between">
+                                                        <div className="flex-1">
+                                                            <CardTitle className="text-lg">{opportunity.title}</CardTitle>
+                                                            {
+                                                                opportunity.subject && (
+                                                                    <p className="text-sm text-muted-foreground mt-1">
+                                                                        Subject: {opportunity.subject}
+                                                                    </p>
+                                                                )
+                                                            }
+                                                        </div>
+                                                        <div className="flex items-center gap-2">
+                                                            <Badge variant={opportunity.isActive ? "default" : "secondary"}>
+                                                                {opportunity.isActive ? "Active" : "Inactive"}
+                                                            </Badge>
+                                                            <AlertDialog open={isDeleteDialogOpen && selectedOpportunityId === opportunity.id} onOpenChange={(open) => {
+                                                                setIsDeleteDialogOpen(open)
+                                                                if (!open) setSelectedOpportunityId(null)
+                                                            }}>
+                                                                <AlertDialogTrigger asChild>
+                                                                    <Button
+                                                                        variant="ghost"
+                                                                        size="sm"
+                                                                        onClick={() => {
+                                                                            setSelectedOpportunityId(opportunity.id)
+                                                                            setIsDeleteDialogOpen(true)
+                                                                        }}
+                                                                    >
+                                                                        <Trash2 className="h-4 w-4" />
+                                                                    </Button>
+                                                                </AlertDialogTrigger>
+                                                                <AlertDialogContent>
+                                                                    <AlertDialogHeader>
+                                                                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                                                                        <AlertDialogDescription>
+                                                                            This will permanently delete this opportunity.
+                                                                        </AlertDialogDescription>
+                                                                    </AlertDialogHeader>
+                                                                    <AlertDialogFooter>
+                                                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                                        <AlertDialogAction onClick={handleDeleteOpportunity} disabled={isPending}>
+                                                                            {
+                                                                                isPending ? (
+                                                                                    <>
+                                                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                                                        Deleting...
+                                                                                    </>
+                                                                                ) : (
+                                                                                    "Delete"
+                                                                                )
+                                                                            }
+                                                                        </AlertDialogAction>
+                                                                    </AlertDialogFooter>
+                                                                </AlertDialogContent>
+                                                            </AlertDialog>
+                                                        </div>
+                                                    </div>
+                                                </CardHeader>
+                                                <CardContent>
+                                                    <p className="text-sm text-muted-foreground">{opportunity.description}</p>
+                                                </CardContent>
+                                            </Card>
+                                        </motion.div>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
                 </TabsContent>
             </Tabs>
         </div>
     )
 }
-
