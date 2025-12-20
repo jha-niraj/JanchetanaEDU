@@ -5,15 +5,15 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { 
-    Card, CardContent, CardHeader 
+import {
+    Card, CardContent, CardHeader
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import SmoothScroll from "@/components/smoothscroll"
 import { getEvents } from "@/actions/event.action"
 import { format } from "date-fns"
-import { 
-    Calendar, MapPin, Clock, Loader2, ArrowRight, Users, Sparkles 
+import {
+    Calendar, MapPin, Clock, Loader2, ArrowRight, Users, Sparkles
 } from "lucide-react"
 
 const fadeInUp = {
@@ -571,7 +571,7 @@ export default function StudentLifePage() {
                                     Join us for these exciting events happening on campus and be part of our vibrant community
                                 </p>
                             </motion.div>
-                            
+
                             {isLoadingEvents ? (
                                 <div className="flex items-center justify-center py-20">
                                     <Loader2 className="h-8 w-8 animate-spin text-indigo-600" />
@@ -585,65 +585,71 @@ export default function StudentLifePage() {
                                     whileInView="visible"
                                     viewport={{ once: true }}
                                 >
-                                    {events.map((event, index) => {
-                                        const eventDate = new Date(event.date);
-                                        const isPast = eventDate < new Date();
-                                        
-                                        return (
-                                            <motion.div 
-                                                key={event.id} 
-                                                variants={fadeInUp}
-                                                className="group"
-                                            >
-                                                <Card className="h-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden">
-                                                    <div className="relative h-48 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 overflow-hidden">
-                                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                                                        <div className="absolute top-4 right-4">
-                                                            {!isPast && (
-                                                                <Badge className="bg-green-500 text-white border-0 shadow-lg">
-                                                                    Upcoming
-                                                                </Badge>
-                                                            )}
-                                                        </div>
-                                                        <div className="absolute bottom-0 left-0 right-0 p-6">
-                                                            <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 drop-shadow-lg">
-                                                                {event.title}
-                                                            </h3>
-                                                        </div>
-                                                    </div>
-                                                    <CardHeader className="pb-3">
-                                                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                                                            <Calendar className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                                                            <span className="font-semibold">
-                                                                {format(eventDate, "MMMM d, yyyy")}
-                                                            </span>
-                                                            <span className="text-gray-300 dark:text-gray-600">•</span>
-                                                            <span>{format(eventDate, "EEEE")}</span>
-                                                        </div>
-                                                        {event.location && (
-                                                            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
-                                                                <MapPin className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-                                                                <span>{event.location}</span>
+                                    {
+                                        events.map((event) => {
+                                            const eventDate = new Date(event.date);
+                                            const isPast = eventDate < new Date();
+
+                                            return (
+                                                <motion.div
+                                                    key={event.id}
+                                                    variants={fadeInUp}
+                                                    className="group"
+                                                >
+                                                    <Card className="h-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden">
+                                                        <div className="relative h-48 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 overflow-hidden">
+                                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                                                            <div className="absolute top-4 right-4">
+                                                                {
+                                                                    !isPast && (
+                                                                        <Badge className="bg-green-500 text-white border-0 shadow-lg">
+                                                                            Upcoming
+                                                                        </Badge>
+                                                                    )
+                                                                }
                                                             </div>
-                                                        )}
-                                                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
-                                                            <Clock className="w-4 h-4 text-pink-600 dark:text-pink-400" />
-                                                            <span>{format(eventDate, "h:mm a")}</span>
+                                                            <div className="absolute bottom-0 left-0 right-0 p-6">
+                                                                <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 drop-shadow-lg">
+                                                                    {event.title}
+                                                                </h3>
+                                                            </div>
                                                         </div>
-                                                    </CardHeader>
-                                                    <CardContent>
-                                                        <p className="text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed">
-                                                            {event.description}
-                                                        </p>
-                                                        <div className="flex items-center text-indigo-600 dark:text-indigo-400 font-medium mt-4 group-hover:gap-2 transition-all duration-300 opacity-0 group-hover:opacity-100">
-                                                            <span className="text-sm">Learn More</span>
-                                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                                        </div>
-                                                    </CardContent>
-                                                </Card>
-                                            </motion.div>
-                                        );
-                                    })}
+                                                        <CardHeader className="pb-3">
+                                                            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                                                                <Calendar className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                                                                <span className="font-semibold">
+                                                                    {format(eventDate, "MMMM d, yyyy")}
+                                                                </span>
+                                                                <span className="text-gray-300 dark:text-gray-600">•</span>
+                                                                <span>{format(eventDate, "EEEE")}</span>
+                                                            </div>
+                                                            {
+                                                                event.location && (
+                                                                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
+                                                                        <MapPin className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                                                                        <span>{event.location}</span>
+                                                                    </div>
+                                                                )
+                                                            }
+                                                            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
+                                                                <Clock className="w-4 h-4 text-pink-600 dark:text-pink-400" />
+                                                                <span>{format(eventDate, "h:mm a")}</span>
+                                                            </div>
+                                                        </CardHeader>
+                                                        <CardContent>
+                                                            <p className="text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed">
+                                                                {event.description}
+                                                            </p>
+                                                            <div className="flex items-center text-indigo-600 dark:text-indigo-400 font-medium mt-4 group-hover:gap-2 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                                                                <span className="text-sm">Learn More</span>
+                                                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                            </div>
+                                                        </CardContent>
+                                                    </Card>
+                                                </motion.div>
+                                            );
+                                        })
+                                    }
                                 </motion.div>
                             ) : (
                                 <motion.div
@@ -660,7 +666,8 @@ export default function StudentLifePage() {
                                         Check back soon for exciting campus events and activities!
                                     </p>
                                 </motion.div>
-                            )}
+                            )
+                            }
                         </div>
                     </section>
                     <section className="max-w-7xl mx-auto py-16 md:py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-800">
@@ -684,15 +691,15 @@ export default function StudentLifePage() {
                                 </p>
                             </div>
                             <div className="flex flex-wrap justify-center gap-4 pt-4">
-                                <Button 
-                                    size="lg" 
-                                    asChild 
+                                <Button
+                                    size="lg"
+                                    asChild
                                     className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 px-8"
                                 >
                                     <Link href="/admissions">Admission</Link>
                                 </Button>
-                                <Button 
-                                    size="lg" 
+                                <Button
+                                    size="lg"
                                     variant="outline"
                                     className="border-2 border-gray-300 dark:border-gray-600 hover:border-indigo-400 dark:hover:border-indigo-500 px-8 shadow-md hover:shadow-lg transition-all duration-300"
                                     asChild
@@ -855,11 +862,11 @@ function TestimonialCard({
                         </div>
                         <div className="mt-auto pt-6 border-t border-gray-200 dark:border-gray-700 flex items-center gap-4">
                             <div className="relative h-14 w-14 rounded-full overflow-hidden ring-2 ring-purple-200 dark:ring-purple-800 group-hover:ring-purple-400 dark:group-hover:ring-purple-600 transition-all duration-300">
-                                <Image 
-                                    src={image || "/placeholder.svg"} 
-                                    alt={name} 
-                                    fill 
-                                    className="object-cover" 
+                                <Image
+                                    src={image || "/placeholder.svg"}
+                                    alt={name}
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
                             <div className="flex-1">
