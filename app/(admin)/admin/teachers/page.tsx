@@ -103,6 +103,23 @@ export default function TeachersPage() {
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, isEdit: boolean = false) => {
         const file = e.target.files?.[0];
         if (file) {
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+                toast("Invalid File", {
+                    description: "Please select an image file.",
+                });
+                return;
+            }
+            
+            // Validate file size (max 5MB)
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                toast("File Too Large", {
+                    description: "Image must be smaller than 5MB.",
+                });
+                return;
+            }
+
             if (isEdit) {
                 setSelectedImage(file);
             } else {

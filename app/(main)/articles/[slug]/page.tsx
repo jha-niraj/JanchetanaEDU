@@ -14,7 +14,6 @@ import {
     Calendar, User, ArrowLeft, Share2
 } from "lucide-react"
 import { format } from "date-fns"
-import { MainNav } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Skeleton } from "@/components/ui/skeleton"
 import { toast } from "sonner"
