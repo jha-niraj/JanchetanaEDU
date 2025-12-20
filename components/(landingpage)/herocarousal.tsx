@@ -83,7 +83,7 @@ export function HeroCarousel() {
                                         alt="School Logo"
                                         width={60}
                                         height={60}
-                                        className="object-contain"
+                                        className="object-contain rounded-full"
                                         quality={90}
                                         priority={true}
                                     />

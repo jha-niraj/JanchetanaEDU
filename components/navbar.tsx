@@ -15,6 +15,7 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTheme } from "next-themes"
+import Image from "next/image"
 
 const navigationLinks = [
     { href: "/aboutus", label: "About", icon: User },
@@ -75,11 +76,15 @@ export function MainNav() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex items-center justify-between h-16">
                         <Link href="/" className="flex items-center gap-3 group">
-                            <div className="relative">
-                                <div className="w-10 h-10 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                    <BookOpen className="h-6 w-6 text-white" />
-                                </div>
-                            </div>
+                            <Image
+                                src="/mainlogo.png"
+                                alt="School Logo"
+                                width={60}
+                                height={60}
+                                className="object-contain rounded-full"
+                                quality={90}
+                                priority={true}
+                            />
                             <div>
                                 <h1 className="text-xl font-bold">
                                     <span className="text-black dark:text-white">
