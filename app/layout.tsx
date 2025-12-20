@@ -34,7 +34,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<Head>
-				<link rel="icon" href="/mainlogo.ico" />
+				<link rel="icon" href="https://www.janchetanaschool.edu.np/mainlogo.ico" />
 
 				<meta property="og:title" content="Janchetana EDU - Education comes first" />
 				<meta property="og:description" content="Education comes first" />

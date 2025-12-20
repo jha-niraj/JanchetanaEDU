@@ -21,7 +21,6 @@ import { LeadershipCard } from "@/components/(landingpage)/leadershipcarousal"
 import { FacilityCard } from "@/components/(landingpage)/facultycard"
 import { AchievementCard } from "@/components/(landingpage)/acheivmentscard"
 import SmoothScroll from "@/components/smoothscroll"
-import Head from "next/head"
 
 const fadeInUp = {
 	hidden: { opacity: 0, y: 20 },
