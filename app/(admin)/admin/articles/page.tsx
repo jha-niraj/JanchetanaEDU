@@ -4,20 +4,28 @@ import { useState, useEffect, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Card, CardContent, CardFooter, CardHeader, CardTitle
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { addArticle, deleteArticle, getArticles } from "@/actions/article.action";
+import {
+    addArticle, deleteArticle, getArticles
+} from "@/actions/article.action";
 import { useRouter } from "next/navigation";
-import { Loader2, CalendarIcon, BookOpen, Trash2, FileText, Send } from "lucide-react";
+import {
+    Loader2, CalendarIcon, BookOpen, Trash2, FileText, Send
+} from "lucide-react";
 import { format } from "date-fns";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+    Tabs, TabsContent, TabsList, TabsTrigger
+} from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-    AlertDialog, AlertDialogAction, AlertDialogCancel,
-    AlertDialogContent, AlertDialogDescription, AlertDialogFooter,
-    AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger
+    AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+    AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
+    AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 
@@ -166,7 +174,6 @@ export default function ArticlesPage() {
             <div className="flex items-center justify-between">
                 <h1 className="text-3xl font-bold tracking-tight">Article Management</h1>
             </div>
-
             <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="create">Create New Article</TabsTrigger>

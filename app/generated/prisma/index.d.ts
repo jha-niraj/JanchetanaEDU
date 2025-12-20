@@ -29,6 +29,11 @@ export type Teacher = $Result.DefaultSelection<Prisma.$TeacherPayload>
  */
 export type Article = $Result.DefaultSelection<Prisma.$ArticlePayload>
 /**
+ * Model Notice
+ * 
+ */
+export type Notice = $Result.DefaultSelection<Prisma.$NoticePayload>
+/**
  * Model AdmissionInquiry
  * 
  */
@@ -99,7 +104,7 @@ export const AdmissionType: typeof $Enums.AdmissionType
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
@@ -131,13 +136,6 @@ export class PrismaClient<
    * Disconnect from the database
    */
   $disconnect(): $Utils.JsPromise<void>;
-
-  /**
-   * Add a middleware
-   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
-   * @see https://pris.ly/d/extensions
-   */
-  $use(cb: Prisma.Middleware): void
 
 /**
    * Executes a prepared raw query and returns the number of affected rows.
@@ -237,6 +235,16 @@ export class PrismaClient<
     * ```
     */
   get article(): Prisma.ArticleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.notice`: Exposes CRUD operations for the **Notice** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Notices
+    * const notices = await prisma.notice.findMany()
+    * ```
+    */
+  get notice(): Prisma.NoticeDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.admissionInquiry`: Exposes CRUD operations for the **AdmissionInquiry** model.
@@ -345,8 +353,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 6.19.1
+   * Query Engine version: c2990dca591cba766e3b7ef5d9e8a84796e47ab7
    */
   export type PrismaVersion = {
     client: string
@@ -359,6 +367,7 @@ export namespace Prisma {
    */
 
 
+  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -730,6 +739,7 @@ export namespace Prisma {
     User: 'User',
     Teacher: 'Teacher',
     Article: 'Article',
+    Notice: 'Notice',
     AdmissionInquiry: 'AdmissionInquiry',
     AlumniRegistration: 'AlumniRegistration',
     NewsletterSubscription: 'NewsletterSubscription',
@@ -753,7 +763,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "teacher" | "article" | "admissionInquiry" | "alumniRegistration" | "newsletterSubscription" | "contactInquiry" | "account"
+      modelProps: "user" | "teacher" | "article" | "notice" | "admissionInquiry" | "alumniRegistration" | "newsletterSubscription" | "contactInquiry" | "account"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -976,6 +986,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ArticleCountArgs<ExtArgs>
             result: $Utils.Optional<ArticleCountAggregateOutputType> | number
+          }
+        }
+      }
+      Notice: {
+        payload: Prisma.$NoticePayload<ExtArgs>
+        fields: Prisma.NoticeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NoticeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NoticeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>
+          }
+          findFirst: {
+            args: Prisma.NoticeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NoticeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>
+          }
+          findMany: {
+            args: Prisma.NoticeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>[]
+          }
+          create: {
+            args: Prisma.NoticeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>
+          }
+          createMany: {
+            args: Prisma.NoticeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NoticeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>[]
+          }
+          delete: {
+            args: Prisma.NoticeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>
+          }
+          update: {
+            args: Prisma.NoticeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>
+          }
+          deleteMany: {
+            args: Prisma.NoticeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NoticeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NoticeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>[]
+          }
+          upsert: {
+            args: Prisma.NoticeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NoticePayload>
+          }
+          aggregate: {
+            args: Prisma.NoticeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNotice>
+          }
+          groupBy: {
+            args: Prisma.NoticeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NoticeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NoticeCountArgs<ExtArgs>
+            result: $Utils.Optional<NoticeCountAggregateOutputType> | number
           }
         }
       }
@@ -1392,16 +1476,24 @@ export namespace Prisma {
     /**
      * @example
      * ```
-     * // Defaults to stdout
+     * // Shorthand for `emit: 'stdout'`
      * log: ['query', 'info', 'warn', 'error']
      * 
-     * // Emit as events
+     * // Emit as events only
      * log: [
-     *   { emit: 'stdout', level: 'query' },
-     *   { emit: 'stdout', level: 'info' },
-     *   { emit: 'stdout', level: 'warn' }
-     *   { emit: 'stdout', level: 'error' }
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
      * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
@@ -1416,6 +1508,10 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
+    /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
     /**
      * Global configuration for omitting model fields by default.
      * 
@@ -1436,6 +1532,7 @@ export namespace Prisma {
     user?: UserOmit
     teacher?: TeacherOmit
     article?: ArticleOmit
+    notice?: NoticeOmit
     admissionInquiry?: AdmissionInquiryOmit
     alumniRegistration?: AlumniRegistrationOmit
     newsletterSubscription?: NewsletterSubscriptionOmit
@@ -1450,10 +1547,15 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
-    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
-    : never
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
 
   export type QueryEvent = {
     timestamp: Date
@@ -1493,25 +1595,6 @@ export namespace Prisma {
     | 'runCommandRaw'
     | 'findRaw'
     | 'groupBy'
-
-  /**
-   * These options are being passed into the middleware as "params"
-   */
-  export type MiddlewareParams = {
-    model?: ModelName
-    action: PrismaAction
-    args: any
-    dataPath: string[]
-    runInTransaction: boolean
-  }
-
-  /**
-   * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
-   */
-  export type Middleware<T = any> = (
-    params: MiddlewareParams,
-    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
-  ) => $Utils.JsPromise<T>
 
   // tested in getLogLevel.test.ts
   export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
@@ -3964,6 +4047,7 @@ export namespace Prisma {
   export type ArticleMinAggregateOutputType = {
     id: string | null
     title: string | null
+    slug: string | null
     content: string | null
     status: string | null
     teacherId: string | null
@@ -3975,6 +4059,7 @@ export namespace Prisma {
   export type ArticleMaxAggregateOutputType = {
     id: string | null
     title: string | null
+    slug: string | null
     content: string | null
     status: string | null
     teacherId: string | null
@@ -3986,6 +4071,7 @@ export namespace Prisma {
   export type ArticleCountAggregateOutputType = {
     id: number
     title: number
+    slug: number
     content: number
     status: number
     teacherId: number
@@ -3999,6 +4085,7 @@ export namespace Prisma {
   export type ArticleMinAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     content?: true
     status?: true
     teacherId?: true
@@ -4010,6 +4097,7 @@ export namespace Prisma {
   export type ArticleMaxAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     content?: true
     status?: true
     teacherId?: true
@@ -4021,6 +4109,7 @@ export namespace Prisma {
   export type ArticleCountAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     content?: true
     status?: true
     teacherId?: true
@@ -4105,6 +4194,7 @@ export namespace Prisma {
   export type ArticleGroupByOutputType = {
     id: string
     title: string
+    slug: string
     content: string
     status: string
     teacherId: string | null
@@ -4133,6 +4223,7 @@ export namespace Prisma {
   export type ArticleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     content?: boolean
     status?: boolean
     teacherId?: boolean
@@ -4146,6 +4237,7 @@ export namespace Prisma {
   export type ArticleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     content?: boolean
     status?: boolean
     teacherId?: boolean
@@ -4159,6 +4251,7 @@ export namespace Prisma {
   export type ArticleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     content?: boolean
     status?: boolean
     teacherId?: boolean
@@ -4172,6 +4265,7 @@ export namespace Prisma {
   export type ArticleSelectScalar = {
     id?: boolean
     title?: boolean
+    slug?: boolean
     content?: boolean
     status?: boolean
     teacherId?: boolean
@@ -4180,7 +4274,7 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "status" | "teacherId" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["article"]>
+  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "content" | "status" | "teacherId" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["article"]>
   export type ArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     teacher?: boolean | Article$teacherArgs<ExtArgs>
     User?: boolean | Article$UserArgs<ExtArgs>
@@ -4203,6 +4297,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
+      slug: string
       content: string
       status: string
       teacherId: string | null
@@ -4636,6 +4731,7 @@ export namespace Prisma {
   interface ArticleFieldRefs {
     readonly id: FieldRef<"Article", 'String'>
     readonly title: FieldRef<"Article", 'String'>
+    readonly slug: FieldRef<"Article", 'String'>
     readonly content: FieldRef<"Article", 'String'>
     readonly status: FieldRef<"Article", 'String'>
     readonly teacherId: FieldRef<"Article", 'String'>
@@ -5091,6 +5187,1061 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ArticleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Notice
+   */
+
+  export type AggregateNotice = {
+    _count: NoticeCountAggregateOutputType | null
+    _avg: NoticeAvgAggregateOutputType | null
+    _sum: NoticeSumAggregateOutputType | null
+    _min: NoticeMinAggregateOutputType | null
+    _max: NoticeMaxAggregateOutputType | null
+  }
+
+  export type NoticeAvgAggregateOutputType = {
+    priority: number | null
+  }
+
+  export type NoticeSumAggregateOutputType = {
+    priority: number | null
+  }
+
+  export type NoticeMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    content: string | null
+    isActive: boolean | null
+    priority: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NoticeMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    content: string | null
+    isActive: boolean | null
+    priority: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NoticeCountAggregateOutputType = {
+    id: number
+    title: number
+    content: number
+    isActive: number
+    priority: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NoticeAvgAggregateInputType = {
+    priority?: true
+  }
+
+  export type NoticeSumAggregateInputType = {
+    priority?: true
+  }
+
+  export type NoticeMinAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    isActive?: true
+    priority?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NoticeMaxAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    isActive?: true
+    priority?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NoticeCountAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    isActive?: true
+    priority?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NoticeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notice to aggregate.
+     */
+    where?: NoticeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notices to fetch.
+     */
+    orderBy?: NoticeOrderByWithRelationInput | NoticeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NoticeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Notices
+    **/
+    _count?: true | NoticeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NoticeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NoticeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NoticeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NoticeMaxAggregateInputType
+  }
+
+  export type GetNoticeAggregateType<T extends NoticeAggregateArgs> = {
+        [P in keyof T & keyof AggregateNotice]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNotice[P]>
+      : GetScalarType<T[P], AggregateNotice[P]>
+  }
+
+
+
+
+  export type NoticeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NoticeWhereInput
+    orderBy?: NoticeOrderByWithAggregationInput | NoticeOrderByWithAggregationInput[]
+    by: NoticeScalarFieldEnum[] | NoticeScalarFieldEnum
+    having?: NoticeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NoticeCountAggregateInputType | true
+    _avg?: NoticeAvgAggregateInputType
+    _sum?: NoticeSumAggregateInputType
+    _min?: NoticeMinAggregateInputType
+    _max?: NoticeMaxAggregateInputType
+  }
+
+  export type NoticeGroupByOutputType = {
+    id: string
+    title: string
+    content: string
+    isActive: boolean
+    priority: number
+    createdAt: Date
+    updatedAt: Date
+    _count: NoticeCountAggregateOutputType | null
+    _avg: NoticeAvgAggregateOutputType | null
+    _sum: NoticeSumAggregateOutputType | null
+    _min: NoticeMinAggregateOutputType | null
+    _max: NoticeMaxAggregateOutputType | null
+  }
+
+  type GetNoticeGroupByPayload<T extends NoticeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NoticeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NoticeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NoticeGroupByOutputType[P]>
+            : GetScalarType<T[P], NoticeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NoticeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    priority?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["notice"]>
+
+  export type NoticeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    priority?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["notice"]>
+
+  export type NoticeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    priority?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["notice"]>
+
+  export type NoticeSelectScalar = {
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    priority?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NoticeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "isActive" | "priority" | "createdAt" | "updatedAt", ExtArgs["result"]["notice"]>
+
+  export type $NoticePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Notice"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      content: string
+      isActive: boolean
+      priority: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["notice"]>
+    composites: {}
+  }
+
+  type NoticeGetPayload<S extends boolean | null | undefined | NoticeDefaultArgs> = $Result.GetResult<Prisma.$NoticePayload, S>
+
+  type NoticeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NoticeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NoticeCountAggregateInputType | true
+    }
+
+  export interface NoticeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Notice'], meta: { name: 'Notice' } }
+    /**
+     * Find zero or one Notice that matches the filter.
+     * @param {NoticeFindUniqueArgs} args - Arguments to find a Notice
+     * @example
+     * // Get one Notice
+     * const notice = await prisma.notice.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NoticeFindUniqueArgs>(args: SelectSubset<T, NoticeFindUniqueArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Notice that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NoticeFindUniqueOrThrowArgs} args - Arguments to find a Notice
+     * @example
+     * // Get one Notice
+     * const notice = await prisma.notice.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NoticeFindUniqueOrThrowArgs>(args: SelectSubset<T, NoticeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notice that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NoticeFindFirstArgs} args - Arguments to find a Notice
+     * @example
+     * // Get one Notice
+     * const notice = await prisma.notice.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NoticeFindFirstArgs>(args?: SelectSubset<T, NoticeFindFirstArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notice that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NoticeFindFirstOrThrowArgs} args - Arguments to find a Notice
+     * @example
+     * // Get one Notice
+     * const notice = await prisma.notice.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NoticeFindFirstOrThrowArgs>(args?: SelectSubset<T, NoticeFindFirstOrThrowArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Notices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NoticeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Notices
+     * const notices = await prisma.notice.findMany()
+     * 
+     * // Get first 10 Notices
+     * const notices = await prisma.notice.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const noticeWithIdOnly = await prisma.notice.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NoticeFindManyArgs>(args?: SelectSubset<T, NoticeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Notice.
+     * @param {NoticeCreateArgs} args - Arguments to create a Notice.
+     * @example
+     * // Create one Notice
+     * const Notice = await prisma.notice.create({
+     *   data: {
+     *     // ... data to create a Notice
+     *   }
+     * })
+     * 
+     */
+    create<T extends NoticeCreateArgs>(args: SelectSubset<T, NoticeCreateArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Notices.
+     * @param {NoticeCreateManyArgs} args - Arguments to create many Notices.
+     * @example
+     * // Create many Notices
+     * const notice = await prisma.notice.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NoticeCreateManyArgs>(args?: SelectSubset<T, NoticeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Notices and returns the data saved in the database.
+     * @param {NoticeCreateManyAndReturnArgs} args - Arguments to create many Notices.
+     * @example
+     * // Create many Notices
+     * const notice = await prisma.notice.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Notices and only return the `id`
+     * const noticeWithIdOnly = await prisma.notice.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NoticeCreateManyAndReturnArgs>(args?: SelectSubset<T, NoticeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Notice.
+     * @param {NoticeDeleteArgs} args - Arguments to delete one Notice.
+     * @example
+     * // Delete one Notice
+     * const Notice = await prisma.notice.delete({
+     *   where: {
+     *     // ... filter to delete one Notice
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NoticeDeleteArgs>(args: SelectSubset<T, NoticeDeleteArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Notice.
+     * @param {NoticeUpdateArgs} args - Arguments to update one Notice.
+     * @example
+     * // Update one Notice
+     * const notice = await prisma.notice.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NoticeUpdateArgs>(args: SelectSubset<T, NoticeUpdateArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Notices.
+     * @param {NoticeDeleteManyArgs} args - Arguments to filter Notices to delete.
+     * @example
+     * // Delete a few Notices
+     * const { count } = await prisma.notice.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NoticeDeleteManyArgs>(args?: SelectSubset<T, NoticeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NoticeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Notices
+     * const notice = await prisma.notice.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NoticeUpdateManyArgs>(args: SelectSubset<T, NoticeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notices and returns the data updated in the database.
+     * @param {NoticeUpdateManyAndReturnArgs} args - Arguments to update many Notices.
+     * @example
+     * // Update many Notices
+     * const notice = await prisma.notice.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Notices and only return the `id`
+     * const noticeWithIdOnly = await prisma.notice.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NoticeUpdateManyAndReturnArgs>(args: SelectSubset<T, NoticeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Notice.
+     * @param {NoticeUpsertArgs} args - Arguments to update or create a Notice.
+     * @example
+     * // Update or create a Notice
+     * const notice = await prisma.notice.upsert({
+     *   create: {
+     *     // ... data to create a Notice
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Notice we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NoticeUpsertArgs>(args: SelectSubset<T, NoticeUpsertArgs<ExtArgs>>): Prisma__NoticeClient<$Result.GetResult<Prisma.$NoticePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Notices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NoticeCountArgs} args - Arguments to filter Notices to count.
+     * @example
+     * // Count the number of Notices
+     * const count = await prisma.notice.count({
+     *   where: {
+     *     // ... the filter for the Notices we want to count
+     *   }
+     * })
+    **/
+    count<T extends NoticeCountArgs>(
+      args?: Subset<T, NoticeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NoticeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Notice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NoticeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NoticeAggregateArgs>(args: Subset<T, NoticeAggregateArgs>): Prisma.PrismaPromise<GetNoticeAggregateType<T>>
+
+    /**
+     * Group by Notice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NoticeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NoticeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NoticeGroupByArgs['orderBy'] }
+        : { orderBy?: NoticeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NoticeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNoticeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Notice model
+   */
+  readonly fields: NoticeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Notice.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NoticeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Notice model
+   */
+  interface NoticeFieldRefs {
+    readonly id: FieldRef<"Notice", 'String'>
+    readonly title: FieldRef<"Notice", 'String'>
+    readonly content: FieldRef<"Notice", 'String'>
+    readonly isActive: FieldRef<"Notice", 'Boolean'>
+    readonly priority: FieldRef<"Notice", 'Int'>
+    readonly createdAt: FieldRef<"Notice", 'DateTime'>
+    readonly updatedAt: FieldRef<"Notice", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Notice findUnique
+   */
+  export type NoticeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * Filter, which Notice to fetch.
+     */
+    where: NoticeWhereUniqueInput
+  }
+
+  /**
+   * Notice findUniqueOrThrow
+   */
+  export type NoticeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * Filter, which Notice to fetch.
+     */
+    where: NoticeWhereUniqueInput
+  }
+
+  /**
+   * Notice findFirst
+   */
+  export type NoticeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * Filter, which Notice to fetch.
+     */
+    where?: NoticeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notices to fetch.
+     */
+    orderBy?: NoticeOrderByWithRelationInput | NoticeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notices.
+     */
+    cursor?: NoticeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notices.
+     */
+    distinct?: NoticeScalarFieldEnum | NoticeScalarFieldEnum[]
+  }
+
+  /**
+   * Notice findFirstOrThrow
+   */
+  export type NoticeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * Filter, which Notice to fetch.
+     */
+    where?: NoticeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notices to fetch.
+     */
+    orderBy?: NoticeOrderByWithRelationInput | NoticeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notices.
+     */
+    cursor?: NoticeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notices.
+     */
+    distinct?: NoticeScalarFieldEnum | NoticeScalarFieldEnum[]
+  }
+
+  /**
+   * Notice findMany
+   */
+  export type NoticeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * Filter, which Notices to fetch.
+     */
+    where?: NoticeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notices to fetch.
+     */
+    orderBy?: NoticeOrderByWithRelationInput | NoticeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Notices.
+     */
+    cursor?: NoticeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notices.
+     */
+    skip?: number
+    distinct?: NoticeScalarFieldEnum | NoticeScalarFieldEnum[]
+  }
+
+  /**
+   * Notice create
+   */
+  export type NoticeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Notice.
+     */
+    data: XOR<NoticeCreateInput, NoticeUncheckedCreateInput>
+  }
+
+  /**
+   * Notice createMany
+   */
+  export type NoticeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Notices.
+     */
+    data: NoticeCreateManyInput | NoticeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Notice createManyAndReturn
+   */
+  export type NoticeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Notices.
+     */
+    data: NoticeCreateManyInput | NoticeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Notice update
+   */
+  export type NoticeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Notice.
+     */
+    data: XOR<NoticeUpdateInput, NoticeUncheckedUpdateInput>
+    /**
+     * Choose, which Notice to update.
+     */
+    where: NoticeWhereUniqueInput
+  }
+
+  /**
+   * Notice updateMany
+   */
+  export type NoticeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Notices.
+     */
+    data: XOR<NoticeUpdateManyMutationInput, NoticeUncheckedUpdateManyInput>
+    /**
+     * Filter which Notices to update
+     */
+    where?: NoticeWhereInput
+    /**
+     * Limit how many Notices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notice updateManyAndReturn
+   */
+  export type NoticeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * The data used to update Notices.
+     */
+    data: XOR<NoticeUpdateManyMutationInput, NoticeUncheckedUpdateManyInput>
+    /**
+     * Filter which Notices to update
+     */
+    where?: NoticeWhereInput
+    /**
+     * Limit how many Notices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notice upsert
+   */
+  export type NoticeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Notice to update in case it exists.
+     */
+    where: NoticeWhereUniqueInput
+    /**
+     * In case the Notice found by the `where` argument doesn't exist, create a new Notice with this data.
+     */
+    create: XOR<NoticeCreateInput, NoticeUncheckedCreateInput>
+    /**
+     * In case the Notice was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NoticeUpdateInput, NoticeUncheckedUpdateInput>
+  }
+
+  /**
+   * Notice delete
+   */
+  export type NoticeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
+    /**
+     * Filter which Notice to delete.
+     */
+    where: NoticeWhereUniqueInput
+  }
+
+  /**
+   * Notice deleteMany
+   */
+  export type NoticeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notices to delete
+     */
+    where?: NoticeWhereInput
+    /**
+     * Limit how many Notices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notice without action
+   */
+  export type NoticeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notice
+     */
+    select?: NoticeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notice
+     */
+    omit?: NoticeOmit<ExtArgs> | null
   }
 
 
@@ -10625,6 +11776,7 @@ export namespace Prisma {
   export const ArticleScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    slug: 'slug',
     content: 'content',
     status: 'status',
     teacherId: 'teacherId',
@@ -10634,6 +11786,19 @@ export namespace Prisma {
   };
 
   export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
+
+
+  export const NoticeScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    isActive: 'isActive',
+    priority: 'priority',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NoticeScalarFieldEnum = (typeof NoticeScalarFieldEnum)[keyof typeof NoticeScalarFieldEnum]
 
 
   export const AdmissionInquiryScalarFieldEnum: {
@@ -11040,6 +12205,7 @@ export namespace Prisma {
     NOT?: ArticleWhereInput | ArticleWhereInput[]
     id?: StringFilter<"Article"> | string
     title?: StringFilter<"Article"> | string
+    slug?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
     status?: StringFilter<"Article"> | string
     teacherId?: StringNullableFilter<"Article"> | string | null
@@ -11053,6 +12219,7 @@ export namespace Prisma {
   export type ArticleOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     content?: SortOrder
     status?: SortOrder
     teacherId?: SortOrderInput | SortOrder
@@ -11065,6 +12232,7 @@ export namespace Prisma {
 
   export type ArticleWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: ArticleWhereInput | ArticleWhereInput[]
     OR?: ArticleWhereInput[]
     NOT?: ArticleWhereInput | ArticleWhereInput[]
@@ -11077,11 +12245,12 @@ export namespace Prisma {
     userId?: StringNullableFilter<"Article"> | string | null
     teacher?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-  }, "id">
+  }, "id" | "slug">
 
   export type ArticleOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     content?: SortOrder
     status?: SortOrder
     teacherId?: SortOrderInput | SortOrder
@@ -11099,12 +12268,77 @@ export namespace Prisma {
     NOT?: ArticleScalarWhereWithAggregatesInput | ArticleScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Article"> | string
     title?: StringWithAggregatesFilter<"Article"> | string
+    slug?: StringWithAggregatesFilter<"Article"> | string
     content?: StringWithAggregatesFilter<"Article"> | string
     status?: StringWithAggregatesFilter<"Article"> | string
     teacherId?: StringNullableWithAggregatesFilter<"Article"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
     userId?: StringNullableWithAggregatesFilter<"Article"> | string | null
+  }
+
+  export type NoticeWhereInput = {
+    AND?: NoticeWhereInput | NoticeWhereInput[]
+    OR?: NoticeWhereInput[]
+    NOT?: NoticeWhereInput | NoticeWhereInput[]
+    id?: StringFilter<"Notice"> | string
+    title?: StringFilter<"Notice"> | string
+    content?: StringFilter<"Notice"> | string
+    isActive?: BoolFilter<"Notice"> | boolean
+    priority?: IntFilter<"Notice"> | number
+    createdAt?: DateTimeFilter<"Notice"> | Date | string
+    updatedAt?: DateTimeFilter<"Notice"> | Date | string
+  }
+
+  export type NoticeOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NoticeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NoticeWhereInput | NoticeWhereInput[]
+    OR?: NoticeWhereInput[]
+    NOT?: NoticeWhereInput | NoticeWhereInput[]
+    title?: StringFilter<"Notice"> | string
+    content?: StringFilter<"Notice"> | string
+    isActive?: BoolFilter<"Notice"> | boolean
+    priority?: IntFilter<"Notice"> | number
+    createdAt?: DateTimeFilter<"Notice"> | Date | string
+    updatedAt?: DateTimeFilter<"Notice"> | Date | string
+  }, "id">
+
+  export type NoticeOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NoticeCountOrderByAggregateInput
+    _avg?: NoticeAvgOrderByAggregateInput
+    _max?: NoticeMaxOrderByAggregateInput
+    _min?: NoticeMinOrderByAggregateInput
+    _sum?: NoticeSumOrderByAggregateInput
+  }
+
+  export type NoticeScalarWhereWithAggregatesInput = {
+    AND?: NoticeScalarWhereWithAggregatesInput | NoticeScalarWhereWithAggregatesInput[]
+    OR?: NoticeScalarWhereWithAggregatesInput[]
+    NOT?: NoticeScalarWhereWithAggregatesInput | NoticeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Notice"> | string
+    title?: StringWithAggregatesFilter<"Notice"> | string
+    content?: StringWithAggregatesFilter<"Notice"> | string
+    isActive?: BoolWithAggregatesFilter<"Notice"> | boolean
+    priority?: IntWithAggregatesFilter<"Notice"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Notice"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Notice"> | Date | string
   }
 
   export type AdmissionInquiryWhereInput = {
@@ -11711,6 +12945,7 @@ export namespace Prisma {
   export type ArticleCreateInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     createdAt?: Date | string
@@ -11722,6 +12957,7 @@ export namespace Prisma {
   export type ArticleUncheckedCreateInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     teacherId?: string | null
@@ -11733,6 +12969,7 @@ export namespace Prisma {
   export type ArticleUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11744,6 +12981,7 @@ export namespace Prisma {
   export type ArticleUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     teacherId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11755,6 +12993,7 @@ export namespace Prisma {
   export type ArticleCreateManyInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     teacherId?: string | null
@@ -11766,6 +13005,7 @@ export namespace Prisma {
   export type ArticleUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11775,12 +13015,83 @@ export namespace Prisma {
   export type ArticleUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     teacherId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type NoticeCreateInput = {
+    id?: string
+    title: string
+    content: string
+    isActive?: boolean
+    priority?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NoticeUncheckedCreateInput = {
+    id?: string
+    title: string
+    content: string
+    isActive?: boolean
+    priority?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NoticeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NoticeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NoticeCreateManyInput = {
+    id?: string
+    title: string
+    content: string
+    isActive?: boolean
+    priority?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NoticeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NoticeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdmissionInquiryCreateInput = {
@@ -12538,6 +13849,7 @@ export namespace Prisma {
   export type ArticleCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     content?: SortOrder
     status?: SortOrder
     teacherId?: SortOrder
@@ -12549,6 +13861,7 @@ export namespace Prisma {
   export type ArticleMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     content?: SortOrder
     status?: SortOrder
     teacherId?: SortOrder
@@ -12560,6 +13873,7 @@ export namespace Prisma {
   export type ArticleMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     content?: SortOrder
     status?: SortOrder
     teacherId?: SortOrder
@@ -12577,6 +13891,60 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NoticeCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NoticeAvgOrderByAggregateInput = {
+    priority?: SortOrder
+  }
+
+  export type NoticeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NoticeMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NoticeSumOrderByAggregateInput = {
+    priority?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringNullableListFilter<$PrismaModel = never> = {
@@ -12632,22 +14000,6 @@ export namespace Prisma {
 
   export type AdmissionInquirySumOrderByAggregateInput = {
     numberOfChildren?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type EnumAdmissionTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13166,20 +14518,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutArticlesInput, UserUpdateWithoutArticlesInput>, UserUncheckedUpdateWithoutArticlesInput>
   }
 
-  export type AdmissionInquiryCreatedesiredClassesInput = {
-    set: string[]
-  }
-
-  export type AdmissionInquiryCreatestreamsInput = {
-    set: string[]
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type AdmissionInquiryCreatedesiredClassesInput = {
+    set: string[]
+  }
+
+  export type AdmissionInquiryCreatestreamsInput = {
+    set: string[]
   }
 
   export type AdmissionInquiryUpdatedesiredClassesInput = {
@@ -13382,13 +14734,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumAdmissionTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.AdmissionType | EnumAdmissionTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumAdmissionTypeFilter<$PrismaModel> | $Enums.AdmissionType
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -13414,6 +14759,13 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumAdmissionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionType | EnumAdmissionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionType[] | ListEnumAdmissionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionTypeFilter<$PrismaModel> | $Enums.AdmissionType
   }
 
   export type NestedEnumAdmissionTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13513,6 +14865,7 @@ export namespace Prisma {
   export type ArticleCreateWithoutUserInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     createdAt?: Date | string
@@ -13523,6 +14876,7 @@ export namespace Prisma {
   export type ArticleUncheckedCreateWithoutUserInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     teacherId?: string | null
@@ -13635,6 +14989,7 @@ export namespace Prisma {
     NOT?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
     id?: StringFilter<"Article"> | string
     title?: StringFilter<"Article"> | string
+    slug?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
     status?: StringFilter<"Article"> | string
     teacherId?: StringNullableFilter<"Article"> | string | null
@@ -13682,6 +15037,7 @@ export namespace Prisma {
   export type ArticleCreateWithoutTeacherInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     createdAt?: Date | string
@@ -13692,6 +15048,7 @@ export namespace Prisma {
   export type ArticleUncheckedCreateWithoutTeacherInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     createdAt?: Date | string
@@ -14019,6 +15376,7 @@ export namespace Prisma {
   export type ArticleCreateManyUserInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     teacherId?: string | null
@@ -14080,6 +15438,7 @@ export namespace Prisma {
   export type ArticleUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14090,6 +15449,7 @@ export namespace Prisma {
   export type ArticleUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     teacherId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14100,6 +15460,7 @@ export namespace Prisma {
   export type ArticleUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     teacherId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14158,6 +15519,7 @@ export namespace Prisma {
   export type ArticleCreateManyTeacherInput = {
     id?: string
     title: string
+    slug: string
     content: string
     status?: string
     createdAt?: Date | string
@@ -14168,6 +15530,7 @@ export namespace Prisma {
   export type ArticleUpdateWithoutTeacherInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14178,6 +15541,7 @@ export namespace Prisma {
   export type ArticleUncheckedUpdateWithoutTeacherInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14188,6 +15552,7 @@ export namespace Prisma {
   export type ArticleUncheckedUpdateManyWithoutTeacherInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

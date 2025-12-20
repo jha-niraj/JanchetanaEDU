@@ -2,7 +2,9 @@
 
 import { useState, useEffect, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, Pencil, User, Mail, Phone, BookOpen, Loader2, GraduationCap, Upload, X } from "lucide-react";
+import { 
+    Plus, Trash2, Pencil, User, Mail, Phone, BookOpen, Loader2, GraduationCap, Upload, X 
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
@@ -18,7 +20,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { addTeacher, updateTeacher, deleteTeacher, getTeachers } from "@/actions/teacher.action";
+import { 
+    addTeacher, updateTeacher, deleteTeacher, getTeachers 
+} from "@/actions/teacher.action";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 

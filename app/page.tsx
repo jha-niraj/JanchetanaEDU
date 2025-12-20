@@ -4,7 +4,10 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Award, BookOpen, Camera, ChevronRight, CircleArrowOutUpLeft, GraduationCap, MapPin, Users } from "lucide-react"
+import {
+	ArrowRight, Award, BookOpen, Camera, ChevronRight, CircleArrowOutUpLeft, GraduationCap, 
+	MapPin, Users 
+} from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -61,7 +64,7 @@ export default function Home() {
 			<section className="flex min-h-screen flex-col w-full">
 				<MainNav />
 				<main className="flex-1">
-					<section className="w-full h-screen">
+					<section className="w-full h-screen relative">
 						<HeroCarousel />
 					</section>
 					<section className="w-full py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">

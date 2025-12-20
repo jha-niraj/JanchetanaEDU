@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
-import cloudinary from "@/utils/cloudinary"
+import { uploadImageToCloudinary } from "@/actions/shared/upload.action"
 
 // Define interfaces based on Prisma schema
 interface Teacher {
@@ -42,22 +42,6 @@ interface CountResponse {
 	error?: string;
 }
 
-async function uploadToCloudinary(file: File): Promise<string> {
-	try {
-		const arrayBuffer = await file.arrayBuffer();
-		const buffer = Buffer.from(arrayBuffer);
-
-		return new Promise((resolve, reject) => {
-			cloudinary.uploader.upload_stream((error, result) => {
-				if (error) reject(error);
-				else resolve(result?.secure_url || '');
-			}).end(buffer);
-		});
-	} catch (error) {
-		console.error('Error uploading to Cloudinary:', error);
-		throw new Error('Failed to upload image');
-	}
-}
 
 export async function getTeachers(): Promise<TeachersResponse> {
 	try {
@@ -133,7 +117,12 @@ export async function addTeacher(teacherData: TeacherData): Promise<TeacherRespo
 
 		// Upload image if provided
 		if (teacherData.image) {
-			imageUrl = await uploadToCloudinary(teacherData.image);
+			const formData = new FormData();
+			formData.append('file', teacherData.image);
+			const uploadResult = await uploadImageToCloudinary(formData);
+			if (uploadResult.success && uploadResult.url) {
+				imageUrl = uploadResult.url;
+			}
 		}
 
 		// Create the teacher
@@ -188,7 +177,12 @@ export async function updateTeacher(id: string, teacherData: TeacherData): Promi
 
 		// Upload new image if provided
 		if (teacherData.image) {
-			imageUrl = await uploadToCloudinary(teacherData.image);
+			const formData = new FormData();
+			formData.append('file', teacherData.image);
+			const uploadResult = await uploadImageToCloudinary(formData);
+			if (uploadResult.success && uploadResult.url) {
+				imageUrl = uploadResult.url;
+			}
 		}
 
 		// Update the teacher

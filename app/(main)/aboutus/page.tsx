@@ -3,10 +3,16 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Award, BookOpen, Calendar } from "lucide-react"
+import { 
+    Award, BookOpen, Calendar
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { 
+    Card, CardContent, CardDescription, CardHeader, CardTitle 
+} from "@/components/ui/card"
+import { 
+    Tabs, TabsContent, TabsList, TabsTrigger 
+} from "@/components/ui/tabs"
 import SmoothScroll from "@/components/smoothscroll"
 
 const fadeInUp = {

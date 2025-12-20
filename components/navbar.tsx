@@ -5,7 +5,9 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { 
+    Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger 
+} from "@/components/ui/sheet"
 import { Badge } from "@/components/ui/badge"
 import {
     Menu, BookOpen, User, GraduationCap, Users, Heart, Phone,
@@ -58,13 +60,13 @@ export function MainNav() {
     }
 
     return (
-        <div className="w-full h-24 flex items-center justify-center fixed top-0 z-50">
+        <div className="w-full fixed top-0 z-50">
             <motion.nav
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
                 className={cn(
-                    "w-[96%] max-w-7xl mx-auto rounded-2xl transition-all duration-300",
+                    "w-full max-w-7xl mx-auto transition-all duration-300",
                     scrolled
                         ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg shadow-lg dark:shadow-gray-800/30"
                         : "bg-white/50 dark:bg-gray-900/50 backdrop-blur-md",

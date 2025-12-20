@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache"
 interface Article {
 	id: string;
 	title: string;
+	slug: string;
 	content: string;
 	status: string;
 	teacherId?: string | null;
@@ -22,6 +23,17 @@ interface ArticleData {
 	title: string;
 	content: string;
 	status?: string;
+	slug?: string;
+}
+
+// Helper function to generate slug from title
+function generateSlug(title: string): string {
+	return title
+		.toLowerCase()
+		.trim()
+		.replace(/[^\w\s-]/g, '')
+		.replace(/[\s_-]+/g, '-')
+		.replace(/^-+|-+$/g, '')
 }
 
 interface ArticleResponse<T> {
@@ -58,6 +70,49 @@ export async function getArticles(): Promise<ArticlesResponse> {
 		const error = err as Error;
 		console.error("Failed to fetch articles:", error);
 		return { success: false, error: "Failed to fetch articles" };
+	}
+}
+
+export async function getPublishedArticles(): Promise<ArticlesResponse> {
+	try {
+		const articles = await prisma.article.findMany({
+			where: {
+				status: 'published'
+			},
+			include: {
+				teacher: true
+			},
+			orderBy: {
+				createdAt: 'desc'
+			}
+		});
+
+		return { success: true, articles };
+	} catch (err) {
+		const error = err as Error;
+		console.error("Failed to fetch published articles:", error);
+		return { success: false, error: "Failed to fetch published articles" };
+	}
+}
+
+export async function getArticleBySlug(slug: string): Promise<ArticleResponse<Article>> {
+	try {
+		const article = await prisma.article.findUnique({
+			where: { slug },
+			include: {
+				teacher: true
+			}
+		});
+
+		if (!article) {
+			return { success: false, error: "Article not found" };
+		}
+
+		return { success: true, article };
+	} catch (err) {
+		const error = err as Error;
+		console.error(`Failed to fetch article with slug ${slug}:`, error);
+		return { success: false, error: "Failed to fetch article" };
 	}
 }
 
@@ -121,10 +176,23 @@ export async function addArticle(articleData: ArticleData, teacherId: string | n
 			return { success: false, error: "Title and content are required" };
 		}
 
+		// Generate slug if not provided
+		let slug = articleData.slug || generateSlug(articleData.title);
+		
+		// Ensure slug is unique
+		let slugExists = await prisma.article.findUnique({ where: { slug } });
+		let counter = 1;
+		while (slugExists) {
+			slug = `${generateSlug(articleData.title)}-${counter}`;
+			slugExists = await prisma.article.findUnique({ where: { slug } });
+			counter++;
+		}
+
 		// Create the article
 		const article = await prisma.article.create({
 			data: {
 				title: articleData.title,
+				slug: slug,
 				content: articleData.content,
 				status: articleData.status || 'draft',
 				teacherId: teacherId,
@@ -164,11 +232,30 @@ export async function updateArticle(id: string, articleData: ArticleData): Promi
 			return { success: false, error: "Article not found" };
 		}
 
+		// Generate slug if title changed
+		let slug = existingArticle.slug;
+		if (articleData.title !== existingArticle.title) {
+			slug = articleData.slug || generateSlug(articleData.title);
+			// Ensure slug is unique (excluding current article)
+			let slugExists = await prisma.article.findFirst({ 
+				where: { slug, id: { not: id } } 
+			});
+			let counter = 1;
+			while (slugExists) {
+				slug = `${generateSlug(articleData.title)}-${counter}`;
+				slugExists = await prisma.article.findFirst({ 
+					where: { slug, id: { not: id } } 
+				});
+				counter++;
+			}
+		}
+
 		// Update the article
 		const article = await prisma.article.update({
 			where: { id },
 			data: {
 				title: articleData.title,
+				slug: slug,
 				content: articleData.content,
 				status: articleData.status || existingArticle.status,
 			},
@@ -178,7 +265,7 @@ export async function updateArticle(id: string, articleData: ArticleData): Promi
 		});
 
 		revalidatePath('/articles');
-		revalidatePath(`/articles/${id}`);
+		revalidatePath(`/articles/${article.slug}`);
 		revalidatePath('/dashboard');
 
 		return { success: true, article };

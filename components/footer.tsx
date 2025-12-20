@@ -25,40 +25,40 @@ const itemVariants = {
 
 export function Footer() {
     return (
-        <footer className="bg-secondary/20 border-t dark:bg-gray-900 dark:border-gray-800">
+        <footer className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 border-t border-gray-200 dark:border-gray-800">
             <motion.div
-                className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6"
+                className="max-w-7xl mx-auto py-16 md:py-20 px-4 sm:px-6"
                 variants={footerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
             >
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <motion.div className="space-y-4" variants={itemVariants}>
-                        <div className="flex items-center space-x-2">
-                            <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground">
-                                <BookOpen className="h-5 w-5" />
+                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+                    <motion.div className="space-y-6" variants={itemVariants}>
+                        <div className="flex items-center space-x-3">
+                            <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 text-white shadow-lg">
+                                <BookOpen className="h-6 w-6" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="font-bold text-lg leading-tight">Janchetana</span>
-                                <span className="text-xs text-muted-foreground leading-tight">School of Excellence</span>
+                                <span className="font-bold text-xl leading-tight bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Janchetana</span>
+                                <span className="text-xs text-muted-foreground leading-tight font-medium">School of Excellence</span>
                             </div>
                         </div>
-                        <p className="text-sm text-muted-foreground max-w-xs">
+                        <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
                             Empowering students with knowledge, skills, and values to excel in a rapidly changing world since 1975.
                         </p>
-                        <div className="flex space-x-3">
-                            <Button variant="ghost" size="icon" aria-label="Facebook">
-                                <Facebook className="h-4 w-4" />
+                        <div className="flex space-x-2">
+                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="Facebook">
+                                <Facebook className="h-5 w-5" />
                             </Button>
-                            <Button variant="ghost" size="icon" aria-label="Twitter">
-                                <Twitter className="h-4 w-4" />
+                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="Twitter">
+                                <Twitter className="h-5 w-5" />
                             </Button>
-                            <Button variant="ghost" size="icon" aria-label="Instagram">
-                                <Instagram className="h-4 w-4" />
+                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="Instagram">
+                                <Instagram className="h-5 w-5" />
                             </Button>
-                            <Button variant="ghost" size="icon" aria-label="YouTube">
-                                <Youtube className="h-4 w-4" />
+                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="YouTube">
+                                <Youtube className="h-5 w-5" />
                             </Button>
                         </div>
                     </motion.div>

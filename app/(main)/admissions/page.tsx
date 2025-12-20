@@ -4,13 +4,24 @@ import { useState, useTransition } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Card, CardContent, CardHeader, CardTitle
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Phone, Users, CheckCircle, User, GraduationCap, BookOpen } from "lucide-react";
+import {
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue
+} from "@/components/ui/select";
+import {
+    Tabs, TabsContent, TabsList, TabsTrigger
+} from "@/components/ui/tabs";
+import {
+    AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter,
+    AlertDialogHeader, AlertDialogTitle
+} from "@/components/ui/alert-dialog";
+import {
+    Phone, Users, CheckCircle, User, GraduationCap, BookOpen
+} from "lucide-react";
 import { addAdmissionInquiry } from "@/actions/admission.action";
 import SmoothScroll from "@/components/smoothscroll";
 
@@ -236,7 +247,6 @@ export default function AdmissionsPage() {
                                                 Grade 9 - 12
                                             </TabsTrigger>
                                         </TabsList>
-
                                         <TabsContent value="nursery-8" className="space-y-6">
                                             <div className="bg-teal-50 dark:bg-teal-900/20 p-4 rounded-lg border-l-4 border-teal-500">
                                                 <h3 className="font-semibold text-teal-800 dark:text-teal-200 mb-1">Foundation Education</h3>
@@ -244,7 +254,6 @@ export default function AdmissionsPage() {
                                             </div>
                                             {renderForm(nurseryTo8Classes, false)}
                                         </TabsContent>
-
                                         <TabsContent value="grade-9-12" className="space-y-6">
                                             <div className="bg-cyan-50 dark:bg-cyan-900/20 p-4 rounded-lg border-l-4 border-cyan-500">
                                                 <h3 className="font-semibold text-cyan-800 dark:text-cyan-200 mb-1">Secondary Education</h3>
@@ -304,9 +313,9 @@ export default function AdmissionsPage() {
                                 aria-label="Parent Name"
                             />
                             {
-                            errors.parentName && (
-                                <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.parentName}</p>
-                            )
+                                errors.parentName && (
+                                    <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.parentName}</p>
+                                )
                             }
                         </div>
                     </div>
@@ -327,9 +336,9 @@ export default function AdmissionsPage() {
                                 aria-label="Phone Number"
                             />
                             {
-                            errors.phoneNumber && (
-                                <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.phoneNumber}</p>
-                            )
+                                errors.phoneNumber && (
+                                    <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.phoneNumber}</p>
+                                )
                             }
                         </div>
                     </div>
@@ -350,96 +359,96 @@ export default function AdmissionsPage() {
                             </SelectTrigger>
                             <SelectContent>
                                 {
-                                [1, 2, 3, 4, 5].map((num) => (
-                                    <SelectItem key={num} value={num.toString()}>
-                                        {num} {num === 1 ? 'Child' : 'Children'}
-                                    </SelectItem>
-                                ))
+                                    [1, 2, 3, 4, 5].map((num) => (
+                                        <SelectItem key={num} value={num.toString()}>
+                                            {num} {num === 1 ? 'Child' : 'Children'}
+                                        </SelectItem>
+                                    ))
                                 }
                             </SelectContent>
                         </Select>
                         {
-                        errors.numberOfChildren && (
-                            <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.numberOfChildren}</p>
-                        )
+                            errors.numberOfChildren && (
+                                <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.numberOfChildren}</p>
+                            )
                         }
                     </div>
                 </div>
                 {
-                Array.from({ length: formData.numberOfChildren }).map((_, index) => (
-                    <div key={index} className="space-y-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border">
-                        <h4 className="font-semibold text-gray-800 dark:text-gray-200">
-                            Child {index + 1} Details
-                        </h4>
-                        <div className={includeStreams ? "grid grid-cols-1 md:grid-cols-2 gap-4" : ""}>
-                            <div className="space-y-2">
-                                <Label className="text-gray-700 dark:text-gray-300 font-medium">
-                                    Desired Class
-                                </Label>
-                                <Select
-                                    value={formData.desiredClasses[index] || ""}
-                                    onValueChange={(value) => handleClassChange(index, value)}
-                                    disabled={isPending}
-                                >
-                                    <SelectTrigger className="bg-white dark:bg-gray-600 border-gray-200 dark:border-gray-500 h-11">
-                                        <SelectValue placeholder="Select class" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {
-                                        classes.map((cls) => (
-                                            <SelectItem key={cls} value={cls}>
-                                                {cls}
-                                            </SelectItem>
-                                        ))
-                                        }
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                            {
-                            includeStreams && (
+                    Array.from({ length: formData.numberOfChildren }).map((_, index) => (
+                        <div key={index} className="space-y-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border">
+                            <h4 className="font-semibold text-gray-800 dark:text-gray-200">
+                                Child {index + 1} Details
+                            </h4>
+                            <div className={includeStreams ? "grid grid-cols-1 md:grid-cols-2 gap-4" : ""}>
                                 <div className="space-y-2">
                                     <Label className="text-gray-700 dark:text-gray-300 font-medium">
-                                        Stream Selection
+                                        Desired Class
                                     </Label>
                                     <Select
-                                        value={formData.streams[index] || ""}
-                                        onValueChange={(value) => handleStreamChange(index, value)}
+                                        value={formData.desiredClasses[index] || ""}
+                                        onValueChange={(value) => handleClassChange(index, value)}
                                         disabled={isPending}
                                     >
                                         <SelectTrigger className="bg-white dark:bg-gray-600 border-gray-200 dark:border-gray-500 h-11">
-                                            <SelectValue placeholder="Select stream" />
+                                            <SelectValue placeholder="Select class" />
                                         </SelectTrigger>
                                         <SelectContent>
                                             {
-                                            streams.map((stream) => (
-                                                <SelectItem key={stream} value={stream}>
-                                                    {stream}
-                                                </SelectItem>
-                                            ))
+                                                classes.map((cls) => (
+                                                    <SelectItem key={cls} value={cls}>
+                                                        {cls}
+                                                    </SelectItem>
+                                                ))
                                             }
                                         </SelectContent>
                                     </Select>
                                 </div>
-                            )
-                            }
+                                {
+                                    includeStreams && (
+                                        <div className="space-y-2">
+                                            <Label className="text-gray-700 dark:text-gray-300 font-medium">
+                                                Stream Selection
+                                            </Label>
+                                            <Select
+                                                value={formData.streams[index] || ""}
+                                                onValueChange={(value) => handleStreamChange(index, value)}
+                                                disabled={isPending}
+                                            >
+                                                <SelectTrigger className="bg-white dark:bg-gray-600 border-gray-200 dark:border-gray-500 h-11">
+                                                    <SelectValue placeholder="Select stream" />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    {
+                                                        streams.map((stream) => (
+                                                            <SelectItem key={stream} value={stream}>
+                                                                {stream}
+                                                            </SelectItem>
+                                                        ))
+                                                    }
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
+                                    )
+                                }
+                            </div>
                         </div>
-                    </div>
-                ))
+                    ))
                 }
                 {
-                errors.desiredClasses && (
-                    <p className="text-red-500 dark:text-red-400 text-sm">{errors.desiredClasses}</p>
-                )
+                    errors.desiredClasses && (
+                        <p className="text-red-500 dark:text-red-400 text-sm">{errors.desiredClasses}</p>
+                    )
                 }
                 {
-                errors.streams && (
-                    <p className="text-red-500 dark:text-red-400 text-sm">{errors.streams}</p>
-                )
+                    errors.streams && (
+                        <p className="text-red-500 dark:text-red-400 text-sm">{errors.streams}</p>
+                    )
                 }
                 {
-                errors.submit && (
-                    <p className="text-red-500 dark:text-red-400 text-sm">{errors.submit}</p>
-                )
+                    errors.submit && (
+                        <p className="text-red-500 dark:text-red-400 text-sm">{errors.submit}</p>
+                    )
                 }
                 <Button
                     type="submit"
@@ -447,17 +456,17 @@ export default function AdmissionsPage() {
                     disabled={isPending}
                 >
                     {
-                    isPending ? (
-                        <span className="flex items-center">
-                            <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                            </svg>
-                            Submitting Inquiry...
-                        </span>
-                    ) : (
-                        "Submit Admission Inquiry"
-                    )
+                        isPending ? (
+                            <span className="flex items-center">
+                                <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                </svg>
+                                Submitting Inquiry...
+                            </span>
+                        ) : (
+                            "Submit Admission Inquiry"
+                        )
                     }
                 </Button>
             </form>

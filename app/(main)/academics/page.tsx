@@ -3,13 +3,17 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Calendar, ChevronRight } from "lucide-react"
-
+import {
+    Calendar, ChevronRight
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+    Card, CardContent, CardFooter, CardHeader, CardTitle
+} from "@/components/ui/card"
+import {
+    Tabs, TabsContent, TabsList, TabsTrigger
+} from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-// import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import SmoothScroll from "@/components/smoothscroll"
 
 const fadeInUp = {
@@ -830,11 +834,11 @@ function FacultyCard({
         <motion.div variants={fadeInUp}>
             <Card className="overflow-hidden h-full">
                 <div className="relative h-64 w-full bg-gray-50 dark:bg-gray-800">
-                    <Image 
-                        src={image || "/placeholder.svg"} 
-                        alt={name} 
-                        fill 
-                        className="object-contain object-center p-2" 
+                    <Image
+                        src={image || "/placeholder.svg"}
+                        alt={name}
+                        fill
+                        className="object-contain object-center p-2"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 </div>
