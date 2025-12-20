@@ -106,7 +106,7 @@ export default function AlumniDashboard() {
     if (isLoading) {
         return (
             <div className="container mx-auto py-8 px-4">
-                <div className="text-center py-12">Loading dashboard...</div>
+                <div className="text-center py-12">Loading Alumni dashboard...</div>
             </div>
         )
     }

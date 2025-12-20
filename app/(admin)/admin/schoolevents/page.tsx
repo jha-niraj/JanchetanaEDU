@@ -270,7 +270,7 @@ export default function SchoolEventsPage() {
                                 </div>
                             </div>
                             <div className="flex items-center space-x-2">
-                                <Input
+                                <input
                                     type="checkbox"
                                     id="isActive"
                                     checked={newEvent.isActive}
@@ -448,7 +448,7 @@ export default function SchoolEventsPage() {
                             </div>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <Input
+                            <input
                                 type="checkbox"
                                 id="isActive"
                                 checked={newEvent.isActive}

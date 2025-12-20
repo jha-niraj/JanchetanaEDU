@@ -25,9 +25,9 @@ const itemVariants = {
 
 export function Footer() {
     return (
-        <footer className="bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 border-t-2 border-gray-200 dark:border-gray-800">
+        <footer className="bg-white dark:bg-neutral-950 border border-t">
             <motion.div
-                className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6"
+                className="max-w-7xl mx-auto py-6 md:py-16 px-4 sm:px-6"
                 variants={footerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -127,7 +127,7 @@ export function Footer() {
                     </motion.div>
                 </div>
             </motion.div>
-            <div className="border-t-2 border-gray-200 dark:border-gray-800 bg-gradient-to-r from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 py-6">
+            <div className="border-t-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-neutral-950 py-6">
                 <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-center px-4 sm:px-6">
                     <p className="text-sm text-muted-foreground font-medium">
                         &copy; {new Date().getFullYear()} Janchetana School. All rights reserved.

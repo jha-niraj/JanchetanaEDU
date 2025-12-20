@@ -152,8 +152,8 @@ export async function addTeacher(teacherData: TeacherData): Promise<TeacherRespo
 			}
 		});
 
-		revalidatePath('/dashboard/teachers');
-		revalidatePath('/dashboard');
+		revalidatePath('/admin/teachers');
+		revalidatePath('/admin');
 
 		return { success: true, teacher };
 	} catch (err) {

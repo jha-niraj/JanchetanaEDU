@@ -81,34 +81,36 @@ export function AlumniRegistrationForm() {
                                 }
                             </div>
                         </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="email">Email *</Label>
-                            <Input
-                                id="email"
-                                name="email"
-                                type="email"
-                                placeholder="john.doe@example.com"
-                                aria-describedby="email-error"
-                            />
-                            {
-                                state.errors?.email && (
-                                    <FormErrorMessage id="email-error" errors={state.errors.email} />
-                                )
-                            }
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="phone">Phone Number</Label>
-                            <Input
-                                id="phone"
-                                name="phone"
-                                placeholder="+977 9847370585"
-                                aria-describedby="phone-error"
-                            />
-                            {
-                                state.errors?.phone && (
-                                    <FormErrorMessage id="phone-error" errors={state.errors.phone} />
-                                )
-                            }
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                            <div className="space-y-2">
+                                <Label htmlFor="email">Email *</Label>
+                                <Input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="john.doe@example.com"
+                                    aria-describedby="email-error"
+                                />
+                                {
+                                    state.errors?.email && (
+                                        <FormErrorMessage id="email-error" errors={state.errors.email} />
+                                    )
+                                }
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="phone">Phone Number</Label>
+                                <Input
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="+977 9847370585"
+                                    aria-describedby="phone-error"
+                                />
+                                {
+                                    state.errors?.phone && (
+                                        <FormErrorMessage id="phone-error" errors={state.errors.phone} />
+                                    )
+                                }
+                            </div>
                         </div>
                     </div>
 
@@ -222,30 +224,31 @@ export function AlumniRegistrationForm() {
 
                     <div className="space-y-4">
                         <h3 className="text-sm font-medium">Social Media (Optional)</h3>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="linkedin">LinkedIn</Label>
-                            <Input
-                                id="linkedin"
-                                name="linkedin"
-                                placeholder="https://linkedin.com/in/username"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="twitter">Twitter</Label>
-                            <Input
-                                id="twitter"
-                                name="twitter"
-                                placeholder="https://twitter.com/username"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="facebook">Facebook</Label>
-                            <Input
-                                id="facebook"
-                                name="facebook"
-                                placeholder="https://facebook.com/username"
-                            />
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                            <div className="space-y-2">
+                                <Label htmlFor="linkedin">LinkedIn</Label>
+                                <Input
+                                    id="linkedin"
+                                    name="linkedin"
+                                    placeholder="https://linkedin.com/in/username"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="twitter">Twitter</Label>
+                                <Input
+                                    id="twitter"
+                                    name="twitter"
+                                    placeholder="https://twitter.com/username"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="facebook">Facebook</Label>
+                                <Input
+                                    id="facebook"
+                                    name="facebook"
+                                    placeholder="https://facebook.com/username"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="flex justify-end gap-2">

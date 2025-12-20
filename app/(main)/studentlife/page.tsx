@@ -1,14 +1,20 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { 
-    Card, CardContent, CardDescription, CardHeader, CardTitle 
+    Card, CardContent, CardHeader 
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import SmoothScroll from "@/components/smoothscroll"
+import { getEvents } from "@/actions/event.action"
+import { format } from "date-fns"
+import { 
+    Calendar, MapPin, Clock, Loader2, ArrowRight, Users, Sparkles 
+} from "lucide-react"
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -133,37 +139,43 @@ const testimonials = [
         image: "https://t3.ftcdn.net/jpg/03/01/24/58/360_F_301245840_zwJpFB1MCmJkTg1tMDK9pFnCwce6dQ1T.webp",
     },
 ]
-const events = [
-    {
-        title: "Spring Arts Festival",
-        date: "May 15-17, 2024",
-        description:
-            "A celebration of student creativity featuring art exhibitions, musical performances, theater productions, and dance recitals.",
-        category: "Arts",
-    },
-    {
-        title: "Homecoming Game & Dance",
-        date: "October 12, 2024",
-        description:
-            "Join us for the annual homecoming football game followed by the homecoming dance. A beloved school tradition!",
-        category: "Athletics",
-    },
-    {
-        title: "Science & Technology Fair",
-        date: "April 5, 2024",
-        description:
-            "Students showcase their innovative science projects and technological solutions to real-world problems.",
-        category: "Academic",
-    },
-]
+interface StudentLifeEvent {
+    id: string;
+    title: string;
+    description: string;
+    date: Date;
+    location?: string | null;
+}
 
 export default function StudentLifePage() {
+    const [events, setEvents] = useState<StudentLifeEvent[]>([]);
+    const [isLoadingEvents, setIsLoadingEvents] = useState(true);
+
+    useEffect(() => {
+        async function fetchEvents() {
+            try {
+                const result = await getEvents('SCHOOL');
+                if (result.success && result.events) {
+                    // Get upcoming events (next 6 events)
+                    const upcomingEvents = result.events
+                        .filter(event => new Date(event.date) >= new Date())
+                        .slice(0, 6) as StudentLifeEvent[];
+                    setEvents(upcomingEvents);
+                }
+            } catch (error) {
+                console.error("Failed to fetch events:", error);
+            } finally {
+                setIsLoadingEvents(false);
+            }
+        }
+        fetchEvents();
+    }, []);
     return (
         <SmoothScroll>
             <div className="flex min-h-screen flex-col">
                 <main className="flex-1">
                     <section className="relative">
-                        <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
+                        <div className="relative h-[350px] md:h-[450px] w-full overflow-hidden">
                             <Image
                                 src="/studentlife/mainimage.jpeg"
                                 alt="Students enjoying campus life"
@@ -171,29 +183,39 @@ export default function StudentLifePage() {
                                 priority
                                 className="object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
-                            <div className="container relative z-10 flex h-full flex-col items-center justify-center text-white text-center">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)]" />
+                            <div className="container relative z-10 flex h-full flex-col items-center justify-center text-white text-center max-w-6xl mx-auto px-4">
                                 <motion.div
-                                    className="max-w-2xl space-y-4"
-                                    initial={{ opacity: 0, y: 20 }}
+                                    className="max-w-3xl space-y-6"
+                                    initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6 }}
+                                    transition={{ duration: 0.8 }}
                                 >
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 0.2, duration: 0.6 }}
+                                    >
+                                        <Badge className="mb-4 px-4 py-1.5 text-sm bg-white/20 text-white border-white/30 backdrop-blur-sm flex items-center gap-2 mx-auto w-fit">
+                                            <Users className="w-3 h-3" />
+                                            Campus Life
+                                        </Badge>
+                                    </motion.div>
                                     <motion.h1
-                                        className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+                                        className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl drop-shadow-2xl"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.2, duration: 0.8 }}
+                                        transition={{ delay: 0.3, duration: 0.8 }}
                                     >
                                         Student Life
                                     </motion.h1>
                                     <motion.p
-                                        className="text-base md:text-lg text-white/90 max-w-md mx-auto"
+                                        className="text-lg md:text-xl text-white/95 max-w-2xl mx-auto leading-relaxed drop-shadow-lg"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.4, duration: 0.8 }}
+                                        transition={{ delay: 0.5, duration: 0.8 }}
                                     >
-                                        Discover the vibrant community and diverse experiences that make Horizon Academy special
+                                        Discover the vibrant community and diverse experiences that make Janchetana School special
                                     </motion.p>
                                 </motion.div>
                             </div>
@@ -496,17 +518,23 @@ export default function StudentLifePage() {
                             </Tabs>
                         </div>
                     </section> */}
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    <section className="max-w-7xl mx-auto py-16 md:py-20 px-4">
                         <motion.div
-                            className="text-center max-w-2xl mx-auto mb-12"
+                            className="text-center max-w-3xl mx-auto mb-16"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-3xl font-bold tracking-tight mb-4">Student Voices</h2>
-                            <p className="text-lg text-muted-foreground">
-                                Hear what our students have to say about their experiences at Horizon Academy
+                            <Badge className="px-4 py-1.5 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800 mb-4">
+                                <Sparkles className="w-3 h-3 mr-2" />
+                                Testimonials
+                            </Badge>
+                            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
+                                Student Voices
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                                Hear what our students have to say about their experiences at Janchetana School
                             </p>
                         </motion.div>
                         <motion.div
@@ -523,80 +551,152 @@ export default function StudentLifePage() {
                             }
                         </motion.div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    <section className="max-w-7xl mx-auto py-16 md:py-20 px-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
                         <div className="container">
                             <motion.div
-                                className="text-center max-w-2xl mx-auto mb-12"
+                                className="text-center max-w-3xl mx-auto mb-16"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5 }}
+                                transition={{ duration: 0.6 }}
                             >
-                                <h2 className="text-3xl font-bold tracking-tight mb-4">Upcoming Campus Events</h2>
-                                <p className="text-lg text-muted-foreground">Join us for these exciting events happening on campus</p>
+                                <Badge className="px-4 py-1.5 text-sm bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800 mb-4">
+                                    <Calendar className="w-3 h-3 mr-2" />
+                                    Campus Calendar
+                                </Badge>
+                                <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                                    Upcoming Campus Events
+                                </h2>
+                                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    Join us for these exciting events happening on campus and be part of our vibrant community
+                                </p>
                             </motion.div>
-                            <motion.div
-                                className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-                                variants={staggerContainer}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                            >
-                                {
-                                    events.map((event, index) => (
-                                        <motion.div key={index} variants={fadeInUp}>
-                                            <Card className="h-full">
-                                                <CardHeader>
-                                                    <div className="flex justify-between items-start">
-                                                        <CardTitle>{event.title}</CardTitle>
-                                                        <Badge>{event.category}</Badge>
+                            
+                            {isLoadingEvents ? (
+                                <div className="flex items-center justify-center py-20">
+                                    <Loader2 className="h-8 w-8 animate-spin text-indigo-600" />
+                                    <span className="ml-3 text-lg text-gray-600 dark:text-gray-400">Loading events...</span>
+                                </div>
+                            ) : events.length > 0 ? (
+                                <motion.div
+                                    className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+                                    variants={staggerContainer}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                >
+                                    {events.map((event, index) => {
+                                        const eventDate = new Date(event.date);
+                                        const isPast = eventDate < new Date();
+                                        
+                                        return (
+                                            <motion.div 
+                                                key={event.id} 
+                                                variants={fadeInUp}
+                                                className="group"
+                                            >
+                                                <Card className="h-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden">
+                                                    <div className="relative h-48 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 overflow-hidden">
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                                                        <div className="absolute top-4 right-4">
+                                                            {!isPast && (
+                                                                <Badge className="bg-green-500 text-white border-0 shadow-lg">
+                                                                    Upcoming
+                                                                </Badge>
+                                                            )}
+                                                        </div>
+                                                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                                                            <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 drop-shadow-lg">
+                                                                {event.title}
+                                                            </h3>
+                                                        </div>
                                                     </div>
-                                                    <CardDescription>{event.date}</CardDescription>
-                                                </CardHeader>
-                                                <CardContent>
-                                                    <p className="text-muted-foreground">{event.description}</p>
-                                                </CardContent>
-                                                {/* <CardFooter>
-                                            <Button variant="outline" size="sm" className="gap-1">
-                                                Learn more <ChevronRight className="h-4 w-4" />
-                                            </Button>
-                                        </CardFooter> */}
-                                            </Card>
-                                        </motion.div>
-                                    ))
-                                }
-                            </motion.div>
-                            {/* <motion.div
-                                className="flex justify-center mt-8"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.4, duration: 0.5 }}
-                            >
-                                <Button variant="outline" className="gap-1">
-                                    View All Events <Calendar className="h-4 w-4" />
-                                </Button>
-                            </motion.div> */}
+                                                    <CardHeader className="pb-3">
+                                                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                                                            <Calendar className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                                                            <span className="font-semibold">
+                                                                {format(eventDate, "MMMM d, yyyy")}
+                                                            </span>
+                                                            <span className="text-gray-300 dark:text-gray-600">•</span>
+                                                            <span>{format(eventDate, "EEEE")}</span>
+                                                        </div>
+                                                        {event.location && (
+                                                            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
+                                                                <MapPin className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                                                                <span>{event.location}</span>
+                                                            </div>
+                                                        )}
+                                                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
+                                                            <Clock className="w-4 h-4 text-pink-600 dark:text-pink-400" />
+                                                            <span>{format(eventDate, "h:mm a")}</span>
+                                                        </div>
+                                                    </CardHeader>
+                                                    <CardContent>
+                                                        <p className="text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed">
+                                                            {event.description}
+                                                        </p>
+                                                        <div className="flex items-center text-indigo-600 dark:text-indigo-400 font-medium mt-4 group-hover:gap-2 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                                                            <span className="text-sm">Learn More</span>
+                                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                        </div>
+                                                    </CardContent>
+                                                </Card>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    className="text-center py-20"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-indigo-100 dark:bg-indigo-900/30 mb-6">
+                                        <Calendar className="w-10 h-10 text-indigo-500 dark:text-indigo-400" />
+                                    </div>
+                                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">No Upcoming Events</h3>
+                                    <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+                                        Check back soon for exciting campus events and activities!
+                                    </p>
+                                </motion.div>
+                            )}
                         </div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    <section className="max-w-7xl mx-auto py-16 md:py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-800">
                         <motion.div
-                            className="max-w-3xl mx-auto text-center space-y-6"
+                            className="max-w-4xl mx-auto text-center space-y-8"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-3xl font-bold tracking-tight">Ready to Get Involved?</h2>
-                            <p className="text-lg text-muted-foreground">
-                                Explore our student activities, join a club, or attend an upcoming event to experience the vibrant
-                                community at Horizon Academy.
-                            </p>
+                            <div>
+                                <Badge className="px-4 py-1.5 text-sm bg-white/80 dark:bg-gray-800/80 text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-700 mb-4">
+                                    Join Our Community
+                                </Badge>
+                                <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                                    Ready to Get Involved?
+                                </h2>
+                                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+                                    Explore our student activities, join a club, or attend an upcoming event to experience the vibrant
+                                    community at Janchetana School.
+                                </p>
+                            </div>
                             <div className="flex flex-wrap justify-center gap-4 pt-4">
-                                <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                                <Button 
+                                    size="lg" 
+                                    asChild 
+                                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 px-8"
+                                >
                                     <Link href="/admissions">Admission</Link>
                                 </Button>
-                                <Button size="lg" variant="outline">
+                                <Button 
+                                    size="lg" 
+                                    variant="outline"
+                                    className="border-2 border-gray-300 dark:border-gray-600 hover:border-indigo-400 dark:hover:border-indigo-500 px-8 shadow-md hover:shadow-lg transition-all duration-300"
+                                    asChild
+                                >
                                     <Link href="/aboutus">
                                         About Us
                                     </Link>
@@ -742,20 +842,30 @@ function TestimonialCard({
 }) {
     return (
         <motion.div variants={fadeInUp}>
-            <Card className="h-full">
-                <CardContent className="p-6">
+            <Card className="h-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl group">
+                <CardContent className="p-8">
                     <div className="flex flex-col h-full">
-                        <div className="mb-4">
-                            <p className="italic text-muted-foreground">&quot;{quote}&quot;</p>
-                        </div>
-                        <div className="mt-auto pt-4 flex items-center gap-3">
-                            <div className="relative h-10 w-10 rounded-full overflow-hidden">
-                                <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
+                        <div className="mb-6 relative">
+                            <div className="absolute -top-2 -left-2 text-6xl text-purple-200 dark:text-purple-900/30 font-serif leading-none opacity-50">
+                                &quot;
                             </div>
-                            <div>
-                                <p className="font-medium text-sm">{name}</p>
-                                <p className="text-xs text-muted-foreground">{grade}</p>
-                                <p className="text-xs text-muted-foreground">{activities}</p>
+                            <p className="italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed relative z-10 pl-6">
+                                {quote}
+                            </p>
+                        </div>
+                        <div className="mt-auto pt-6 border-t border-gray-200 dark:border-gray-700 flex items-center gap-4">
+                            <div className="relative h-14 w-14 rounded-full overflow-hidden ring-2 ring-purple-200 dark:ring-purple-800 group-hover:ring-purple-400 dark:group-hover:ring-purple-600 transition-all duration-300">
+                                <Image 
+                                    src={image || "/placeholder.svg"} 
+                                    alt={name} 
+                                    fill 
+                                    className="object-cover" 
+                                />
+                            </div>
+                            <div className="flex-1">
+                                <p className="font-semibold text-gray-900 dark:text-white">{name}</p>
+                                <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">{grade}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{activities}</p>
                             </div>
                         </div>
                     </div>

@@ -85,7 +85,7 @@ export function VolunteerSheet({ children }: VolunteerSheetProps) {
                                 <SelectValue placeholder="Choose an opportunity" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="">None - General Inquiry</SelectItem>
+                                <SelectItem value="General">None - General Inquiry</SelectItem>
                                 {
                                     opportunities.map((opp) => (
                                         <SelectItem key={opp.id} value={opp.id}>

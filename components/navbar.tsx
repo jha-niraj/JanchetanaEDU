@@ -82,10 +82,10 @@ export function MainNav() {
                             </div>
                             <div>
                                 <h1 className="text-xl font-bold">
-                                    <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+                                    <span className="text-black dark:text-white">
                                         Janchetana
                                     </span>
-                                    <span className="text-xs font-normal block bg-gradient-to-r from-teal-500 to-cyan-800 bg-clip-text text-transparent">
+                                    <span className="text-xs font-normal block text-black dark:text-white">
                                         School of Excellence
                                     </span>
                                 </h1>

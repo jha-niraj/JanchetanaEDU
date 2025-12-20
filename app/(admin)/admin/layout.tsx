@@ -1,6 +1,6 @@
 "use client"
 
-import { Sidebar } from "@/components/(dashboard)/adminsidebar"
+import { Sidebar } from "@/components/(admin)/adminsidebar"
 import { useState, useEffect } from "react"
 import {
     Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle
@@ -85,8 +85,8 @@ export default function DashboardLayout({
     return (
         <div className="min-h-screen bg-white dark:bg-neutral-950">
             <Sidebar />
-            <main className="min-h-screen md:pl-72 pt-16 md:pt-0">
-                <div className="container max-w-7xl mx-auto p-6">
+            <main className="min-h-screen md:pl-60 pt-16 md:pt-0">
+                <div className="w-full mx-auto p-6">
                     {children}
                 </div>
             </main>

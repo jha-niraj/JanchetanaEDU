@@ -11,11 +11,6 @@ interface CloudinaryUploadResult {
 
 export async function uploadImageToCloudinary(formData: FormData) {
     try {
-        const session = await auth();
-        if (!session?.user?.id) {
-            return { success: false, message: "Authentication required", url: null };
-        }
-
         const file = formData.get('file') as File;
         if (!file) {
             return { success: false, message: "No file provided", url: null };
