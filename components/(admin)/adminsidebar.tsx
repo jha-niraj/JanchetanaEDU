@@ -12,7 +12,7 @@ import { useMediaQuery } from "@/hooks/use-media-query"
 import { useState, useEffect } from "react"
 
 const navItems = [
-    { href: "/admin/dashboard", label: "Dashboard", icon: Home },
+    { href: "/admin", label: "Dashboard", icon: Home },
     { href: "/admin/teachers", label: "Teachers", icon: Users },
     { href: "/admin/articles", label: "Articles", icon: BookText }, 
     { href: "/admin/notices", label: "Notices", icon: Bell },
