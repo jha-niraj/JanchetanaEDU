@@ -225,3 +225,33 @@ export async function subscribeToNewsletter(
         }
     }
 }
+
+/**
+ * Get all newsletter subscriptions
+ */
+export async function getAllNewsletterSubscriptions() {
+    try {
+        const subscriptions = await prisma.newsletterSubscription.findMany({
+            orderBy: { createdAt: 'desc' }
+        })
+        return { success: true, subscriptions }
+    } catch (err) {
+        console.error("Error fetching newsletter subscriptions:", err)
+        return { success: false, error: "Failed to fetch newsletter subscriptions" }
+    }
+}
+
+/**
+ * Get all alumni registrations
+ */
+export async function getAllAlumniRegistrations() {
+    try {
+        const registrations = await prisma.alumniRegistration.findMany({
+            orderBy: { createdAt: 'desc' }
+        })
+        return { success: true, registrations }
+    } catch (err) {
+        console.error("Error fetching alumni registrations:", err)
+        return { success: false, error: "Failed to fetch alumni registrations" }
+    }
+}

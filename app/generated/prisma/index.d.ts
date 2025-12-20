@@ -58,6 +58,31 @@ export type ContactInquiry = $Result.DefaultSelection<Prisma.$ContactInquiryPayl
  * 
  */
 export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
+/**
+ * Model Event
+ * 
+ */
+export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
+/**
+ * Model VolunteerOpportunity
+ * 
+ */
+export type VolunteerOpportunity = $Result.DefaultSelection<Prisma.$VolunteerOpportunityPayload>
+/**
+ * Model VolunteerRequest
+ * 
+ */
+export type VolunteerRequest = $Result.DefaultSelection<Prisma.$VolunteerRequestPayload>
+/**
+ * Model MentorshipRequest
+ * 
+ */
+export type MentorshipRequest = $Result.DefaultSelection<Prisma.$MentorshipRequestPayload>
+/**
+ * Model DonationRequest
+ * 
+ */
+export type DonationRequest = $Result.DefaultSelection<Prisma.$DonationRequestPayload>
 
 /**
  * Enums
@@ -78,6 +103,14 @@ export const AdmissionType: {
 
 export type AdmissionType = (typeof AdmissionType)[keyof typeof AdmissionType]
 
+
+export const EventType: {
+  SCHOOL: 'SCHOOL',
+  ALUMNI: 'ALUMNI'
+};
+
+export type EventType = (typeof EventType)[keyof typeof EventType]
+
 }
 
 export type Role = $Enums.Role
@@ -87,6 +120,10 @@ export const Role: typeof $Enums.Role
 export type AdmissionType = $Enums.AdmissionType
 
 export const AdmissionType: typeof $Enums.AdmissionType
+
+export type EventType = $Enums.EventType
+
+export const EventType: typeof $Enums.EventType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -295,6 +332,56 @@ export class PrismaClient<
     * ```
     */
   get account(): Prisma.AccountDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.event`: Exposes CRUD operations for the **Event** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Events
+    * const events = await prisma.event.findMany()
+    * ```
+    */
+  get event(): Prisma.EventDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.volunteerOpportunity`: Exposes CRUD operations for the **VolunteerOpportunity** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VolunteerOpportunities
+    * const volunteerOpportunities = await prisma.volunteerOpportunity.findMany()
+    * ```
+    */
+  get volunteerOpportunity(): Prisma.VolunteerOpportunityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.volunteerRequest`: Exposes CRUD operations for the **VolunteerRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VolunteerRequests
+    * const volunteerRequests = await prisma.volunteerRequest.findMany()
+    * ```
+    */
+  get volunteerRequest(): Prisma.VolunteerRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mentorshipRequest`: Exposes CRUD operations for the **MentorshipRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MentorshipRequests
+    * const mentorshipRequests = await prisma.mentorshipRequest.findMany()
+    * ```
+    */
+  get mentorshipRequest(): Prisma.MentorshipRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.donationRequest`: Exposes CRUD operations for the **DonationRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DonationRequests
+    * const donationRequests = await prisma.donationRequest.findMany()
+    * ```
+    */
+  get donationRequest(): Prisma.DonationRequestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -744,7 +831,12 @@ export namespace Prisma {
     AlumniRegistration: 'AlumniRegistration',
     NewsletterSubscription: 'NewsletterSubscription',
     ContactInquiry: 'ContactInquiry',
-    Account: 'Account'
+    Account: 'Account',
+    Event: 'Event',
+    VolunteerOpportunity: 'VolunteerOpportunity',
+    VolunteerRequest: 'VolunteerRequest',
+    MentorshipRequest: 'MentorshipRequest',
+    DonationRequest: 'DonationRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -763,7 +855,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "teacher" | "article" | "notice" | "admissionInquiry" | "alumniRegistration" | "newsletterSubscription" | "contactInquiry" | "account"
+      modelProps: "user" | "teacher" | "article" | "notice" | "admissionInquiry" | "alumniRegistration" | "newsletterSubscription" | "contactInquiry" | "account" | "event" | "volunteerOpportunity" | "volunteerRequest" | "mentorshipRequest" | "donationRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1433,6 +1525,376 @@ export namespace Prisma {
           }
         }
       }
+      Event: {
+        payload: Prisma.$EventPayload<ExtArgs>
+        fields: Prisma.EventFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EventFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EventFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+          }
+          findFirst: {
+            args: Prisma.EventFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EventFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+          }
+          findMany: {
+            args: Prisma.EventFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>[]
+          }
+          create: {
+            args: Prisma.EventCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+          }
+          createMany: {
+            args: Prisma.EventCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EventCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>[]
+          }
+          delete: {
+            args: Prisma.EventDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+          }
+          update: {
+            args: Prisma.EventUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+          }
+          deleteMany: {
+            args: Prisma.EventDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EventUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EventUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>[]
+          }
+          upsert: {
+            args: Prisma.EventUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+          }
+          aggregate: {
+            args: Prisma.EventAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvent>
+          }
+          groupBy: {
+            args: Prisma.EventGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EventGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EventCountArgs<ExtArgs>
+            result: $Utils.Optional<EventCountAggregateOutputType> | number
+          }
+        }
+      }
+      VolunteerOpportunity: {
+        payload: Prisma.$VolunteerOpportunityPayload<ExtArgs>
+        fields: Prisma.VolunteerOpportunityFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VolunteerOpportunityFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VolunteerOpportunityFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>
+          }
+          findFirst: {
+            args: Prisma.VolunteerOpportunityFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VolunteerOpportunityFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>
+          }
+          findMany: {
+            args: Prisma.VolunteerOpportunityFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>[]
+          }
+          create: {
+            args: Prisma.VolunteerOpportunityCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>
+          }
+          createMany: {
+            args: Prisma.VolunteerOpportunityCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VolunteerOpportunityCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>[]
+          }
+          delete: {
+            args: Prisma.VolunteerOpportunityDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>
+          }
+          update: {
+            args: Prisma.VolunteerOpportunityUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>
+          }
+          deleteMany: {
+            args: Prisma.VolunteerOpportunityDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VolunteerOpportunityUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VolunteerOpportunityUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>[]
+          }
+          upsert: {
+            args: Prisma.VolunteerOpportunityUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerOpportunityPayload>
+          }
+          aggregate: {
+            args: Prisma.VolunteerOpportunityAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVolunteerOpportunity>
+          }
+          groupBy: {
+            args: Prisma.VolunteerOpportunityGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VolunteerOpportunityGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VolunteerOpportunityCountArgs<ExtArgs>
+            result: $Utils.Optional<VolunteerOpportunityCountAggregateOutputType> | number
+          }
+        }
+      }
+      VolunteerRequest: {
+        payload: Prisma.$VolunteerRequestPayload<ExtArgs>
+        fields: Prisma.VolunteerRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VolunteerRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VolunteerRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.VolunteerRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VolunteerRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>
+          }
+          findMany: {
+            args: Prisma.VolunteerRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>[]
+          }
+          create: {
+            args: Prisma.VolunteerRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>
+          }
+          createMany: {
+            args: Prisma.VolunteerRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VolunteerRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.VolunteerRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>
+          }
+          update: {
+            args: Prisma.VolunteerRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.VolunteerRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VolunteerRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VolunteerRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.VolunteerRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolunteerRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.VolunteerRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVolunteerRequest>
+          }
+          groupBy: {
+            args: Prisma.VolunteerRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VolunteerRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VolunteerRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<VolunteerRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      MentorshipRequest: {
+        payload: Prisma.$MentorshipRequestPayload<ExtArgs>
+        fields: Prisma.MentorshipRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MentorshipRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MentorshipRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.MentorshipRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MentorshipRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>
+          }
+          findMany: {
+            args: Prisma.MentorshipRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>[]
+          }
+          create: {
+            args: Prisma.MentorshipRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>
+          }
+          createMany: {
+            args: Prisma.MentorshipRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MentorshipRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.MentorshipRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>
+          }
+          update: {
+            args: Prisma.MentorshipRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.MentorshipRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MentorshipRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MentorshipRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.MentorshipRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MentorshipRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.MentorshipRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMentorshipRequest>
+          }
+          groupBy: {
+            args: Prisma.MentorshipRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MentorshipRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MentorshipRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<MentorshipRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      DonationRequest: {
+        payload: Prisma.$DonationRequestPayload<ExtArgs>
+        fields: Prisma.DonationRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DonationRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DonationRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.DonationRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DonationRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>
+          }
+          findMany: {
+            args: Prisma.DonationRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>[]
+          }
+          create: {
+            args: Prisma.DonationRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>
+          }
+          createMany: {
+            args: Prisma.DonationRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DonationRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.DonationRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>
+          }
+          update: {
+            args: Prisma.DonationRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.DonationRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DonationRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DonationRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.DonationRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DonationRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.DonationRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDonationRequest>
+          }
+          groupBy: {
+            args: Prisma.DonationRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DonationRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DonationRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<DonationRequestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1538,6 +2000,11 @@ export namespace Prisma {
     newsletterSubscription?: NewsletterSubscriptionOmit
     contactInquiry?: ContactInquiryOmit
     account?: AccountOmit
+    event?: EventOmit
+    volunteerOpportunity?: VolunteerOpportunityOmit
+    volunteerRequest?: VolunteerRequestOmit
+    mentorshipRequest?: MentorshipRequestOmit
+    donationRequest?: DonationRequestOmit
   }
 
   /* Types for Logging */
@@ -1690,6 +2157,37 @@ export namespace Prisma {
    */
   export type TeacherCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ArticleWhereInput
+  }
+
+
+  /**
+   * Count Type VolunteerOpportunityCountOutputType
+   */
+
+  export type VolunteerOpportunityCountOutputType = {
+    volunteerRequests: number
+  }
+
+  export type VolunteerOpportunityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    volunteerRequests?: boolean | VolunteerOpportunityCountOutputTypeCountVolunteerRequestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * VolunteerOpportunityCountOutputType without action
+   */
+  export type VolunteerOpportunityCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunityCountOutputType
+     */
+    select?: VolunteerOpportunityCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * VolunteerOpportunityCountOutputType without action
+   */
+  export type VolunteerOpportunityCountOutputTypeCountVolunteerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VolunteerRequestWhereInput
   }
 
 
@@ -11730,6 +12228,5450 @@ export namespace Prisma {
 
 
   /**
+   * Model Event
+   */
+
+  export type AggregateEvent = {
+    _count: EventCountAggregateOutputType | null
+    _min: EventMinAggregateOutputType | null
+    _max: EventMaxAggregateOutputType | null
+  }
+
+  export type EventMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    date: Date | null
+    location: string | null
+    eventType: $Enums.EventType | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EventMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    date: Date | null
+    location: string | null
+    eventType: $Enums.EventType | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EventCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    date: number
+    location: number
+    eventType: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EventMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    date?: true
+    location?: true
+    eventType?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EventMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    date?: true
+    location?: true
+    eventType?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EventCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    date?: true
+    location?: true
+    eventType?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EventAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Event to aggregate.
+     */
+    where?: EventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Events
+    **/
+    _count?: true | EventCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EventMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EventMaxAggregateInputType
+  }
+
+  export type GetEventAggregateType<T extends EventAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvent[P]>
+      : GetScalarType<T[P], AggregateEvent[P]>
+  }
+
+
+
+
+  export type EventGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventWhereInput
+    orderBy?: EventOrderByWithAggregationInput | EventOrderByWithAggregationInput[]
+    by: EventScalarFieldEnum[] | EventScalarFieldEnum
+    having?: EventScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EventCountAggregateInputType | true
+    _min?: EventMinAggregateInputType
+    _max?: EventMaxAggregateInputType
+  }
+
+  export type EventGroupByOutputType = {
+    id: string
+    title: string
+    description: string
+    date: Date
+    location: string | null
+    eventType: $Enums.EventType
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: EventCountAggregateOutputType | null
+    _min: EventMinAggregateOutputType | null
+    _max: EventMaxAggregateOutputType | null
+  }
+
+  type GetEventGroupByPayload<T extends EventGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EventGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EventGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EventGroupByOutputType[P]>
+            : GetScalarType<T[P], EventGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    date?: boolean
+    location?: boolean
+    eventType?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["event"]>
+
+  export type EventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    date?: boolean
+    location?: boolean
+    eventType?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["event"]>
+
+  export type EventSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    date?: boolean
+    location?: boolean
+    eventType?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["event"]>
+
+  export type EventSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    date?: boolean
+    location?: boolean
+    eventType?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "date" | "location" | "eventType" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
+
+  export type $EventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Event"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string
+      date: Date
+      location: string | null
+      eventType: $Enums.EventType
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["event"]>
+    composites: {}
+  }
+
+  type EventGetPayload<S extends boolean | null | undefined | EventDefaultArgs> = $Result.GetResult<Prisma.$EventPayload, S>
+
+  type EventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EventFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EventCountAggregateInputType | true
+    }
+
+  export interface EventDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Event'], meta: { name: 'Event' } }
+    /**
+     * Find zero or one Event that matches the filter.
+     * @param {EventFindUniqueArgs} args - Arguments to find a Event
+     * @example
+     * // Get one Event
+     * const event = await prisma.event.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EventFindUniqueArgs>(args: SelectSubset<T, EventFindUniqueArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Event that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EventFindUniqueOrThrowArgs} args - Arguments to find a Event
+     * @example
+     * // Get one Event
+     * const event = await prisma.event.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EventFindUniqueOrThrowArgs>(args: SelectSubset<T, EventFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventFindFirstArgs} args - Arguments to find a Event
+     * @example
+     * // Get one Event
+     * const event = await prisma.event.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EventFindFirstArgs>(args?: SelectSubset<T, EventFindFirstArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventFindFirstOrThrowArgs} args - Arguments to find a Event
+     * @example
+     * // Get one Event
+     * const event = await prisma.event.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EventFindFirstOrThrowArgs>(args?: SelectSubset<T, EventFindFirstOrThrowArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Events that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Events
+     * const events = await prisma.event.findMany()
+     * 
+     * // Get first 10 Events
+     * const events = await prisma.event.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const eventWithIdOnly = await prisma.event.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EventFindManyArgs>(args?: SelectSubset<T, EventFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Event.
+     * @param {EventCreateArgs} args - Arguments to create a Event.
+     * @example
+     * // Create one Event
+     * const Event = await prisma.event.create({
+     *   data: {
+     *     // ... data to create a Event
+     *   }
+     * })
+     * 
+     */
+    create<T extends EventCreateArgs>(args: SelectSubset<T, EventCreateArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Events.
+     * @param {EventCreateManyArgs} args - Arguments to create many Events.
+     * @example
+     * // Create many Events
+     * const event = await prisma.event.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EventCreateManyArgs>(args?: SelectSubset<T, EventCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Events and returns the data saved in the database.
+     * @param {EventCreateManyAndReturnArgs} args - Arguments to create many Events.
+     * @example
+     * // Create many Events
+     * const event = await prisma.event.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Events and only return the `id`
+     * const eventWithIdOnly = await prisma.event.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EventCreateManyAndReturnArgs>(args?: SelectSubset<T, EventCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Event.
+     * @param {EventDeleteArgs} args - Arguments to delete one Event.
+     * @example
+     * // Delete one Event
+     * const Event = await prisma.event.delete({
+     *   where: {
+     *     // ... filter to delete one Event
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EventDeleteArgs>(args: SelectSubset<T, EventDeleteArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Event.
+     * @param {EventUpdateArgs} args - Arguments to update one Event.
+     * @example
+     * // Update one Event
+     * const event = await prisma.event.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EventUpdateArgs>(args: SelectSubset<T, EventUpdateArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Events.
+     * @param {EventDeleteManyArgs} args - Arguments to filter Events to delete.
+     * @example
+     * // Delete a few Events
+     * const { count } = await prisma.event.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EventDeleteManyArgs>(args?: SelectSubset<T, EventDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Events.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Events
+     * const event = await prisma.event.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EventUpdateManyArgs>(args: SelectSubset<T, EventUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Events and returns the data updated in the database.
+     * @param {EventUpdateManyAndReturnArgs} args - Arguments to update many Events.
+     * @example
+     * // Update many Events
+     * const event = await prisma.event.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Events and only return the `id`
+     * const eventWithIdOnly = await prisma.event.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EventUpdateManyAndReturnArgs>(args: SelectSubset<T, EventUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Event.
+     * @param {EventUpsertArgs} args - Arguments to update or create a Event.
+     * @example
+     * // Update or create a Event
+     * const event = await prisma.event.upsert({
+     *   create: {
+     *     // ... data to create a Event
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Event we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EventUpsertArgs>(args: SelectSubset<T, EventUpsertArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Events.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventCountArgs} args - Arguments to filter Events to count.
+     * @example
+     * // Count the number of Events
+     * const count = await prisma.event.count({
+     *   where: {
+     *     // ... the filter for the Events we want to count
+     *   }
+     * })
+    **/
+    count<T extends EventCountArgs>(
+      args?: Subset<T, EventCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EventCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Event.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EventAggregateArgs>(args: Subset<T, EventAggregateArgs>): Prisma.PrismaPromise<GetEventAggregateType<T>>
+
+    /**
+     * Group by Event.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EventGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EventGroupByArgs['orderBy'] }
+        : { orderBy?: EventGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EventGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEventGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Event model
+   */
+  readonly fields: EventFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Event.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Event model
+   */
+  interface EventFieldRefs {
+    readonly id: FieldRef<"Event", 'String'>
+    readonly title: FieldRef<"Event", 'String'>
+    readonly description: FieldRef<"Event", 'String'>
+    readonly date: FieldRef<"Event", 'DateTime'>
+    readonly location: FieldRef<"Event", 'String'>
+    readonly eventType: FieldRef<"Event", 'EventType'>
+    readonly isActive: FieldRef<"Event", 'Boolean'>
+    readonly createdAt: FieldRef<"Event", 'DateTime'>
+    readonly updatedAt: FieldRef<"Event", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Event findUnique
+   */
+  export type EventFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Filter, which Event to fetch.
+     */
+    where: EventWhereUniqueInput
+  }
+
+  /**
+   * Event findUniqueOrThrow
+   */
+  export type EventFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Filter, which Event to fetch.
+     */
+    where: EventWhereUniqueInput
+  }
+
+  /**
+   * Event findFirst
+   */
+  export type EventFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Filter, which Event to fetch.
+     */
+    where?: EventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Events.
+     */
+    cursor?: EventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Events.
+     */
+    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+  }
+
+  /**
+   * Event findFirstOrThrow
+   */
+  export type EventFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Filter, which Event to fetch.
+     */
+    where?: EventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Events.
+     */
+    cursor?: EventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Events.
+     */
+    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+  }
+
+  /**
+   * Event findMany
+   */
+  export type EventFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Filter, which Events to fetch.
+     */
+    where?: EventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Events to fetch.
+     */
+    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Events.
+     */
+    cursor?: EventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Events from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Events.
+     */
+    skip?: number
+    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+  }
+
+  /**
+   * Event create
+   */
+  export type EventCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Event.
+     */
+    data: XOR<EventCreateInput, EventUncheckedCreateInput>
+  }
+
+  /**
+   * Event createMany
+   */
+  export type EventCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Events.
+     */
+    data: EventCreateManyInput | EventCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Event createManyAndReturn
+   */
+  export type EventCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * The data used to create many Events.
+     */
+    data: EventCreateManyInput | EventCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Event update
+   */
+  export type EventUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Event.
+     */
+    data: XOR<EventUpdateInput, EventUncheckedUpdateInput>
+    /**
+     * Choose, which Event to update.
+     */
+    where: EventWhereUniqueInput
+  }
+
+  /**
+   * Event updateMany
+   */
+  export type EventUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Events.
+     */
+    data: XOR<EventUpdateManyMutationInput, EventUncheckedUpdateManyInput>
+    /**
+     * Filter which Events to update
+     */
+    where?: EventWhereInput
+    /**
+     * Limit how many Events to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event updateManyAndReturn
+   */
+  export type EventUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * The data used to update Events.
+     */
+    data: XOR<EventUpdateManyMutationInput, EventUncheckedUpdateManyInput>
+    /**
+     * Filter which Events to update
+     */
+    where?: EventWhereInput
+    /**
+     * Limit how many Events to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event upsert
+   */
+  export type EventUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Event to update in case it exists.
+     */
+    where: EventWhereUniqueInput
+    /**
+     * In case the Event found by the `where` argument doesn't exist, create a new Event with this data.
+     */
+    create: XOR<EventCreateInput, EventUncheckedCreateInput>
+    /**
+     * In case the Event was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EventUpdateInput, EventUncheckedUpdateInput>
+  }
+
+  /**
+   * Event delete
+   */
+  export type EventDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Filter which Event to delete.
+     */
+    where: EventWhereUniqueInput
+  }
+
+  /**
+   * Event deleteMany
+   */
+  export type EventDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Events to delete
+     */
+    where?: EventWhereInput
+    /**
+     * Limit how many Events to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Event without action
+   */
+  export type EventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model VolunteerOpportunity
+   */
+
+  export type AggregateVolunteerOpportunity = {
+    _count: VolunteerOpportunityCountAggregateOutputType | null
+    _min: VolunteerOpportunityMinAggregateOutputType | null
+    _max: VolunteerOpportunityMaxAggregateOutputType | null
+  }
+
+  export type VolunteerOpportunityMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    subject: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type VolunteerOpportunityMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    subject: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type VolunteerOpportunityCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    subject: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type VolunteerOpportunityMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    subject?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type VolunteerOpportunityMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    subject?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type VolunteerOpportunityCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    subject?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type VolunteerOpportunityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VolunteerOpportunity to aggregate.
+     */
+    where?: VolunteerOpportunityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerOpportunities to fetch.
+     */
+    orderBy?: VolunteerOpportunityOrderByWithRelationInput | VolunteerOpportunityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VolunteerOpportunityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerOpportunities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerOpportunities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned VolunteerOpportunities
+    **/
+    _count?: true | VolunteerOpportunityCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VolunteerOpportunityMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VolunteerOpportunityMaxAggregateInputType
+  }
+
+  export type GetVolunteerOpportunityAggregateType<T extends VolunteerOpportunityAggregateArgs> = {
+        [P in keyof T & keyof AggregateVolunteerOpportunity]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVolunteerOpportunity[P]>
+      : GetScalarType<T[P], AggregateVolunteerOpportunity[P]>
+  }
+
+
+
+
+  export type VolunteerOpportunityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VolunteerOpportunityWhereInput
+    orderBy?: VolunteerOpportunityOrderByWithAggregationInput | VolunteerOpportunityOrderByWithAggregationInput[]
+    by: VolunteerOpportunityScalarFieldEnum[] | VolunteerOpportunityScalarFieldEnum
+    having?: VolunteerOpportunityScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VolunteerOpportunityCountAggregateInputType | true
+    _min?: VolunteerOpportunityMinAggregateInputType
+    _max?: VolunteerOpportunityMaxAggregateInputType
+  }
+
+  export type VolunteerOpportunityGroupByOutputType = {
+    id: string
+    title: string
+    description: string
+    subject: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: VolunteerOpportunityCountAggregateOutputType | null
+    _min: VolunteerOpportunityMinAggregateOutputType | null
+    _max: VolunteerOpportunityMaxAggregateOutputType | null
+  }
+
+  type GetVolunteerOpportunityGroupByPayload<T extends VolunteerOpportunityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VolunteerOpportunityGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VolunteerOpportunityGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VolunteerOpportunityGroupByOutputType[P]>
+            : GetScalarType<T[P], VolunteerOpportunityGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VolunteerOpportunitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    subject?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    volunteerRequests?: boolean | VolunteerOpportunity$volunteerRequestsArgs<ExtArgs>
+    _count?: boolean | VolunteerOpportunityCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["volunteerOpportunity"]>
+
+  export type VolunteerOpportunitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    subject?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["volunteerOpportunity"]>
+
+  export type VolunteerOpportunitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    subject?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["volunteerOpportunity"]>
+
+  export type VolunteerOpportunitySelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    subject?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type VolunteerOpportunityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "subject" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["volunteerOpportunity"]>
+  export type VolunteerOpportunityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    volunteerRequests?: boolean | VolunteerOpportunity$volunteerRequestsArgs<ExtArgs>
+    _count?: boolean | VolunteerOpportunityCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type VolunteerOpportunityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type VolunteerOpportunityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $VolunteerOpportunityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "VolunteerOpportunity"
+    objects: {
+      volunteerRequests: Prisma.$VolunteerRequestPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string
+      subject: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["volunteerOpportunity"]>
+    composites: {}
+  }
+
+  type VolunteerOpportunityGetPayload<S extends boolean | null | undefined | VolunteerOpportunityDefaultArgs> = $Result.GetResult<Prisma.$VolunteerOpportunityPayload, S>
+
+  type VolunteerOpportunityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VolunteerOpportunityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VolunteerOpportunityCountAggregateInputType | true
+    }
+
+  export interface VolunteerOpportunityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VolunteerOpportunity'], meta: { name: 'VolunteerOpportunity' } }
+    /**
+     * Find zero or one VolunteerOpportunity that matches the filter.
+     * @param {VolunteerOpportunityFindUniqueArgs} args - Arguments to find a VolunteerOpportunity
+     * @example
+     * // Get one VolunteerOpportunity
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VolunteerOpportunityFindUniqueArgs>(args: SelectSubset<T, VolunteerOpportunityFindUniqueArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VolunteerOpportunity that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VolunteerOpportunityFindUniqueOrThrowArgs} args - Arguments to find a VolunteerOpportunity
+     * @example
+     * // Get one VolunteerOpportunity
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VolunteerOpportunityFindUniqueOrThrowArgs>(args: SelectSubset<T, VolunteerOpportunityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VolunteerOpportunity that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerOpportunityFindFirstArgs} args - Arguments to find a VolunteerOpportunity
+     * @example
+     * // Get one VolunteerOpportunity
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VolunteerOpportunityFindFirstArgs>(args?: SelectSubset<T, VolunteerOpportunityFindFirstArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VolunteerOpportunity that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerOpportunityFindFirstOrThrowArgs} args - Arguments to find a VolunteerOpportunity
+     * @example
+     * // Get one VolunteerOpportunity
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VolunteerOpportunityFindFirstOrThrowArgs>(args?: SelectSubset<T, VolunteerOpportunityFindFirstOrThrowArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VolunteerOpportunities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerOpportunityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VolunteerOpportunities
+     * const volunteerOpportunities = await prisma.volunteerOpportunity.findMany()
+     * 
+     * // Get first 10 VolunteerOpportunities
+     * const volunteerOpportunities = await prisma.volunteerOpportunity.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const volunteerOpportunityWithIdOnly = await prisma.volunteerOpportunity.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VolunteerOpportunityFindManyArgs>(args?: SelectSubset<T, VolunteerOpportunityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VolunteerOpportunity.
+     * @param {VolunteerOpportunityCreateArgs} args - Arguments to create a VolunteerOpportunity.
+     * @example
+     * // Create one VolunteerOpportunity
+     * const VolunteerOpportunity = await prisma.volunteerOpportunity.create({
+     *   data: {
+     *     // ... data to create a VolunteerOpportunity
+     *   }
+     * })
+     * 
+     */
+    create<T extends VolunteerOpportunityCreateArgs>(args: SelectSubset<T, VolunteerOpportunityCreateArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VolunteerOpportunities.
+     * @param {VolunteerOpportunityCreateManyArgs} args - Arguments to create many VolunteerOpportunities.
+     * @example
+     * // Create many VolunteerOpportunities
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VolunteerOpportunityCreateManyArgs>(args?: SelectSubset<T, VolunteerOpportunityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many VolunteerOpportunities and returns the data saved in the database.
+     * @param {VolunteerOpportunityCreateManyAndReturnArgs} args - Arguments to create many VolunteerOpportunities.
+     * @example
+     * // Create many VolunteerOpportunities
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many VolunteerOpportunities and only return the `id`
+     * const volunteerOpportunityWithIdOnly = await prisma.volunteerOpportunity.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VolunteerOpportunityCreateManyAndReturnArgs>(args?: SelectSubset<T, VolunteerOpportunityCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a VolunteerOpportunity.
+     * @param {VolunteerOpportunityDeleteArgs} args - Arguments to delete one VolunteerOpportunity.
+     * @example
+     * // Delete one VolunteerOpportunity
+     * const VolunteerOpportunity = await prisma.volunteerOpportunity.delete({
+     *   where: {
+     *     // ... filter to delete one VolunteerOpportunity
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VolunteerOpportunityDeleteArgs>(args: SelectSubset<T, VolunteerOpportunityDeleteArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VolunteerOpportunity.
+     * @param {VolunteerOpportunityUpdateArgs} args - Arguments to update one VolunteerOpportunity.
+     * @example
+     * // Update one VolunteerOpportunity
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VolunteerOpportunityUpdateArgs>(args: SelectSubset<T, VolunteerOpportunityUpdateArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VolunteerOpportunities.
+     * @param {VolunteerOpportunityDeleteManyArgs} args - Arguments to filter VolunteerOpportunities to delete.
+     * @example
+     * // Delete a few VolunteerOpportunities
+     * const { count } = await prisma.volunteerOpportunity.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VolunteerOpportunityDeleteManyArgs>(args?: SelectSubset<T, VolunteerOpportunityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VolunteerOpportunities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerOpportunityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VolunteerOpportunities
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VolunteerOpportunityUpdateManyArgs>(args: SelectSubset<T, VolunteerOpportunityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VolunteerOpportunities and returns the data updated in the database.
+     * @param {VolunteerOpportunityUpdateManyAndReturnArgs} args - Arguments to update many VolunteerOpportunities.
+     * @example
+     * // Update many VolunteerOpportunities
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more VolunteerOpportunities and only return the `id`
+     * const volunteerOpportunityWithIdOnly = await prisma.volunteerOpportunity.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VolunteerOpportunityUpdateManyAndReturnArgs>(args: SelectSubset<T, VolunteerOpportunityUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one VolunteerOpportunity.
+     * @param {VolunteerOpportunityUpsertArgs} args - Arguments to update or create a VolunteerOpportunity.
+     * @example
+     * // Update or create a VolunteerOpportunity
+     * const volunteerOpportunity = await prisma.volunteerOpportunity.upsert({
+     *   create: {
+     *     // ... data to create a VolunteerOpportunity
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VolunteerOpportunity we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VolunteerOpportunityUpsertArgs>(args: SelectSubset<T, VolunteerOpportunityUpsertArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of VolunteerOpportunities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerOpportunityCountArgs} args - Arguments to filter VolunteerOpportunities to count.
+     * @example
+     * // Count the number of VolunteerOpportunities
+     * const count = await prisma.volunteerOpportunity.count({
+     *   where: {
+     *     // ... the filter for the VolunteerOpportunities we want to count
+     *   }
+     * })
+    **/
+    count<T extends VolunteerOpportunityCountArgs>(
+      args?: Subset<T, VolunteerOpportunityCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VolunteerOpportunityCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VolunteerOpportunity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerOpportunityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VolunteerOpportunityAggregateArgs>(args: Subset<T, VolunteerOpportunityAggregateArgs>): Prisma.PrismaPromise<GetVolunteerOpportunityAggregateType<T>>
+
+    /**
+     * Group by VolunteerOpportunity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerOpportunityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VolunteerOpportunityGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VolunteerOpportunityGroupByArgs['orderBy'] }
+        : { orderBy?: VolunteerOpportunityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VolunteerOpportunityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVolunteerOpportunityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the VolunteerOpportunity model
+   */
+  readonly fields: VolunteerOpportunityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for VolunteerOpportunity.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VolunteerOpportunityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    volunteerRequests<T extends VolunteerOpportunity$volunteerRequestsArgs<ExtArgs> = {}>(args?: Subset<T, VolunteerOpportunity$volunteerRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the VolunteerOpportunity model
+   */
+  interface VolunteerOpportunityFieldRefs {
+    readonly id: FieldRef<"VolunteerOpportunity", 'String'>
+    readonly title: FieldRef<"VolunteerOpportunity", 'String'>
+    readonly description: FieldRef<"VolunteerOpportunity", 'String'>
+    readonly subject: FieldRef<"VolunteerOpportunity", 'String'>
+    readonly isActive: FieldRef<"VolunteerOpportunity", 'Boolean'>
+    readonly createdAt: FieldRef<"VolunteerOpportunity", 'DateTime'>
+    readonly updatedAt: FieldRef<"VolunteerOpportunity", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * VolunteerOpportunity findUnique
+   */
+  export type VolunteerOpportunityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerOpportunity to fetch.
+     */
+    where: VolunteerOpportunityWhereUniqueInput
+  }
+
+  /**
+   * VolunteerOpportunity findUniqueOrThrow
+   */
+  export type VolunteerOpportunityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerOpportunity to fetch.
+     */
+    where: VolunteerOpportunityWhereUniqueInput
+  }
+
+  /**
+   * VolunteerOpportunity findFirst
+   */
+  export type VolunteerOpportunityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerOpportunity to fetch.
+     */
+    where?: VolunteerOpportunityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerOpportunities to fetch.
+     */
+    orderBy?: VolunteerOpportunityOrderByWithRelationInput | VolunteerOpportunityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VolunteerOpportunities.
+     */
+    cursor?: VolunteerOpportunityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerOpportunities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerOpportunities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VolunteerOpportunities.
+     */
+    distinct?: VolunteerOpportunityScalarFieldEnum | VolunteerOpportunityScalarFieldEnum[]
+  }
+
+  /**
+   * VolunteerOpportunity findFirstOrThrow
+   */
+  export type VolunteerOpportunityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerOpportunity to fetch.
+     */
+    where?: VolunteerOpportunityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerOpportunities to fetch.
+     */
+    orderBy?: VolunteerOpportunityOrderByWithRelationInput | VolunteerOpportunityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VolunteerOpportunities.
+     */
+    cursor?: VolunteerOpportunityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerOpportunities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerOpportunities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VolunteerOpportunities.
+     */
+    distinct?: VolunteerOpportunityScalarFieldEnum | VolunteerOpportunityScalarFieldEnum[]
+  }
+
+  /**
+   * VolunteerOpportunity findMany
+   */
+  export type VolunteerOpportunityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerOpportunities to fetch.
+     */
+    where?: VolunteerOpportunityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerOpportunities to fetch.
+     */
+    orderBy?: VolunteerOpportunityOrderByWithRelationInput | VolunteerOpportunityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing VolunteerOpportunities.
+     */
+    cursor?: VolunteerOpportunityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerOpportunities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerOpportunities.
+     */
+    skip?: number
+    distinct?: VolunteerOpportunityScalarFieldEnum | VolunteerOpportunityScalarFieldEnum[]
+  }
+
+  /**
+   * VolunteerOpportunity create
+   */
+  export type VolunteerOpportunityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * The data needed to create a VolunteerOpportunity.
+     */
+    data: XOR<VolunteerOpportunityCreateInput, VolunteerOpportunityUncheckedCreateInput>
+  }
+
+  /**
+   * VolunteerOpportunity createMany
+   */
+  export type VolunteerOpportunityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many VolunteerOpportunities.
+     */
+    data: VolunteerOpportunityCreateManyInput | VolunteerOpportunityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * VolunteerOpportunity createManyAndReturn
+   */
+  export type VolunteerOpportunityCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * The data used to create many VolunteerOpportunities.
+     */
+    data: VolunteerOpportunityCreateManyInput | VolunteerOpportunityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * VolunteerOpportunity update
+   */
+  export type VolunteerOpportunityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * The data needed to update a VolunteerOpportunity.
+     */
+    data: XOR<VolunteerOpportunityUpdateInput, VolunteerOpportunityUncheckedUpdateInput>
+    /**
+     * Choose, which VolunteerOpportunity to update.
+     */
+    where: VolunteerOpportunityWhereUniqueInput
+  }
+
+  /**
+   * VolunteerOpportunity updateMany
+   */
+  export type VolunteerOpportunityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update VolunteerOpportunities.
+     */
+    data: XOR<VolunteerOpportunityUpdateManyMutationInput, VolunteerOpportunityUncheckedUpdateManyInput>
+    /**
+     * Filter which VolunteerOpportunities to update
+     */
+    where?: VolunteerOpportunityWhereInput
+    /**
+     * Limit how many VolunteerOpportunities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VolunteerOpportunity updateManyAndReturn
+   */
+  export type VolunteerOpportunityUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * The data used to update VolunteerOpportunities.
+     */
+    data: XOR<VolunteerOpportunityUpdateManyMutationInput, VolunteerOpportunityUncheckedUpdateManyInput>
+    /**
+     * Filter which VolunteerOpportunities to update
+     */
+    where?: VolunteerOpportunityWhereInput
+    /**
+     * Limit how many VolunteerOpportunities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VolunteerOpportunity upsert
+   */
+  export type VolunteerOpportunityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * The filter to search for the VolunteerOpportunity to update in case it exists.
+     */
+    where: VolunteerOpportunityWhereUniqueInput
+    /**
+     * In case the VolunteerOpportunity found by the `where` argument doesn't exist, create a new VolunteerOpportunity with this data.
+     */
+    create: XOR<VolunteerOpportunityCreateInput, VolunteerOpportunityUncheckedCreateInput>
+    /**
+     * In case the VolunteerOpportunity was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VolunteerOpportunityUpdateInput, VolunteerOpportunityUncheckedUpdateInput>
+  }
+
+  /**
+   * VolunteerOpportunity delete
+   */
+  export type VolunteerOpportunityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    /**
+     * Filter which VolunteerOpportunity to delete.
+     */
+    where: VolunteerOpportunityWhereUniqueInput
+  }
+
+  /**
+   * VolunteerOpportunity deleteMany
+   */
+  export type VolunteerOpportunityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VolunteerOpportunities to delete
+     */
+    where?: VolunteerOpportunityWhereInput
+    /**
+     * Limit how many VolunteerOpportunities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * VolunteerOpportunity.volunteerRequests
+   */
+  export type VolunteerOpportunity$volunteerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    where?: VolunteerRequestWhereInput
+    orderBy?: VolunteerRequestOrderByWithRelationInput | VolunteerRequestOrderByWithRelationInput[]
+    cursor?: VolunteerRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VolunteerRequestScalarFieldEnum | VolunteerRequestScalarFieldEnum[]
+  }
+
+  /**
+   * VolunteerOpportunity without action
+   */
+  export type VolunteerOpportunityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model VolunteerRequest
+   */
+
+  export type AggregateVolunteerRequest = {
+    _count: VolunteerRequestCountAggregateOutputType | null
+    _min: VolunteerRequestMinAggregateOutputType | null
+    _max: VolunteerRequestMaxAggregateOutputType | null
+  }
+
+  export type VolunteerRequestMinAggregateOutputType = {
+    id: string | null
+    opportunityId: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    subject: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type VolunteerRequestMaxAggregateOutputType = {
+    id: string | null
+    opportunityId: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    subject: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type VolunteerRequestCountAggregateOutputType = {
+    id: number
+    opportunityId: number
+    firstName: number
+    lastName: number
+    email: number
+    phone: number
+    subject: number
+    message: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type VolunteerRequestMinAggregateInputType = {
+    id?: true
+    opportunityId?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    subject?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type VolunteerRequestMaxAggregateInputType = {
+    id?: true
+    opportunityId?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    subject?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type VolunteerRequestCountAggregateInputType = {
+    id?: true
+    opportunityId?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    subject?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type VolunteerRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VolunteerRequest to aggregate.
+     */
+    where?: VolunteerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerRequests to fetch.
+     */
+    orderBy?: VolunteerRequestOrderByWithRelationInput | VolunteerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VolunteerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned VolunteerRequests
+    **/
+    _count?: true | VolunteerRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VolunteerRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VolunteerRequestMaxAggregateInputType
+  }
+
+  export type GetVolunteerRequestAggregateType<T extends VolunteerRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateVolunteerRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVolunteerRequest[P]>
+      : GetScalarType<T[P], AggregateVolunteerRequest[P]>
+  }
+
+
+
+
+  export type VolunteerRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VolunteerRequestWhereInput
+    orderBy?: VolunteerRequestOrderByWithAggregationInput | VolunteerRequestOrderByWithAggregationInput[]
+    by: VolunteerRequestScalarFieldEnum[] | VolunteerRequestScalarFieldEnum
+    having?: VolunteerRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VolunteerRequestCountAggregateInputType | true
+    _min?: VolunteerRequestMinAggregateInputType
+    _max?: VolunteerRequestMaxAggregateInputType
+  }
+
+  export type VolunteerRequestGroupByOutputType = {
+    id: string
+    opportunityId: string | null
+    firstName: string
+    lastName: string
+    email: string
+    phone: string | null
+    subject: string | null
+    message: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: VolunteerRequestCountAggregateOutputType | null
+    _min: VolunteerRequestMinAggregateOutputType | null
+    _max: VolunteerRequestMaxAggregateOutputType | null
+  }
+
+  type GetVolunteerRequestGroupByPayload<T extends VolunteerRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VolunteerRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VolunteerRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VolunteerRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], VolunteerRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VolunteerRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    opportunityId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    opportunity?: boolean | VolunteerRequest$opportunityArgs<ExtArgs>
+  }, ExtArgs["result"]["volunteerRequest"]>
+
+  export type VolunteerRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    opportunityId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    opportunity?: boolean | VolunteerRequest$opportunityArgs<ExtArgs>
+  }, ExtArgs["result"]["volunteerRequest"]>
+
+  export type VolunteerRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    opportunityId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    opportunity?: boolean | VolunteerRequest$opportunityArgs<ExtArgs>
+  }, ExtArgs["result"]["volunteerRequest"]>
+
+  export type VolunteerRequestSelectScalar = {
+    id?: boolean
+    opportunityId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type VolunteerRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "opportunityId" | "firstName" | "lastName" | "email" | "phone" | "subject" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["volunteerRequest"]>
+  export type VolunteerRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    opportunity?: boolean | VolunteerRequest$opportunityArgs<ExtArgs>
+  }
+  export type VolunteerRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    opportunity?: boolean | VolunteerRequest$opportunityArgs<ExtArgs>
+  }
+  export type VolunteerRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    opportunity?: boolean | VolunteerRequest$opportunityArgs<ExtArgs>
+  }
+
+  export type $VolunteerRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "VolunteerRequest"
+    objects: {
+      opportunity: Prisma.$VolunteerOpportunityPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      opportunityId: string | null
+      firstName: string
+      lastName: string
+      email: string
+      phone: string | null
+      subject: string | null
+      message: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["volunteerRequest"]>
+    composites: {}
+  }
+
+  type VolunteerRequestGetPayload<S extends boolean | null | undefined | VolunteerRequestDefaultArgs> = $Result.GetResult<Prisma.$VolunteerRequestPayload, S>
+
+  type VolunteerRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VolunteerRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VolunteerRequestCountAggregateInputType | true
+    }
+
+  export interface VolunteerRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VolunteerRequest'], meta: { name: 'VolunteerRequest' } }
+    /**
+     * Find zero or one VolunteerRequest that matches the filter.
+     * @param {VolunteerRequestFindUniqueArgs} args - Arguments to find a VolunteerRequest
+     * @example
+     * // Get one VolunteerRequest
+     * const volunteerRequest = await prisma.volunteerRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VolunteerRequestFindUniqueArgs>(args: SelectSubset<T, VolunteerRequestFindUniqueArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VolunteerRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VolunteerRequestFindUniqueOrThrowArgs} args - Arguments to find a VolunteerRequest
+     * @example
+     * // Get one VolunteerRequest
+     * const volunteerRequest = await prisma.volunteerRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VolunteerRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, VolunteerRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VolunteerRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerRequestFindFirstArgs} args - Arguments to find a VolunteerRequest
+     * @example
+     * // Get one VolunteerRequest
+     * const volunteerRequest = await prisma.volunteerRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VolunteerRequestFindFirstArgs>(args?: SelectSubset<T, VolunteerRequestFindFirstArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VolunteerRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerRequestFindFirstOrThrowArgs} args - Arguments to find a VolunteerRequest
+     * @example
+     * // Get one VolunteerRequest
+     * const volunteerRequest = await prisma.volunteerRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VolunteerRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, VolunteerRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VolunteerRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VolunteerRequests
+     * const volunteerRequests = await prisma.volunteerRequest.findMany()
+     * 
+     * // Get first 10 VolunteerRequests
+     * const volunteerRequests = await prisma.volunteerRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const volunteerRequestWithIdOnly = await prisma.volunteerRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VolunteerRequestFindManyArgs>(args?: SelectSubset<T, VolunteerRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VolunteerRequest.
+     * @param {VolunteerRequestCreateArgs} args - Arguments to create a VolunteerRequest.
+     * @example
+     * // Create one VolunteerRequest
+     * const VolunteerRequest = await prisma.volunteerRequest.create({
+     *   data: {
+     *     // ... data to create a VolunteerRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends VolunteerRequestCreateArgs>(args: SelectSubset<T, VolunteerRequestCreateArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VolunteerRequests.
+     * @param {VolunteerRequestCreateManyArgs} args - Arguments to create many VolunteerRequests.
+     * @example
+     * // Create many VolunteerRequests
+     * const volunteerRequest = await prisma.volunteerRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VolunteerRequestCreateManyArgs>(args?: SelectSubset<T, VolunteerRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many VolunteerRequests and returns the data saved in the database.
+     * @param {VolunteerRequestCreateManyAndReturnArgs} args - Arguments to create many VolunteerRequests.
+     * @example
+     * // Create many VolunteerRequests
+     * const volunteerRequest = await prisma.volunteerRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many VolunteerRequests and only return the `id`
+     * const volunteerRequestWithIdOnly = await prisma.volunteerRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VolunteerRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, VolunteerRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a VolunteerRequest.
+     * @param {VolunteerRequestDeleteArgs} args - Arguments to delete one VolunteerRequest.
+     * @example
+     * // Delete one VolunteerRequest
+     * const VolunteerRequest = await prisma.volunteerRequest.delete({
+     *   where: {
+     *     // ... filter to delete one VolunteerRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VolunteerRequestDeleteArgs>(args: SelectSubset<T, VolunteerRequestDeleteArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VolunteerRequest.
+     * @param {VolunteerRequestUpdateArgs} args - Arguments to update one VolunteerRequest.
+     * @example
+     * // Update one VolunteerRequest
+     * const volunteerRequest = await prisma.volunteerRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VolunteerRequestUpdateArgs>(args: SelectSubset<T, VolunteerRequestUpdateArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VolunteerRequests.
+     * @param {VolunteerRequestDeleteManyArgs} args - Arguments to filter VolunteerRequests to delete.
+     * @example
+     * // Delete a few VolunteerRequests
+     * const { count } = await prisma.volunteerRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VolunteerRequestDeleteManyArgs>(args?: SelectSubset<T, VolunteerRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VolunteerRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VolunteerRequests
+     * const volunteerRequest = await prisma.volunteerRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VolunteerRequestUpdateManyArgs>(args: SelectSubset<T, VolunteerRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VolunteerRequests and returns the data updated in the database.
+     * @param {VolunteerRequestUpdateManyAndReturnArgs} args - Arguments to update many VolunteerRequests.
+     * @example
+     * // Update many VolunteerRequests
+     * const volunteerRequest = await prisma.volunteerRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more VolunteerRequests and only return the `id`
+     * const volunteerRequestWithIdOnly = await prisma.volunteerRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VolunteerRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, VolunteerRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one VolunteerRequest.
+     * @param {VolunteerRequestUpsertArgs} args - Arguments to update or create a VolunteerRequest.
+     * @example
+     * // Update or create a VolunteerRequest
+     * const volunteerRequest = await prisma.volunteerRequest.upsert({
+     *   create: {
+     *     // ... data to create a VolunteerRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VolunteerRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VolunteerRequestUpsertArgs>(args: SelectSubset<T, VolunteerRequestUpsertArgs<ExtArgs>>): Prisma__VolunteerRequestClient<$Result.GetResult<Prisma.$VolunteerRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of VolunteerRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerRequestCountArgs} args - Arguments to filter VolunteerRequests to count.
+     * @example
+     * // Count the number of VolunteerRequests
+     * const count = await prisma.volunteerRequest.count({
+     *   where: {
+     *     // ... the filter for the VolunteerRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends VolunteerRequestCountArgs>(
+      args?: Subset<T, VolunteerRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VolunteerRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VolunteerRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VolunteerRequestAggregateArgs>(args: Subset<T, VolunteerRequestAggregateArgs>): Prisma.PrismaPromise<GetVolunteerRequestAggregateType<T>>
+
+    /**
+     * Group by VolunteerRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolunteerRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VolunteerRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VolunteerRequestGroupByArgs['orderBy'] }
+        : { orderBy?: VolunteerRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VolunteerRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVolunteerRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the VolunteerRequest model
+   */
+  readonly fields: VolunteerRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for VolunteerRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VolunteerRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    opportunity<T extends VolunteerRequest$opportunityArgs<ExtArgs> = {}>(args?: Subset<T, VolunteerRequest$opportunityArgs<ExtArgs>>): Prisma__VolunteerOpportunityClient<$Result.GetResult<Prisma.$VolunteerOpportunityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the VolunteerRequest model
+   */
+  interface VolunteerRequestFieldRefs {
+    readonly id: FieldRef<"VolunteerRequest", 'String'>
+    readonly opportunityId: FieldRef<"VolunteerRequest", 'String'>
+    readonly firstName: FieldRef<"VolunteerRequest", 'String'>
+    readonly lastName: FieldRef<"VolunteerRequest", 'String'>
+    readonly email: FieldRef<"VolunteerRequest", 'String'>
+    readonly phone: FieldRef<"VolunteerRequest", 'String'>
+    readonly subject: FieldRef<"VolunteerRequest", 'String'>
+    readonly message: FieldRef<"VolunteerRequest", 'String'>
+    readonly status: FieldRef<"VolunteerRequest", 'String'>
+    readonly createdAt: FieldRef<"VolunteerRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"VolunteerRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * VolunteerRequest findUnique
+   */
+  export type VolunteerRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerRequest to fetch.
+     */
+    where: VolunteerRequestWhereUniqueInput
+  }
+
+  /**
+   * VolunteerRequest findUniqueOrThrow
+   */
+  export type VolunteerRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerRequest to fetch.
+     */
+    where: VolunteerRequestWhereUniqueInput
+  }
+
+  /**
+   * VolunteerRequest findFirst
+   */
+  export type VolunteerRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerRequest to fetch.
+     */
+    where?: VolunteerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerRequests to fetch.
+     */
+    orderBy?: VolunteerRequestOrderByWithRelationInput | VolunteerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VolunteerRequests.
+     */
+    cursor?: VolunteerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VolunteerRequests.
+     */
+    distinct?: VolunteerRequestScalarFieldEnum | VolunteerRequestScalarFieldEnum[]
+  }
+
+  /**
+   * VolunteerRequest findFirstOrThrow
+   */
+  export type VolunteerRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerRequest to fetch.
+     */
+    where?: VolunteerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerRequests to fetch.
+     */
+    orderBy?: VolunteerRequestOrderByWithRelationInput | VolunteerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VolunteerRequests.
+     */
+    cursor?: VolunteerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VolunteerRequests.
+     */
+    distinct?: VolunteerRequestScalarFieldEnum | VolunteerRequestScalarFieldEnum[]
+  }
+
+  /**
+   * VolunteerRequest findMany
+   */
+  export type VolunteerRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which VolunteerRequests to fetch.
+     */
+    where?: VolunteerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolunteerRequests to fetch.
+     */
+    orderBy?: VolunteerRequestOrderByWithRelationInput | VolunteerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing VolunteerRequests.
+     */
+    cursor?: VolunteerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolunteerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolunteerRequests.
+     */
+    skip?: number
+    distinct?: VolunteerRequestScalarFieldEnum | VolunteerRequestScalarFieldEnum[]
+  }
+
+  /**
+   * VolunteerRequest create
+   */
+  export type VolunteerRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a VolunteerRequest.
+     */
+    data: XOR<VolunteerRequestCreateInput, VolunteerRequestUncheckedCreateInput>
+  }
+
+  /**
+   * VolunteerRequest createMany
+   */
+  export type VolunteerRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many VolunteerRequests.
+     */
+    data: VolunteerRequestCreateManyInput | VolunteerRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * VolunteerRequest createManyAndReturn
+   */
+  export type VolunteerRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many VolunteerRequests.
+     */
+    data: VolunteerRequestCreateManyInput | VolunteerRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VolunteerRequest update
+   */
+  export type VolunteerRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a VolunteerRequest.
+     */
+    data: XOR<VolunteerRequestUpdateInput, VolunteerRequestUncheckedUpdateInput>
+    /**
+     * Choose, which VolunteerRequest to update.
+     */
+    where: VolunteerRequestWhereUniqueInput
+  }
+
+  /**
+   * VolunteerRequest updateMany
+   */
+  export type VolunteerRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update VolunteerRequests.
+     */
+    data: XOR<VolunteerRequestUpdateManyMutationInput, VolunteerRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which VolunteerRequests to update
+     */
+    where?: VolunteerRequestWhereInput
+    /**
+     * Limit how many VolunteerRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VolunteerRequest updateManyAndReturn
+   */
+  export type VolunteerRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update VolunteerRequests.
+     */
+    data: XOR<VolunteerRequestUpdateManyMutationInput, VolunteerRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which VolunteerRequests to update
+     */
+    where?: VolunteerRequestWhereInput
+    /**
+     * Limit how many VolunteerRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VolunteerRequest upsert
+   */
+  export type VolunteerRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the VolunteerRequest to update in case it exists.
+     */
+    where: VolunteerRequestWhereUniqueInput
+    /**
+     * In case the VolunteerRequest found by the `where` argument doesn't exist, create a new VolunteerRequest with this data.
+     */
+    create: XOR<VolunteerRequestCreateInput, VolunteerRequestUncheckedCreateInput>
+    /**
+     * In case the VolunteerRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VolunteerRequestUpdateInput, VolunteerRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * VolunteerRequest delete
+   */
+  export type VolunteerRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+    /**
+     * Filter which VolunteerRequest to delete.
+     */
+    where: VolunteerRequestWhereUniqueInput
+  }
+
+  /**
+   * VolunteerRequest deleteMany
+   */
+  export type VolunteerRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VolunteerRequests to delete
+     */
+    where?: VolunteerRequestWhereInput
+    /**
+     * Limit how many VolunteerRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * VolunteerRequest.opportunity
+   */
+  export type VolunteerRequest$opportunityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerOpportunity
+     */
+    select?: VolunteerOpportunitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerOpportunity
+     */
+    omit?: VolunteerOpportunityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerOpportunityInclude<ExtArgs> | null
+    where?: VolunteerOpportunityWhereInput
+  }
+
+  /**
+   * VolunteerRequest without action
+   */
+  export type VolunteerRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolunteerRequest
+     */
+    select?: VolunteerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolunteerRequest
+     */
+    omit?: VolunteerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VolunteerRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MentorshipRequest
+   */
+
+  export type AggregateMentorshipRequest = {
+    _count: MentorshipRequestCountAggregateOutputType | null
+    _min: MentorshipRequestMinAggregateOutputType | null
+    _max: MentorshipRequestMaxAggregateOutputType | null
+  }
+
+  export type MentorshipRequestMinAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    graduationYear: string | null
+    currentRole: string | null
+    interests: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorshipRequestMaxAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    graduationYear: string | null
+    currentRole: string | null
+    interests: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MentorshipRequestCountAggregateOutputType = {
+    id: number
+    firstName: number
+    lastName: number
+    email: number
+    phone: number
+    graduationYear: number
+    currentRole: number
+    interests: number
+    message: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MentorshipRequestMinAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    graduationYear?: true
+    currentRole?: true
+    interests?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorshipRequestMaxAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    graduationYear?: true
+    currentRole?: true
+    interests?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MentorshipRequestCountAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    graduationYear?: true
+    currentRole?: true
+    interests?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MentorshipRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorshipRequest to aggregate.
+     */
+    where?: MentorshipRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorshipRequests to fetch.
+     */
+    orderBy?: MentorshipRequestOrderByWithRelationInput | MentorshipRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MentorshipRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorshipRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorshipRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MentorshipRequests
+    **/
+    _count?: true | MentorshipRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MentorshipRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MentorshipRequestMaxAggregateInputType
+  }
+
+  export type GetMentorshipRequestAggregateType<T extends MentorshipRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateMentorshipRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMentorshipRequest[P]>
+      : GetScalarType<T[P], AggregateMentorshipRequest[P]>
+  }
+
+
+
+
+  export type MentorshipRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MentorshipRequestWhereInput
+    orderBy?: MentorshipRequestOrderByWithAggregationInput | MentorshipRequestOrderByWithAggregationInput[]
+    by: MentorshipRequestScalarFieldEnum[] | MentorshipRequestScalarFieldEnum
+    having?: MentorshipRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MentorshipRequestCountAggregateInputType | true
+    _min?: MentorshipRequestMinAggregateInputType
+    _max?: MentorshipRequestMaxAggregateInputType
+  }
+
+  export type MentorshipRequestGroupByOutputType = {
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string | null
+    graduationYear: string | null
+    currentRole: string | null
+    interests: string | null
+    message: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: MentorshipRequestCountAggregateOutputType | null
+    _min: MentorshipRequestMinAggregateOutputType | null
+    _max: MentorshipRequestMaxAggregateOutputType | null
+  }
+
+  type GetMentorshipRequestGroupByPayload<T extends MentorshipRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MentorshipRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MentorshipRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MentorshipRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], MentorshipRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MentorshipRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    currentRole?: boolean
+    interests?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["mentorshipRequest"]>
+
+  export type MentorshipRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    currentRole?: boolean
+    interests?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["mentorshipRequest"]>
+
+  export type MentorshipRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    currentRole?: boolean
+    interests?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["mentorshipRequest"]>
+
+  export type MentorshipRequestSelectScalar = {
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    graduationYear?: boolean
+    currentRole?: boolean
+    interests?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MentorshipRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phone" | "graduationYear" | "currentRole" | "interests" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["mentorshipRequest"]>
+
+  export type $MentorshipRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MentorshipRequest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      firstName: string
+      lastName: string
+      email: string
+      phone: string | null
+      graduationYear: string | null
+      currentRole: string | null
+      interests: string | null
+      message: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["mentorshipRequest"]>
+    composites: {}
+  }
+
+  type MentorshipRequestGetPayload<S extends boolean | null | undefined | MentorshipRequestDefaultArgs> = $Result.GetResult<Prisma.$MentorshipRequestPayload, S>
+
+  type MentorshipRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MentorshipRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MentorshipRequestCountAggregateInputType | true
+    }
+
+  export interface MentorshipRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MentorshipRequest'], meta: { name: 'MentorshipRequest' } }
+    /**
+     * Find zero or one MentorshipRequest that matches the filter.
+     * @param {MentorshipRequestFindUniqueArgs} args - Arguments to find a MentorshipRequest
+     * @example
+     * // Get one MentorshipRequest
+     * const mentorshipRequest = await prisma.mentorshipRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MentorshipRequestFindUniqueArgs>(args: SelectSubset<T, MentorshipRequestFindUniqueArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MentorshipRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MentorshipRequestFindUniqueOrThrowArgs} args - Arguments to find a MentorshipRequest
+     * @example
+     * // Get one MentorshipRequest
+     * const mentorshipRequest = await prisma.mentorshipRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MentorshipRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, MentorshipRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorshipRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorshipRequestFindFirstArgs} args - Arguments to find a MentorshipRequest
+     * @example
+     * // Get one MentorshipRequest
+     * const mentorshipRequest = await prisma.mentorshipRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MentorshipRequestFindFirstArgs>(args?: SelectSubset<T, MentorshipRequestFindFirstArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MentorshipRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorshipRequestFindFirstOrThrowArgs} args - Arguments to find a MentorshipRequest
+     * @example
+     * // Get one MentorshipRequest
+     * const mentorshipRequest = await prisma.mentorshipRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MentorshipRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, MentorshipRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MentorshipRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorshipRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MentorshipRequests
+     * const mentorshipRequests = await prisma.mentorshipRequest.findMany()
+     * 
+     * // Get first 10 MentorshipRequests
+     * const mentorshipRequests = await prisma.mentorshipRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mentorshipRequestWithIdOnly = await prisma.mentorshipRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MentorshipRequestFindManyArgs>(args?: SelectSubset<T, MentorshipRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MentorshipRequest.
+     * @param {MentorshipRequestCreateArgs} args - Arguments to create a MentorshipRequest.
+     * @example
+     * // Create one MentorshipRequest
+     * const MentorshipRequest = await prisma.mentorshipRequest.create({
+     *   data: {
+     *     // ... data to create a MentorshipRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends MentorshipRequestCreateArgs>(args: SelectSubset<T, MentorshipRequestCreateArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MentorshipRequests.
+     * @param {MentorshipRequestCreateManyArgs} args - Arguments to create many MentorshipRequests.
+     * @example
+     * // Create many MentorshipRequests
+     * const mentorshipRequest = await prisma.mentorshipRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MentorshipRequestCreateManyArgs>(args?: SelectSubset<T, MentorshipRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MentorshipRequests and returns the data saved in the database.
+     * @param {MentorshipRequestCreateManyAndReturnArgs} args - Arguments to create many MentorshipRequests.
+     * @example
+     * // Create many MentorshipRequests
+     * const mentorshipRequest = await prisma.mentorshipRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MentorshipRequests and only return the `id`
+     * const mentorshipRequestWithIdOnly = await prisma.mentorshipRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MentorshipRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, MentorshipRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MentorshipRequest.
+     * @param {MentorshipRequestDeleteArgs} args - Arguments to delete one MentorshipRequest.
+     * @example
+     * // Delete one MentorshipRequest
+     * const MentorshipRequest = await prisma.mentorshipRequest.delete({
+     *   where: {
+     *     // ... filter to delete one MentorshipRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MentorshipRequestDeleteArgs>(args: SelectSubset<T, MentorshipRequestDeleteArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MentorshipRequest.
+     * @param {MentorshipRequestUpdateArgs} args - Arguments to update one MentorshipRequest.
+     * @example
+     * // Update one MentorshipRequest
+     * const mentorshipRequest = await prisma.mentorshipRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MentorshipRequestUpdateArgs>(args: SelectSubset<T, MentorshipRequestUpdateArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MentorshipRequests.
+     * @param {MentorshipRequestDeleteManyArgs} args - Arguments to filter MentorshipRequests to delete.
+     * @example
+     * // Delete a few MentorshipRequests
+     * const { count } = await prisma.mentorshipRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MentorshipRequestDeleteManyArgs>(args?: SelectSubset<T, MentorshipRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorshipRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorshipRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MentorshipRequests
+     * const mentorshipRequest = await prisma.mentorshipRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MentorshipRequestUpdateManyArgs>(args: SelectSubset<T, MentorshipRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MentorshipRequests and returns the data updated in the database.
+     * @param {MentorshipRequestUpdateManyAndReturnArgs} args - Arguments to update many MentorshipRequests.
+     * @example
+     * // Update many MentorshipRequests
+     * const mentorshipRequest = await prisma.mentorshipRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MentorshipRequests and only return the `id`
+     * const mentorshipRequestWithIdOnly = await prisma.mentorshipRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MentorshipRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, MentorshipRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MentorshipRequest.
+     * @param {MentorshipRequestUpsertArgs} args - Arguments to update or create a MentorshipRequest.
+     * @example
+     * // Update or create a MentorshipRequest
+     * const mentorshipRequest = await prisma.mentorshipRequest.upsert({
+     *   create: {
+     *     // ... data to create a MentorshipRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MentorshipRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MentorshipRequestUpsertArgs>(args: SelectSubset<T, MentorshipRequestUpsertArgs<ExtArgs>>): Prisma__MentorshipRequestClient<$Result.GetResult<Prisma.$MentorshipRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MentorshipRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorshipRequestCountArgs} args - Arguments to filter MentorshipRequests to count.
+     * @example
+     * // Count the number of MentorshipRequests
+     * const count = await prisma.mentorshipRequest.count({
+     *   where: {
+     *     // ... the filter for the MentorshipRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends MentorshipRequestCountArgs>(
+      args?: Subset<T, MentorshipRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MentorshipRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MentorshipRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorshipRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MentorshipRequestAggregateArgs>(args: Subset<T, MentorshipRequestAggregateArgs>): Prisma.PrismaPromise<GetMentorshipRequestAggregateType<T>>
+
+    /**
+     * Group by MentorshipRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MentorshipRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MentorshipRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MentorshipRequestGroupByArgs['orderBy'] }
+        : { orderBy?: MentorshipRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MentorshipRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMentorshipRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MentorshipRequest model
+   */
+  readonly fields: MentorshipRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MentorshipRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MentorshipRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MentorshipRequest model
+   */
+  interface MentorshipRequestFieldRefs {
+    readonly id: FieldRef<"MentorshipRequest", 'String'>
+    readonly firstName: FieldRef<"MentorshipRequest", 'String'>
+    readonly lastName: FieldRef<"MentorshipRequest", 'String'>
+    readonly email: FieldRef<"MentorshipRequest", 'String'>
+    readonly phone: FieldRef<"MentorshipRequest", 'String'>
+    readonly graduationYear: FieldRef<"MentorshipRequest", 'String'>
+    readonly currentRole: FieldRef<"MentorshipRequest", 'String'>
+    readonly interests: FieldRef<"MentorshipRequest", 'String'>
+    readonly message: FieldRef<"MentorshipRequest", 'String'>
+    readonly status: FieldRef<"MentorshipRequest", 'String'>
+    readonly createdAt: FieldRef<"MentorshipRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"MentorshipRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MentorshipRequest findUnique
+   */
+  export type MentorshipRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which MentorshipRequest to fetch.
+     */
+    where: MentorshipRequestWhereUniqueInput
+  }
+
+  /**
+   * MentorshipRequest findUniqueOrThrow
+   */
+  export type MentorshipRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which MentorshipRequest to fetch.
+     */
+    where: MentorshipRequestWhereUniqueInput
+  }
+
+  /**
+   * MentorshipRequest findFirst
+   */
+  export type MentorshipRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which MentorshipRequest to fetch.
+     */
+    where?: MentorshipRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorshipRequests to fetch.
+     */
+    orderBy?: MentorshipRequestOrderByWithRelationInput | MentorshipRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorshipRequests.
+     */
+    cursor?: MentorshipRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorshipRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorshipRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorshipRequests.
+     */
+    distinct?: MentorshipRequestScalarFieldEnum | MentorshipRequestScalarFieldEnum[]
+  }
+
+  /**
+   * MentorshipRequest findFirstOrThrow
+   */
+  export type MentorshipRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which MentorshipRequest to fetch.
+     */
+    where?: MentorshipRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorshipRequests to fetch.
+     */
+    orderBy?: MentorshipRequestOrderByWithRelationInput | MentorshipRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MentorshipRequests.
+     */
+    cursor?: MentorshipRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorshipRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorshipRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MentorshipRequests.
+     */
+    distinct?: MentorshipRequestScalarFieldEnum | MentorshipRequestScalarFieldEnum[]
+  }
+
+  /**
+   * MentorshipRequest findMany
+   */
+  export type MentorshipRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which MentorshipRequests to fetch.
+     */
+    where?: MentorshipRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MentorshipRequests to fetch.
+     */
+    orderBy?: MentorshipRequestOrderByWithRelationInput | MentorshipRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MentorshipRequests.
+     */
+    cursor?: MentorshipRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MentorshipRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MentorshipRequests.
+     */
+    skip?: number
+    distinct?: MentorshipRequestScalarFieldEnum | MentorshipRequestScalarFieldEnum[]
+  }
+
+  /**
+   * MentorshipRequest create
+   */
+  export type MentorshipRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to create a MentorshipRequest.
+     */
+    data: XOR<MentorshipRequestCreateInput, MentorshipRequestUncheckedCreateInput>
+  }
+
+  /**
+   * MentorshipRequest createMany
+   */
+  export type MentorshipRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MentorshipRequests.
+     */
+    data: MentorshipRequestCreateManyInput | MentorshipRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorshipRequest createManyAndReturn
+   */
+  export type MentorshipRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many MentorshipRequests.
+     */
+    data: MentorshipRequestCreateManyInput | MentorshipRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MentorshipRequest update
+   */
+  export type MentorshipRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to update a MentorshipRequest.
+     */
+    data: XOR<MentorshipRequestUpdateInput, MentorshipRequestUncheckedUpdateInput>
+    /**
+     * Choose, which MentorshipRequest to update.
+     */
+    where: MentorshipRequestWhereUniqueInput
+  }
+
+  /**
+   * MentorshipRequest updateMany
+   */
+  export type MentorshipRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MentorshipRequests.
+     */
+    data: XOR<MentorshipRequestUpdateManyMutationInput, MentorshipRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorshipRequests to update
+     */
+    where?: MentorshipRequestWhereInput
+    /**
+     * Limit how many MentorshipRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorshipRequest updateManyAndReturn
+   */
+  export type MentorshipRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update MentorshipRequests.
+     */
+    data: XOR<MentorshipRequestUpdateManyMutationInput, MentorshipRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which MentorshipRequests to update
+     */
+    where?: MentorshipRequestWhereInput
+    /**
+     * Limit how many MentorshipRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorshipRequest upsert
+   */
+  export type MentorshipRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * The filter to search for the MentorshipRequest to update in case it exists.
+     */
+    where: MentorshipRequestWhereUniqueInput
+    /**
+     * In case the MentorshipRequest found by the `where` argument doesn't exist, create a new MentorshipRequest with this data.
+     */
+    create: XOR<MentorshipRequestCreateInput, MentorshipRequestUncheckedCreateInput>
+    /**
+     * In case the MentorshipRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MentorshipRequestUpdateInput, MentorshipRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * MentorshipRequest delete
+   */
+  export type MentorshipRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+    /**
+     * Filter which MentorshipRequest to delete.
+     */
+    where: MentorshipRequestWhereUniqueInput
+  }
+
+  /**
+   * MentorshipRequest deleteMany
+   */
+  export type MentorshipRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MentorshipRequests to delete
+     */
+    where?: MentorshipRequestWhereInput
+    /**
+     * Limit how many MentorshipRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MentorshipRequest without action
+   */
+  export type MentorshipRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MentorshipRequest
+     */
+    select?: MentorshipRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MentorshipRequest
+     */
+    omit?: MentorshipRequestOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DonationRequest
+   */
+
+  export type AggregateDonationRequest = {
+    _count: DonationRequestCountAggregateOutputType | null
+    _min: DonationRequestMinAggregateOutputType | null
+    _max: DonationRequestMaxAggregateOutputType | null
+  }
+
+  export type DonationRequestMinAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    amount: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DonationRequestMaxAggregateOutputType = {
+    id: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    phone: string | null
+    amount: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DonationRequestCountAggregateOutputType = {
+    id: number
+    firstName: number
+    lastName: number
+    email: number
+    phone: number
+    amount: number
+    message: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DonationRequestMinAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    amount?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DonationRequestMaxAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    amount?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DonationRequestCountAggregateInputType = {
+    id?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    phone?: true
+    amount?: true
+    message?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DonationRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DonationRequest to aggregate.
+     */
+    where?: DonationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DonationRequests to fetch.
+     */
+    orderBy?: DonationRequestOrderByWithRelationInput | DonationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DonationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DonationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DonationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DonationRequests
+    **/
+    _count?: true | DonationRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DonationRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DonationRequestMaxAggregateInputType
+  }
+
+  export type GetDonationRequestAggregateType<T extends DonationRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateDonationRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDonationRequest[P]>
+      : GetScalarType<T[P], AggregateDonationRequest[P]>
+  }
+
+
+
+
+  export type DonationRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DonationRequestWhereInput
+    orderBy?: DonationRequestOrderByWithAggregationInput | DonationRequestOrderByWithAggregationInput[]
+    by: DonationRequestScalarFieldEnum[] | DonationRequestScalarFieldEnum
+    having?: DonationRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DonationRequestCountAggregateInputType | true
+    _min?: DonationRequestMinAggregateInputType
+    _max?: DonationRequestMaxAggregateInputType
+  }
+
+  export type DonationRequestGroupByOutputType = {
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string | null
+    amount: string | null
+    message: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: DonationRequestCountAggregateOutputType | null
+    _min: DonationRequestMinAggregateOutputType | null
+    _max: DonationRequestMaxAggregateOutputType | null
+  }
+
+  type GetDonationRequestGroupByPayload<T extends DonationRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DonationRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DonationRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DonationRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], DonationRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DonationRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    amount?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["donationRequest"]>
+
+  export type DonationRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    amount?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["donationRequest"]>
+
+  export type DonationRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    amount?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["donationRequest"]>
+
+  export type DonationRequestSelectScalar = {
+    id?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    phone?: boolean
+    amount?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DonationRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phone" | "amount" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["donationRequest"]>
+
+  export type $DonationRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DonationRequest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      firstName: string
+      lastName: string
+      email: string
+      phone: string | null
+      amount: string | null
+      message: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["donationRequest"]>
+    composites: {}
+  }
+
+  type DonationRequestGetPayload<S extends boolean | null | undefined | DonationRequestDefaultArgs> = $Result.GetResult<Prisma.$DonationRequestPayload, S>
+
+  type DonationRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DonationRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DonationRequestCountAggregateInputType | true
+    }
+
+  export interface DonationRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DonationRequest'], meta: { name: 'DonationRequest' } }
+    /**
+     * Find zero or one DonationRequest that matches the filter.
+     * @param {DonationRequestFindUniqueArgs} args - Arguments to find a DonationRequest
+     * @example
+     * // Get one DonationRequest
+     * const donationRequest = await prisma.donationRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DonationRequestFindUniqueArgs>(args: SelectSubset<T, DonationRequestFindUniqueArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DonationRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DonationRequestFindUniqueOrThrowArgs} args - Arguments to find a DonationRequest
+     * @example
+     * // Get one DonationRequest
+     * const donationRequest = await prisma.donationRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DonationRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, DonationRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DonationRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DonationRequestFindFirstArgs} args - Arguments to find a DonationRequest
+     * @example
+     * // Get one DonationRequest
+     * const donationRequest = await prisma.donationRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DonationRequestFindFirstArgs>(args?: SelectSubset<T, DonationRequestFindFirstArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DonationRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DonationRequestFindFirstOrThrowArgs} args - Arguments to find a DonationRequest
+     * @example
+     * // Get one DonationRequest
+     * const donationRequest = await prisma.donationRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DonationRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, DonationRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DonationRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DonationRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DonationRequests
+     * const donationRequests = await prisma.donationRequest.findMany()
+     * 
+     * // Get first 10 DonationRequests
+     * const donationRequests = await prisma.donationRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const donationRequestWithIdOnly = await prisma.donationRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DonationRequestFindManyArgs>(args?: SelectSubset<T, DonationRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DonationRequest.
+     * @param {DonationRequestCreateArgs} args - Arguments to create a DonationRequest.
+     * @example
+     * // Create one DonationRequest
+     * const DonationRequest = await prisma.donationRequest.create({
+     *   data: {
+     *     // ... data to create a DonationRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends DonationRequestCreateArgs>(args: SelectSubset<T, DonationRequestCreateArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DonationRequests.
+     * @param {DonationRequestCreateManyArgs} args - Arguments to create many DonationRequests.
+     * @example
+     * // Create many DonationRequests
+     * const donationRequest = await prisma.donationRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DonationRequestCreateManyArgs>(args?: SelectSubset<T, DonationRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DonationRequests and returns the data saved in the database.
+     * @param {DonationRequestCreateManyAndReturnArgs} args - Arguments to create many DonationRequests.
+     * @example
+     * // Create many DonationRequests
+     * const donationRequest = await prisma.donationRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DonationRequests and only return the `id`
+     * const donationRequestWithIdOnly = await prisma.donationRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DonationRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, DonationRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DonationRequest.
+     * @param {DonationRequestDeleteArgs} args - Arguments to delete one DonationRequest.
+     * @example
+     * // Delete one DonationRequest
+     * const DonationRequest = await prisma.donationRequest.delete({
+     *   where: {
+     *     // ... filter to delete one DonationRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DonationRequestDeleteArgs>(args: SelectSubset<T, DonationRequestDeleteArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DonationRequest.
+     * @param {DonationRequestUpdateArgs} args - Arguments to update one DonationRequest.
+     * @example
+     * // Update one DonationRequest
+     * const donationRequest = await prisma.donationRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DonationRequestUpdateArgs>(args: SelectSubset<T, DonationRequestUpdateArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DonationRequests.
+     * @param {DonationRequestDeleteManyArgs} args - Arguments to filter DonationRequests to delete.
+     * @example
+     * // Delete a few DonationRequests
+     * const { count } = await prisma.donationRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DonationRequestDeleteManyArgs>(args?: SelectSubset<T, DonationRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DonationRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DonationRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DonationRequests
+     * const donationRequest = await prisma.donationRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DonationRequestUpdateManyArgs>(args: SelectSubset<T, DonationRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DonationRequests and returns the data updated in the database.
+     * @param {DonationRequestUpdateManyAndReturnArgs} args - Arguments to update many DonationRequests.
+     * @example
+     * // Update many DonationRequests
+     * const donationRequest = await prisma.donationRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DonationRequests and only return the `id`
+     * const donationRequestWithIdOnly = await prisma.donationRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DonationRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, DonationRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DonationRequest.
+     * @param {DonationRequestUpsertArgs} args - Arguments to update or create a DonationRequest.
+     * @example
+     * // Update or create a DonationRequest
+     * const donationRequest = await prisma.donationRequest.upsert({
+     *   create: {
+     *     // ... data to create a DonationRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DonationRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DonationRequestUpsertArgs>(args: SelectSubset<T, DonationRequestUpsertArgs<ExtArgs>>): Prisma__DonationRequestClient<$Result.GetResult<Prisma.$DonationRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DonationRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DonationRequestCountArgs} args - Arguments to filter DonationRequests to count.
+     * @example
+     * // Count the number of DonationRequests
+     * const count = await prisma.donationRequest.count({
+     *   where: {
+     *     // ... the filter for the DonationRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends DonationRequestCountArgs>(
+      args?: Subset<T, DonationRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DonationRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DonationRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DonationRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DonationRequestAggregateArgs>(args: Subset<T, DonationRequestAggregateArgs>): Prisma.PrismaPromise<GetDonationRequestAggregateType<T>>
+
+    /**
+     * Group by DonationRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DonationRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DonationRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DonationRequestGroupByArgs['orderBy'] }
+        : { orderBy?: DonationRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DonationRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDonationRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DonationRequest model
+   */
+  readonly fields: DonationRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DonationRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DonationRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DonationRequest model
+   */
+  interface DonationRequestFieldRefs {
+    readonly id: FieldRef<"DonationRequest", 'String'>
+    readonly firstName: FieldRef<"DonationRequest", 'String'>
+    readonly lastName: FieldRef<"DonationRequest", 'String'>
+    readonly email: FieldRef<"DonationRequest", 'String'>
+    readonly phone: FieldRef<"DonationRequest", 'String'>
+    readonly amount: FieldRef<"DonationRequest", 'String'>
+    readonly message: FieldRef<"DonationRequest", 'String'>
+    readonly status: FieldRef<"DonationRequest", 'String'>
+    readonly createdAt: FieldRef<"DonationRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"DonationRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DonationRequest findUnique
+   */
+  export type DonationRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which DonationRequest to fetch.
+     */
+    where: DonationRequestWhereUniqueInput
+  }
+
+  /**
+   * DonationRequest findUniqueOrThrow
+   */
+  export type DonationRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which DonationRequest to fetch.
+     */
+    where: DonationRequestWhereUniqueInput
+  }
+
+  /**
+   * DonationRequest findFirst
+   */
+  export type DonationRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which DonationRequest to fetch.
+     */
+    where?: DonationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DonationRequests to fetch.
+     */
+    orderBy?: DonationRequestOrderByWithRelationInput | DonationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DonationRequests.
+     */
+    cursor?: DonationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DonationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DonationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DonationRequests.
+     */
+    distinct?: DonationRequestScalarFieldEnum | DonationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * DonationRequest findFirstOrThrow
+   */
+  export type DonationRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which DonationRequest to fetch.
+     */
+    where?: DonationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DonationRequests to fetch.
+     */
+    orderBy?: DonationRequestOrderByWithRelationInput | DonationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DonationRequests.
+     */
+    cursor?: DonationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DonationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DonationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DonationRequests.
+     */
+    distinct?: DonationRequestScalarFieldEnum | DonationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * DonationRequest findMany
+   */
+  export type DonationRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which DonationRequests to fetch.
+     */
+    where?: DonationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DonationRequests to fetch.
+     */
+    orderBy?: DonationRequestOrderByWithRelationInput | DonationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DonationRequests.
+     */
+    cursor?: DonationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DonationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DonationRequests.
+     */
+    skip?: number
+    distinct?: DonationRequestScalarFieldEnum | DonationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * DonationRequest create
+   */
+  export type DonationRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to create a DonationRequest.
+     */
+    data: XOR<DonationRequestCreateInput, DonationRequestUncheckedCreateInput>
+  }
+
+  /**
+   * DonationRequest createMany
+   */
+  export type DonationRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DonationRequests.
+     */
+    data: DonationRequestCreateManyInput | DonationRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DonationRequest createManyAndReturn
+   */
+  export type DonationRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many DonationRequests.
+     */
+    data: DonationRequestCreateManyInput | DonationRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DonationRequest update
+   */
+  export type DonationRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to update a DonationRequest.
+     */
+    data: XOR<DonationRequestUpdateInput, DonationRequestUncheckedUpdateInput>
+    /**
+     * Choose, which DonationRequest to update.
+     */
+    where: DonationRequestWhereUniqueInput
+  }
+
+  /**
+   * DonationRequest updateMany
+   */
+  export type DonationRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DonationRequests.
+     */
+    data: XOR<DonationRequestUpdateManyMutationInput, DonationRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which DonationRequests to update
+     */
+    where?: DonationRequestWhereInput
+    /**
+     * Limit how many DonationRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DonationRequest updateManyAndReturn
+   */
+  export type DonationRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update DonationRequests.
+     */
+    data: XOR<DonationRequestUpdateManyMutationInput, DonationRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which DonationRequests to update
+     */
+    where?: DonationRequestWhereInput
+    /**
+     * Limit how many DonationRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DonationRequest upsert
+   */
+  export type DonationRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * The filter to search for the DonationRequest to update in case it exists.
+     */
+    where: DonationRequestWhereUniqueInput
+    /**
+     * In case the DonationRequest found by the `where` argument doesn't exist, create a new DonationRequest with this data.
+     */
+    create: XOR<DonationRequestCreateInput, DonationRequestUncheckedCreateInput>
+    /**
+     * In case the DonationRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DonationRequestUpdateInput, DonationRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * DonationRequest delete
+   */
+  export type DonationRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+    /**
+     * Filter which DonationRequest to delete.
+     */
+    where: DonationRequestWhereUniqueInput
+  }
+
+  /**
+   * DonationRequest deleteMany
+   */
+  export type DonationRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DonationRequests to delete
+     */
+    where?: DonationRequestWhereInput
+    /**
+     * Limit how many DonationRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DonationRequest without action
+   */
+  export type DonationRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DonationRequest
+     */
+    select?: DonationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DonationRequest
+     */
+    omit?: DonationRequestOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11886,6 +17828,85 @@ export namespace Prisma {
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
 
 
+  export const EventScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    date: 'date',
+    location: 'location',
+    eventType: 'eventType',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+
+
+  export const VolunteerOpportunityScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    subject: 'subject',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type VolunteerOpportunityScalarFieldEnum = (typeof VolunteerOpportunityScalarFieldEnum)[keyof typeof VolunteerOpportunityScalarFieldEnum]
+
+
+  export const VolunteerRequestScalarFieldEnum: {
+    id: 'id',
+    opportunityId: 'opportunityId',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    email: 'email',
+    phone: 'phone',
+    subject: 'subject',
+    message: 'message',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type VolunteerRequestScalarFieldEnum = (typeof VolunteerRequestScalarFieldEnum)[keyof typeof VolunteerRequestScalarFieldEnum]
+
+
+  export const MentorshipRequestScalarFieldEnum: {
+    id: 'id',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    email: 'email',
+    phone: 'phone',
+    graduationYear: 'graduationYear',
+    currentRole: 'currentRole',
+    interests: 'interests',
+    message: 'message',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MentorshipRequestScalarFieldEnum = (typeof MentorshipRequestScalarFieldEnum)[keyof typeof MentorshipRequestScalarFieldEnum]
+
+
+  export const DonationRequestScalarFieldEnum: {
+    id: 'id',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    email: 'email',
+    phone: 'phone',
+    amount: 'amount',
+    message: 'message',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DonationRequestScalarFieldEnum = (typeof DonationRequestScalarFieldEnum)[keyof typeof DonationRequestScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -12020,6 +18041,20 @@ export namespace Prisma {
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'EventType'
+   */
+  export type EnumEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EventType'>
+    
+
+
+  /**
+   * Reference to a field of type 'EventType[]'
+   */
+  export type ListEnumEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EventType[]'>
     
 
 
@@ -12757,6 +18792,392 @@ export namespace Prisma {
     session_state?: StringNullableWithAggregatesFilter<"Account"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Account"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Account"> | Date | string
+  }
+
+  export type EventWhereInput = {
+    AND?: EventWhereInput | EventWhereInput[]
+    OR?: EventWhereInput[]
+    NOT?: EventWhereInput | EventWhereInput[]
+    id?: StringFilter<"Event"> | string
+    title?: StringFilter<"Event"> | string
+    description?: StringFilter<"Event"> | string
+    date?: DateTimeFilter<"Event"> | Date | string
+    location?: StringNullableFilter<"Event"> | string | null
+    eventType?: EnumEventTypeFilter<"Event"> | $Enums.EventType
+    isActive?: BoolFilter<"Event"> | boolean
+    createdAt?: DateTimeFilter<"Event"> | Date | string
+    updatedAt?: DateTimeFilter<"Event"> | Date | string
+  }
+
+  export type EventOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    location?: SortOrderInput | SortOrder
+    eventType?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EventWhereInput | EventWhereInput[]
+    OR?: EventWhereInput[]
+    NOT?: EventWhereInput | EventWhereInput[]
+    title?: StringFilter<"Event"> | string
+    description?: StringFilter<"Event"> | string
+    date?: DateTimeFilter<"Event"> | Date | string
+    location?: StringNullableFilter<"Event"> | string | null
+    eventType?: EnumEventTypeFilter<"Event"> | $Enums.EventType
+    isActive?: BoolFilter<"Event"> | boolean
+    createdAt?: DateTimeFilter<"Event"> | Date | string
+    updatedAt?: DateTimeFilter<"Event"> | Date | string
+  }, "id">
+
+  export type EventOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    location?: SortOrderInput | SortOrder
+    eventType?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EventCountOrderByAggregateInput
+    _max?: EventMaxOrderByAggregateInput
+    _min?: EventMinOrderByAggregateInput
+  }
+
+  export type EventScalarWhereWithAggregatesInput = {
+    AND?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
+    OR?: EventScalarWhereWithAggregatesInput[]
+    NOT?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Event"> | string
+    title?: StringWithAggregatesFilter<"Event"> | string
+    description?: StringWithAggregatesFilter<"Event"> | string
+    date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    location?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    eventType?: EnumEventTypeWithAggregatesFilter<"Event"> | $Enums.EventType
+    isActive?: BoolWithAggregatesFilter<"Event"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+  }
+
+  export type VolunteerOpportunityWhereInput = {
+    AND?: VolunteerOpportunityWhereInput | VolunteerOpportunityWhereInput[]
+    OR?: VolunteerOpportunityWhereInput[]
+    NOT?: VolunteerOpportunityWhereInput | VolunteerOpportunityWhereInput[]
+    id?: StringFilter<"VolunteerOpportunity"> | string
+    title?: StringFilter<"VolunteerOpportunity"> | string
+    description?: StringFilter<"VolunteerOpportunity"> | string
+    subject?: StringNullableFilter<"VolunteerOpportunity"> | string | null
+    isActive?: BoolFilter<"VolunteerOpportunity"> | boolean
+    createdAt?: DateTimeFilter<"VolunteerOpportunity"> | Date | string
+    updatedAt?: DateTimeFilter<"VolunteerOpportunity"> | Date | string
+    volunteerRequests?: VolunteerRequestListRelationFilter
+  }
+
+  export type VolunteerOpportunityOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    subject?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    volunteerRequests?: VolunteerRequestOrderByRelationAggregateInput
+  }
+
+  export type VolunteerOpportunityWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: VolunteerOpportunityWhereInput | VolunteerOpportunityWhereInput[]
+    OR?: VolunteerOpportunityWhereInput[]
+    NOT?: VolunteerOpportunityWhereInput | VolunteerOpportunityWhereInput[]
+    title?: StringFilter<"VolunteerOpportunity"> | string
+    description?: StringFilter<"VolunteerOpportunity"> | string
+    subject?: StringNullableFilter<"VolunteerOpportunity"> | string | null
+    isActive?: BoolFilter<"VolunteerOpportunity"> | boolean
+    createdAt?: DateTimeFilter<"VolunteerOpportunity"> | Date | string
+    updatedAt?: DateTimeFilter<"VolunteerOpportunity"> | Date | string
+    volunteerRequests?: VolunteerRequestListRelationFilter
+  }, "id">
+
+  export type VolunteerOpportunityOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    subject?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: VolunteerOpportunityCountOrderByAggregateInput
+    _max?: VolunteerOpportunityMaxOrderByAggregateInput
+    _min?: VolunteerOpportunityMinOrderByAggregateInput
+  }
+
+  export type VolunteerOpportunityScalarWhereWithAggregatesInput = {
+    AND?: VolunteerOpportunityScalarWhereWithAggregatesInput | VolunteerOpportunityScalarWhereWithAggregatesInput[]
+    OR?: VolunteerOpportunityScalarWhereWithAggregatesInput[]
+    NOT?: VolunteerOpportunityScalarWhereWithAggregatesInput | VolunteerOpportunityScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"VolunteerOpportunity"> | string
+    title?: StringWithAggregatesFilter<"VolunteerOpportunity"> | string
+    description?: StringWithAggregatesFilter<"VolunteerOpportunity"> | string
+    subject?: StringNullableWithAggregatesFilter<"VolunteerOpportunity"> | string | null
+    isActive?: BoolWithAggregatesFilter<"VolunteerOpportunity"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"VolunteerOpportunity"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"VolunteerOpportunity"> | Date | string
+  }
+
+  export type VolunteerRequestWhereInput = {
+    AND?: VolunteerRequestWhereInput | VolunteerRequestWhereInput[]
+    OR?: VolunteerRequestWhereInput[]
+    NOT?: VolunteerRequestWhereInput | VolunteerRequestWhereInput[]
+    id?: StringFilter<"VolunteerRequest"> | string
+    opportunityId?: StringNullableFilter<"VolunteerRequest"> | string | null
+    firstName?: StringFilter<"VolunteerRequest"> | string
+    lastName?: StringFilter<"VolunteerRequest"> | string
+    email?: StringFilter<"VolunteerRequest"> | string
+    phone?: StringNullableFilter<"VolunteerRequest"> | string | null
+    subject?: StringNullableFilter<"VolunteerRequest"> | string | null
+    message?: StringNullableFilter<"VolunteerRequest"> | string | null
+    status?: StringFilter<"VolunteerRequest"> | string
+    createdAt?: DateTimeFilter<"VolunteerRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"VolunteerRequest"> | Date | string
+    opportunity?: XOR<VolunteerOpportunityNullableScalarRelationFilter, VolunteerOpportunityWhereInput> | null
+  }
+
+  export type VolunteerRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    opportunityId?: SortOrderInput | SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    subject?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    opportunity?: VolunteerOpportunityOrderByWithRelationInput
+  }
+
+  export type VolunteerRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: VolunteerRequestWhereInput | VolunteerRequestWhereInput[]
+    OR?: VolunteerRequestWhereInput[]
+    NOT?: VolunteerRequestWhereInput | VolunteerRequestWhereInput[]
+    opportunityId?: StringNullableFilter<"VolunteerRequest"> | string | null
+    firstName?: StringFilter<"VolunteerRequest"> | string
+    lastName?: StringFilter<"VolunteerRequest"> | string
+    email?: StringFilter<"VolunteerRequest"> | string
+    phone?: StringNullableFilter<"VolunteerRequest"> | string | null
+    subject?: StringNullableFilter<"VolunteerRequest"> | string | null
+    message?: StringNullableFilter<"VolunteerRequest"> | string | null
+    status?: StringFilter<"VolunteerRequest"> | string
+    createdAt?: DateTimeFilter<"VolunteerRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"VolunteerRequest"> | Date | string
+    opportunity?: XOR<VolunteerOpportunityNullableScalarRelationFilter, VolunteerOpportunityWhereInput> | null
+  }, "id">
+
+  export type VolunteerRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    opportunityId?: SortOrderInput | SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    subject?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: VolunteerRequestCountOrderByAggregateInput
+    _max?: VolunteerRequestMaxOrderByAggregateInput
+    _min?: VolunteerRequestMinOrderByAggregateInput
+  }
+
+  export type VolunteerRequestScalarWhereWithAggregatesInput = {
+    AND?: VolunteerRequestScalarWhereWithAggregatesInput | VolunteerRequestScalarWhereWithAggregatesInput[]
+    OR?: VolunteerRequestScalarWhereWithAggregatesInput[]
+    NOT?: VolunteerRequestScalarWhereWithAggregatesInput | VolunteerRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"VolunteerRequest"> | string
+    opportunityId?: StringNullableWithAggregatesFilter<"VolunteerRequest"> | string | null
+    firstName?: StringWithAggregatesFilter<"VolunteerRequest"> | string
+    lastName?: StringWithAggregatesFilter<"VolunteerRequest"> | string
+    email?: StringWithAggregatesFilter<"VolunteerRequest"> | string
+    phone?: StringNullableWithAggregatesFilter<"VolunteerRequest"> | string | null
+    subject?: StringNullableWithAggregatesFilter<"VolunteerRequest"> | string | null
+    message?: StringNullableWithAggregatesFilter<"VolunteerRequest"> | string | null
+    status?: StringWithAggregatesFilter<"VolunteerRequest"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"VolunteerRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"VolunteerRequest"> | Date | string
+  }
+
+  export type MentorshipRequestWhereInput = {
+    AND?: MentorshipRequestWhereInput | MentorshipRequestWhereInput[]
+    OR?: MentorshipRequestWhereInput[]
+    NOT?: MentorshipRequestWhereInput | MentorshipRequestWhereInput[]
+    id?: StringFilter<"MentorshipRequest"> | string
+    firstName?: StringFilter<"MentorshipRequest"> | string
+    lastName?: StringFilter<"MentorshipRequest"> | string
+    email?: StringFilter<"MentorshipRequest"> | string
+    phone?: StringNullableFilter<"MentorshipRequest"> | string | null
+    graduationYear?: StringNullableFilter<"MentorshipRequest"> | string | null
+    currentRole?: StringNullableFilter<"MentorshipRequest"> | string | null
+    interests?: StringNullableFilter<"MentorshipRequest"> | string | null
+    message?: StringNullableFilter<"MentorshipRequest"> | string | null
+    status?: StringFilter<"MentorshipRequest"> | string
+    createdAt?: DateTimeFilter<"MentorshipRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorshipRequest"> | Date | string
+  }
+
+  export type MentorshipRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    graduationYear?: SortOrderInput | SortOrder
+    currentRole?: SortOrderInput | SortOrder
+    interests?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorshipRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MentorshipRequestWhereInput | MentorshipRequestWhereInput[]
+    OR?: MentorshipRequestWhereInput[]
+    NOT?: MentorshipRequestWhereInput | MentorshipRequestWhereInput[]
+    firstName?: StringFilter<"MentorshipRequest"> | string
+    lastName?: StringFilter<"MentorshipRequest"> | string
+    email?: StringFilter<"MentorshipRequest"> | string
+    phone?: StringNullableFilter<"MentorshipRequest"> | string | null
+    graduationYear?: StringNullableFilter<"MentorshipRequest"> | string | null
+    currentRole?: StringNullableFilter<"MentorshipRequest"> | string | null
+    interests?: StringNullableFilter<"MentorshipRequest"> | string | null
+    message?: StringNullableFilter<"MentorshipRequest"> | string | null
+    status?: StringFilter<"MentorshipRequest"> | string
+    createdAt?: DateTimeFilter<"MentorshipRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"MentorshipRequest"> | Date | string
+  }, "id">
+
+  export type MentorshipRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    graduationYear?: SortOrderInput | SortOrder
+    currentRole?: SortOrderInput | SortOrder
+    interests?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MentorshipRequestCountOrderByAggregateInput
+    _max?: MentorshipRequestMaxOrderByAggregateInput
+    _min?: MentorshipRequestMinOrderByAggregateInput
+  }
+
+  export type MentorshipRequestScalarWhereWithAggregatesInput = {
+    AND?: MentorshipRequestScalarWhereWithAggregatesInput | MentorshipRequestScalarWhereWithAggregatesInput[]
+    OR?: MentorshipRequestScalarWhereWithAggregatesInput[]
+    NOT?: MentorshipRequestScalarWhereWithAggregatesInput | MentorshipRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MentorshipRequest"> | string
+    firstName?: StringWithAggregatesFilter<"MentorshipRequest"> | string
+    lastName?: StringWithAggregatesFilter<"MentorshipRequest"> | string
+    email?: StringWithAggregatesFilter<"MentorshipRequest"> | string
+    phone?: StringNullableWithAggregatesFilter<"MentorshipRequest"> | string | null
+    graduationYear?: StringNullableWithAggregatesFilter<"MentorshipRequest"> | string | null
+    currentRole?: StringNullableWithAggregatesFilter<"MentorshipRequest"> | string | null
+    interests?: StringNullableWithAggregatesFilter<"MentorshipRequest"> | string | null
+    message?: StringNullableWithAggregatesFilter<"MentorshipRequest"> | string | null
+    status?: StringWithAggregatesFilter<"MentorshipRequest"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MentorshipRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MentorshipRequest"> | Date | string
+  }
+
+  export type DonationRequestWhereInput = {
+    AND?: DonationRequestWhereInput | DonationRequestWhereInput[]
+    OR?: DonationRequestWhereInput[]
+    NOT?: DonationRequestWhereInput | DonationRequestWhereInput[]
+    id?: StringFilter<"DonationRequest"> | string
+    firstName?: StringFilter<"DonationRequest"> | string
+    lastName?: StringFilter<"DonationRequest"> | string
+    email?: StringFilter<"DonationRequest"> | string
+    phone?: StringNullableFilter<"DonationRequest"> | string | null
+    amount?: StringNullableFilter<"DonationRequest"> | string | null
+    message?: StringNullableFilter<"DonationRequest"> | string | null
+    status?: StringFilter<"DonationRequest"> | string
+    createdAt?: DateTimeFilter<"DonationRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"DonationRequest"> | Date | string
+  }
+
+  export type DonationRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DonationRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DonationRequestWhereInput | DonationRequestWhereInput[]
+    OR?: DonationRequestWhereInput[]
+    NOT?: DonationRequestWhereInput | DonationRequestWhereInput[]
+    firstName?: StringFilter<"DonationRequest"> | string
+    lastName?: StringFilter<"DonationRequest"> | string
+    email?: StringFilter<"DonationRequest"> | string
+    phone?: StringNullableFilter<"DonationRequest"> | string | null
+    amount?: StringNullableFilter<"DonationRequest"> | string | null
+    message?: StringNullableFilter<"DonationRequest"> | string | null
+    status?: StringFilter<"DonationRequest"> | string
+    createdAt?: DateTimeFilter<"DonationRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"DonationRequest"> | Date | string
+  }, "id">
+
+  export type DonationRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DonationRequestCountOrderByAggregateInput
+    _max?: DonationRequestMaxOrderByAggregateInput
+    _min?: DonationRequestMinOrderByAggregateInput
+  }
+
+  export type DonationRequestScalarWhereWithAggregatesInput = {
+    AND?: DonationRequestScalarWhereWithAggregatesInput | DonationRequestScalarWhereWithAggregatesInput[]
+    OR?: DonationRequestScalarWhereWithAggregatesInput[]
+    NOT?: DonationRequestScalarWhereWithAggregatesInput | DonationRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DonationRequest"> | string
+    firstName?: StringWithAggregatesFilter<"DonationRequest"> | string
+    lastName?: StringWithAggregatesFilter<"DonationRequest"> | string
+    email?: StringWithAggregatesFilter<"DonationRequest"> | string
+    phone?: StringNullableWithAggregatesFilter<"DonationRequest"> | string | null
+    amount?: StringNullableWithAggregatesFilter<"DonationRequest"> | string | null
+    message?: StringNullableWithAggregatesFilter<"DonationRequest"> | string | null
+    status?: StringWithAggregatesFilter<"DonationRequest"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"DonationRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DonationRequest"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -13583,6 +20004,457 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type EventCreateInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    location?: string | null
+    eventType: $Enums.EventType
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventUncheckedCreateInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    location?: string | null
+    eventType: $Enums.EventType
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventCreateManyInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    location?: string | null
+    eventType: $Enums.EventType
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerOpportunityCreateInput = {
+    id?: string
+    title: string
+    description: string
+    subject?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    volunteerRequests?: VolunteerRequestCreateNestedManyWithoutOpportunityInput
+  }
+
+  export type VolunteerOpportunityUncheckedCreateInput = {
+    id?: string
+    title: string
+    description: string
+    subject?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    volunteerRequests?: VolunteerRequestUncheckedCreateNestedManyWithoutOpportunityInput
+  }
+
+  export type VolunteerOpportunityUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    volunteerRequests?: VolunteerRequestUpdateManyWithoutOpportunityNestedInput
+  }
+
+  export type VolunteerOpportunityUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    volunteerRequests?: VolunteerRequestUncheckedUpdateManyWithoutOpportunityNestedInput
+  }
+
+  export type VolunteerOpportunityCreateManyInput = {
+    id?: string
+    title: string
+    description: string
+    subject?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerOpportunityUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerOpportunityUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerRequestCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    subject?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    opportunity?: VolunteerOpportunityCreateNestedOneWithoutVolunteerRequestsInput
+  }
+
+  export type VolunteerRequestUncheckedCreateInput = {
+    id?: string
+    opportunityId?: string | null
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    subject?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    opportunity?: VolunteerOpportunityUpdateOneWithoutVolunteerRequestsNestedInput
+  }
+
+  export type VolunteerRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    opportunityId?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerRequestCreateManyInput = {
+    id?: string
+    opportunityId?: string | null
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    subject?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    opportunityId?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorshipRequestCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    graduationYear?: string | null
+    currentRole?: string | null
+    interests?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorshipRequestUncheckedCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    graduationYear?: string | null
+    currentRole?: string | null
+    interests?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorshipRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableStringFieldUpdateOperationsInput | string | null
+    currentRole?: NullableStringFieldUpdateOperationsInput | string | null
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorshipRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableStringFieldUpdateOperationsInput | string | null
+    currentRole?: NullableStringFieldUpdateOperationsInput | string | null
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorshipRequestCreateManyInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    graduationYear?: string | null
+    currentRole?: string | null
+    interests?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MentorshipRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableStringFieldUpdateOperationsInput | string | null
+    currentRole?: NullableStringFieldUpdateOperationsInput | string | null
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MentorshipRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableStringFieldUpdateOperationsInput | string | null
+    currentRole?: NullableStringFieldUpdateOperationsInput | string | null
+    interests?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DonationRequestCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    amount?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DonationRequestUncheckedCreateInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    amount?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DonationRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DonationRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DonationRequestCreateManyInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    amount?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DonationRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DonationRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14278,6 +21150,230 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type EnumEventTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventTypeFilter<$PrismaModel> | $Enums.EventType
+  }
+
+  export type EventCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    location?: SortOrder
+    eventType?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    location?: SortOrder
+    eventType?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    location?: SortOrder
+    eventType?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumEventTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventTypeWithAggregatesFilter<$PrismaModel> | $Enums.EventType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEventTypeFilter<$PrismaModel>
+    _max?: NestedEnumEventTypeFilter<$PrismaModel>
+  }
+
+  export type VolunteerRequestListRelationFilter = {
+    every?: VolunteerRequestWhereInput
+    some?: VolunteerRequestWhereInput
+    none?: VolunteerRequestWhereInput
+  }
+
+  export type VolunteerRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VolunteerOpportunityCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    subject?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VolunteerOpportunityMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    subject?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VolunteerOpportunityMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    subject?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VolunteerOpportunityNullableScalarRelationFilter = {
+    is?: VolunteerOpportunityWhereInput | null
+    isNot?: VolunteerOpportunityWhereInput | null
+  }
+
+  export type VolunteerRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    opportunityId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VolunteerRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    opportunityId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VolunteerRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    opportunityId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorshipRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    graduationYear?: SortOrder
+    currentRole?: SortOrder
+    interests?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorshipRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    graduationYear?: SortOrder
+    currentRole?: SortOrder
+    interests?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MentorshipRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    graduationYear?: SortOrder
+    currentRole?: SortOrder
+    interests?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DonationRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    amount?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DonationRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    amount?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DonationRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    amount?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type TeacherCreateNestedManyWithoutUserInput = {
     create?: XOR<TeacherCreateWithoutUserInput, TeacherUncheckedCreateWithoutUserInput> | TeacherCreateWithoutUserInput[] | TeacherUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TeacherCreateOrConnectWithoutUserInput | TeacherCreateOrConnectWithoutUserInput[]
@@ -14570,6 +21666,68 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
+  export type EnumEventTypeFieldUpdateOperationsInput = {
+    set?: $Enums.EventType
+  }
+
+  export type VolunteerRequestCreateNestedManyWithoutOpportunityInput = {
+    create?: XOR<VolunteerRequestCreateWithoutOpportunityInput, VolunteerRequestUncheckedCreateWithoutOpportunityInput> | VolunteerRequestCreateWithoutOpportunityInput[] | VolunteerRequestUncheckedCreateWithoutOpportunityInput[]
+    connectOrCreate?: VolunteerRequestCreateOrConnectWithoutOpportunityInput | VolunteerRequestCreateOrConnectWithoutOpportunityInput[]
+    createMany?: VolunteerRequestCreateManyOpportunityInputEnvelope
+    connect?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+  }
+
+  export type VolunteerRequestUncheckedCreateNestedManyWithoutOpportunityInput = {
+    create?: XOR<VolunteerRequestCreateWithoutOpportunityInput, VolunteerRequestUncheckedCreateWithoutOpportunityInput> | VolunteerRequestCreateWithoutOpportunityInput[] | VolunteerRequestUncheckedCreateWithoutOpportunityInput[]
+    connectOrCreate?: VolunteerRequestCreateOrConnectWithoutOpportunityInput | VolunteerRequestCreateOrConnectWithoutOpportunityInput[]
+    createMany?: VolunteerRequestCreateManyOpportunityInputEnvelope
+    connect?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+  }
+
+  export type VolunteerRequestUpdateManyWithoutOpportunityNestedInput = {
+    create?: XOR<VolunteerRequestCreateWithoutOpportunityInput, VolunteerRequestUncheckedCreateWithoutOpportunityInput> | VolunteerRequestCreateWithoutOpportunityInput[] | VolunteerRequestUncheckedCreateWithoutOpportunityInput[]
+    connectOrCreate?: VolunteerRequestCreateOrConnectWithoutOpportunityInput | VolunteerRequestCreateOrConnectWithoutOpportunityInput[]
+    upsert?: VolunteerRequestUpsertWithWhereUniqueWithoutOpportunityInput | VolunteerRequestUpsertWithWhereUniqueWithoutOpportunityInput[]
+    createMany?: VolunteerRequestCreateManyOpportunityInputEnvelope
+    set?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    disconnect?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    delete?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    connect?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    update?: VolunteerRequestUpdateWithWhereUniqueWithoutOpportunityInput | VolunteerRequestUpdateWithWhereUniqueWithoutOpportunityInput[]
+    updateMany?: VolunteerRequestUpdateManyWithWhereWithoutOpportunityInput | VolunteerRequestUpdateManyWithWhereWithoutOpportunityInput[]
+    deleteMany?: VolunteerRequestScalarWhereInput | VolunteerRequestScalarWhereInput[]
+  }
+
+  export type VolunteerRequestUncheckedUpdateManyWithoutOpportunityNestedInput = {
+    create?: XOR<VolunteerRequestCreateWithoutOpportunityInput, VolunteerRequestUncheckedCreateWithoutOpportunityInput> | VolunteerRequestCreateWithoutOpportunityInput[] | VolunteerRequestUncheckedCreateWithoutOpportunityInput[]
+    connectOrCreate?: VolunteerRequestCreateOrConnectWithoutOpportunityInput | VolunteerRequestCreateOrConnectWithoutOpportunityInput[]
+    upsert?: VolunteerRequestUpsertWithWhereUniqueWithoutOpportunityInput | VolunteerRequestUpsertWithWhereUniqueWithoutOpportunityInput[]
+    createMany?: VolunteerRequestCreateManyOpportunityInputEnvelope
+    set?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    disconnect?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    delete?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    connect?: VolunteerRequestWhereUniqueInput | VolunteerRequestWhereUniqueInput[]
+    update?: VolunteerRequestUpdateWithWhereUniqueWithoutOpportunityInput | VolunteerRequestUpdateWithWhereUniqueWithoutOpportunityInput[]
+    updateMany?: VolunteerRequestUpdateManyWithWhereWithoutOpportunityInput | VolunteerRequestUpdateManyWithWhereWithoutOpportunityInput[]
+    deleteMany?: VolunteerRequestScalarWhereInput | VolunteerRequestScalarWhereInput[]
+  }
+
+  export type VolunteerOpportunityCreateNestedOneWithoutVolunteerRequestsInput = {
+    create?: XOR<VolunteerOpportunityCreateWithoutVolunteerRequestsInput, VolunteerOpportunityUncheckedCreateWithoutVolunteerRequestsInput>
+    connectOrCreate?: VolunteerOpportunityCreateOrConnectWithoutVolunteerRequestsInput
+    connect?: VolunteerOpportunityWhereUniqueInput
+  }
+
+  export type VolunteerOpportunityUpdateOneWithoutVolunteerRequestsNestedInput = {
+    create?: XOR<VolunteerOpportunityCreateWithoutVolunteerRequestsInput, VolunteerOpportunityUncheckedCreateWithoutVolunteerRequestsInput>
+    connectOrCreate?: VolunteerOpportunityCreateOrConnectWithoutVolunteerRequestsInput
+    upsert?: VolunteerOpportunityUpsertWithoutVolunteerRequestsInput
+    disconnect?: VolunteerOpportunityWhereInput | boolean
+    delete?: VolunteerOpportunityWhereInput | boolean
+    connect?: VolunteerOpportunityWhereUniqueInput
+    update?: XOR<XOR<VolunteerOpportunityUpdateToOneWithWhereWithoutVolunteerRequestsInput, VolunteerOpportunityUpdateWithoutVolunteerRequestsInput>, VolunteerOpportunityUncheckedUpdateWithoutVolunteerRequestsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14826,6 +21984,23 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumEventTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventTypeFilter<$PrismaModel> | $Enums.EventType
+  }
+
+  export type NestedEnumEventTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventTypeWithAggregatesFilter<$PrismaModel> | $Enums.EventType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEventTypeFilter<$PrismaModel>
+    _max?: NestedEnumEventTypeFilter<$PrismaModel>
   }
 
   export type TeacherCreateWithoutUserInput = {
@@ -15362,6 +22537,131 @@ export namespace Prisma {
     articles?: ArticleUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type VolunteerRequestCreateWithoutOpportunityInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    subject?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerRequestUncheckedCreateWithoutOpportunityInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    subject?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerRequestCreateOrConnectWithoutOpportunityInput = {
+    where: VolunteerRequestWhereUniqueInput
+    create: XOR<VolunteerRequestCreateWithoutOpportunityInput, VolunteerRequestUncheckedCreateWithoutOpportunityInput>
+  }
+
+  export type VolunteerRequestCreateManyOpportunityInputEnvelope = {
+    data: VolunteerRequestCreateManyOpportunityInput | VolunteerRequestCreateManyOpportunityInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VolunteerRequestUpsertWithWhereUniqueWithoutOpportunityInput = {
+    where: VolunteerRequestWhereUniqueInput
+    update: XOR<VolunteerRequestUpdateWithoutOpportunityInput, VolunteerRequestUncheckedUpdateWithoutOpportunityInput>
+    create: XOR<VolunteerRequestCreateWithoutOpportunityInput, VolunteerRequestUncheckedCreateWithoutOpportunityInput>
+  }
+
+  export type VolunteerRequestUpdateWithWhereUniqueWithoutOpportunityInput = {
+    where: VolunteerRequestWhereUniqueInput
+    data: XOR<VolunteerRequestUpdateWithoutOpportunityInput, VolunteerRequestUncheckedUpdateWithoutOpportunityInput>
+  }
+
+  export type VolunteerRequestUpdateManyWithWhereWithoutOpportunityInput = {
+    where: VolunteerRequestScalarWhereInput
+    data: XOR<VolunteerRequestUpdateManyMutationInput, VolunteerRequestUncheckedUpdateManyWithoutOpportunityInput>
+  }
+
+  export type VolunteerRequestScalarWhereInput = {
+    AND?: VolunteerRequestScalarWhereInput | VolunteerRequestScalarWhereInput[]
+    OR?: VolunteerRequestScalarWhereInput[]
+    NOT?: VolunteerRequestScalarWhereInput | VolunteerRequestScalarWhereInput[]
+    id?: StringFilter<"VolunteerRequest"> | string
+    opportunityId?: StringNullableFilter<"VolunteerRequest"> | string | null
+    firstName?: StringFilter<"VolunteerRequest"> | string
+    lastName?: StringFilter<"VolunteerRequest"> | string
+    email?: StringFilter<"VolunteerRequest"> | string
+    phone?: StringNullableFilter<"VolunteerRequest"> | string | null
+    subject?: StringNullableFilter<"VolunteerRequest"> | string | null
+    message?: StringNullableFilter<"VolunteerRequest"> | string | null
+    status?: StringFilter<"VolunteerRequest"> | string
+    createdAt?: DateTimeFilter<"VolunteerRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"VolunteerRequest"> | Date | string
+  }
+
+  export type VolunteerOpportunityCreateWithoutVolunteerRequestsInput = {
+    id?: string
+    title: string
+    description: string
+    subject?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerOpportunityUncheckedCreateWithoutVolunteerRequestsInput = {
+    id?: string
+    title: string
+    description: string
+    subject?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerOpportunityCreateOrConnectWithoutVolunteerRequestsInput = {
+    where: VolunteerOpportunityWhereUniqueInput
+    create: XOR<VolunteerOpportunityCreateWithoutVolunteerRequestsInput, VolunteerOpportunityUncheckedCreateWithoutVolunteerRequestsInput>
+  }
+
+  export type VolunteerOpportunityUpsertWithoutVolunteerRequestsInput = {
+    update: XOR<VolunteerOpportunityUpdateWithoutVolunteerRequestsInput, VolunteerOpportunityUncheckedUpdateWithoutVolunteerRequestsInput>
+    create: XOR<VolunteerOpportunityCreateWithoutVolunteerRequestsInput, VolunteerOpportunityUncheckedCreateWithoutVolunteerRequestsInput>
+    where?: VolunteerOpportunityWhereInput
+  }
+
+  export type VolunteerOpportunityUpdateToOneWithWhereWithoutVolunteerRequestsInput = {
+    where?: VolunteerOpportunityWhereInput
+    data: XOR<VolunteerOpportunityUpdateWithoutVolunteerRequestsInput, VolunteerOpportunityUncheckedUpdateWithoutVolunteerRequestsInput>
+  }
+
+  export type VolunteerOpportunityUpdateWithoutVolunteerRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerOpportunityUncheckedUpdateWithoutVolunteerRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type TeacherCreateManyUserInput = {
     id?: string
     name: string
@@ -15558,6 +22858,58 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VolunteerRequestCreateManyOpportunityInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    subject?: string | null
+    message?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type VolunteerRequestUpdateWithoutOpportunityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerRequestUncheckedUpdateWithoutOpportunityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VolunteerRequestUncheckedUpdateManyWithoutOpportunityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

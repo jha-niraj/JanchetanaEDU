@@ -14,7 +14,7 @@ import {
 } from "@/actions/article.action";
 import { useRouter } from "next/navigation";
 import {
-    Loader2, CalendarIcon, BookOpen, Trash2, FileText, Send
+    Loader2, CalendarIcon, BookOpen, Trash2, FileText, Send, Edit
 } from "lucide-react";
 import { format } from "date-fns";
 import {
@@ -27,7 +27,11 @@ import {
     AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
     AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
+import {
+    Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle
+} from "@/components/ui/sheet";
 import { toast } from "sonner";
+import { updateArticle } from "@/actions/article.action";
 
 interface Article {
     id: string;
@@ -45,6 +49,7 @@ interface Article {
 export default function ArticlesPage() {
     const [articles, setArticles] = useState<Article[]>([]);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+    const [isEditSheetOpen, setIsEditSheetOpen] = useState(false);
     const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
@@ -55,6 +60,8 @@ export default function ArticlesPage() {
         content: "",
         status: "draft",
     });
+
+    const selectedArticle = articles.find(a => a.id === selectedArticleId);
 
     // Fetch articles on mount
     useEffect(() => {
@@ -146,6 +153,61 @@ export default function ArticlesPage() {
                 }
             } catch (error) {
                 console.error("Delete article error:", error);
+                toast("Error", {
+                    description: "Something went wrong. Please try again.",
+                });
+            }
+        });
+    };
+
+    const handleEditClick = (article: Article) => {
+        setSelectedArticleId(article.id);
+        setNewArticle({
+            title: article.title,
+            content: article.content,
+            status: article.status,
+        });
+        setIsEditSheetOpen(true);
+    };
+
+    const handleUpdateArticle = () => {
+        if (!selectedArticle || !newArticle.title.trim() || !newArticle.content.trim()) {
+            toast("Validation Error", {
+                description: "Title and content are required.",
+            });
+            return;
+        }
+
+        startTransition(async () => {
+            try {
+                const result = await updateArticle(selectedArticle.id, {
+                    title: newArticle.title,
+                    content: newArticle.content,
+                    status: newArticle.status,
+                });
+
+                if (result.success) {
+                    if (result.article) {
+                        setArticles(articles.map(a => a.id === selectedArticle.id ? result.article! : a));
+                    }
+                    setIsEditSheetOpen(false);
+                    setSelectedArticleId(null);
+                    setNewArticle({
+                        title: "",
+                        content: "",
+                        status: "draft",
+                    });
+                    toast("Article Updated", {
+                        description: "The article has been updated successfully.",
+                    });
+                    router.refresh();
+                } else {
+                    toast("Error", {
+                        description: result.error || "Failed to update article.",
+                    });
+                }
+            } catch (error) {
+                console.error("Update article error:", error);
                 toast("Error", {
                     description: "Something went wrong. Please try again.",
                 });
@@ -296,6 +358,14 @@ export default function ArticlesPage() {
                                                         </ScrollArea>
                                                     </CardContent>
                                                     <CardFooter className="bg-muted/50 p-3 flex justify-end gap-2">
+                                                        <Button
+                                                            variant="outline"
+                                                            size="sm"
+                                                            onClick={() => handleEditClick(article)}
+                                                        >
+                                                            <Edit className="h-4 w-4 mr-2" />
+                                                            Edit
+                                                        </Button>
                                                         <AlertDialog
                                                             open={isDeleteDialogOpen && selectedArticleId === article.id}
                                                             onOpenChange={(open) => {
@@ -356,6 +426,87 @@ export default function ArticlesPage() {
                     }
                 </TabsContent>
             </Tabs>
+            <Sheet open={isEditSheetOpen} onOpenChange={setIsEditSheetOpen}>
+                <SheetContent side="right" className="sm:max-w-2xl overflow-y-auto">
+                    <SheetHeader>
+                        <SheetTitle>Edit Article</SheetTitle>
+                        <SheetDescription>
+                            Update the article details below.
+                        </SheetDescription>
+                    </SheetHeader>
+                    <div className="space-y-4 py-6">
+                        <div className="space-y-2">
+                            <Label htmlFor="edit-title">Article Title</Label>
+                            <Input
+                                id="title"
+                                placeholder="Enter article title..."
+                                value={newArticle.title}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="edit-content">Article Content</Label>
+                            <Textarea
+                                id="content"
+                                placeholder="Enter article content..."
+                                className="min-h-[300px]"
+                                value={newArticle.content}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="edit-status">Status</Label>
+                            <div className="flex gap-2">
+                                <Button
+                                    type="button"
+                                    variant={newArticle.status === "draft" ? "default" : "outline"}
+                                    onClick={() => setNewArticle({ ...newArticle, status: "draft" })}
+                                >
+                                    Draft
+                                </Button>
+                                <Button
+                                    type="button"
+                                    variant={newArticle.status === "published" ? "default" : "outline"}
+                                    onClick={() => setNewArticle({ ...newArticle, status: "published" })}
+                                >
+                                    Published
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                    <SheetFooter>
+                        <Button
+                            variant="outline"
+                            onClick={() => {
+                                setIsEditSheetOpen(false);
+                                setSelectedArticleId(null);
+                                setNewArticle({
+                                    title: "",
+                                    content: "",
+                                    status: "draft",
+                                });
+                            }}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            onClick={handleUpdateArticle}
+                            disabled={isPending}
+                        >
+                            {
+                                isPending ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        Updating...
+                                    </>
+                                ) : (
+                                    "Update Article"
+                                )
+                            }
+                        </Button>
+                    </SheetFooter>
+                </SheetContent>
+            </Sheet>
         </section>
     );
 }

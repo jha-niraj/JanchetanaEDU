@@ -143,6 +143,34 @@ export async function getLatestArticles(limit: number = 5): Promise<ArticlesResp
 }
 
 /**
+ * Get latest principal articles (articles written by principal, not teachers)
+ */
+export async function getLatestPrincipalArticles(limit: number = 5): Promise<ArticlesResponse> {
+	try {
+		const articles = await prisma.article.findMany({
+			include: {
+				teacher: true
+			},
+			where: {
+				status: 'published',
+				teacherId: null, // Principal articles don't have teacherId
+				userId: { not: null } // But they have userId (principal)
+			},
+			orderBy: {
+				createdAt: 'desc'
+			},
+			take: limit
+		});
+
+		return { success: true, articles };
+	} catch (err) {
+		const error = err as Error;
+		console.error("Failed to fetch latest principal articles:", error);
+		return { success: false, error: "Failed to fetch latest principal articles" };
+	}
+}
+
+/**
  * Get article by ID
  */
 export async function getArticleById(id: string): Promise<ArticleResponse<Article>> {

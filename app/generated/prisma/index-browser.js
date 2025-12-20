@@ -237,6 +237,70 @@ exports.Prisma.AccountScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.EventScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  date: 'date',
+  location: 'location',
+  eventType: 'eventType',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VolunteerOpportunityScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  subject: 'subject',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VolunteerRequestScalarFieldEnum = {
+  id: 'id',
+  opportunityId: 'opportunityId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  subject: 'subject',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MentorshipRequestScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  graduationYear: 'graduationYear',
+  currentRole: 'currentRole',
+  interests: 'interests',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DonationRequestScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  amount: 'amount',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -272,6 +336,11 @@ exports.AdmissionType = exports.$Enums.AdmissionType = {
   GRADE_9_12: 'GRADE_9_12'
 };
 
+exports.EventType = exports.$Enums.EventType = {
+  SCHOOL: 'SCHOOL',
+  ALUMNI: 'ALUMNI'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Teacher: 'Teacher',
@@ -281,7 +350,12 @@ exports.Prisma.ModelName = {
   AlumniRegistration: 'AlumniRegistration',
   NewsletterSubscription: 'NewsletterSubscription',
   ContactInquiry: 'ContactInquiry',
-  Account: 'Account'
+  Account: 'Account',
+  Event: 'Event',
+  VolunteerOpportunity: 'VolunteerOpportunity',
+  VolunteerRequest: 'VolunteerRequest',
+  MentorshipRequest: 'MentorshipRequest',
+  DonationRequest: 'DonationRequest'
 };
 
 /**

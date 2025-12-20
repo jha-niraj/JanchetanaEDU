@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useParams, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
@@ -30,7 +30,6 @@ interface Article {
 
 export default function ArticleDetailPage() {
     const params = useParams()
-    const router = useRouter()
     const slug = params.slug as string
     const [article, setArticle] = useState<Article | null>(null)
     const [isLoading, setIsLoading] = useState(true)

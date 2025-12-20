@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { useState, useEffect } from "react"
-import Image from "next/image"
 
 const navItems = [
     { href: "/admin/dashboard", label: "Dashboard", icon: Home },

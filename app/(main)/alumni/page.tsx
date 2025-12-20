@@ -1,16 +1,21 @@
 "use client"
 
 import type React from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Calendar, ChevronRight, GraduationCap, Heart, MapPin, Users, Book, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import SmoothScroll from "@/components/smoothscroll"
 import { AlumniRegistrationForm } from "./_components/alumniregistrationform"
 import { NewsletterSubscriptionForm } from "./_components/newslettersubscritpion"
+import { VolunteerSheet } from "./_components/volunteersheet"
+import { MentorshipSheet } from "./_components/mentorshipsheet"
+import { DonateSheet } from "./_components/donatesheet"
+import { getEvents } from "@/actions/event.action"
+import { format } from "date-fns"
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -118,31 +123,33 @@ const notableAlumni = [
         image: "/alumni/pradeepkumar.jpeg",
     }
 ]
-const events = [
-    {
-        title: "Annual Alumni Reunion",
-        date: "June 10-12, 2024",
-        location: "Horizon Academy Campus",
-        description:
-            "Join fellow graduates for a weekend of reconnecting, campus tours, class dinners, and special events celebrating milestone reunion years.",
-    },
-    {
-        title: "Alumni Career Fair",
-        date: "October 15, 2024",
-        location: "Virtual Event",
-        description:
-            "Connect with current students as an industry representative, or participate as an alumnus seeking new opportunities in your field.",
-    },
-    {
-        title: "Homecoming Weekend",
-        date: "November 5-7, 2024",
-        location: "Horizon Academy Campus",
-        description:
-            "Return to campus for the traditional homecoming football game, alumni tailgate, and special recognition of distinguished alumni during halftime.",
-    },
-]
+interface AlumniEvent {
+    id: string
+    title: string
+    description: string
+    date: Date
+    location?: string | null
+}
 
 export default function AlumniPage() {
+    const [alumniEvents, setAlumniEvents] = useState<AlumniEvent[]>([])
+    const [isLoadingEvents, setIsLoadingEvents] = useState(true)
+
+    useEffect(() => {
+        async function fetchEvents() {
+            try {
+                const result = await getEvents('ALUMNI')
+                if (result.success && result.events) {
+                    setAlumniEvents(result.events as AlumniEvent[])
+                }
+            } catch (error) {
+                console.error("Failed to fetch alumni events:", error)
+            } finally {
+                setIsLoadingEvents(false)
+            }
+        }
+        fetchEvents()
+    }, [])
     return (
         <SmoothScroll>
             <div className="flex min-h-screen flex-col">
@@ -184,7 +191,7 @@ export default function AlumniPage() {
                             </div>
                         </div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    <section className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6">
                         <motion.div
                             className="grid gap-12 md:grid-cols-2 items-center"
                             initial={{ opacity: 0 }}
@@ -193,17 +200,21 @@ export default function AlumniPage() {
                             transition={{ duration: 0.5 }}
                         >
                             <div className="space-y-6">
-                                <motion.h2
-                                    className="text-3xl font-bold tracking-tight"
+                                <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    Welcome to Our Alumni Community
-                                </motion.h2>
+                                    <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                                        Join Our Network
+                                    </Badge>
+                                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                                        Welcome to Our Alumni Community
+                                    </h2>
+                                </motion.div>
                                 <motion.p
-                                    className="text-lg text-muted-foreground"
+                                    className="text-lg text-muted-foreground leading-relaxed"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
@@ -214,7 +225,7 @@ export default function AlumniPage() {
                                     instilled during their time at our school.
                                 </motion.p>
                                 <motion.p
-                                    className="text-lg text-muted-foreground"
+                                    className="text-lg text-muted-foreground leading-relaxed"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
@@ -222,7 +233,7 @@ export default function AlumniPage() {
                                 >
                                     Whether you graduated recently or decades ago, you remain an important part of our community. We invite
                                     you to stay connected, participate in alumni events, mentor current students, and contribute to the
-                                    continued growth and success of Horizon Academy.
+                                    continued growth and success of Janchetana School.
                                 </motion.p>
                                 <motion.div
                                     className="flex flex-wrap gap-4"
@@ -235,7 +246,7 @@ export default function AlumniPage() {
                                 </motion.div>
                             </div>
                             <motion.div
-                                className="relative h-[400px] rounded-lg overflow-hidden"
+                                className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl border-2 border-primary/10"
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
@@ -250,8 +261,8 @@ export default function AlumniPage() {
                             </motion.div>
                         </motion.div>
                     </section>
-                    <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
-                        <div className="max-w-7xl mx-auto">
+                    <section className="w-full py-12 md:py-16 bg-gradient-to-b from-secondary/30 via-secondary/20 to-transparent dark:from-gray-900/40 dark:via-gray-900/30">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6">
                             <motion.div
                                 className="text-center max-w-2xl mx-auto mb-12"
                                 initial={{ opacity: 0, y: 20 }}
@@ -259,7 +270,10 @@ export default function AlumniPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <h2 className="text-3xl font-bold tracking-tight mb-4">Alumni Benefits</h2>
+                                <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                                    Benefits
+                                </Badge>
+                                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Alumni Benefits</h2>
                                 <p className="text-lg text-muted-foreground">
                                     Discover the advantages of staying connected with your alma mater
                                 </p>
@@ -279,7 +293,7 @@ export default function AlumniPage() {
                             </motion.div>
                         </div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    <section className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6">
                         <motion.div
                             className="text-center max-w-2xl mx-auto mb-12"
                             initial={{ opacity: 0, y: 20 }}
@@ -287,7 +301,10 @@ export default function AlumniPage() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-3xl font-bold tracking-tight mb-4">Notable Alumni</h2>
+                            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                                Success Stories
+                            </Badge>
+                            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Notable Alumni</h2>
                             <p className="text-lg text-muted-foreground">Celebrating the achievements of our distinguished graduates</p>
                         </motion.div>
                         <motion.div
@@ -304,8 +321,8 @@ export default function AlumniPage() {
                             }
                         </motion.div>
                     </section>
-                    <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
-                        <div className="max-w-7xl mx-auto">
+                    <section className="w-full py-12 md:py-16 bg-gradient-to-b from-secondary/30 via-secondary/20 to-transparent dark:from-gray-900/40 dark:via-gray-900/30">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6">
                             <motion.div
                                 className="text-center max-w-2xl mx-auto mb-12"
                                 initial={{ opacity: 0, y: 20 }}
@@ -313,38 +330,56 @@ export default function AlumniPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <h2 className="text-3xl font-bold tracking-tight mb-4">Upcoming Alumni Events</h2>
+                                <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                                    Events
+                                </Badge>
+                                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Upcoming Alumni Events</h2>
                                 <p className="text-lg text-muted-foreground">
                                     Join us for these special events designed to reconnect and celebrate our alumni community
                                 </p>
                             </motion.div>
-                            <motion.div
-                                className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-                                variants={staggerContainer}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                            >
-                                {
-                                    events.map((event, index) => (
-                                        <EventCard key={index} {...event} />
-                                    ))
-                                }
-                            </motion.div>
-                            <motion.div
-                                className="flex justify-center mt-8"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.4, duration: 0.5 }}
-                            >
-                                <Button variant="outline" className="gap-1">
-                                    View All Events <Calendar className="h-4 w-4" />
-                                </Button>
-                            </motion.div>
+                            {isLoadingEvents ? (
+                                <div className="flex items-center justify-center py-12">
+                                    <div className="text-muted-foreground">Loading events...</div>
+                                </div>
+                            ) : alumniEvents.length > 0 ? (
+                                <>
+                                    <motion.div
+                                        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                                        variants={staggerContainer}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                    >
+                                        {
+                                            alumniEvents.map((event) => (
+                                                <EventCard 
+                                                    key={event.id} 
+                                                    title={event.title}
+                                                    date={format(new Date(event.date), "MMMM d, yyyy")}
+                                                    location={event.location || "TBA"}
+                                                    description={event.description}
+                                                />
+                                            ))
+                                        }
+                                    </motion.div>
+                                </>
+                            ) : (
+                                <motion.div
+                                    className="text-center py-12"
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <Calendar className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                                    <h3 className="text-xl font-semibold mb-2">Coming Soon</h3>
+                                    <p className="text-muted-foreground">No alumni events scheduled at the moment. Check back soon for updates!</p>
+                                </motion.div>
+                            )}
                         </div>
                     </section>
-                    <section className="max-w-7xl mx-auto py-12 md:py-16">
+                    <section className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6">
                         <motion.div
                             className="text-center max-w-2xl mx-auto mb-12"
                             initial={{ opacity: 0, y: 20 }}
@@ -352,155 +387,120 @@ export default function AlumniPage() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-3xl font-bold tracking-tight mb-4">Get Involved</h2>
+                            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                                Get Involved
+                            </Badge>
+                            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Get Involved</h2>
                             <p className="text-lg text-muted-foreground">
-                                There are many ways to give back and stay connected with the Horizon Academy community
+                                There are many ways to give back and stay connected with the Janchetana School community
                             </p>
                         </motion.div>
-                        <Tabs defaultValue="volunteer" className="w-full">
-                            <div className="flex justify-center mb-8">
-                                <TabsList className="grid w-full max-w-2xl grid-cols-3">
-                                    <TabsTrigger value="volunteer">Volunteer</TabsTrigger>
-                                    <TabsTrigger value="mentor">Mentor</TabsTrigger>
-                                    <TabsTrigger value="donate">Donate</TabsTrigger>
-                                </TabsList>
-                            </div>
-                            <TabsContent value="volunteer">
-                                <motion.div
-                                    className="grid gap-8 md:grid-cols-2 items-center"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <div className="space-y-6">
-                                        <h3 className="text-2xl font-bold">Volunteer Opportunities</h3>
-                                        <p className="text-muted-foreground">
-                                            Share your time and expertise with the Horizon Academy community. Volunteer opportunities include:
-                                        </p>
-                                        <ul className="space-y-2 text-muted-foreground">
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Speaking at career days and special events</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Helping organize alumni events and reunions</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Serving on alumni advisory committees</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Supporting school events and fundraisers</span>
-                                            </li>
-                                        </ul>
-                                        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                        <div className="grid gap-6 md:grid-cols-3">
+                            <motion.div
+                                className="space-y-6 p-6 rounded-lg border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-lg"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <div className="space-y-4">
+                                    <h3 className="text-2xl font-bold">Volunteer Opportunities</h3>
+                                    <p className="text-muted-foreground">
+                                        Share your time and expertise with the Janchetana School community.
+                                    </p>
+                                    <ul className="space-y-2 text-sm text-muted-foreground">
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Speaking at career days</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Organizing alumni events</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Supporting school activities</span>
+                                        </li>
+                                    </ul>
+                                    <VolunteerSheet>
+                                        <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                                             Explore Volunteer Opportunities
                                         </Button>
-                                    </div>
-                                    <div className="relative h-[300px] rounded-lg overflow-hidden">
-                                        <Image
-                                            src="/alumni/volunteer.png"
-                                            alt="Alumni volunteering"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </motion.div>
-                            </TabsContent>
-                            <TabsContent value="mentor">
-                                <motion.div
-                                    className="grid gap-8 md:grid-cols-2 items-center"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <div className="space-y-6">
-                                        <h3 className="text-2xl font-bold">Mentor a Student</h3>
-                                        <p className="text-muted-foreground">
-                                            Make a meaningful impact by mentoring current students. Our mentorship program connects alumni with
-                                            students who share similar interests or career aspirations. As a mentor, you can:
-                                        </p>
-                                        <ul className="space-y-2 text-muted-foreground">
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Provide career guidance and insights</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Share your college and professional experiences</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Help students develop professional skills</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Offer job shadowing or internship opportunities</span>
-                                            </li>
-                                        </ul>
-                                        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                                    </VolunteerSheet>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                className="space-y-6 p-6 rounded-lg border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-lg"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1, duration: 0.5 }}
+                            >
+                                <div className="space-y-4">
+                                    <h3 className="text-2xl font-bold">Mentor a Student</h3>
+                                    <p className="text-muted-foreground">
+                                        Make a meaningful impact by mentoring current students.
+                                    </p>
+                                    <ul className="space-y-2 text-sm text-muted-foreground">
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Career guidance</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Share experiences</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Professional development</span>
+                                        </li>
+                                    </ul>
+                                    <MentorshipSheet>
+                                        <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                                             Join Mentorship Program
                                         </Button>
-                                    </div>
-                                    <div className="relative h-[300px] rounded-lg overflow-hidden">
-                                        <Image
-                                            src="/alumni/mentor.png"
-                                            alt="Alumni mentoring"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </motion.div>
-                            </TabsContent>
-                            <TabsContent value="donate">
-                                <motion.div
-                                    className="grid gap-8 md:grid-cols-2 items-center"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <div className="space-y-6">
-                                        <h3 className="text-2xl font-bold">Support Future Generations</h3>
-                                        <p className="text-muted-foreground">
-                                            Your contributions help ensure that current and future students receive the same quality education
-                                            and opportunities that you experienced. Donations support:
-                                        </p>
-                                        <ul className="space-y-2 text-muted-foreground">
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Scholarships for deserving students</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Facility improvements and technology upgrades</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Enhanced academic and extracurricular programs</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span>Professional development for faculty and staff</span>
-                                            </li>
-                                        </ul>
-                                        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Make a Donation</Button>
-                                    </div>
-                                    <div className="relative h-[300px] rounded-lg overflow-hidden">
-                                        <Image
-                                            src="alumni/donate.png"
-                                            alt="Scholarship presentation"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </motion.div>
-                            </TabsContent>
-                        </Tabs>
+                                    </MentorshipSheet>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                className="space-y-6 p-6 rounded-lg border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-lg"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2, duration: 0.5 }}
+                            >
+                                <div className="space-y-4">
+                                    <h3 className="text-2xl font-bold">Support Future Generations</h3>
+                                    <p className="text-muted-foreground">
+                                        Your contributions help ensure quality education for all students.
+                                    </p>
+                                    <ul className="space-y-2 text-sm text-muted-foreground">
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Scholarships</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Facility improvements</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <ChevronRight className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                                            <span>Program enhancements</span>
+                                        </li>
+                                    </ul>
+                                    <DonateSheet>
+                                        <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                                            Make a Donation
+                                        </Button>
+                                    </DonateSheet>
+                                </div>
+                            </motion.div>
+                        </div>
                     </section>
-                    <section className="w-full py-12 md:py-16 bg-secondary/20 dark:bg-gray-900/30">
-                        <div className="max-w-7xl mx-auto">
+                    <section className="w-full py-12 md:py-16 bg-gradient-to-b from-secondary/30 via-secondary/20 to-transparent dark:from-gray-900/40 dark:via-gray-900/30">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6">
                             <motion.div
                                 className="text-center max-w-2xl mx-auto mb-12"
                                 initial={{ opacity: 0, y: 20 }}
@@ -508,7 +508,10 @@ export default function AlumniPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <h2 className="text-3xl font-bold tracking-tight mb-4">Stay Connected</h2>
+                                <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                                    Newsletter
+                                </Badge>
+                                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Stay Connected</h2>
                                 <p className="text-lg text-muted-foreground">
                                     Keep up with the latest alumni news, events, and opportunities
                                 </p>
@@ -630,31 +633,23 @@ function EventCard({
 }) {
     return (
         <motion.div variants={fadeInUp}>
-            <Card className="h-full">
+            <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-2 hover:border-primary/20">
                 <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription className="flex flex-col gap-1">
-                        <div className="flex items-center gap-1">
-                            <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
-                            <span>{date}</span>
+                    <CardTitle className="text-xl">{title}</CardTitle>
+                    <CardDescription className="flex flex-col gap-2 mt-2">
+                        <div className="flex items-center gap-2">
+                            <Calendar className="h-4 w-4 text-primary" />
+                            <span className="font-medium">{date}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                            <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
+                        <div className="flex items-center gap-2">
+                            <MapPin className="h-4 w-4 text-primary" />
                             <span>{location}</span>
                         </div>
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-muted-foreground">{description}</p>
+                    <p className="text-muted-foreground line-clamp-4">{description}</p>
                 </CardContent>
-                {/* <CardFooter className="flex justify-between">
-                    <Button variant="outline" size="sm">
-                        Register
-                    </Button>
-                    <Button variant="ghost" size="sm" className="gap-1">
-                        Details <ChevronRight className="h-4 w-4" />
-                    </Button>
-                </CardFooter> */}
             </Card>
         </motion.div>
     )

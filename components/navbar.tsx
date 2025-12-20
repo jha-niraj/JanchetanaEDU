@@ -60,19 +60,19 @@ export function MainNav() {
     }
 
     return (
-        <div className="w-full fixed top-0 z-50">
+        <div className="w-full fixed top-0 left-0 right-0 z-50">
             <motion.nav
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
                 className={cn(
-                    "w-full max-w-7xl mx-auto transition-all duration-300",
+                    "w-full transition-all duration-300 sticky top-0",
                     scrolled
-                        ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg shadow-lg dark:shadow-gray-800/30"
-                        : "bg-white/50 dark:bg-gray-900/50 backdrop-blur-md",
+                        ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl shadow-lg dark:shadow-gray-900/50 border-b border-gray-200/50 dark:border-gray-800/50"
+                        : "bg-white/90 dark:bg-gray-950/90 backdrop-blur-lg border-b border-gray-200/30 dark:border-gray-800/30",
                 )}
             >
-                <div className="px-6">
+                <div className="max-w-7xl mx-auto px-6">
                     <div className="flex items-center justify-between h-16">
                         <Link href="/" className="flex items-center gap-3 group">
                             <div className="relative">

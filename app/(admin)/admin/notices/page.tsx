@@ -14,7 +14,7 @@ import {
 } from "@/actions/notice.action"
 import { useRouter } from "next/navigation"
 import {
-    Loader2, Bell, Trash2, Edit, Plus, X
+    Loader2, Bell, Trash2, Edit, Plus
 } from "lucide-react"
 import { format } from "date-fns"
 import {

@@ -2,7 +2,6 @@
 
 import { Sidebar } from "@/components/(dashboard)/adminsidebar"
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import {
     Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle
 } from "@/components/ui/dialog"
@@ -21,7 +20,6 @@ export default function DashboardLayout({
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
-    const router = useRouter()
 
     useEffect(() => {
         // Check if already authenticated in session

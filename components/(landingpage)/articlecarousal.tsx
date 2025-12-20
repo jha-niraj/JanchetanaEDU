@@ -1,14 +1,13 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { getLatestArticles } from "@/actions/article.action"
+import { getLatestPrincipalArticles } from "@/actions/article.action"
 
 interface Article {
     id: string
@@ -35,7 +34,7 @@ export function ArticleCarousel() {
     useEffect(() => {
         async function fetchArticles() {
             try {
-                const result = await getLatestArticles(10)
+                const result = await getLatestPrincipalArticles(10)
                 if (result.success && result.articles) {
                     setArticles(result.articles as Article[])
                 }

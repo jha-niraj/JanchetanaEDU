@@ -31,7 +31,7 @@ export function AlumniRegistrationForm() {
             <SheetTrigger asChild>
                 <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Join Alumni Network</Button>
             </SheetTrigger>
-            <SheetContent className="sm:max-w-md md:max-w-lg overflow-y-auto">
+            <SheetContent className="sm:max-w-3xl md:max-w-4xl overflow-y-auto">
                 <SheetHeader>
                     <SheetTitle>Alumni Registration</SheetTitle>
                     <SheetDescription>
@@ -96,7 +96,7 @@ export function AlumniRegistrationForm() {
                             <Input
                                 id="phone"
                                 name="phone"
-                                placeholder="+1 (123) 456-7890"
+                                placeholder="+977 9847370585"
                                 aria-describedby="phone-error"
                             />
                             {state.errors?.phone && (
@@ -165,7 +165,7 @@ export function AlumniRegistrationForm() {
                             <Input
                                 id="address"
                                 name="address"
-                                placeholder="Street address"
+                                placeholder="e.g. Ward No. 8, Laxmanpur, Kapilvastu"
                             />
                         </div>
 
@@ -175,7 +175,7 @@ export function AlumniRegistrationForm() {
                                 <Input
                                     id="city"
                                     name="city"
-                                    placeholder="e.g. New York"
+                                    placeholder="e.g. Kathmandu, Pokhara, Laxmanpur, Butwal"
                                 />
                             </div>
 
@@ -184,7 +184,7 @@ export function AlumniRegistrationForm() {
                                 <Input
                                     id="country"
                                     name="country"
-                                    placeholder="e.g. United States"
+                                    placeholder="Nepal"
                                 />
                             </div>
                         </div>

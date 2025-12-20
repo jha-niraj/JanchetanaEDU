@@ -25,148 +25,113 @@ const itemVariants = {
 
 export function Footer() {
     return (
-        <footer className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 border-t border-gray-200 dark:border-gray-800">
+        <footer className="bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 border-t-2 border-gray-200 dark:border-gray-800">
             <motion.div
-                className="max-w-7xl mx-auto py-16 md:py-20 px-4 sm:px-6"
+                className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6"
                 variants={footerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
             >
-                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-                    <motion.div className="space-y-6" variants={itemVariants}>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <motion.div className="space-y-4" variants={itemVariants}>
                         <div className="flex items-center space-x-3">
-                            <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 text-white shadow-lg">
-                                <BookOpen className="h-6 w-6" />
+                            <div className="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 text-white shadow-xl shadow-teal-500/20">
+                                <BookOpen className="h-7 w-7" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="font-bold text-xl leading-tight bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Janchetana</span>
-                                <span className="text-xs text-muted-foreground leading-tight font-medium">School of Excellence</span>
+                                <span className="font-bold text-2xl leading-tight bg-gradient-to-r from-teal-600 via-teal-500 to-cyan-600 bg-clip-text text-transparent">Janchetana</span>
+                                <span className="text-xs text-muted-foreground leading-tight font-semibold">School of Excellence</span>
                             </div>
                         </div>
                         <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
                             Empowering students with knowledge, skills, and values to excel in a rapidly changing world since 1975.
                         </p>
-                        <div className="flex space-x-2">
-                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="Facebook">
+                        <div className="flex space-x-2 pt-2">
+                            <Button variant="ghost" size="icon" className="rounded-xl hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 hover:scale-110" aria-label="Facebook">
                                 <Facebook className="h-5 w-5" />
                             </Button>
-                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="Twitter">
+                            <Button variant="ghost" size="icon" className="rounded-xl hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 hover:scale-110" aria-label="Twitter">
                                 <Twitter className="h-5 w-5" />
                             </Button>
-                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="Instagram">
+                            <Button variant="ghost" size="icon" className="rounded-xl hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 hover:scale-110" aria-label="Instagram">
                                 <Instagram className="h-5 w-5" />
                             </Button>
-                            <Button variant="ghost" size="icon" className="rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400" aria-label="YouTube">
+                            <Button variant="ghost" size="icon" className="rounded-xl hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 hover:scale-110" aria-label="YouTube">
                                 <Youtube className="h-5 w-5" />
                             </Button>
                         </div>
                     </motion.div>
                     <motion.div variants={itemVariants}>
-                        <h3 className="mb-4 text-sm font-semibold">Quick Links</h3>
-                        <ul className="space-y-2 text-sm">
+                        <h3 className="mb-6 text-lg font-bold text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2">Quick Links</h3>
+                        <ul className="space-y-3 text-sm">
                             <li>
-                                <Link href="/aboutus" className="text-muted-foreground hover:text-primary">
+                                <Link href="/aboutus" className="text-muted-foreground hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 inline-flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                                     About Us
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/academics" className="text-muted-foreground hover:text-primary">
+                                <Link href="/academics" className="text-muted-foreground hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 inline-flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                                     Academics
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/admissions" className="text-muted-foreground hover:text-primary">
+                                <Link href="/admissions" className="text-muted-foreground hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 inline-flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                                     Admissions
                                 </Link>
                             </li>
-                            {/* <li>
-                                <Link href="/calendar" className="text-muted-foreground hover:text-primary">
-                                    School Calendar
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/news" className="text-muted-foreground hover:text-primary">
-                                    News & Events
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/careers" className="text-muted-foreground hover:text-primary">
-                                    Careers
-                                </Link>
-                            </li> */}
                         </ul>
                     </motion.div>
                     <motion.div variants={itemVariants}>
-                        <h3 className="mb-4 text-sm font-semibold">Resources</h3>
-                        <ul className="space-y-2 text-sm">
-                            {/* <li>
-                                <Link href="/e-library" className="text-muted-foreground hover:text-primary">
-                                    E-Library
-                                </Link>
-                            </li>
+                        <h3 className="mb-6 text-lg font-bold text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2">Resources</h3>
+                        <ul className="space-y-3 text-sm">
                             <li>
-                                <Link href="/student-portal" className="text-muted-foreground hover:text-primary">
-                                    Student Portal
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/parent-portal" className="text-muted-foreground hover:text-primary">
-                                    Parent Portal
-                                </Link>
-                            </li> */}
-                            <li>
-                                <Link href="/alumni" className="text-muted-foreground hover:text-primary">
+                                <Link href="/alumni" className="text-muted-foreground hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 inline-flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                                     Alumni Network
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/contactus" className="text-muted-foreground hover:text-primary">
-                                    Technical Support
+                                <Link href="/contactus" className="text-muted-foreground hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-200 inline-flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    Contact Us
                                 </Link>
                             </li>
                         </ul>
                     </motion.div>
                     <motion.div className="space-y-4" variants={itemVariants}>
-                        <h3 className="text-sm font-semibold">Contact Us</h3>
-                        <div className="flex items-start space-x-3 text-sm">
-                            <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground" />
-                            <span className="text-muted-foreground">Shivraj municipality -08, Laxmanpur Kapilvastu, Nepal</span>
-                        </div>
-                        <div className="flex items-center space-x-3 text-sm">
-                            <Phone className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground">+977 9847370585</span>
-                        </div>
-                        <div className="flex items-center space-x-3 text-sm">
-                            <Mail className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-muted-foreground"> janchetanacsschool@gmail.com</span>
-                        </div>
-                        {/* <div className="pt-2">
-                            <h4 className="text-sm font-medium mb-2">Subscribe to our newsletter</h4>
-                            <div className="flex space-x-2">
-                                <Input placeholder="Your email" className="max-w-[180px]" />
-                                <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Subscribe</Button>
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2">Contact Us</h3>
+                        <div className="space-y-4">
+                            <div className="flex items-start space-x-3 text-sm group">
+                                <div className="mt-0.5 p-1.5 rounded-lg bg-teal-50 dark:bg-teal-900/20 group-hover:bg-teal-100 dark:group-hover:bg-teal-900/30 transition-colors">
+                                    <MapPin className="h-4 w-4 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+                                </div>
+                                <span className="text-muted-foreground leading-relaxed pt-0.5">Shivraj municipality -08, Laxmanpur Kapilvastu, Nepal</span>
                             </div>
-                        </div> */}
+                            <div className="flex items-center space-x-3 text-sm group">
+                                <div className="p-1.5 rounded-lg bg-teal-50 dark:bg-teal-900/20 group-hover:bg-teal-100 dark:group-hover:bg-teal-900/30 transition-colors">
+                                    <Phone className="h-4 w-4 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+                                </div>
+                                <span className="text-muted-foreground">+977 9847370585</span>
+                            </div>
+                            <div className="flex items-center space-x-3 text-sm group">
+                                <div className="p-1.5 rounded-lg bg-teal-50 dark:bg-teal-900/20 group-hover:bg-teal-100 dark:group-hover:bg-teal-900/30 transition-colors">
+                                    <Mail className="h-4 w-4 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+                                </div>
+                                <span className="text-muted-foreground break-all">janchetanacsschool@gmail.com</span>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </motion.div>
-            <div className="border-t py-6 dark:border-gray-800">
-                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-center sm:text-left px-4 sm:px-6">
-                    <p className="text-xs text-muted-foreground">
+            <div className="border-t-2 border-gray-200 dark:border-gray-800 bg-gradient-to-r from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 py-6">
+                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-center px-4 sm:px-6">
+                    <p className="text-sm text-muted-foreground font-medium">
                         &copy; {new Date().getFullYear()} Janchetana School. All rights reserved.
                     </p>
-                    {/* <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
-                        <Link href="/privacy" className="hover:underline">
-                            Privacy Policy
-                        </Link>
-                        <Link href="/terms" className="hover:underline">
-                            Terms of Use
-                        </Link>
-                        <Link href="/accessibility" className="hover:underline">
-                            Accessibility
-                        </Link>
-                    </div> */}
                 </div>
             </div>
         </footer>
