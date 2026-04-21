@@ -286,7 +286,7 @@ export default function ContactPage() {
                                         </div>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground">Shree Janchetana Community Secondary School</p>
+                                        <p className="text-muted-foreground">Shree Janchetana Secondary School</p>
                                         <p className="text-muted-foreground">Shivraj Municipality Ward No. 08</p>
                                         <p className="text-muted-foreground">Laxmanpur, Lumbini Province</p>
                                         <p className="text-muted-foreground">Kapilvastu, Nepal</p>

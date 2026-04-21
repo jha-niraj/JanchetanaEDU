@@ -92,13 +92,13 @@ export function HeroCarousel() {
                         </div>
                         <div className="flex-1 text-center">
                             <h1 className="text-xl md:text-2xl font-bold text-blue-800 mb-1">
-                                श्री जनचेतना माध्यमिक विद्यालय
+                                श्री जनचेतना सामुदायिक माध्यमिक विद्यालय
                             </h1>
                             <p className="text-xs md:text-sm text-gray-600 mb-1">
                                 शिवराज नगरपालिका-०८, लक्ष्मणपुर, कपिलवस्तु
                             </p>
                             <h2 className="text-lg md:text-xl font-bold text-red-600">
-                                SHREE JANCHETANA SECONDARY SCHOOL
+                                SHREE JANCHETANA COMMUNITY SECONDARY SCHOOL
                             </h2>
                             <p className="text-xs md:text-sm text-red-500">
                                 Shivraj Municipality-08, Laxmanpur, Kapilvastu
